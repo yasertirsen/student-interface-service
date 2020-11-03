@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6087ee9a-e348-4dfe-aee5-2591ba764bf3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_11_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_11_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_11_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_11_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_11_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_11_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_findbugs_jsr305_3_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_16_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_4_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_netflix_archaius_archaius_core_0_7_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_netflix_hystrix_hystrix_core_1_5_18.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_configuration_commons_configuration_1_8.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_fileupload_commons_fileupload_1_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_lang_commons_lang_2_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_github_openfeign_feign_core_10_10_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_github_openfeign_feign_hystrix_10_10_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_github_openfeign_feign_slf4j_10_10_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_github_openfeign_form_feign_form_3_8_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_github_openfeign_form_feign_form_spring_3_8_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_reactivex_rxjava_1_3_8.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_activation_jakarta_activation_api_1_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_annotation_jakarta_annotation_api_1_3_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_xml_bind_jakarta_xml_bind_api_2_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_10_17.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_10_17.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_accessors_smart_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_json_smart_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_13_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_13_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_9_0_39.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_9_0_39.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_9_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_3_16_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bouncycastle_bcpkix_jdk15on_1_64.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bouncycastle_bcprov_jdk15on_1_64.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jakarta_el_3_0_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hdrhistogram_HdrHistogram_2_1_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_6_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_6_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_6_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_6_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_6_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_6_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_3_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_junit_jupiter_3_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_2_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_5_0_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_16.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_5_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_30.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_30.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_3_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_3_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_devtools_2_3_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_2_3_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_2_3_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_3_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_3_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_2_3_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_3_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_3_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_2_3_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_2_3_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_commons_2_2_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_context_2_2_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_netflix_archaius_2_2_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_netflix_ribbon_2_2_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_openfeign_core_2_2_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_starter_2_2_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_starter_openfeign_2_2_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_crypto_5_3_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_rsa_1_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_5_2_10_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_5_2_10_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_5_2_10_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_5_2_10_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_5_2_10_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_5_2_10_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_5_2_10_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_5_2_10_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_5_2_10_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_7_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_26.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HELP.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/StudentInterfaceServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/client/StudentClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/constants/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/controller/StudentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/dto/Course.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/dto/Industry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/dto/Module.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/dto/Resume.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/dto/Skill.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/dto/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/.browserslistrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/angular.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/e2e/protractor.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/e2e/src/app.e2e-spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/e2e/src/app.po.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/e2e/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/karma.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/app-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/app.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/app.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/app.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/app.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/app.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/home/home.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/home/home.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/home/home.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/home/home.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/login/login.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/login/login.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/login/login.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/main-nav/main-nav.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/main-nav/main-nav.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/main-nav/main-nav.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/models/login-request-payload.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/models/login-response-payload.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/models/register-request-payload.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/not-found/not-found.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/not-found/not-found.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/not-found/not-found.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/not-found/not-found.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/register/register.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/register/register.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/register/register.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/assets/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/environments/environment.prod.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/environments/environment.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/main.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/polyfills.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/tsconfig.app.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/tsconfig.spec.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/tslint.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/fyp/studentinterfaceservice/StudentInterfaceServiceApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/student-interface-service.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/fyp/studentinterfaceservice/StudentInterfaceServiceApplication.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/fyp/studentinterfaceservice/client/StudentClient.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/fyp/studentinterfaceservice/constants/Constants.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/fyp/studentinterfaceservice/controller/StudentController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/fyp/studentinterfaceservice/dto/Course$CourseBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/fyp/studentinterfaceservice/dto/Course.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/fyp/studentinterfaceservice/dto/Industry$IndustryBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/fyp/studentinterfaceservice/dto/Industry.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/fyp/studentinterfaceservice/dto/Module$ModuleBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/fyp/studentinterfaceservice/dto/Module.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/fyp/studentinterfaceservice/dto/Resume$ResumeBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/fyp/studentinterfaceservice/dto/Resume.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/fyp/studentinterfaceservice/dto/Skill$SkillBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/fyp/studentinterfaceservice/dto/Skill.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/fyp/studentinterfaceservice/dto/Student$StudentBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/fyp/studentinterfaceservice/dto/Student.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.fyp.studentinterfaceservice.StudentInterfaceServiceApplicationTests.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/com.fyp.studentinterfaceservice.StudentInterfaceServiceApplicationTests.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/fyp/studentinterfaceservice/StudentInterfaceServiceApplicationTests.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1jma5ztPMFfgEykkEJIOe4EPECP" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/models" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="ts.external.directory.path" value="D:\Dev\FYP\student-interface-service\src\main\resources\student-interface-service\node_modules\typescript\lib" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.fyp.studentinterfaceservice.model" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Dev\FYP\student-interface-service\src\main\resources\student-interface-service\src\app\models" />
+      <recent name="D:\Dev\FYP\student-interface-service\src\main\java\com\fyp\studentinterfaceservice\model" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.Angular CLI Server">
+    <configuration name="Tests (student-interface-service)" type="JavaScriptTestRunnerKarma">
+      <config-file value="$PROJECT_DIR$/src/main/resources/student-interface-service/karma.conf.js" />
+      <working-directory value="$PROJECT_DIR$/src/main/resources/student-interface-service" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="E2E Tests (student-interface-service)" type="JavaScriptTestRunnerProtractor">
+      <config-file value="$PROJECT_DIR$/src/main/resources/student-interface-service/e2e/protractor.conf.js" />
+      <node-interpreter value="project" />
+      <protractor-options value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Angular Application" type="JavascriptDebugType" uri="http://localhost:4200">
+      <method v="2" />
+    </configuration>
+    <configuration name="student-interface-service [clean,install]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="install" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="StudentInterfaceServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="student-interface-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.fyp.studentinterfaceservice.StudentInterfaceServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Angular CLI Server" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/src/main/resources/student-interface-service/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Maven.student-interface-service [clean,install]" />
+      <item itemvalue="Spring Boot.StudentInterfaceServiceApplication" />
+      <item itemvalue="Karma.Tests (student-interface-service)" />
+      <item itemvalue="Protractor.E2E Tests (student-interface-service)" />
+      <item itemvalue="JavaScript Debug.Angular Application" />
+      <item itemvalue="npm.Angular CLI Server" />
+    </list>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6087ee9a-e348-4dfe-aee5-2591ba764bf3" name="Default Changelist" comment="" />
+      <created>1604411541899</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1604411541899</updated>
+      <workItem from="1604411545452" duration="99000" />
+      <workItem from="1604413128310" duration="8143000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/src/main/resources/student-interface-service" />
+    </ignored-roots>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604414260883">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604414260883" />
+    <state x="659" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604426880052">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="659" y="322" key="#com.intellij.fileTypes.FileTypeChooser/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604426880052" />
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1604415158161">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604415158161" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1604413214273">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="274" key="FileChooserDialogImpl/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604413214273" />
+    <state x="798" y="413" key="Github.ShareDialog" timestamp="1604429251904">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="798" y="413" key="Github.ShareDialog/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604429251904" />
+    <state width="1877" height="305" key="GridCell.Tab.0.bottom" timestamp="1604428678919">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="305" key="GridCell.Tab.0.bottom/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604428678919" />
+    <state width="1877" height="405" key="GridCell.Tab.0.bottom/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1604417037571" />
+    <state width="1877" height="305" key="GridCell.Tab.0.center" timestamp="1604428678919">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="305" key="GridCell.Tab.0.center/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604428678919" />
+    <state width="1877" height="405" key="GridCell.Tab.0.center/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1604417037570" />
+    <state width="1877" height="305" key="GridCell.Tab.0.left" timestamp="1604428678919">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="305" key="GridCell.Tab.0.left/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604428678919" />
+    <state width="1877" height="405" key="GridCell.Tab.0.left/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1604417037569" />
+    <state width="1877" height="305" key="GridCell.Tab.0.right" timestamp="1604428678919">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="305" key="GridCell.Tab.0.right/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604428678919" />
+    <state width="1877" height="405" key="GridCell.Tab.0.right/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1604417037571" />
+    <state width="1877" height="305" key="GridCell.Tab.1.bottom" timestamp="1604427566774">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="305" key="GridCell.Tab.1.bottom/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604427566774" />
+    <state width="1877" height="405" key="GridCell.Tab.1.bottom/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1604417037572" />
+    <state width="1877" height="305" key="GridCell.Tab.1.center" timestamp="1604427566774">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="305" key="GridCell.Tab.1.center/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604427566774" />
+    <state width="1877" height="405" key="GridCell.Tab.1.center/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1604417037572" />
+    <state width="1877" height="305" key="GridCell.Tab.1.left" timestamp="1604427566774">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="305" key="GridCell.Tab.1.left/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604427566774" />
+    <state width="1877" height="405" key="GridCell.Tab.1.left/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1604417037572" />
+    <state width="1877" height="305" key="GridCell.Tab.1.right" timestamp="1604427566774">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="305" key="GridCell.Tab.1.right/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604427566774" />
+    <state width="1877" height="405" key="GridCell.Tab.1.right/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1604417037572" />
+    <state x="490" y="174" key="Maven.ArtifactSearchDialog" timestamp="1604414494280">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="490" y="174" key="Maven.ArtifactSearchDialog/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604414494280" />
+    <state x="461" y="162" key="SettingsEditor" timestamp="1604430287935">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="162" key="SettingsEditor/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604430287935" />
+    <state x="342" y="221" key="new project wizard" timestamp="1604411640989">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="342" y="221" key="new project wizard/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604411640989" />
+  </component>
+</project>

@@ -1,0 +1,15 @@
+com\fyp\studentinterfaceservice\dto\Student$StudentBuilder.class
+com\fyp\studentinterfaceservice\StudentInterfaceServiceApplication.class
+com\fyp\studentinterfaceservice\dto\Industry$IndustryBuilder.class
+com\fyp\studentinterfaceservice\dto\Skill$SkillBuilder.class
+com\fyp\studentinterfaceservice\dto\Module$ModuleBuilder.class
+com\fyp\studentinterfaceservice\dto\Course$CourseBuilder.class
+com\fyp\studentinterfaceservice\dto\Industry.class
+com\fyp\studentinterfaceservice\dto\Resume.class
+com\fyp\studentinterfaceservice\client\StudentClient.class
+com\fyp\studentinterfaceservice\dto\Course.class
+com\fyp\studentinterfaceservice\dto\Module.class
+com\fyp\studentinterfaceservice\dto\Skill.class
+com\fyp\studentinterfaceservice\dto\Student.class
+com\fyp\studentinterfaceservice\dto\Resume$ResumeBuilder.class
+com\fyp\studentinterfaceservice\controller\StudentController.class

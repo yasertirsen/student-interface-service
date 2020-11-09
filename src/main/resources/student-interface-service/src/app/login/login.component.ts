@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginStudent(): void {
-    let url = 'http://localhost:8082/api/students/login';
+    let url = 'http://localhost:8083/login';
     this.client.post<LoginResponse>(url, this.model).pipe(map(data => {
       this.localStorage.store('authenticationToken', data.authenticationToken);
       this.localStorage.store('username', data.username);
@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
   }
 
   refreshToken() {
-    return this.client.post<LoginResponse>('http://localhost:8082/api/students/refresh/token',
+    return this.client.post<LoginResponse>('http://localhost:8083/refresh/token',
       this.refreshTokenPayload)
       .pipe(tap(response => {
         this.localStorage.clear('authenticationToken');

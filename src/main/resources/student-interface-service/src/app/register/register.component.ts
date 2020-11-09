@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registerStudent(): void {
-    let url = 'http://localhost:8082/api/students/register';
+    let url = 'http://localhost:8083/register';
     this.client.post(url, this.model)
       .subscribe(data => {
         this.router.navigate(['/login'],

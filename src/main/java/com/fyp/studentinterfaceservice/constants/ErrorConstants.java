@@ -12,5 +12,5 @@ public class ErrorConstants {
     public static final String UNEXPECTED_VALUE = "Unexpected error";
     public static final String SERVER_COULD_NOT_BE_REACH = "The service could not be reach!";
     public static final String PASSWORD_SAME_AS_OLD_ONE = "The password cannot be the same as the old one!";
-
+    public static final String USERNAME_OR_EMAIL_EXISTS = "Username or email already exists";
 }

@@ -2,29 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6087ee9a-e348-4dfe-aee5-2591ba764bf3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/config/Config.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/config/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/constants/ErrorConstants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/dto/AuthenticationResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/dto/HttpCustomResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/dto/LoginRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/dto/RefreshTokenRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/dto/RegisterRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/exceptions/CoreApplicationException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/exceptions/InvalidCredentialsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/exceptions/InvalidDataFormatException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/exceptions/NewPasswordSameLikeOldPasswordException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/exceptions/StudentExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/exceptions/UsernameOrEmailExistsException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/client/StudentClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/client/StudentClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/client/StudentClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/client/ProgradClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/constants/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/constants/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/constants/ErrorConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/constants/ErrorConstants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/controller/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/controller/StudentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/dto/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/dto/LoginRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/exceptions/StudentExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/exceptions/StudentExceptionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/login/login.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/register/register.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/register/register.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student-interface-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/student-interface-service.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/fyp/studentinterfaceservice/client/StudentClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/fyp/studentinterfaceservice/client/StudentClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/fyp/studentinterfaceservice/client/StudentClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/fyp/studentinterfaceservice/constants/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/fyp/studentinterfaceservice/constants/Constants.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/fyp/studentinterfaceservice/controller/StudentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/fyp/studentinterfaceservice/controller/StudentController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -181,8 +170,17 @@
       <workItem from="1604693160221" duration="4847000" />
       <workItem from="1604774936953" duration="992000" />
       <workItem from="1604786217967" duration="22000" />
-      <workItem from="1604932038060" duration="605000" />
+      <workItem from="1604932038060" duration="5150000" />
+      <workItem from="1604952392844" duration="681000" />
     </task>
+    <task id="LOCAL-00001" summary="added added feign exception handling and fixed timeout response issue">
+      <created>1604941323893</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1604941323893</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,6 +191,8 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/src/main/resources/student-interface-service" />
     </ignored-roots>
+    <MESSAGE value="added added feign exception handling and fixed timeout response issue" />
+    <option name="LAST_COMMIT_MESSAGE" value="added added feign exception handling and fixed timeout response issue" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604519156090">
@@ -203,66 +203,66 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="659" y="322" key="#com.intellij.fileTypes.FileTypeChooser/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604426880052" />
-    <state x="2532" y="186" key="#com.intellij.ide.util.MemberChooser" timestamp="1604522922436">
-      <screen x="1920" y="3" width="1536" height="832" />
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1604941552489">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604415158161" />
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604941552489" />
     <state x="2532" y="186" key="#com.intellij.ide.util.MemberChooser/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1604522922436" />
     <state x="2573" y="118" width="734" height="594" key="#xdebugger.evaluate" timestamp="1604696346683">
       <screen x="1920" y="3" width="1536" height="832" />
     </state>
     <state x="2573" y="118" width="734" height="594" key="#xdebugger.evaluate/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1604696346683" />
-    <state x="567" y="114" key="CommitChangelistDialog2" timestamp="1604941293776">
+    <state x="567" y="114" key="CommitChangelistDialog2" timestamp="1604941322599">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="567" y="114" key="CommitChangelistDialog2/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604941293776" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1604786237293">
+    <state x="567" y="114" key="CommitChangelistDialog2/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604941322599" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1604949953074">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604786237293" />
+    <state x="740" y="274" key="FileChooserDialogImpl/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604949953074" />
     <state x="798" y="413" key="Github.ShareDialog" timestamp="1604430339848">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="798" y="413" key="Github.ShareDialog/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604430339848" />
-    <state width="1877" height="181" key="GridCell.Tab.0.bottom" timestamp="1604775982784">
+    <state width="914" height="325" key="GridCell.Tab.0.bottom" timestamp="1604951719200">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="181" key="GridCell.Tab.0.bottom/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604775982784" />
+    <state width="914" height="325" key="GridCell.Tab.0.bottom/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604951719200" />
     <state width="1493" height="241" key="GridCell.Tab.0.bottom/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1604774999653" />
-    <state width="1877" height="181" key="GridCell.Tab.0.center" timestamp="1604775982784">
+    <state width="914" height="325" key="GridCell.Tab.0.center" timestamp="1604951719200">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="181" key="GridCell.Tab.0.center/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604775982784" />
+    <state width="914" height="325" key="GridCell.Tab.0.center/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604951719200" />
     <state width="1493" height="241" key="GridCell.Tab.0.center/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1604774999653" />
-    <state width="1877" height="181" key="GridCell.Tab.0.left" timestamp="1604775982784">
+    <state width="914" height="325" key="GridCell.Tab.0.left" timestamp="1604951719200">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="181" key="GridCell.Tab.0.left/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604775982784" />
+    <state width="914" height="325" key="GridCell.Tab.0.left/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604951719200" />
     <state width="1493" height="241" key="GridCell.Tab.0.left/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1604774999651" />
-    <state width="1877" height="181" key="GridCell.Tab.0.right" timestamp="1604775982784">
+    <state width="914" height="325" key="GridCell.Tab.0.right" timestamp="1604951719200">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="181" key="GridCell.Tab.0.right/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604775982784" />
+    <state width="914" height="325" key="GridCell.Tab.0.right/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604951719200" />
     <state width="1493" height="241" key="GridCell.Tab.0.right/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1604774999653" />
-    <state width="1877" height="181" key="GridCell.Tab.1.bottom" timestamp="1604775982784">
+    <state width="914" height="325" key="GridCell.Tab.1.bottom" timestamp="1604951719200">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="181" key="GridCell.Tab.1.bottom/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604775982784" />
+    <state width="914" height="325" key="GridCell.Tab.1.bottom/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604951719200" />
     <state width="1493" height="241" key="GridCell.Tab.1.bottom/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1604698621447" />
-    <state width="1877" height="181" key="GridCell.Tab.1.center" timestamp="1604775982784">
+    <state width="914" height="325" key="GridCell.Tab.1.center" timestamp="1604951719200">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="181" key="GridCell.Tab.1.center/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604775982784" />
+    <state width="914" height="325" key="GridCell.Tab.1.center/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604951719200" />
     <state width="1493" height="241" key="GridCell.Tab.1.center/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1604698621446" />
-    <state width="1877" height="181" key="GridCell.Tab.1.left" timestamp="1604775982784">
+    <state width="914" height="325" key="GridCell.Tab.1.left" timestamp="1604951719200">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="181" key="GridCell.Tab.1.left/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604775982784" />
+    <state width="914" height="325" key="GridCell.Tab.1.left/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604951719200" />
     <state width="1493" height="241" key="GridCell.Tab.1.left/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1604698621446" />
-    <state width="1877" height="181" key="GridCell.Tab.1.right" timestamp="1604775982784">
+    <state width="914" height="325" key="GridCell.Tab.1.right" timestamp="1604951719200">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="181" key="GridCell.Tab.1.right/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604775982784" />
+    <state width="914" height="325" key="GridCell.Tab.1.right/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604951719200" />
     <state width="1493" height="241" key="GridCell.Tab.1.right/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1604698621447" />
     <state width="1877" height="181" key="GridCell.Tab.2.bottom" timestamp="1604775982785">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -293,6 +293,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604430287935" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1604941325810">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604941325810" />
     <state width="775" height="419" key="XDebugger.FullValuePopup" timestamp="1604696254502">
       <screen x="1920" y="3" width="1536" height="832" />
     </state>
@@ -301,5 +305,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="342" y="221" key="new project wizard/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604411640989" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1604941650385">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604941650385" />
   </component>
 </project>

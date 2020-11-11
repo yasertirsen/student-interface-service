@@ -1,6 +1,6 @@
 package com.fyp.studentinterfaceservice.controller;
 
-import com.fyp.studentinterfaceservice.client.StudentClient;
+import com.fyp.studentinterfaceservice.client.ProgradClient;
 import com.fyp.studentinterfaceservice.dto.AuthenticationResponse;
 import com.fyp.studentinterfaceservice.dto.LoginRequest;
 import com.fyp.studentinterfaceservice.dto.RefreshTokenRequest;
@@ -21,9 +21,9 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-public class StudentController extends StudentExceptionHandler {
+public class StudentController {
 
-    private final StudentClient client;
+    private final ProgradClient client;
 
     @GetMapping("/all")
     public List<Student> getAllStudents() {

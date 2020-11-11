@@ -41,10 +41,18 @@ public class StudentExceptionHandler {
 //            case 423:
 //                toReturn = accountLockedException();
 //                break;
+            case 409:
+                toReturn = usernameOrEmailExistsException();
+                break;
             case 500:
                 toReturn = internalServerErrorException();
         }
         return toReturn;
+    }
+
+    @ExceptionHandler(UsernameOrEmailExistsException.class)
+    public ResponseEntity<HttpCustomResponse> usernameOrEmailExistsException() {
+        return createHttpResponse(CONFLICT, USERNAME_OR_EMAIL_EXISTS);
     }
 
     @ExceptionHandler(RetryableException.class)

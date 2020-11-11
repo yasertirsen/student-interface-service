@@ -19,7 +19,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @FeignClient(url = "${feign.url}", name = "${feign.student}")
-public interface StudentClient {
+public interface ProgradClient {
 //
 //    String AUTH_TOKEN = "x-api-key";
 //    String bearerToken  = "development_token";
@@ -33,7 +33,7 @@ public interface StudentClient {
     @PostMapping("/register")
     ResponseEntity<String> register(@RequestBody RegisterRequest registerRequest);
     @GetMapping("/verification/{token}")
-    String verifyAccount(@PathVariable String token);
+    ResponseEntity<String> verifyAccount(@PathVariable String token);
     @PostMapping("/login")
     AuthenticationResponse login(@RequestBody LoginRequest loginRequest);
     @PostMapping("/refresh/token")

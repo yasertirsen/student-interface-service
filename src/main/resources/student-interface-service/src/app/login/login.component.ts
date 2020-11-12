@@ -18,11 +18,11 @@ export class LoginComponent implements OnInit {
   isError: boolean;
   refreshTokenPayload = {
     refreshToken: this.getRefreshToken(),
-    username: this.getUserName()
+    email: this.getEmail()
   };
 
   model: LoginRequest = {
-    username:'',
+    email:'',
     password: ''
   };
 
@@ -73,8 +73,8 @@ export class LoginComponent implements OnInit {
       }));
   }
 
-  getUserName() {
-    return this.localStorage.retrieve('username');
+  getEmail() {
+    return this.localStorage.retrieve('email');
   }
   getRefreshToken() {
     return this.localStorage.retrieve('refreshToken');

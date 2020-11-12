@@ -2,44 +2,48 @@
   <div class="row">
     <div class="offset-3"></div>
     <div class="col-md-6">
-      <h4 class="text-center">Login</h4>
-      <hr>
-      <mat-card-content>
-        <form #f="ngForm" (ngSubmit)="f.form.valid && loginStudent()" novalidate class="login-form">
-          <mat-form-field class="full-width">
-            <mat-label>Username</mat-label>
-            <input matInput
-                   placeholder="Username"
-                   name="username"
-                   [(ngModel)]="model.username"
-                   #username="ngModel"
-                   [ngClass]="{ 'is-invalid': f.submitted && username.invalid}"
-                   required>
-          </mat-form-field>
+      <div class="login-header">
+        <h4 class="text-center">Login</h4>
+        <hr>
+      </div>
 
-          <mat-form-field class="full-width">
-            <mat-label>Password</mat-label>
-            <input matInput
-                   placeholder="Password"
-                   name="password"
-                   type="password"
-                   [(ngModel)]="model.password"
-                   #password="ngModel"
-                   [ngClass]="{ 'is-invalid': f.submitted && password.invalid}"
-                   required>
-          </mat-form-field>
-          <button mat-raised-button type="submit" color="accent">
-            <i class="fa fa-user"></i>
-            <span> Login</span>
-          </button>
+      <div class="login-form">
+        <mat-card-content>
+          <form #f="ngForm" (ngSubmit)="f.form.valid && loginStudent()" novalidate>
+            <mat-form-field class="full-width">
+              <mat-label>Email</mat-label>
+              <input matInput
+                     placeholder="Email"
+                     name="email"
+                     [(ngModel)]="model.email"
+                     #email="ngModel"
+                     [ngClass]="{ 'is-invalid': f.submitted && email.invalid}"
+                     required>
+            </mat-form-field>
 
-        </form>
-      </mat-card-content>
+            <mat-form-field class="full-width">
+              <mat-label>Password</mat-label>
+              <input matInput
+                     placeholder="Password"
+                     name="password"
+                     type="password"
+                     [(ngModel)]="model.password"
+                     #password="ngModel"
+                     [ngClass]="{ 'is-invalid': f.submitted && password.invalid}"
+                     required>
+            </mat-form-field>
+            <button mat-raised-button type="submit" color="accent">
+              <i class="fa fa-user"></i>
+              <span> Login</span>
+            </button>
+          </form>
+        </mat-card-content>
+      </div>
 
       <div class="login-failed" *ngIf='this.isError'>
         <p class="login-failed-text">Login Failed. Please check your credentials and try again.</p>
       </div>
-      <div class="login-failed" [ngStyle]="{'background-color': 'green'}" *ngIf="this.registerSuccessMessage.length > 0">
+      <div class="login-failed" [ngStyle]="{'background-color': 'green'}" *ngIf="undefined !== this.registerSuccessMessage && this.registerSuccessMessage.length > 0">
         <p class="register-success-text">{{registerSuccessMessage}}</p>
       </div>
     </div>

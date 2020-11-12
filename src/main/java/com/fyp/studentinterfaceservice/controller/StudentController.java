@@ -36,8 +36,8 @@ public class StudentController {
     }
 
     @GetMapping("/verification/{token}")
-    public ResponseEntity<?> verifyAccount(@PathVariable String token) {
-        return new ResponseEntity<>(client.verifyAccount(token), HttpStatus.OK);
+    public ResponseEntity<String> verifyAccount(@PathVariable String token) {
+        return client.verifyAccount(token);
     }
 
     @PostMapping("/login")

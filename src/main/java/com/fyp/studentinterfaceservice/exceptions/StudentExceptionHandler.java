@@ -1,22 +1,19 @@
 package com.fyp.studentinterfaceservice.exceptions;
 
-import com.fyp.studentinterfaceservice.dto.HttpCustomResponse;
+import com.fyp.studentinterfaceservice.models.HttpCustomResponse;
 import feign.FeignException;
 import feign.RetryableException;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import java.net.ConnectException;
 import java.nio.file.AccessDeniedException;
 import java.util.Objects;
 
-import static com.fyp.studentinterfaceservice.constants.ErrorConstants.*;
+import static com.fyp.studentinterfaceservice.constant.ErrorConstants.*;
 import static org.springframework.http.HttpStatus.*;
 
 @RestControllerAdvice
@@ -41,18 +38,23 @@ public class StudentExceptionHandler {
 //            case 423:
 //                toReturn = accountLockedException();
 //                break;
-            case 409:
-                toReturn = usernameOrEmailExistsException();
-                break;
+//            case 409:
+//                toReturn = usernameOrEmailExistsException();
+//                break;
             case 500:
                 toReturn = internalServerErrorException();
         }
         return toReturn;
     }
 
-    @ExceptionHandler(UsernameOrEmailExistsException.class)
-    public ResponseEntity<HttpCustomResponse> usernameOrEmailExistsException() {
-        return createHttpResponse(CONFLICT, USERNAME_OR_EMAIL_EXISTS);
+    @ExceptionHandler(UsernameExistsException.class)
+    public ResponseEntity<HttpCustomResponse> usernameExistsException() {
+        return createHttpResponse(CONFLICT, USERNAME_ALREADY_EXISTS);
+    }
+
+    @ExceptionHandler(EmailExistsException.class)
+    public ResponseEntity<HttpCustomResponse> emailExistsException() {
+        return createHttpResponse(CONFLICT, EMAIL_ALREADY_EXISTS);
     }
 
     @ExceptionHandler(RetryableException.class)

@@ -1,4 +1,4 @@
-package com.fyp.studentinterfaceservice.dto;
+package com.fyp.studentinterfaceservice.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

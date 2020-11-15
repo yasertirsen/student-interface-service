@@ -1,57 +1,68 @@
 package com.fyp.studentinterfaceservice.controller;
 
-import com.fyp.studentinterfaceservice.client.ProgradClient;
-import com.fyp.studentinterfaceservice.dto.AuthenticationResponse;
-import com.fyp.studentinterfaceservice.dto.LoginRequest;
-import com.fyp.studentinterfaceservice.dto.RefreshTokenRequest;
-import com.fyp.studentinterfaceservice.dto.RegisterRequest;
-import com.fyp.studentinterfaceservice.dto.Student;
-import com.fyp.studentinterfaceservice.exceptions.StudentExceptionHandler;
-import lombok.AllArgsConstructor;
+
+import com.fyp.studentinterfaceservice.exceptions.EmailExistsException;
+import com.fyp.studentinterfaceservice.exceptions.UserNotFoundException;
+import com.fyp.studentinterfaceservice.exceptions.UsernameExistsException;
+import com.fyp.studentinterfaceservice.models.User;
+import com.fyp.studentinterfaceservice.models.UserPrincipal;
+import com.fyp.studentinterfaceservice.jwt.JWTTokenProvider;
+import com.fyp.studentinterfaceservice.services.interfaces.UserService;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
-import java.util.List;
+import static com.fyp.studentinterfaceservice.constant.SecurityConstants.EXPIRATION_TIME;
 
 @RestController
-@AllArgsConstructor
 public class StudentController {
 
-    private final ProgradClient client;
+    private final UserService userService;
+    private final JWTTokenProvider jwtTokenProvider;
+    private final AuthenticationManager authenticationManager;
 
-    @GetMapping("/all")
-    public List<Student> getAllStudents() {
-        return client.getAllStudents();
+
+    @Autowired
+    public StudentController(UserService userService, JWTTokenProvider jwtTokenProvider, AuthenticationManager authenticationManager) {
+        this.userService = userService;
+        this.jwtTokenProvider = jwtTokenProvider;
+        this.authenticationManager = authenticationManager;
     }
+
+//    @GetMapping("/all")
+//    public List<Student> getAllStudents() {
+//        return client.getAllStudents();
+//    }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody RegisterRequest registerRequest) {
-         return client.register(registerRequest);
-    }
-
-    @GetMapping("/verification/{token}")
-    public ResponseEntity<String> verifyAccount(@PathVariable String token) {
-        return client.verifyAccount(token);
+    public User register(@RequestBody User user) throws UsernameExistsException, UserNotFoundException, EmailExistsException {
+         return userService.register(user);
     }
 
     @PostMapping("/login")
-    public AuthenticationResponse login(@RequestBody LoginRequest loginRequest) {
-        return client.login(loginRequest);
+    @ResponseBody
+    public ResponseEntity<User> login(@RequestBody User user) throws Exception {
+
+        User loggedUser = userService.findUserByEmail(user.getEmail());
+        authenticate(loggedUser.getEmail(), loggedUser.getPassword());
+        UserPrincipal userPrincipal = new UserPrincipal(loggedUser);
+
+        loggedUser.setPassword(StringUtils.EMPTY);
+        loggedUser.setExpiresIn(EXPIRATION_TIME);
+        loggedUser.setToken(jwtTokenProvider.generateJwtToken(userPrincipal));
+
+        return new ResponseEntity<>(loggedUser, HttpStatus.OK);
     }
 
-    @PostMapping("/refresh/token")
-    public AuthenticationResponse refreshToken(@Valid @RequestBody RefreshTokenRequest refreshTokenRequest) {
-        return client.refreshToken(refreshTokenRequest);
+    private void authenticate(String username, String password) {
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
     }
 
-    @PostMapping("/logout")
-    public ResponseEntity<String> logout(@Valid @RequestBody RefreshTokenRequest refreshTokenRequest) {
-        return client.logout(refreshTokenRequest);
-    }
 }

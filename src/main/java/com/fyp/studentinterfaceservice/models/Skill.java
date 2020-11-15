@@ -1,4 +1,4 @@
-package com.fyp.studentinterfaceservice.dto;
+package com.fyp.studentinterfaceservice.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Resume {
-    private long resumeId;
-    private String resumeContent;
+public class Skill {
+    private long skillId;
+    private String skillName;
+    private Industry industry;
 }
+

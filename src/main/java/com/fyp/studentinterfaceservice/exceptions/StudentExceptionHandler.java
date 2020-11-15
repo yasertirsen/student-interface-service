@@ -1,6 +1,6 @@
 package com.fyp.studentinterfaceservice.exceptions;
 
-import com.fyp.studentinterfaceservice.models.HttpCustomResponse;
+import com.fyp.studentinterfaceservice.model.HttpCustomResponse;
 import feign.FeignException;
 import feign.RetryableException;
 import org.springframework.http.HttpMethod;

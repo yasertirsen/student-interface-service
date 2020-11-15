@@ -1,7 +1,7 @@
 package com.fyp.studentinterfaceservice.client;
 
-import com.fyp.studentinterfaceservice.models.Student;
-import com.fyp.studentinterfaceservice.models.User;
+import com.fyp.studentinterfaceservice.model.Student;
+import com.fyp.studentinterfaceservice.model.User;
 import feign.Headers;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
@@ -42,4 +42,8 @@ public interface ProgradClient {
     @GetMapping(value = "/findByUsername")
     @Headers({"Content-Type: application/json"})
     ResponseEntity<User> findByUsername(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestParam String username);
+
+    @GetMapping(value = "/findByToken")
+    @Headers({"Content-Type: application/json"})
+    ResponseEntity<User> findByToken(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestParam String token);
 }

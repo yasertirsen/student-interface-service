@@ -1,4 +1,4 @@
-package com.fyp.studentinterfaceservice.models;
+package com.fyp.studentinterfaceservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,4 +26,6 @@ public class User {
     private Boolean isLocked;
     private Long expiresIn;
     private String token;
+    private UserProfile profile;
+    private Resume resume;
 }

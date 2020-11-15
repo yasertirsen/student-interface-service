@@ -2,13 +2,21 @@ package com.fyp.studentinterfaceservice.services;
 
 import com.fyp.studentinterfaceservice.client.ProgradClient;
 import com.fyp.studentinterfaceservice.exceptions.EmailExistsException;
+import com.fyp.studentinterfaceservice.exceptions.ProgradException;
 import com.fyp.studentinterfaceservice.exceptions.UsernameExistsException;
-import com.fyp.studentinterfaceservice.models.User;
-import com.fyp.studentinterfaceservice.models.UserPrincipal;
+import com.fyp.studentinterfaceservice.model.NotificationEmail;
+import com.fyp.studentinterfaceservice.model.Resume;
+import com.fyp.studentinterfaceservice.model.User;
+import com.fyp.studentinterfaceservice.model.UserPrincipal;
+import com.fyp.studentinterfaceservice.model.UserProfile;
 import com.fyp.studentinterfaceservice.services.interfaces.UserService;
+import com.google.gson.Gson;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,10 +24,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.util.UUID;
 
 import static com.fyp.studentinterfaceservice.constant.ErrorConstants.EMAIL_ALREADY_EXISTS;
 import static com.fyp.studentinterfaceservice.constant.ErrorConstants.USERNAME_ALREADY_EXISTS;
-import static com.fyp.studentinterfaceservice.models.Role.ROLE_USER;
+import static com.fyp.studentinterfaceservice.model.Role.ROLE_USER;
 
 
 @Service
@@ -27,27 +36,44 @@ import static com.fyp.studentinterfaceservice.models.Role.ROLE_USER;
 public class UserServiceImplementation implements UserService, UserDetailsService {
 
     private final BCryptPasswordEncoder passwordEncoder;
-  private final ProgradClient progradClient;
+    private final ProgradClient progradClient;
+    private final MailService mailService;
 
   @Value("${token.secret}")
   private String bearerToken;
 
     @Autowired
-    public UserServiceImplementation(BCryptPasswordEncoder passwordEncoder, ProgradClient progradClient) {
+    public UserServiceImplementation(BCryptPasswordEncoder passwordEncoder, ProgradClient progradClient, MailService mailService) {
         this.passwordEncoder = passwordEncoder;
         this.progradClient = progradClient;
+        this.mailService = mailService;
     }
 
     @Override
-    public User register(User user) throws UsernameExistsException, EmailExistsException {
+    public User register(User user) throws UsernameExistsException, EmailExistsException, ProgradException {
         validateUsernameAndEmail(user.getUsername(), user.getEmail());
+
+        String verificationToken = UUID.randomUUID().toString();
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setCreated(Instant.now());
-        user.setEnabled(true);
+        //Change to false and implement verification
+        user.setEnabled(false);
         user.setIsLocked(false);
         user.setRole(ROLE_USER.name());
         user.setAuthorities(ROLE_USER.getAuthorities());
-        return progradClient.register(user);
+        user.setToken(verificationToken);
+        user.setProfile(new UserProfile());
+        user.setResume(new Resume());
+
+        User registeredUser = progradClient.register(user);
+        registeredUser.setPassword(StringUtils.EMPTY);
+
+        mailService.sendMail(new NotificationEmail("Account Activation - Prograd",
+                user.getEmail(), "Thank you for signing up to Prograd, " +
+                "please click the link below to activate your account " +
+                "http://localhost:8083/verification/" + verificationToken));
+
+        return registeredUser;
     }
 
     private void validateUsernameAndEmail(String newUsername, String newEmail) throws UsernameExistsException, EmailExistsException {
@@ -59,31 +85,6 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
         if(userByUsername != null) {
             throw new UsernameExistsException(USERNAME_ALREADY_EXISTS);
         }
-//        if(StringUtils.isNotBlank(currentEmail)) {
-//            User currentUser = findUserByEmail(newEmail);
-//            if(currentUser == null) {
-//                throw new UserNotFoundException("No user found by email " + currentEmail);
-//            }
-//            User userByEmail = findUserByEmail(newEmail);
-//            if(userByEmail != null && !currentUser.getStudentId().equals(userByEmail.getExpiresIn())) {
-//                throw new EmailExistsException("Email already exists");
-//            }
-//            User userByUsername = findUserByEmail(newUsername);
-//            if(userByUsername != null && !currentUser.getStudentId().equals(userByEmail.getExpiresIn())) {
-//                throw new UsernameExistsException("Username already exists");
-//            }
-//            return currentUser;
-//        } else {
-//            User userByEmail = findUserByEmail(newEmail);
-//            if(userByEmail != null) {
-//                throw new EmailExistsException("Email already exists");
-//            }
-//            User userByUsername = findUserByEmail(newEmail);
-//            if(userByUsername != null) {
-//                throw new UsernameExistsException("Username already exists");
-//            }
-//            return null;
-//        }
     }
 
     @Override
@@ -97,6 +98,11 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
     }
 
     @Override
+    public User findUserByToken(String token) {
+        return progradClient.findByToken(bearerToken, token).getBody();
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = findUserByEmail(username);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -107,5 +113,15 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
     @Override
     public User login(User user) {
         return progradClient.login(bearerToken, user);
+    }
+
+    @Override
+    public ResponseEntity<String> verifyAccount(String token) {
+        User user = findUserByToken(token);
+        user.setEnabled(true);
+        //update user
+        progradClient.register(user);
+
+        return new ResponseEntity<>(new Gson().toJson("Account Activated Successfully"), HttpStatus.OK);
     }
 }

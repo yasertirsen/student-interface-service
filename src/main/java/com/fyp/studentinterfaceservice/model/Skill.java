@@ -1,4 +1,4 @@
-package com.fyp.studentinterfaceservice.models;
+package com.fyp.studentinterfaceservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Module {
-    private long moduleId;
-    private String moduleName;
-    private Skill moduleSkill;
+public class Skill {
+    private long skillId;
+    private String skillName;
+    private Industry industry;
 }
+

@@ -1,4 +1,4 @@
-package com.fyp.studentinterfaceservice.models;
+package com.fyp.studentinterfaceservice.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;

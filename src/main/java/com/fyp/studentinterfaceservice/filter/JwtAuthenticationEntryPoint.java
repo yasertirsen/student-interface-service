@@ -1,7 +1,7 @@
 package com.fyp.studentinterfaceservice.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fyp.studentinterfaceservice.models.HttpCustomResponse;
+import com.fyp.studentinterfaceservice.model.HttpCustomResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.AuthenticationException;

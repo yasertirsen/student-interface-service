@@ -1,4 +1,4 @@
-package com.fyp.studentinterfaceservice.models;
+package com.fyp.studentinterfaceservice.model;
 
 import lombok.Getter;
 

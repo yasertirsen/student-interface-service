@@ -15,9 +15,7 @@ public interface UserService {
 
     User findUserByUsername(String username);
 
-    User findUserByToken(String Token);
-
-    User login(User user) throws Exception;
+    User findUserByToken(String token);
 
     ResponseEntity<String> verifyAccount(String token);
 }

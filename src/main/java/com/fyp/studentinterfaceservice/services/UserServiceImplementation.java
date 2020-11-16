@@ -56,7 +56,6 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
         String verificationToken = UUID.randomUUID().toString();
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setCreated(Instant.now());
-        //Change to false and implement verification
         user.setEnabled(false);
         user.setIsLocked(false);
         user.setRole(ROLE_USER.name());
@@ -111,15 +110,9 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
     }
 
     @Override
-    public User login(User user) {
-        return progradClient.login(bearerToken, user);
-    }
-
-    @Override
     public ResponseEntity<String> verifyAccount(String token) {
         User user = findUserByToken(token);
         user.setEnabled(true);
-        //update user
         progradClient.register(user);
 
         return new ResponseEntity<>(new Gson().toJson("Account Activated Successfully"), HttpStatus.OK);

@@ -1,12 +1,12 @@
 package com.fyp.studentinterfaceservice.client;
 
-import com.fyp.studentinterfaceservice.model.Student;
 import com.fyp.studentinterfaceservice.model.User;
 import feign.Headers;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,16 +23,15 @@ public interface ProgradClient {
 //    public ResponseEntity<User> login(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestBody User user);
 
     @GetMapping("/all")
-    List<Student> getAllStudents();
+    List<User> getAllStudents();
 
     @PostMapping("/register")
     User register(@RequestBody User user);
 
 //    @GetMapping("/verification/{token}")
 //    ResponseEntity<String> verifyAccount(@PathVariable String token);
-
-    @PostMapping("/login")
-    User login(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestBody User user);
+    @PutMapping("/update")
+    User update(@RequestHeader(AUTH_TOKEN) String bearerToken, User user);
 
 
     @GetMapping(value = "/findByEmail")

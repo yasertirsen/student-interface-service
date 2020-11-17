@@ -2,12 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6087ee9a-e348-4dfe-aee5-2591ba764bf3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/CareerjetAPIClient.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/model/Company.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/model/Position.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/client/ProgradClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/client/ProgradClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/config/SecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/model/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/constant/Constants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/constant/SecurityConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/constant/SecurityConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/controller/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/controller/StudentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/UserServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/UserServiceImplementation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/interfaces/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/interfaces/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-interface-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/student-interface-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/fyp/studentinterfaceservice/controller/StudentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/fyp/studentinterfaceservice/controller/StudentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.fyp.studentinterfaceservice.StudentInterfaceServiceApplicationTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.fyp.studentinterfaceservice.StudentInterfaceServiceApplicationTests.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.fyp.studentinterfaceservice.StudentInterfaceServiceApplicationTests.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.fyp.studentinterfaceservice.StudentInterfaceServiceApplicationTests.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,12 +71,23 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs.protractor.protractor_package" value="$PROJECT_DIR$/src/main/resources/student-interface-service/node_modules/protractor" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="ts.external.directory.path" value="D:\Dev\FYP\student-interface-service\src\main\resources\student-interface-service\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Dev\FYP\student-interface-service\src\main\java\com\fyp\studentinterfaceservice\jwt" />
+    </key>
     <key name="IntroduceConstantDialog.RECENTS_KEY">
       <recent name="com.fyp.studentinterfaceservice.services.UserServiceImplementation" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.fyp.studentinterfaceservice.model" />
+      <recent name="com.fyp.studentinterfaceservice.models" />
+      <recent name="com.fyp.studentinterfaceservice.config" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Dev\FYP\student-interface-service\src\main\java\com\fyp\studentinterfaceservice\services" />
@@ -73,14 +95,6 @@
       <recent name="D:\Dev\FYP\student-interface-service\src\main\java\com\fyp\studentinterfaceservice\dto" />
       <recent name="D:\Dev\FYP\student-interface-service\src\main\resources\student-interface-service\src\app\models" />
       <recent name="D:\Dev\FYP\student-interface-service\src\main\java\com\fyp\studentinterfaceservice\model" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.fyp.studentinterfaceservice.models" />
-      <recent name="com.fyp.studentinterfaceservice.config" />
-      <recent name="com.fyp.studentinterfaceservice.model" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Dev\FYP\student-interface-service\src\main\java\com\fyp\studentinterfaceservice\jwt" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.StudentInterfaceServiceApplication">
@@ -180,7 +194,8 @@
       <workItem from="1605380257721" duration="21272000" />
       <workItem from="1605408068154" duration="2764000" />
       <workItem from="1605410844306" duration="2494000" />
-      <workItem from="1605550778148" duration="5759000" />
+      <workItem from="1605550778148" duration="5868000" />
+      <workItem from="1605638458832" duration="7530000" />
     </task>
     <task id="LOCAL-00001" summary="added added feign exception handling and fixed timeout response issue">
       <created>1604941323893</created>
@@ -217,7 +232,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605413333612</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="code clean up">
+      <created>1605556877172</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1605556877172</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,9 +255,14 @@
     <MESSAGE value="fixed login form" />
     <MESSAGE value="Added register and login security" />
     <MESSAGE value="Added account verification and mail services" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added account verification and mail services" />
+    <MESSAGE value="code clean up" />
+    <option name="LAST_COMMIT_MESSAGE" value="code clean up" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="552" y="178" key="#Project_Structure" timestamp="1605643321209">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="178" key="#Project_Structure/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605643321209" />
     <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604519156090">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -244,10 +271,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="659" y="322" key="#com.intellij.fileTypes.FileTypeChooser/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604426880052" />
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1605411397541">
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1605643931427">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605411397541" />
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605643931427" />
     <state x="2532" y="186" key="#com.intellij.ide.util.MemberChooser/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1605389815428" />
     <state x="2620" y="133" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605553458599">
       <screen x="1920" y="3" width="1536" height="832" />
@@ -258,108 +285,108 @@
       <screen x="1920" y="3" width="1536" height="832" />
     </state>
     <state x="2573" y="118" width="734" height="594" key="#xdebugger.evaluate/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1604696346683" />
-    <state x="567" y="114" key="CommitChangelistDialog2" timestamp="1605413332172">
+    <state x="567" y="114" key="CommitChangelistDialog2" timestamp="1605556875275">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="568" y="26" key="CommitChangelistDialog2/0.0.1920.1040/1920.3.1536.824@0.0.1920.1040" timestamp="1605210323510" />
-    <state x="567" y="114" key="CommitChangelistDialog2/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605413332172" />
+    <state x="567" y="114" key="CommitChangelistDialog2/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605556875275" />
     <state x="2374" y="24" key="CommitChangelistDialog2/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1605113903578" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1605380275937">
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1605643318630">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/1920.3.1536.824@0.0.1920.1040" timestamp="1605210330689" />
-    <state x="740" y="274" key="FileChooserDialogImpl/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605380275937" />
+    <state x="740" y="274" key="FileChooserDialogImpl/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605643318630" />
     <state x="2512" y="222" key="FileChooserDialogImpl/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1605114558862" />
     <state x="798" y="413" key="Github.ShareDialog" timestamp="1604430339848">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="798" y="413" key="Github.ShareDialog/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604430339848" />
-    <state width="1875" height="306" key="GridCell.Tab.0.bottom" timestamp="1605556809641">
+    <state width="1877" height="306" key="GridCell.Tab.0.bottom" timestamp="1605647074282">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="325" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.3.1536.824@0.0.1920.1040" timestamp="1605210403763" />
     <state width="1493" height="325" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.3.1536.824@1920.3.1536.824" timestamp="1605210035774" />
-    <state width="1875" height="306" key="GridCell.Tab.0.bottom/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605556809641" />
+    <state width="1877" height="306" key="GridCell.Tab.0.bottom/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605647074282" />
     <state width="1493" height="306" key="GridCell.Tab.0.bottom/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1605411749361" />
-    <state width="1875" height="306" key="GridCell.Tab.0.center" timestamp="1605556809640">
+    <state width="1877" height="306" key="GridCell.Tab.0.center" timestamp="1605647074282">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="325" key="GridCell.Tab.0.center/0.0.1920.1040/1920.3.1536.824@0.0.1920.1040" timestamp="1605210403763" />
     <state width="1493" height="325" key="GridCell.Tab.0.center/0.0.1920.1040/1920.3.1536.824@1920.3.1536.824" timestamp="1605210035774" />
-    <state width="1875" height="306" key="GridCell.Tab.0.center/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605556809640" />
+    <state width="1877" height="306" key="GridCell.Tab.0.center/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605647074282" />
     <state width="1493" height="306" key="GridCell.Tab.0.center/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1605411749361" />
-    <state width="1875" height="306" key="GridCell.Tab.0.left" timestamp="1605556809640">
+    <state width="1877" height="306" key="GridCell.Tab.0.left" timestamp="1605647074282">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="325" key="GridCell.Tab.0.left/0.0.1920.1040/1920.3.1536.824@0.0.1920.1040" timestamp="1605210403763" />
     <state width="1493" height="325" key="GridCell.Tab.0.left/0.0.1920.1040/1920.3.1536.824@1920.3.1536.824" timestamp="1605210035773" />
-    <state width="1875" height="306" key="GridCell.Tab.0.left/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605556809640" />
+    <state width="1877" height="306" key="GridCell.Tab.0.left/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605647074282" />
     <state width="1493" height="306" key="GridCell.Tab.0.left/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1605411749361" />
-    <state width="1875" height="306" key="GridCell.Tab.0.right" timestamp="1605556809640">
+    <state width="1877" height="306" key="GridCell.Tab.0.right" timestamp="1605647074282">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="325" key="GridCell.Tab.0.right/0.0.1920.1040/1920.3.1536.824@0.0.1920.1040" timestamp="1605210403763" />
     <state width="1493" height="325" key="GridCell.Tab.0.right/0.0.1920.1040/1920.3.1536.824@1920.3.1536.824" timestamp="1605210035774" />
-    <state width="1875" height="306" key="GridCell.Tab.0.right/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605556809640" />
+    <state width="1877" height="306" key="GridCell.Tab.0.right/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605647074282" />
     <state width="1493" height="306" key="GridCell.Tab.0.right/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1605411749361" />
-    <state width="1875" height="306" key="GridCell.Tab.1.bottom" timestamp="1605556801294">
+    <state width="1877" height="306" key="GridCell.Tab.1.bottom" timestamp="1605647074283">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="325" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.3.1536.824@0.0.1920.1040" timestamp="1605210403763" />
-    <state width="1875" height="306" key="GridCell.Tab.1.bottom/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605556801294" />
+    <state width="1877" height="306" key="GridCell.Tab.1.bottom/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605647074283" />
     <state width="1875" height="406" key="GridCell.Tab.1.bottom/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1605411749131" />
-    <state width="1875" height="306" key="GridCell.Tab.1.center" timestamp="1605556801293">
+    <state width="1877" height="306" key="GridCell.Tab.1.center" timestamp="1605647074282">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="325" key="GridCell.Tab.1.center/0.0.1920.1040/1920.3.1536.824@0.0.1920.1040" timestamp="1605210403763" />
-    <state width="1875" height="306" key="GridCell.Tab.1.center/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605556801293" />
+    <state width="1877" height="306" key="GridCell.Tab.1.center/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605647074282" />
     <state width="1875" height="406" key="GridCell.Tab.1.center/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1605411749131" />
-    <state width="1875" height="306" key="GridCell.Tab.1.left" timestamp="1605556801293">
+    <state width="1877" height="306" key="GridCell.Tab.1.left" timestamp="1605647074282">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="325" key="GridCell.Tab.1.left/0.0.1920.1040/1920.3.1536.824@0.0.1920.1040" timestamp="1605210403763" />
-    <state width="1875" height="306" key="GridCell.Tab.1.left/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605556801293" />
+    <state width="1877" height="306" key="GridCell.Tab.1.left/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605647074282" />
     <state width="1875" height="406" key="GridCell.Tab.1.left/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1605411749131" />
-    <state width="1875" height="306" key="GridCell.Tab.1.right" timestamp="1605556801293">
+    <state width="1877" height="306" key="GridCell.Tab.1.right" timestamp="1605647074282">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="325" key="GridCell.Tab.1.right/0.0.1920.1040/1920.3.1536.824@0.0.1920.1040" timestamp="1605210403763" />
-    <state width="1875" height="306" key="GridCell.Tab.1.right/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605556801293" />
+    <state width="1877" height="306" key="GridCell.Tab.1.right/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605647074282" />
     <state width="1875" height="406" key="GridCell.Tab.1.right/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1605411749131" />
-    <state width="1875" height="306" key="GridCell.Tab.2.bottom" timestamp="1605556776345">
+    <state width="1877" height="306" key="GridCell.Tab.2.bottom" timestamp="1605647074283">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1875" height="306" key="GridCell.Tab.2.bottom/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605556776345" />
+    <state width="1877" height="306" key="GridCell.Tab.2.bottom/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605647074283" />
     <state width="1875" height="406" key="GridCell.Tab.2.bottom/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1605411749131" />
-    <state width="1875" height="306" key="GridCell.Tab.2.center" timestamp="1605556776343">
+    <state width="1877" height="306" key="GridCell.Tab.2.center" timestamp="1605647074283">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1875" height="306" key="GridCell.Tab.2.center/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605556776343" />
+    <state width="1877" height="306" key="GridCell.Tab.2.center/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605647074283" />
     <state width="1875" height="406" key="GridCell.Tab.2.center/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1605411749131" />
-    <state width="1875" height="306" key="GridCell.Tab.2.left" timestamp="1605556776343">
+    <state width="1877" height="306" key="GridCell.Tab.2.left" timestamp="1605647074283">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1875" height="306" key="GridCell.Tab.2.left/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605556776343" />
+    <state width="1877" height="306" key="GridCell.Tab.2.left/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605647074283" />
     <state width="1875" height="406" key="GridCell.Tab.2.left/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1605411749131" />
-    <state width="1875" height="306" key="GridCell.Tab.2.right" timestamp="1605556776344">
+    <state width="1877" height="306" key="GridCell.Tab.2.right" timestamp="1605647074283">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1875" height="306" key="GridCell.Tab.2.right/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605556776344" />
+    <state width="1877" height="306" key="GridCell.Tab.2.right/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605647074283" />
     <state width="1875" height="406" key="GridCell.Tab.2.right/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1605411749131" />
-    <state x="490" y="174" key="Maven.ArtifactSearchDialog" timestamp="1604685470950">
+    <state x="490" y="174" key="Maven.ArtifactSearchDialog" timestamp="1605646452552">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="490" y="174" key="Maven.ArtifactSearchDialog/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604685470950" />
+    <state x="490" y="174" key="Maven.ArtifactSearchDialog/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605646452552" />
     <state x="2312" y="142" key="Maven.ArtifactSearchDialog/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1604522866791" />
     <state x="461" y="162" key="SettingsEditor" timestamp="1604430287935">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604430287935" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1605413334901">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1605556878810">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="553" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.3.1536.824@0.0.1920.1040" timestamp="1605210325835" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605413334901" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605556878810" />
     <state x="2362" y="205" key="Vcs.Push.Dialog.v2/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1605113912050" />
     <state width="969" height="524" key="XDebugger.FullValuePopup" timestamp="1605405001087">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -391,64 +418,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/controller/StudentController.java</url>
-          <line>67</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/UserServiceImplementation.java</url>
-          <line>105</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/UserServiceImplementation.java</url>
-          <line>108</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/controller/StudentController.java</url>
-          <line>63</line>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/UserServiceImplementation.java</url>
-          <line>66</line>
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/UserServiceImplementation.java</url>
-          <line>69</line>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/UserServiceImplementation.java</url>
-          <line>74</line>
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/UserServiceImplementation.java</url>
-          <line>90</line>
-          <option name="timeStamp" value="41" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/UserServiceImplementation.java</url>
-          <line>95</line>
-          <option name="timeStamp" value="42" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/controller/StudentController.java</url>
-          <line>72</line>
-          <option name="timeStamp" value="43" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/UserServiceImplementation.java</url>
-          <line>100</line>
-          <option name="timeStamp" value="45" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/UserServiceImplementation.java</url>
-          <line>117</line>
-          <option name="timeStamp" value="47" />
+          <line>205</line>
+          <option name="timeStamp" value="48" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

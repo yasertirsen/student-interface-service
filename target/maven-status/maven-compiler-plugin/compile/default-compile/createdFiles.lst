@@ -24,8 +24,6 @@ com\fyp\studentinterfaceservice\exceptions\InvalidCredentialsException.class
 com\fyp\studentinterfaceservice\exceptions\NewPasswordSameLikeOldPasswordException.class
 com\fyp\studentinterfaceservice\filter\JwtAccessDeniedHandler.class
 com\fyp\studentinterfaceservice\exceptions\ProgradException.class
-com\fyp\studentinterfaceservice\constant\Constants.class
-com\fyp\studentinterfaceservice\model\Student$StudentBuilder.class
 com\fyp\studentinterfaceservice\model\NotificationEmail.class
 com\fyp\studentinterfaceservice\model\Skill.class
 com\fyp\studentinterfaceservice\model\RefreshTokenRequest.class
@@ -40,7 +38,6 @@ com\fyp\studentinterfaceservice\constant\Authority.class
 com\fyp\studentinterfaceservice\model\Resume$ResumeBuilder.class
 com\fyp\studentinterfaceservice\model\Skill$SkillBuilder.class
 com\fyp\studentinterfaceservice\constant\SecurityConstants.class
-com\fyp\studentinterfaceservice\model\Student.class
 com\fyp\studentinterfaceservice\model\Role.class
 com\fyp\studentinterfaceservice\filter\JwtAuthorizationFilter.class
 com\fyp\studentinterfaceservice\exceptions\CoreApplicationException.class

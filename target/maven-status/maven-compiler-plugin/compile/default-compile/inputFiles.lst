@@ -1,6 +1,5 @@
 D:\Dev\FYP\student-interface-service\src\main\java\com\fyp\studentinterfaceservice\exceptions\NewPasswordSameLikeOldPasswordException.java
 D:\Dev\FYP\student-interface-service\src\main\java\com\fyp\studentinterfaceservice\services\interfaces\UserService.java
-D:\Dev\FYP\student-interface-service\src\main\java\com\fyp\studentinterfaceservice\config\SecurityConfig.java
 D:\Dev\FYP\student-interface-service\src\main\java\com\fyp\studentinterfaceservice\exceptions\EmailExistsException.java
 D:\Dev\FYP\student-interface-service\src\main\java\com\fyp\studentinterfaceservice\exceptions\InvalidCredentialsException.java
 D:\Dev\FYP\student-interface-service\src\main\java\com\fyp\studentinterfaceservice\exceptions\UserNotFoundException.java
@@ -9,7 +8,6 @@ D:\Dev\FYP\student-interface-service\src\main\java\com\fyp\studentinterfaceservi
 D:\Dev\FYP\student-interface-service\src\main\java\com\fyp\studentinterfaceservice\exceptions\ProgradException.java
 D:\Dev\FYP\student-interface-service\src\main\java\com\fyp\studentinterfaceservice\security\SecurityConfiguration.java
 D:\Dev\FYP\student-interface-service\src\main\java\com\fyp\studentinterfaceservice\model\NotificationEmail.java
-D:\Dev\FYP\student-interface-service\src\main\java\com\fyp\studentinterfaceservice\constant\Constants.java
 D:\Dev\FYP\student-interface-service\src\main\java\com\fyp\studentinterfaceservice\filter\JwtAccessDeniedHandler.java
 D:\Dev\FYP\student-interface-service\src\main\java\com\fyp\studentinterfaceservice\model\Resume.java
 D:\Dev\FYP\student-interface-service\src\main\java\com\fyp\studentinterfaceservice\model\Skill.java
@@ -21,7 +19,6 @@ D:\Dev\FYP\student-interface-service\src\main\java\com\fyp\studentinterfaceservi
 D:\Dev\FYP\student-interface-service\src\main\java\com\fyp\studentinterfaceservice\jwt\JWTTokenProvider.java
 D:\Dev\FYP\student-interface-service\src\main\java\com\fyp\studentinterfaceservice\model\Industry.java
 D:\Dev\FYP\student-interface-service\src\main\java\com\fyp\studentinterfaceservice\filter\JwtAuthorizationFilter.java
-D:\Dev\FYP\student-interface-service\src\main\java\com\fyp\studentinterfaceservice\model\Student.java
 D:\Dev\FYP\student-interface-service\src\main\java\com\fyp\studentinterfaceservice\client\ProgradClient.java
 D:\Dev\FYP\student-interface-service\src\main\java\com\fyp\studentinterfaceservice\constant\Authority.java
 D:\Dev\FYP\student-interface-service\src\main\java\com\fyp\studentinterfaceservice\services\MailContentBuilder.java

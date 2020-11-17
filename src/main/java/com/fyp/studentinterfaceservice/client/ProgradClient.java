@@ -18,21 +18,14 @@ public interface ProgradClient {
     String AUTH_TOKEN = "x-api-key";
     String bearerToken  = "development_token";
 
-//    @PutMapping(value = "/all")
-//    @Headers({"Content-Type: application/json"})
-//    public ResponseEntity<User> login(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestBody User user);
-
     @GetMapping("/all")
-    List<User> getAllStudents();
+    List<User> getAllStudents(@RequestHeader(AUTH_TOKEN) String bearerToken);
 
-    @PostMapping("/register")
-    User register(@RequestBody User user);
+    @PostMapping("/add")
+    User add(@RequestBody User user);
 
-//    @GetMapping("/verification/{token}")
-//    ResponseEntity<String> verifyAccount(@PathVariable String token);
     @PutMapping("/update")
-    User update(@RequestHeader(AUTH_TOKEN) String bearerToken, User user);
-
+    User update(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestBody User user);
 
     @GetMapping(value = "/findByEmail")
     @Headers({"Content-Type: application/json"})

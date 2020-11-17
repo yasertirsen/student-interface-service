@@ -5,6 +5,7 @@ import com.fyp.studentinterfaceservice.exceptions.EmailExistsException;
 import com.fyp.studentinterfaceservice.exceptions.ProgradException;
 import com.fyp.studentinterfaceservice.exceptions.UserNotFoundException;
 import com.fyp.studentinterfaceservice.exceptions.UsernameExistsException;
+import com.fyp.studentinterfaceservice.model.Position;
 import com.fyp.studentinterfaceservice.model.User;
 import com.fyp.studentinterfaceservice.model.UserPrincipal;
 import com.fyp.studentinterfaceservice.jwt.JWTTokenProvider;
@@ -21,6 +22,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 import static com.fyp.studentinterfaceservice.constant.SecurityConstants.EXPIRATION_TIME;
 
@@ -39,10 +42,10 @@ public class StudentController {
         this.authenticationManager = authenticationManager;
     }
 
-//    @GetMapping("/all")
-//    public List<Student> getAllStudents() {
-//        return client.getAllStudents();
-//    }
+    @GetMapping("/all")
+    public List<User> getAllStudents() {
+        return userService.getAllStudents();
+    }
 
     @PostMapping("/register")
     public User register(@RequestBody User user) throws UsernameExistsException, UserNotFoundException, EmailExistsException, ProgradException {
@@ -68,9 +71,14 @@ public class StudentController {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
     }
 
-    @GetMapping(value = "verification/{token}")
+    @GetMapping("/verification/{token}")
     public ResponseEntity<String> verifyAccount(@PathVariable String token) {
         return userService.verifyAccount(token);
+    }
+
+    @GetMapping("/searchJobsApi")
+    public List<Position> searchJobApi() {
+        return userService.searchJobsApi();
     }
 
 }

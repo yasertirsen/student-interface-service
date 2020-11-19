@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {LoginRequest} from "../models/login-request-payload";
 import {LoginResponse} from "../models/login-response-payload";
@@ -6,6 +6,7 @@ import {map, tap} from "rxjs/operators";
 import {LocalStorageService} from "ngx-webstorage";
 import {ToastrService} from "ngx-toastr";
 import {ActivatedRoute, Router} from "@angular/router";
+import {NgbAlert} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-login',
@@ -14,12 +15,16 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
+  @ViewChild('staticAlertSuccess', {static: false}) staticAlertSuccess: NgbAlert;
+  @ViewChild('staticAlertFail', {static: false}) staticAlertFail: NgbAlert;
+
   registerSuccessMessage: string;
+  loginFailMessage: string = 'Login Failed. Please check your credentials and try again.';
   isError: boolean;
-  refreshTokenPayload = {
-    refreshToken: this.getRefreshToken(),
-    email: this.getEmail()
-  };
+  // refreshTokenPayload = {
+  //   refreshToken: this.getRefreshToken(),
+  //   email: this.getEmail()
+  // };
 
   model: LoginRequest = {
     email:'',
@@ -30,12 +35,14 @@ export class LoginComponent implements OnInit {
               private activatedRoute: ActivatedRoute, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    setTimeout(() => this.staticAlertSuccess.close(), 10000);
+    setTimeout(() => this.staticAlertFail.close(), 10000);
+
     this.activatedRoute.queryParams
       .subscribe(params => {
         if (params.registered !== undefined && params.registered === 'true') {
-          this.toastr.success('Registration Successful');
-          this.registerSuccessMessage = 'Please Check your inbox for activation email '
-            + 'activate your account before you Login!';
+          this.registerSuccessMessage = 'Please check your email inbox to '
+            + 'activate your account before you login!';
         }
       });
   }
@@ -43,10 +50,9 @@ export class LoginComponent implements OnInit {
   loginStudent(): void {
     let url = 'http://localhost:8083/login';
     this.client.post<LoginResponse>(url, this.model).pipe(map(data => {
-      this.localStorage.store('authenticationToken', data.authenticationToken);
-      this.localStorage.store('username', data.username);
-      this.localStorage.store('refreshToken', data.refreshToken);
-      this.localStorage.store('expiresAt', data.expiresAt);
+      this.localStorage.store('token', data.token);
+      this.localStorage.store('email', data.email);
+      this.localStorage.store('expiresIn', data.expiresIn);
     })).subscribe(data => {
       this.isError = false;
       this.router.navigateByUrl('/home');
@@ -57,28 +63,29 @@ export class LoginComponent implements OnInit {
   }
 
   getJwtToken() {
-    return this.localStorage.retrieve('authenticationToken');
+    return this.localStorage.retrieve('token');
   }
 
-  refreshToken() {
-    return this.client.post<LoginResponse>('http://localhost:8083/refresh/token',
-      this.refreshTokenPayload)
-      .pipe(tap(response => {
-        this.localStorage.clear('authenticationToken');
-        this.localStorage.clear('expiresAt');
-
-        this.localStorage.store('authenticationToken',
-          response.authenticationToken);
-        this.localStorage.store('expiresAt', response.expiresAt);
-      }));
-  }
+  // refreshToken() {
+  //   return this.client.post<LoginResponse>('http://localhost:8083/refresh/token',
+  //     this.refreshTokenPayload)
+  //     .pipe(tap(response => {
+  //       this.localStorage.clear('authenticationToken');
+  //       this.localStorage.clear('expiresAt');
+  //
+  //       this.localStorage.store('authenticationToken',
+  //         response.authenticationToken);
+  //       this.localStorage.store('expiresAt', response.expiresAt);
+  //     }));
+  // }
 
   getEmail() {
     return this.localStorage.retrieve('email');
   }
-  getRefreshToken() {
-    return this.localStorage.retrieve('refreshToken');
-  }
+
+  // getRefreshToken() {
+  //   return this.localStorage.retrieve('refreshToken');
+  // }
 
 }
 

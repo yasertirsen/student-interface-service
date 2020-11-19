@@ -1,6 +1,5 @@
 export interface LoginResponse {
-    authenticationToken: string;
-    refreshToken: string;
-    expiresAt: Date;
-    username: string;
+    token: string;
+    expiresIn: Date;
+    email: string;
 }

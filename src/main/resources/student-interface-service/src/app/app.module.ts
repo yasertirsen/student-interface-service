@@ -24,6 +24,8 @@ import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { HomeComponent } from './home/home.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SearchToolbarComponent } from './search-toolbar/search-toolbar.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { HomeComponent } from './home/home.component';
     LoginComponent,
     NotFoundComponent,
     MainNavComponent,
-    HomeComponent
+    HomeComponent,
+    SearchToolbarComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,8 @@ import { HomeComponent } from './home/home.component';
     MatCardModule,
     NgxWebstorageModule.forRoot(),
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

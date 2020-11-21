@@ -13,8 +13,9 @@ import java.util.Set;
 @NoArgsConstructor
 public class Course {
     private long courseId;
-    private String courseName;
+    private String name;
     private String university;
     private int level;
+    private String url;
     private Set<Module> modules;
 }

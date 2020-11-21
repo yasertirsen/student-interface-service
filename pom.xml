@@ -100,12 +100,18 @@
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore</artifactId>
         </dependency>
+        <!-- Job Search API -->
         <dependency>
             <groupId>com.careerjet.webservice.api</groupId>
             <artifactId>careerjetAPIClient</artifactId>
             <scope>system</scope>
             <systemPath>${basedir}/lib/CareerjetAPIClient.jar</systemPath>
             <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.13.1</version>
         </dependency>
     </dependencies>
 

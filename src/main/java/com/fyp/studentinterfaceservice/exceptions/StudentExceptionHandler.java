@@ -47,6 +47,10 @@ public class StudentExceptionHandler {
         return toReturn;
     }
 
+    @ExceptionHandler(ModuleParsingException.class)
+    public ResponseEntity<HttpCustomResponse> moduleParsingException() {
+        return createHttpResponse(BAD_REQUEST, ERROR_PARSING_MODULES);
+    }
     @ExceptionHandler(UsernameExistsException.class)
     public ResponseEntity<HttpCustomResponse> usernameExistsException() {
         return createHttpResponse(CONFLICT, USERNAME_ALREADY_EXISTS);

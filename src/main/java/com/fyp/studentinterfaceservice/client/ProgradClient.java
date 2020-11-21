@@ -1,5 +1,6 @@
 package com.fyp.studentinterfaceservice.client;
 
+import com.fyp.studentinterfaceservice.model.Course;
 import com.fyp.studentinterfaceservice.model.User;
 import feign.Headers;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -18,24 +19,36 @@ public interface ProgradClient {
     String AUTH_TOKEN = "x-api-key";
     String bearerToken  = "development_token";
 
-    @GetMapping("/all")
+    //Students endpoint
+
+    @GetMapping("/students/all")
     List<User> getAllStudents(@RequestHeader(AUTH_TOKEN) String bearerToken);
 
-    @PostMapping("/add")
+    @PostMapping("/students/add")
     User add(@RequestBody User user);
 
-    @PutMapping("/update")
+    @PutMapping("/students/update")
     User update(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestBody User user);
 
-    @GetMapping(value = "/findByEmail")
+    @GetMapping(value = "/students/findByEmail")
     @Headers({"Content-Type: application/json"})
     ResponseEntity<User> findByEmail(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestParam String email);
 
-    @GetMapping(value = "/findByUsername")
+    @GetMapping(value = "/students/findByUsername")
     @Headers({"Content-Type: application/json"})
     ResponseEntity<User> findByUsername(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestParam String username);
 
-    @GetMapping(value = "/findByToken")
+    @GetMapping(value = "/students/findByToken")
     @Headers({"Content-Type: application/json"})
     ResponseEntity<User> findByToken(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestParam String token);
+
+    //Courses endpoint
+
+    @GetMapping(value = "/courses/findById")
+    @Headers({"Content-Type: application/json"})
+    ResponseEntity<Course> findCourseById(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestParam Long id);
+
+    @PostMapping("/courses/add")
+    Course addCourse(@RequestBody Course course);
+
 }

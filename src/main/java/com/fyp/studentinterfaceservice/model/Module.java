@@ -6,11 +6,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Module {
     private long moduleId;
-    private String moduleName;
-    private Skill moduleSkill;
+    private String name;
+    private Skill skill;
 }

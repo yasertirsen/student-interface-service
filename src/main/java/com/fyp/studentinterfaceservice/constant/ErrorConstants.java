@@ -14,4 +14,5 @@ public class ErrorConstants {
     public static final String PASSWORD_SAME_AS_OLD_ONE = "The password cannot be the same as the old one!";
     public static final String EMAIL_ALREADY_EXISTS = "Email already exists";
     public static final String USERNAME_ALREADY_EXISTS = "Username already exists";
+    public static final String ERROR_PARSING_MODULES = "An error has occurred while trying to parse course modules";
 }

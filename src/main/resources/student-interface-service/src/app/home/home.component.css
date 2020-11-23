@@ -17,4 +17,28 @@
 
 .mat-card-subtitle {
   font-weight: bold;
+  font-size: large;
+  color: black;
 }
+
+.mat-card-content {
+  padding-bottom: 20px;
+  flex-grow: 1;
+}
+
+.mat-card{
+  flex-direction: column;
+}
+
+.mat-card-header {
+  flex-shrink: 0;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.steps {
+  margin-right: 50%;
+}
+

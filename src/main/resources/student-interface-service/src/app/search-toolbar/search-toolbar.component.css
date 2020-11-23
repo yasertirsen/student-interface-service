@@ -1,0 +1,9 @@
+.form-control {
+  width: 25%;
+  margin: 8px 8px 8px 0;
+  box-sizing: border-box;
+}
+
+.mat-toolbar-row {
+  justify-content: center;
+}

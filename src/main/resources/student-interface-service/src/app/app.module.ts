@@ -26,6 +26,7 @@ import { MainNavComponent } from './main-nav/main-nav.component';
 import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchToolbarComponent } from './search-toolbar/search-toolbar.component';
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -37,27 +38,28 @@ import { SearchToolbarComponent } from './search-toolbar/search-toolbar.componen
     HomeComponent,
     SearchToolbarComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    FontAwesomeModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    LayoutModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatCardModule,
-    NgxWebstorageModule.forRoot(),
-    BrowserAnimationsModule,
-    ToastrModule.forRoot(),
-    NgbModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        FontAwesomeModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
+        LayoutModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatListModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatCardModule,
+        NgxWebstorageModule.forRoot(),
+        BrowserAnimationsModule,
+        ToastrModule.forRoot(),
+        NgbModule,
+        MatTableModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

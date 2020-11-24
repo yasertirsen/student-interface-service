@@ -8,7 +8,7 @@
       <div class="member-info">
         <mat-card>
           <div class="col-md-6">
-          <mat-card-title>Profile</mat-card-title>
+          <mat-card-title>Dashboard</mat-card-title>
             <hr>
           <mat-card-subtitle>About You</mat-card-subtitle>
           <img
@@ -21,21 +21,28 @@
             <p>Finish completing your profile to get graduate programs based on your course!</p>
           </mat-card-content>
 
-            <mat-card-title>Complete These Steps</mat-card-title>
+            <mat-card-title class="steps">Complete These Steps</mat-card-title>
+            <hr>
             <mat-card-content>
                 <mat-card-actions>
-                  <label class="steps">Setup course details</label>
+                  <label class="step">Setup course details</label>
+                  <div class="d-flex flex-row-reverse">
                     <button mat-raised-button color="primary">Get Started</button>
+                  </div>
                 </mat-card-actions>
               <hr>
               <mat-card-actions>
-                <label class="steps">Add LinkedIn</label>
+                <label class="step">Add LinkedIn</label>
+                <div class="d-flex flex-row-reverse">
                 <button mat-raised-button color="primary">Get Started</button>
+                </div>
               </mat-card-actions>
               <hr>
               <mat-card-actions>
-                <label class="steps">Upload CV</label>
-                <button mat-raised-button color="primary">Get Started</button>
+                  <label class="step">Create Your CV</label>
+                <div class="d-flex flex-row-reverse">
+                  <button mat-raised-button color="primary" class="">Get Started</button>
+                </div>
               </mat-card-actions>
             </mat-card-content>
           </div>

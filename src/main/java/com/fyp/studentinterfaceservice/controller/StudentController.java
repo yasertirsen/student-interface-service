@@ -76,9 +76,9 @@ public class StudentController {
         return userService.verifyAccount(token);
     }
 
-    @GetMapping("/searchJobsApi")
-    public List<Position> searchJobApi() {
-        return userService.searchJobsApi();
+    @GetMapping("/searchJobsApi/{keywords}")
+    public List<Position> searchJobApi(@PathVariable String keywords) {
+        return userService.searchJobsApi(keywords);
     }
 
 }

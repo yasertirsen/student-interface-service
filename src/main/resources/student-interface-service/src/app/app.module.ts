@@ -25,8 +25,10 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { SearchToolbarComponent } from './search-toolbar/search-toolbar.component';
+import { SearchToolbarComponent } from './shared/search-toolbar/search-toolbar.component';
 import {MatTableModule} from "@angular/material/table";
+import { JobSearchComponent } from './job-search/job-search.component';
+import { JobTileComponent } from './shared/job-tile/job-tile.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import {MatTableModule} from "@angular/material/table";
     NotFoundComponent,
     MainNavComponent,
     HomeComponent,
-    SearchToolbarComponent
+    SearchToolbarComponent,
+    JobSearchComponent,
+    JobTileComponent
   ],
     imports: [
         BrowserModule,

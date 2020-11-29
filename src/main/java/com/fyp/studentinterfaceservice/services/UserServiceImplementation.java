@@ -139,19 +139,18 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
         return findUserByUsername(principal.getUsername());
     }
 
-    public List<Position> searchJobsApi() {
+    public List<Position> searchJobsApi(String keywords) {
         Client careerjetClient = new Client("en_GB");
         List<Position> positions = new ArrayList<>();
 
         Map<String, String> args1 = new HashMap<String, String>();
-        args1.put("keywords", "graduate technology");
+        args1.put("keywords", keywords);
         args1.put("location", "Dublin");
 
         args1.put("affid", "d5bae8e1fcebbd44fcda331aead3f612");
 
-        args1.put("user_ip",    "127.0.0.1");
-        args1.put("user_agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                + "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246");
+        args1.put("user_ip",    "Placeholder");
+        args1.put("user_agent", "Placeholder");
         args1.put("url", "http://127.0.0.1/result");
 
         JSONObject results = (JSONObject) careerjetClient.search(args1);
@@ -168,6 +167,7 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
                 position.setTitle(job.get("title").toString());
                 position.setDescription(job.get("description").toString());
                 position.setCompany(job.get("company").toString());
+                position.setUrl(job.get("url").toString());
 
                 positions.add(position);
 

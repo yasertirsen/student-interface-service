@@ -1,0 +1,24 @@
+<div class="search-bar">
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <form (ngSubmit)="onSearch()" class="form-check-inline search">
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Job title or keywords"
+          [(ngModel)]="keywords"
+          [ngModelOptions]="{standalone: true}">
+        <button
+          mat-raised-button
+          type="submit"
+          color="accent"
+          class="search-btn">
+          <i class="fa fa-search"></i>
+          <span> Search</span>
+        </button>
+      </form>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
+
+

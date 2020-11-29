@@ -1,0 +1,16 @@
+<app-search-toolbar></app-search-toolbar>
+<div class="body">
+  <div class="container">
+    <div class="row">
+      <hr />
+      <div class="col-md-10 justify-content-center">
+        <app-job-tile [positions]="positions"></app-job-tile>
+        <ngb-alert
+          #staticAlertNoJobsFound
+          *ngIf="this.isError"
+          type="danger"
+          (closed)="noJobsFoundMessage = ''">{{ noJobsFoundMessage }}</ngb-alert>
+      </div>
+    </div>
+  </div>
+</div>

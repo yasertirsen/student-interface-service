@@ -1,0 +1,9 @@
+export interface PositionModel {
+  positionId: number;
+  title: string;
+  description: string;
+  salary: number;
+  url: string;
+  clicks: number;
+  company: string;
+}

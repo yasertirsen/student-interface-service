@@ -26,5 +26,5 @@ public interface UserService {
 
     List<User> getAllStudents();
 
-    List<Position> searchJobsApi();
+    List<Position> searchJobsApi(String keywords);
 }

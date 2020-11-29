@@ -4,6 +4,16 @@
   box-sizing: border-box;
 }
 
+.search {
+  width: 50%;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
 .mat-toolbar-row {
   justify-content: center;
+}
+
+.search-bar {
+  margin-bottom: 8px;
 }

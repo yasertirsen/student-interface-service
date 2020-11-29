@@ -10,7 +10,7 @@ export class PositionService {
 
   constructor(private http: HttpClient) { }
 
-  searchJobsApi(keywords: string): Observable<Array<PositionModel>> {
-    return this.http.get<Array<PositionModel>>('http://localhost:8083/searchJobsApi/'+ keywords)
+  searchJobsApi(location:string, keywords: string): Observable<Array<PositionModel>> {
+    return this.http.get<Array<PositionModel>>('http://localhost:8083/searchJobsApi/'+ location + '/' + keywords)
   }
 }

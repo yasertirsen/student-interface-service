@@ -25,7 +25,7 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'search/:keywords',
+    path: 'search/:location/:keywords',
     component: JobSearchComponent
   },
   {

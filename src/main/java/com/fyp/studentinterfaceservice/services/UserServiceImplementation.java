@@ -139,13 +139,13 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
         return findUserByUsername(principal.getUsername());
     }
 
-    public List<Position> searchJobsApi(String keywords) {
+    public List<Position> searchJobsApi(String location, String keywords) {
         Client careerjetClient = new Client("en_GB");
         List<Position> positions = new ArrayList<>();
 
         Map<String, String> args1 = new HashMap<String, String>();
         args1.put("keywords", keywords);
-        args1.put("location", "Dublin");
+        args1.put("location", location);
 
         args1.put("affid", "d5bae8e1fcebbd44fcda331aead3f612");
 
@@ -166,37 +166,30 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
                 Position position = new Position();
                 position.setTitle(job.get("title").toString());
                 position.setDescription(job.get("description").toString());
+                position.setLocation(job.get("locations").toString());
+                position.setDate(job.get("date").toString());
                 position.setCompany(job.get("company").toString());
                 position.setUrl(job.get("url").toString());
 
                 positions.add(position);
-
-//                System.out.println("URL         :" + job.get("url"));
-//                System.out.println("TITLE       :" + job.get("title"));
-//                System.out.println("COMPANY     :" + job.get("company"));
-//                System.out.println("SALARY      :" + job.get("salary"));
-//                System.out.println("DATE        :" + job.get("date"));
-//                System.out.println("DESCRIPTION :" + job.get("description"));
-//                System.out.println("SITE        :" + job.get("site"));
-//                System.out.println("LOCATIONS   :" + job.get("locations"));
                 index++;
             }
         }
 
         // The location was amiguous. Suggestions are returned.
         // Add the location_id to the query to resolve the ambiguity.
-        if (results.get("type").equals("LOCATIONS")) {
-            System.out.println("Narrow down your location ");
-            System.out.println("Please specify a location");
-            JSONArray solvelocations = (JSONArray) results.get("solveLocations");
-            int index = 0;
-            while(index < solvelocations.size()) {
-                JSONObject location = (JSONObject) solvelocations.get(index);
-                System.out.println("NAME        :" + location.get("name"));
-                System.out.println("LOCATION ID :" + location.get("location_id"));
-                index++;
-            }
-        }
+//        if (results.get("type").equals("LOCATIONS")) {
+//            System.out.println("Narrow down your location ");
+//            System.out.println("Please specify a location");
+//            JSONArray solvelocations = (JSONArray) results.get("solveLocations");
+//            int index = 0;
+//            while(index < solvelocations.size()) {
+//                JSONObject l = (JSONObject) solvelocations.get(index);
+//                System.out.println("NAME        :" + l.get("name"));
+//                System.out.println("LOCATION ID :" + l.get("location_id"));
+//                index++;
+//            }
+//        }
 
         // An error occured. An error message is returned.
         if (results.get("type").equals("ERROR")) {

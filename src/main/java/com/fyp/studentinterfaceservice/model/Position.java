@@ -13,6 +13,8 @@ public class Position {
     private long positionId;
     private String title;
     private String description;
+    private String location;
+    private String date;
     private double salary;
     private String url;
     private int clicks;

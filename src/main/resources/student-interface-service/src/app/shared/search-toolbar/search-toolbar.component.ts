@@ -9,6 +9,7 @@ import {Router} from "@angular/router";
 export class SearchToolbarComponent implements OnInit {
 
   keywords: string;
+  location: string;
 
   constructor(private router: Router) { }
 
@@ -16,6 +17,6 @@ export class SearchToolbarComponent implements OnInit {
   }
 
   onSearch() {
-    this.router.navigateByUrl('/search/'+this.keywords);
+    this.router.navigateByUrl('/search/' + this.location + '/' + this.keywords);
   }
 }

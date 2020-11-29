@@ -1,7 +1,7 @@
 <div class="row position" *ngFor="let position of positions">
   <div class="col-md-11">
     <mat-card>
-      <mat-card-title><a class="position-name" href="{{position.url}}">{{position.title}}</a></mat-card-title>
+      <mat-card-title><a class="position-name" (click)="goToLink(position.url)">{{position.title}}</a></mat-card-title>
       <mat-card-subtitle>{{position.company}}</mat-card-subtitle>
       <mat-card-content>{{position.description}}</mat-card-content>
     </mat-card>

@@ -21,10 +21,6 @@ export class LoginComponent implements OnInit {
   registerSuccessMessage: string;
   loginFailMessage: string = 'Login Failed. Please check your credentials and try again.';
   isError: boolean;
-  // refreshTokenPayload = {
-  //   refreshToken: this.getRefreshToken(),
-  //   email: this.getEmail()
-  // };
 
   model: LoginRequest = {
     email:'',
@@ -66,27 +62,9 @@ export class LoginComponent implements OnInit {
     return this.localStorage.retrieve('token');
   }
 
-  // refreshToken() {
-  //   return this.client.post<LoginResponse>('http://localhost:8083/refresh/token',
-  //     this.refreshTokenPayload)
-  //     .pipe(tap(response => {
-  //       this.localStorage.clear('authenticationToken');
-  //       this.localStorage.clear('expiresAt');
-  //
-  //       this.localStorage.store('authenticationToken',
-  //         response.authenticationToken);
-  //       this.localStorage.store('expiresAt', response.expiresAt);
-  //     }));
-  // }
-
   getEmail() {
     return this.localStorage.retrieve('email');
   }
-
-  // getRefreshToken() {
-  //   return this.localStorage.retrieve('refreshToken');
-  // }
-
 }
 
 

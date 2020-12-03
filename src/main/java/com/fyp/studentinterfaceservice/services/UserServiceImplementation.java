@@ -5,7 +5,6 @@ import com.fyp.studentinterfaceservice.client.ProgradClient;
 import com.fyp.studentinterfaceservice.exceptions.EmailExistsException;
 import com.fyp.studentinterfaceservice.exceptions.ProgradException;
 import com.fyp.studentinterfaceservice.exceptions.UsernameExistsException;
-import com.fyp.studentinterfaceservice.model.Company;
 import com.fyp.studentinterfaceservice.model.NotificationEmail;
 import com.fyp.studentinterfaceservice.model.Position;
 import com.fyp.studentinterfaceservice.model.Resume;
@@ -72,7 +71,6 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
         user.setAuthorities(ROLE_USER.getAuthorities());
         user.setToken(verificationToken);
         user.setProfile(new UserProfile());
-        user.setResume(new Resume());
 
         User registeredUser = progradClient.add(user);
         registeredUser.setPassword(StringUtils.EMPTY);
@@ -121,7 +119,8 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
 
     @Override
     public ResponseEntity<String> verifyAccount(String token) {
-        User user = findUserByToken(token);        user.setEnabled(true);
+        User user = findUserByToken(token);
+        user.setEnabled(true);
         progradClient.update(bearerToken, user);
 
         return new ResponseEntity<>(new Gson().toJson("Account Activated Successfully"), HttpStatus.OK);

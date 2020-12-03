@@ -27,5 +27,5 @@ public class User {
     private Long expiresIn;
     private String token;
     private UserProfile profile;
-    private Resume resume;
+    private String resumePath;
 }

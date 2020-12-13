@@ -29,6 +29,8 @@ import { SearchToolbarComponent } from './shared/search-toolbar/search-toolbar.c
 import {MatTableModule} from "@angular/material/table";
 import { JobSearchComponent } from './job-search/job-search.component';
 import { JobTileComponent } from './shared/job-tile/job-tile.component';
+import { BrowseCoursesComponent } from './browse-courses/browse-courses.component';
+import { CourseTileComponent } from './browse-courses/course-tile/course-tile.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { JobTileComponent } from './shared/job-tile/job-tile.component';
     HomeComponent,
     SearchToolbarComponent,
     JobSearchComponent,
-    JobTileComponent
+    JobTileComponent,
+    BrowseCoursesComponent,
+    CourseTileComponent
   ],
     imports: [
         BrowserModule,

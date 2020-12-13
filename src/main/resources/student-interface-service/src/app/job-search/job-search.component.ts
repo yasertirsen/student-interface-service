@@ -18,12 +18,14 @@ export class JobSearchComponent implements OnInit {
   location: string;
   noJobsFoundMessage: string = 'No jobs found, please try searching with fewer keywords';
   isError: boolean;
+  anyName: string;
 
   constructor(private positionService: PositionService, private  activatedRoute: ActivatedRoute) {
     this.keywords = this.activatedRoute.snapshot.params.keywords;
     this.location = this.activatedRoute.snapshot.params.location;
     this.positionService.searchJobsApi(this.location, this.keywords).subscribe( position => {
-      this.positions = position
+      this.positions = position;
+      this.anyName = this.positions[0].description;
     });
 
     if (this.positions == undefined || this.positions.length == 0) {

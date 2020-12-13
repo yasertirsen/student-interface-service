@@ -4,7 +4,7 @@
       <mat-card-title><a class="position-name" (click)="goToLink(position.url)">{{position.title}}</a></mat-card-title>
       <mat-card-subtitle>{{ position.location}} </mat-card-subtitle>
       <mat-card-subtitle>{{position.company}}</mat-card-subtitle>
-      <mat-card-content>{{position.description}}</mat-card-content>
+      <mat-card-content [innerHTML]="position.description"></mat-card-content>
     </mat-card>
   </div>
 </div>

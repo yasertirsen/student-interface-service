@@ -7,5 +7,12 @@ export interface UserModel {
   username: string;
   phone: string;
   socialUrl: string;
+  created: string;
+  enabled: boolean;
+  role: string;
+  authorities: string[];
+  isLocked: boolean;
+  profile: any;
+  resumePath: string;
 
 }

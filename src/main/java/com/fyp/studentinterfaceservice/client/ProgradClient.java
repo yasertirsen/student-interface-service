@@ -51,6 +51,9 @@ public interface ProgradClient {
     @PostMapping("/courses/add")
     Course addCourse(@RequestBody Course course);
 
+    @GetMapping("/courses/all")
+    List<Course> getAllCourses(@RequestHeader(AUTH_TOKEN) String bearerToken);
+
     @GetMapping(value = "/courses/existsByNameAndUniversity")
     boolean courseExistsByNameAndUniversity(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestBody Course course);
 

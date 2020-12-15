@@ -29,6 +29,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.security.Principal;
 import java.time.Instant;
@@ -199,6 +200,11 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
             System.out.println("Error message    :" + results.get("ERROR"));
         }
         return positions;
+    }
+
+    @Override
+    public User updateUser(@RequestBody User user) {
+        return progradClient.update(bearerToken, user);
     }
 
 }

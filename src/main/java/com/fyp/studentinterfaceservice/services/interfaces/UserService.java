@@ -28,4 +28,6 @@ public interface UserService {
     List<User> getAllStudents();
 
     List<Position> searchJobsApi(String location, String keywords);
+
+    User updateUser(User user);
 }

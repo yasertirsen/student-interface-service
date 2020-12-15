@@ -29,7 +29,7 @@
                     <a routerLink="/courses"><button mat-raised-button color="primary">Get Started</button></a>
                   </div>
                 </mat-card-actions>
-              <mat-card-actions *ngIf="socialUrl === undefined">
+              <mat-card-actions *ngIf="socialUrl === undefined || socialUrl === null">
                 <label class="step">Add LinkedIn</label>
                 <div class="d-flex flex-row-reverse">
                 <button mat-raised-button color="primary" (click)="openDialog()">Get Started</button>
@@ -48,6 +48,16 @@
     </section>
     </div>
   </div>
+  <ngb-alert #staticAlertFail
+             *ngIf="this.isError"
+             type="danger" (closed)="socialUrlFailMessage = ''">{{ socialUrlFailMessage }}
+
+  </ngb-alert>
+
+  <ngb-alert #staticAlertSuccess
+             *ngIf="this.socialUrlSuccessMessage !== undefined && this.socialUrlSuccessMessage.length > 0 && socialUrl !== undefined"
+             type="success" (closed)="socialUrlSuccessMessage = ''">{{ socialUrlSuccessMessage }}
+  </ngb-alert>
 </div>
 
 

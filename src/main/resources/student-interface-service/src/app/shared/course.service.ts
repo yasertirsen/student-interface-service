@@ -11,6 +11,6 @@ export class CourseService {
   constructor(private http: HttpClient) { }
 
   getAllCourses(): Observable<Array<CourseModel>> {
-    return this.http.get<Array<CourseModel>>('http://localhost:8082/api/courses/all')
+    return this.http.get<Array<CourseModel>>('http://localhost:8083/getCourses')
   }
 }

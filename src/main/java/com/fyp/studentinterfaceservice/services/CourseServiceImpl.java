@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -47,6 +48,11 @@ public class CourseServiceImpl implements CourseService {
 //        user.getProfile().setCourse(course);
 //        client.update(bearerToken, user);
         return client.addCourse(course);
+    }
+
+    @Override
+    public List<Course> getAllCourses() {
+        return client.getAllCourses(bearerToken);
     }
 
     private Set<Module> getTudCourseModules(String url) throws ModuleParsingException {

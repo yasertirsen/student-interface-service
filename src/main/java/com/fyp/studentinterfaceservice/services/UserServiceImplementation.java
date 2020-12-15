@@ -4,10 +4,10 @@ import com.careerjet.webservice.api.Client;
 import com.fyp.studentinterfaceservice.client.ProgradClient;
 import com.fyp.studentinterfaceservice.exceptions.EmailExistsException;
 import com.fyp.studentinterfaceservice.exceptions.ProgradException;
+import com.fyp.studentinterfaceservice.exceptions.UnauthenticatedUserException;
 import com.fyp.studentinterfaceservice.exceptions.UsernameExistsException;
 import com.fyp.studentinterfaceservice.model.NotificationEmail;
 import com.fyp.studentinterfaceservice.model.Position;
-import com.fyp.studentinterfaceservice.model.Resume;
 import com.fyp.studentinterfaceservice.model.User;
 import com.fyp.studentinterfaceservice.model.UserPrincipal;
 import com.fyp.studentinterfaceservice.model.UserProfile;
@@ -21,6 +21,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -28,6 +30,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -132,10 +135,10 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
     }
 
     @Override
-    public User getCurrentUser() {
-        User principal = (User) SecurityContextHolder.
+    public User getCurrentUser() throws UnauthenticatedUserException {
+        String email = (String) SecurityContextHolder.
                 getContext().getAuthentication().getPrincipal();
-        return findUserByUsername(principal.getUsername());
+        return findUserByEmail(email);
     }
 
     public List<Position> searchJobsApi(String location, String keywords) {

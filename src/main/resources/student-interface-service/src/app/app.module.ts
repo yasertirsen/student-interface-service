@@ -31,6 +31,8 @@ import { JobSearchComponent } from './job-search/job-search.component';
 import { JobTileComponent } from './shared/job-tile/job-tile.component';
 import { BrowseCoursesComponent } from './browse-courses/browse-courses.component';
 import { CourseTileComponent } from './browse-courses/course-tile/course-tile.component';
+import { AddLinkedinDialogComponent } from './home/add-linkedin-dialog/add-linkedin-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -44,30 +46,32 @@ import { CourseTileComponent } from './browse-courses/course-tile/course-tile.co
     JobSearchComponent,
     JobTileComponent,
     BrowseCoursesComponent,
-    CourseTileComponent
+    CourseTileComponent,
+    AddLinkedinDialogComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        FontAwesomeModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        MatButtonModule,
-        LayoutModule,
-        MatToolbarModule,
-        MatSidenavModule,
-        MatIconModule,
-        MatListModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatCardModule,
-        NgxWebstorageModule.forRoot(),
-        BrowserAnimationsModule,
-        ToastrModule.forRoot(),
-        NgbModule,
-        MatTableModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    FontAwesomeModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    NgxWebstorageModule.forRoot(),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    NgbModule,
+    MatTableModule,
+    MatDialogModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

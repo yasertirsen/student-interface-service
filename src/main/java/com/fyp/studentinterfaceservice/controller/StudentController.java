@@ -3,6 +3,7 @@ package com.fyp.studentinterfaceservice.controller;
 
 import com.fyp.studentinterfaceservice.exceptions.EmailExistsException;
 import com.fyp.studentinterfaceservice.exceptions.ProgradException;
+import com.fyp.studentinterfaceservice.exceptions.UnauthenticatedUserException;
 import com.fyp.studentinterfaceservice.exceptions.UserNotFoundException;
 import com.fyp.studentinterfaceservice.exceptions.UsernameExistsException;
 import com.fyp.studentinterfaceservice.model.Position;
@@ -69,6 +70,11 @@ public class StudentController {
 
     private void authenticate(String username, String password) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+    }
+
+    @GetMapping("/currentUser")
+    public User getCurrentUser() throws UnauthenticatedUserException {
+        return userService.getCurrentUser();
     }
 
     @GetMapping("/verification/{token}")

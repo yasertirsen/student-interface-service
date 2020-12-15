@@ -22,7 +22,6 @@
           </mat-card-content>
 
             <mat-card-title class="steps">Complete These Steps</mat-card-title>
-            <hr>
             <mat-card-content>
                 <mat-card-actions>
                   <label class="step">Setup course details</label>
@@ -30,14 +29,12 @@
                     <a routerLink="/courses"><button mat-raised-button color="primary">Get Started</button></a>
                   </div>
                 </mat-card-actions>
-              <hr>
-              <mat-card-actions>
+              <mat-card-actions *ngIf="socialUrl === undefined">
                 <label class="step">Add LinkedIn</label>
                 <div class="d-flex flex-row-reverse">
-                <button mat-raised-button color="primary">Get Started</button>
+                <button mat-raised-button color="primary" (click)="openDialog()">Get Started</button>
                 </div>
               </mat-card-actions>
-              <hr>
               <mat-card-actions>
                   <label class="step">Create Your CV</label>
                 <div class="d-flex flex-row-reverse">

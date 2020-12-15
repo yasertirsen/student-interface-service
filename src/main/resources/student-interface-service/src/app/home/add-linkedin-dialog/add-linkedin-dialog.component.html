@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Hi</h1>
+<div mat-dialog-content>
+  <p>Please enter your LinkedIn profile link</p>
+  <mat-form-field>
+    <mat-label>LinkedIn Profile</mat-label>
+    <input matInput [(ngModel)]="data.socialUrl">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.socialUrl" cdkFocusInitial>Ok</button>
+</div>

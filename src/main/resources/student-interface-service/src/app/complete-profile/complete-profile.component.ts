@@ -19,7 +19,7 @@ export class CompleteProfileComponent implements OnInit {
   token: string;
   skillsText: string;
   skillsNames: string[];
-  skill: SkillModel = {skillId: null, skillName: null, industry: null};
+  skill: SkillModel;
 
   constructor(private _formBuilder: FormBuilder, private localStorage: LocalStorageService,
               private userService: UserService, private router: Router) {
@@ -42,7 +42,8 @@ export class CompleteProfileComponent implements OnInit {
   onDone(): void {
     this.skillsNames = this.skillsText.split(',');
     for(let i in this.skillsNames) {
-      this.skill.skillName = this.skillsNames[i];
+      this.skill = {skillId: null, skillName: null, industry: null};
+      this.skill.skillName = this.skillsNames[i].replace(' ', '');
       this.user.profile.externalSkills.push(this.skill);
     }
     this.updateUser();

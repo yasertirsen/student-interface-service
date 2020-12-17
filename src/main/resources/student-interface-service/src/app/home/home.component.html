@@ -16,12 +16,32 @@
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/768px-Circle-icons-profile.svg.png"
             alt="Profile"
             class="profile-img">
-          <mat-card-content>
+
+            <mat-card-content *ngIf="user.firstName !== null">
+              <h3>Welcome back {{user.firstName}}!</h3>
+              <p>Become a Prograd by finding the perfect graduate opportunity for you!</p>
+            </mat-card-content>
+
+            <mat-card-subtitle *ngIf="user.profile.course !== null">
+              Your Details:
+            </mat-card-subtitle>
+            <mat-card-content >
+              <p><strong>University</strong>: {{user.profile.course.university}}</p>
+              <p><strong>Course</strong>: {{user.profile.course.name}}</p>
+              <p><strong>Skills</strong>: </p>
+              <ul>
+                <li *ngFor="let skill of user.profile.externalSkills">{{skill.skillName}}</li>
+              </ul>
+            </mat-card-content>
+
+          <mat-card-content *ngIf="user.profile.course === null && user.socialUrl === null && user.firstName === null">
             <h3>Welcome back!</h3>
             <p>Finish completing your profile to get graduate programs based on your course!</p>
           </mat-card-content>
 
-            <mat-card-title class="steps">Complete These Steps</mat-card-title>
+            <mat-card-title class="steps"
+                            *ngIf="user.profile.course === null && user.socialUrl === null && user.firstName === null"
+            >Complete These Steps</mat-card-title>
             <mat-card-content>
                 <mat-card-actions *ngIf="user.profile.course === undefined || user.profile.course === null">
                   <label class="step">Setup course details</label>

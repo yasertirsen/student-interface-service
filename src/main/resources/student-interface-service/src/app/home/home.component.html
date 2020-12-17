@@ -35,10 +35,10 @@
                 <button mat-raised-button color="primary" (click)="openDialog()">Get Started</button>
                 </div>
               </mat-card-actions>
-              <mat-card-actions>
-                  <label class="step">Create Your CV</label>
+              <mat-card-actions *ngIf="user.firstName === undefined || user.firstName === null">
+                  <label class="step">Complete Your Profile</label>
                 <div class="d-flex flex-row-reverse">
-                  <button mat-raised-button color="primary" class="">Get Started</button>
+                  <a routerLink="/complete-profile"><button mat-raised-button color="primary">Get Started</button></a>
                 </div>
               </mat-card-actions>
             </mat-card-content>

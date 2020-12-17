@@ -6,6 +6,7 @@ import {NotFoundComponent} from "./not-found/not-found.component";
 import {HomeComponent} from "./home/home.component";
 import {JobSearchComponent} from "./job-search/job-search.component";
 import {BrowseCoursesComponent} from "./browse-courses/browse-courses.component";
+import {CompleteProfileComponent} from "./complete-profile/complete-profile.component";
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'courses',
     component: BrowseCoursesComponent
+  },
+  {
+    path: 'complete-profile',
+    component: CompleteProfileComponent
   },
   {
     path: '**',

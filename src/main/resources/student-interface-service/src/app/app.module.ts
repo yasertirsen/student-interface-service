@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -34,6 +34,8 @@ import { CourseTileComponent } from './browse-courses/course-tile/course-tile.co
 import { AddLinkedinDialogComponent } from './home/add-linkedin-dialog/add-linkedin-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import { CourseDialogComponent } from './browse-courses/course-dialog/course-dialog.component';
+import {MatStepperModule} from "@angular/material/stepper";
+import { CompleteProfileComponent } from './complete-profile/complete-profile.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,8 @@ import { CourseDialogComponent } from './browse-courses/course-dialog/course-dia
     BrowseCoursesComponent,
     CourseTileComponent,
     AddLinkedinDialogComponent,
-    CourseDialogComponent
+    CourseDialogComponent,
+    CompleteProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +75,9 @@ import { CourseDialogComponent } from './browse-courses/course-dialog/course-dia
     ToastrModule.forRoot(),
     NgbModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+    MatStepperModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

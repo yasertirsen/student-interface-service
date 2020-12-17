@@ -5,6 +5,7 @@ import {AddLinkedinDialogComponent} from "./add-linkedin-dialog/add-linkedin-dia
 import {LocalStorageService} from "ngx-webstorage";
 import {UserService} from "../shared/user.service";
 import {NgbAlert} from "@ng-bootstrap/ng-bootstrap";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -19,10 +20,11 @@ export class HomeComponent implements OnInit {
   user: UserModel;
   token: string;
   isError: boolean;
-  socialUrlSuccessMessage: string;
-  socialUrlFailMessage: string;
+  successMessage: string;
+  failMessage: string;
 
-  constructor(public dialog: MatDialog, private localStorage: LocalStorageService, private userService: UserService) {
+  constructor(public dialog: MatDialog, private localStorage: LocalStorageService, private userService: UserService,
+              private activatedRoute: ActivatedRoute) {
     this.token = this.localStorage.retrieve('token');
     this.userService.getCurrentUser(this.token).subscribe(user => {
       this.user = user;
@@ -38,11 +40,10 @@ export class HomeComponent implements OnInit {
       });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('Dialog was closed');
       this.socialUrl = result;
       this.user.socialUrl = this.socialUrl;
       this.updateUser();
-      this.socialUrlSuccessMessage = 'LinkedIn profile added successfully'
+      this.successMessage = 'LinkedIn profile added successfully'
     });
   }
 
@@ -55,6 +56,13 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => this.staticAlertSuccess.close(), 10000);
     setTimeout(() => this.staticAlertFail.close(), 10000);
+
+    this.activatedRoute.queryParams
+      .subscribe(params => {
+        if (params.assigned !== undefined && params.assigned === 'true') {
+          this.successMessage = 'Course assigned successfully';
+        }
+      });
   }
 
 }

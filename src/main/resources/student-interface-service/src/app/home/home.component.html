@@ -23,13 +23,13 @@
 
             <mat-card-title class="steps">Complete These Steps</mat-card-title>
             <mat-card-content>
-                <mat-card-actions>
+                <mat-card-actions *ngIf="user.profile.course === undefined || user.profile.course === null">
                   <label class="step">Setup course details</label>
                   <div class="d-flex flex-row-reverse">
                     <a routerLink="/courses"><button mat-raised-button color="primary">Get Started</button></a>
                   </div>
                 </mat-card-actions>
-              <mat-card-actions *ngIf="socialUrl === undefined || socialUrl === null">
+              <mat-card-actions *ngIf="user.socialUrl === undefined || user.socialUrl === null">
                 <label class="step">Add LinkedIn</label>
                 <div class="d-flex flex-row-reverse">
                 <button mat-raised-button color="primary" (click)="openDialog()">Get Started</button>
@@ -50,13 +50,13 @@
   </div>
   <ngb-alert #staticAlertFail
              *ngIf="this.isError"
-             type="danger" (closed)="socialUrlFailMessage = ''">{{ socialUrlFailMessage }}
+             type="danger" (closed)="failMessage = ''">{{ failMessage }}
 
   </ngb-alert>
 
   <ngb-alert #staticAlertSuccess
-             *ngIf="this.socialUrlSuccessMessage !== undefined && this.socialUrlSuccessMessage.length > 0 && socialUrl !== undefined"
-             type="success" (closed)="socialUrlSuccessMessage = ''">{{ socialUrlSuccessMessage }}
+             *ngIf="this.successMessage !== undefined && this.successMessage.length > 0 && socialUrl !== undefined"
+             type="success" (closed)="successMessage = ''">{{ successMessage }}
   </ngb-alert>
 </div>
 

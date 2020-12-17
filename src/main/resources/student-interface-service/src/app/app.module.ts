@@ -33,6 +33,7 @@ import { BrowseCoursesComponent } from './browse-courses/browse-courses.componen
 import { CourseTileComponent } from './browse-courses/course-tile/course-tile.component';
 import { AddLinkedinDialogComponent } from './home/add-linkedin-dialog/add-linkedin-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import { CourseDialogComponent } from './browse-courses/course-dialog/course-dialog.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import {MatDialogModule} from "@angular/material/dialog";
     JobTileComponent,
     BrowseCoursesComponent,
     CourseTileComponent,
-    AddLinkedinDialogComponent
+    AddLinkedinDialogComponent,
+    CourseDialogComponent
   ],
   imports: [
     BrowserModule,

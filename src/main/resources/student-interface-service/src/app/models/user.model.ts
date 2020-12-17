@@ -1,3 +1,5 @@
+import {ProfileModel} from "./profile.model";
+
 export interface UserModel {
   studentId: number;
   firstName: string;
@@ -12,7 +14,7 @@ export interface UserModel {
   role: string;
   authorities: string[];
   isLocked: boolean;
-  profile: any;
+  profile: ProfileModel;
   resumePath: string;
 
 }

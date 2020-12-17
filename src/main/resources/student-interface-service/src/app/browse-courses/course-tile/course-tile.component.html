@@ -1,6 +1,6 @@
 <div class="row position" *ngFor="let course of courses">
   <div class="col-md-11">
-    <mat-card class="course-tile">
+    <mat-card class="course-tile" (click)="openDialog(course)">
       <mat-card-title>{{course.name}}</mat-card-title>
       <mat-card-subtitle>{{ course.university}} </mat-card-subtitle>
     </mat-card>

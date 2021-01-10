@@ -41,6 +41,7 @@ import java.util.UUID;
 
 import static com.fyp.studentinterfaceservice.constant.ErrorConstants.EMAIL_ALREADY_EXISTS;
 import static com.fyp.studentinterfaceservice.constant.ErrorConstants.USERNAME_ALREADY_EXISTS;
+import static com.fyp.studentinterfaceservice.model.Role.ROLE_SUPER_ADMIN;
 import static com.fyp.studentinterfaceservice.model.Role.ROLE_USER;
 
 
@@ -171,7 +172,6 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
                 position.setDescription(job.get("description").toString());
                 position.setLocation(job.get("locations").toString());
                 position.setDate(job.get("date").toString());
-                position.setCompany(job.get("company").toString());
                 position.setUrl(job.get("url").toString());
 
                 positions.add(position);

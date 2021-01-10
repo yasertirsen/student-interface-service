@@ -1,3 +1,6 @@
+import {CompanyModel} from "./company.model";
+import {SkillModel} from "./skill.model";
+
 export interface PositionModel {
   positionId: number;
   title: string;
@@ -7,5 +10,6 @@ export interface PositionModel {
   salary: number;
   url: string;
   clicks: number;
-  company: string;
+  company: CompanyModel;
+  requirements: SkillModel[];
 }

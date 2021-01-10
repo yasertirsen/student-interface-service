@@ -25,7 +25,7 @@
             <mat-card-subtitle *ngIf="user.profile.course !== null">
               Your Details:
             </mat-card-subtitle>
-            <mat-card-content >
+            <mat-card-content *ngIf="user.profile.course !== null">
               <p><strong>University</strong>: {{user.profile.course.university}}</p>
               <p><strong>Course</strong>: {{user.profile.course.name}}</p>
               <p><strong>Skills</strong>: </p>
@@ -34,7 +34,7 @@
               </ul>
             </mat-card-content>
 
-          <mat-card-content *ngIf="user.profile.course === null && user.socialUrl === null && user.firstName === null">
+          <mat-card-content *ngIf="user.profile.course === undefined && user.socialUrl === undefined && user.firstName === undefined">
             <h3>Welcome back!</h3>
             <p>Finish completing your profile to get graduate programs based on your course!</p>
           </mat-card-content>

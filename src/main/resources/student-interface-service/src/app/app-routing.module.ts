@@ -7,6 +7,8 @@ import {HomeComponent} from "./home/home.component";
 import {JobSearchComponent} from "./job-search/job-search.component";
 import {BrowseCoursesComponent} from "./browse-courses/browse-courses.component";
 import {CompleteProfileComponent} from "./complete-profile/complete-profile.component";
+import {AllJobsComponent} from "./all-jobs/all-jobs.component";
+import {ViewJobComponent} from "./shared/view-job/view-job.component";
 
 const routes: Routes = [
   {
@@ -37,6 +39,14 @@ const routes: Routes = [
   {
     path: 'complete-profile',
     component: CompleteProfileComponent
+  },
+  {
+    path: 'jobs',
+    component: AllJobsComponent
+  },
+  {
+    path: 'job/:positionId',
+    component: ViewJobComponent
   },
   {
     path: '**',

@@ -26,5 +26,6 @@ public class Company {
     private Boolean isLocked;
     private Long expiresIn;
     private String token;
-    private boolean enabled;
+    private Boolean enabled;
+    private CompanyProfile profile;
 }

@@ -4,7 +4,7 @@ export interface CourseModel {
   courseId: number;
   name: string;
   university: string;
-  level: number;
+  level: string;
   url: string;
   modules: Array<ModuleModel>;
 }

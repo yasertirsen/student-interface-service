@@ -12,7 +12,7 @@
       <div class="register-form">
         <mat-card-content>
           <form #f="ngForm" (ngSubmit)="f.form.valid && registerStudent()" novalidate>
-            <mat-form-field class="full-width">
+            <mat-form-field class="full-width" appearance="outline">
               <mat-label>Username</mat-label>
               <input matInput
                      placeholder="Username"
@@ -23,7 +23,7 @@
                      required>
             </mat-form-field>
 
-            <mat-form-field class="full-width">
+            <mat-form-field class="full-width" appearance="outline">
               <mat-label>Email</mat-label>
               <input matInput
                      placeholder="Email"
@@ -34,7 +34,7 @@
                      required email>
 
             </mat-form-field>
-            <mat-form-field class="full-width">
+            <mat-form-field class="full-width" appearance="outline">
               <mat-label>Password</mat-label>
               <input matInput
                      placeholder="Password"

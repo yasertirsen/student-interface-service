@@ -15,7 +15,7 @@ public class Course {
     private long courseId;
     private String name;
     private String university;
-    private int level;
+    private String level;
     private String url;
     private Set<Module> modules;
 }

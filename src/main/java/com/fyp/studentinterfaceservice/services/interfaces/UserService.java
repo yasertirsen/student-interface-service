@@ -30,4 +30,6 @@ public interface UserService {
     List<Position> searchJobsApi(String location, String keywords);
 
     User updateUser(User user);
+
+
 }

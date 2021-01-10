@@ -1,49 +1,57 @@
-<mat-vertical-stepper [linear]="isLinear" #stepper>
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Fill out your name</ng-template>
-      <mat-form-field>
-        <mat-label>First Name</mat-label>
-        <input matInput placeholder="First name" formControlName="firstCtrl" required
-               [(ngModel)]="user.firstName">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Surname</mat-label>
-        <input matInput placeholder="Surname" formControlName="firstCtrl" required
-               [(ngModel)]="user.surname">
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Fill out your phone</ng-template>
-      <mat-form-field>
-        <mat-label>Phone</mat-label>
-        <input matInput formControlName="firstCtrl" placeholder="08xxxxxxxx" required
-                [(ngModel)]="user.phone">
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Fill out your skills</ng-template>
-      <p>Add skills you learned outside of your course</p>
-      <mat-form-field>
-        <mat-label>Skills</mat-label>
-        <input matInput formControlName="firstCtrl" placeholder="Adobe suite, Angular..." required
-               [(ngModel)]="skillsText">
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="onDone()">Done</button>
-      </div>
-    </form>
-  </mat-step>
-</mat-vertical-stepper>
+<div class="container">
+  <div class="row">
+    <div class="offset-2"></div>
+    <div class="col-md-12">
+      <mat-vertical-stepper [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Fill out your name</ng-template>
+            <mat-form-field class="full-width">
+              <mat-label>First Name</mat-label>
+              <input matInput placeholder="First name" formControlName="firstCtrl" required
+                     [(ngModel)]="user.firstName">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+              <mat-label>Surname</mat-label>
+              <input matInput placeholder="Surname" formControlName="firstCtrl" required
+                     [(ngModel)]="user.surname">
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Fill out your phone</ng-template>
+            <mat-form-field>
+              <mat-label>Phone</mat-label>
+              <input matInput formControlName="firstCtrl" placeholder="08xxxxxxxx" required
+                     [(ngModel)]="user.phone">
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Fill out your skills</ng-template>
+            <p>Add skills you learned outside of your course</p>
+            <mat-form-field>
+              <mat-label>Skills</mat-label>
+              <input matInput formControlName="firstCtrl" placeholder="Adobe suite, Angular..." required
+                     [(ngModel)]="skillsText">
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button (click)="onDone()">Done</button>
+            </div>
+          </form>
+        </mat-step>
+      </mat-vertical-stepper>
+    </div>
+  </div>
+</div>
+

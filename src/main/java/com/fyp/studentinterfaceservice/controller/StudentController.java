@@ -1,11 +1,7 @@
 package com.fyp.studentinterfaceservice.controller;
 
 
-import com.fyp.studentinterfaceservice.exceptions.EmailExistsException;
-import com.fyp.studentinterfaceservice.exceptions.ProgradException;
-import com.fyp.studentinterfaceservice.exceptions.UnauthenticatedUserException;
-import com.fyp.studentinterfaceservice.exceptions.UserNotFoundException;
-import com.fyp.studentinterfaceservice.exceptions.UsernameExistsException;
+import com.fyp.studentinterfaceservice.exceptions.*;
 import com.fyp.studentinterfaceservice.model.Position;
 import com.fyp.studentinterfaceservice.model.User;
 import com.fyp.studentinterfaceservice.model.UserPrincipal;
@@ -17,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,13 +31,15 @@ public class StudentController {
 
     private final UserService userService;
     private final JWTTokenProvider jwtTokenProvider;
+    private final BCryptPasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
 
 
     @Autowired
-    public StudentController(UserService userService, JWTTokenProvider jwtTokenProvider, AuthenticationManager authenticationManager) {
+    public StudentController(UserService userService, JWTTokenProvider jwtTokenProvider, BCryptPasswordEncoder passwordEncoder, AuthenticationManager authenticationManager) {
         this.userService = userService;
         this.jwtTokenProvider = jwtTokenProvider;
+        this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
     }
 
@@ -59,14 +58,19 @@ public class StudentController {
     public ResponseEntity<User> login(@RequestBody User user) throws Exception {
 
         User loggedUser = userService.findUserByEmail(user.getEmail());
-        authenticate(loggedUser.getEmail(), loggedUser.getPassword());
-        UserPrincipal userPrincipal = new UserPrincipal(loggedUser);
+        if(passwordEncoder.matches(user.getPassword(), loggedUser.getPassword())) {
+            authenticate(loggedUser.getEmail(), loggedUser.getPassword());
+            UserPrincipal userPrincipal = new UserPrincipal(loggedUser);
 
-        loggedUser.setPassword(StringUtils.EMPTY);
-        loggedUser.setExpiresIn(EXPIRATION_TIME);
-        loggedUser.setToken(jwtTokenProvider.generateJwtToken(userPrincipal));
+            loggedUser.setPassword(StringUtils.EMPTY);
+            loggedUser.setExpiresIn(EXPIRATION_TIME);
+            loggedUser.setToken(jwtTokenProvider.generateJwtToken(userPrincipal));
 
-        return new ResponseEntity<>(loggedUser, HttpStatus.OK);
+            return new ResponseEntity<>(loggedUser, HttpStatus.OK);
+        }
+        else
+            throw new IncorrectPasswordException();
+
     }
 
     private void authenticate(String username, String password) {

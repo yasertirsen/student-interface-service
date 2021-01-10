@@ -10,7 +10,7 @@
       <div class="login-form">
         <mat-card-content>
           <form #f="ngForm" (ngSubmit)="f.form.valid && loginStudent()" novalidate>
-            <mat-form-field class="full-width">
+            <mat-form-field class="full-width" appearance="outline">
               <mat-label>Email</mat-label>
               <input matInput
                      placeholder="Email"
@@ -21,7 +21,7 @@
                      required>
             </mat-form-field>
 
-            <mat-form-field class="full-width">
+            <mat-form-field class="full-width" appearance="outline">
               <mat-label>Password</mat-label>
               <input matInput
                      placeholder="Password"

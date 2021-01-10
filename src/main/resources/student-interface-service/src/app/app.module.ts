@@ -36,6 +36,8 @@ import {MatDialogModule} from "@angular/material/dialog";
 import { CourseDialogComponent } from './browse-courses/course-dialog/course-dialog.component';
 import {MatStepperModule} from "@angular/material/stepper";
 import { CompleteProfileComponent } from './complete-profile/complete-profile.component';
+import { AllJobsComponent } from './all-jobs/all-jobs.component';
+import { ViewJobComponent } from './shared/view-job/view-job.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { CompleteProfileComponent } from './complete-profile/complete-profile.co
     CourseTileComponent,
     AddLinkedinDialogComponent,
     CourseDialogComponent,
-    CompleteProfileComponent
+    CompleteProfileComponent,
+    AllJobsComponent,
+    ViewJobComponent
   ],
   imports: [
     BrowserModule,

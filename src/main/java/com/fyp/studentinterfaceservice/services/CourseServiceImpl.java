@@ -40,14 +40,10 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public Course add(Course course) throws ModuleParsingException {
         if(!course.getUrl().isEmpty()
-                && course.getUniversity().equalsIgnoreCase("Technological University Dublin")) {
-            Set<Module> modules = getTudCourseModules(course.getUrl());
-            course.setModules(modules);
+                && course.getUniversity().equalsIgnoreCase("TUD")) {
+            return client.addCourse(bearerToken, getTudCourseDetails(course));
         }
-//        User user = userService.getCurrentUser();
-//        user.getProfile().setCourse(course);
-//        client.update(bearerToken, user);
-        return client.addCourse(course);
+        return client.addCourse(bearerToken, course);
     }
 
     @Override
@@ -55,10 +51,18 @@ public class CourseServiceImpl implements CourseService {
         return client.getAllCourses(bearerToken);
     }
 
-    private Set<Module> getTudCourseModules(String url) throws ModuleParsingException {
+    private Course getTudCourseDetails(Course course) throws ModuleParsingException {
         Set<Module> modules = new HashSet<>();
+        String level = "level";
         try {
-            final Document doc = Jsoup.connect(url).get();
+            final Document doc = Jsoup.connect(course.getUrl()).get();
+
+            course.setName(doc.select("h1.hero-banner__h").first().text().split(" /")[0]);
+            for(Element el : doc.select("p:nth-of-type(2)")) {
+                if (el.text().toLowerCase().contains(level.toLowerCase())) {
+                    course.setLevel(el.text());
+                }
+            }
 
             for(Element result: doc.select(
                     "div.tab-pane > ul > li")) {
@@ -66,9 +70,11 @@ public class CourseServiceImpl implements CourseService {
                 module.setName(result.select("li").text());
                 modules.add(module);
             }
+            course.setModules(modules);
+            course.setUniversity("Technological University Dublin");
         } catch (Exception ex) {
             throw new ModuleParsingException();
         }
-        return modules;
+        return course;
     }
 }

@@ -20,6 +20,8 @@ import static org.springframework.http.HttpStatus.*;
 public class StudentExceptionHandler {
 
 
+    public static final String INCORRECT_PASSWORD = "Incorrect password";
+
     @ExceptionHandler(FeignException.class)
     public ResponseEntity<HttpCustomResponse> handleFeignStatusException(FeignException e) {
 
@@ -42,6 +44,11 @@ public class StudentExceptionHandler {
                 toReturn = internalServerErrorException();
         }
         return toReturn;
+    }
+
+    @ExceptionHandler(IncorrectPasswordException.class)
+    public ResponseEntity<HttpCustomResponse> incorrectPasswordException () {
+        return createHttpResponse(BAD_REQUEST, INCORRECT_PASSWORD);
     }
 
     @ExceptionHandler(UnauthenticatedUserException.class)

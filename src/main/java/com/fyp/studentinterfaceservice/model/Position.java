@@ -18,6 +18,6 @@ public class Position {
     private double salary;
     private String url;
     private int clicks;
-    private String company;
+    private Company company;
     private Set<Skill> requirements;
 }

@@ -1,6 +1,7 @@
 package com.fyp.studentinterfaceservice.client;
 
 import com.fyp.studentinterfaceservice.model.Course;
+import com.fyp.studentinterfaceservice.model.Position;
 import com.fyp.studentinterfaceservice.model.User;
 import feign.Headers;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -49,7 +50,7 @@ public interface ProgradClient {
     ResponseEntity<Course> findCourseById(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestParam Long id);
 
     @PostMapping("/courses/add")
-    Course addCourse(@RequestBody Course course);
+    Course addCourse(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestBody Course course);
 
     @GetMapping("/courses/all")
     List<Course> getAllCourses(@RequestHeader(AUTH_TOKEN) String bearerToken);
@@ -60,4 +61,11 @@ public interface ProgradClient {
     @GetMapping(value = "/courses/findByNameAndUniversity")
     Course courseFindByNameAndUniversity(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestBody Course course);
 
+    //Positions endpoint
+
+    @GetMapping("/positions/all")
+    List<Position> getAllPositions(@RequestHeader(AUTH_TOKEN) String bearerToken);
+
+    @GetMapping(value = "/positions/findById", produces = "application/json")
+    public Position findPositionById(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestParam Long id);
 }

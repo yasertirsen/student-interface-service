@@ -9,6 +9,7 @@ import com.fyp.studentinterfaceservice.jwt.JWTTokenProvider;
 import com.fyp.studentinterfaceservice.services.interfaces.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

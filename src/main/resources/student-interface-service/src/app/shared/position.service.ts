@@ -8,17 +8,20 @@ import {LocalStorageService} from "ngx-webstorage";
   providedIn: 'root'
 })
 export class PositionService {
+  token: string;
 
-  constructor(private http: HttpClient, private localStorage: LocalStorageService) { }
+  constructor(private http: HttpClient, private localStorage: LocalStorageService) {
+    this.token = this.localStorage.retrieve('token');
+  }
 
   searchJobsApi(location:string, keywords: string): Observable<Array<PositionModel>> {
     return this.http.get<Array<PositionModel>>('http://localhost:8083/searchJobsApi/'+ location + '/' + keywords)
   }
 
-  getAllJobs(token): Observable<Array<PositionModel>> {{
+  getAllJobs(): Observable<Array<PositionModel>> {{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${this.token}`
     });
     return this.http.get<Array<PositionModel>>('http://localhost:8083/getAllPositions/', {headers: headers})
   }}
@@ -26,7 +29,7 @@ export class PositionService {
   getJob(id: number): Observable<PositionModel> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.localStorage.retrieve('token')}`
+      'Authorization': `Bearer ${this.token}`
     });
     return this.http.get<PositionModel>('http://localhost:8083/getPosition/' + id, {headers: headers});
   }

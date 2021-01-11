@@ -12,7 +12,7 @@ export class AllJobsComponent implements OnInit {
   positions: PositionModel[];
 
   constructor(private positionService: PositionService, private localStorage: LocalStorageService) {
-    this.positionService.getAllJobs(this.localStorage.retrieve('token')).subscribe(data => {
+    this.positionService.getAllJobs().subscribe(data => {
       this.positions = data;
     })
   }

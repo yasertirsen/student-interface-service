@@ -5,6 +5,7 @@ import com.fyp.studentinterfaceservice.model.Position;
 import com.fyp.studentinterfaceservice.model.User;
 import feign.Headers;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -68,4 +69,9 @@ public interface ProgradClient {
 
     @GetMapping(value = "/positions/findById", produces = "application/json")
     public Position findPositionById(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestParam Long id);
+
+    //Resumes endpoint
+
+    @PostMapping("/resumes/generateDynamicCv")
+    public ResponseEntity<InputStreamResource> generateDynamicCv(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestBody User user);
 }

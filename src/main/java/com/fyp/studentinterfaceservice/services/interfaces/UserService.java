@@ -7,6 +7,7 @@ import com.fyp.studentinterfaceservice.exceptions.UserNotFoundException;
 import com.fyp.studentinterfaceservice.exceptions.UsernameExistsException;
 import com.fyp.studentinterfaceservice.model.Position;
 import com.fyp.studentinterfaceservice.model.User;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
@@ -30,6 +31,4 @@ public interface UserService {
     List<Position> searchJobsApi(String location, String keywords);
 
     User updateUser(User user);
-
-
 }

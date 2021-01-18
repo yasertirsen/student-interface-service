@@ -1,5 +1,6 @@
 package com.fyp.studentinterfaceservice.utilities;
 
+import com.fyp.studentinterfaceservice.model.Project;
 import com.fyp.studentinterfaceservice.model.User;
 import com.itextpdf.text.*;
 import com.itextpdf.text.log.Logger;
@@ -9,13 +10,17 @@ import com.itextpdf.text.pdf.draw.LineSeparator;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
+
+import static com.itextpdf.text.html.HtmlTags.IMG;
 
 public class PDFGenerator {
 
     private static Logger logger = LoggerFactory.getLogger(PDFGenerator.class);
 
-    public static ByteArrayInputStream generateDynamicCv(ArrayList<String> skills, ArrayList<String> requirements, User user) {
+    public static ByteArrayInputStream generateDynamicCv(ArrayList<String> skills, User user) {
         Document document = new Document();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
 
@@ -25,6 +30,7 @@ public class PDFGenerator {
             document.open();
 
             Font heading = new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.BOLD, BaseColor.DARK_GRAY);
+            Font subheading = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD, BaseColor.DARK_GRAY);
             Font regular = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL, BaseColor.DARK_GRAY);
             Font bold = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD, BaseColor.DARK_GRAY);
             LineSeparator lsHeading = new LineSeparator();
@@ -48,7 +54,7 @@ public class PDFGenerator {
             document.add(summary);
             Paragraph summaryContent = new Paragraph();
             summaryContent.setSpacingBefore(8);
-            summaryContent.add(new Chunk(user.getFirstName() + "\n", regular));
+            summaryContent.add(new Chunk(user.getProfile().getBio() + "\n", regular));
             summaryContent.add(lsPar);
             document.add(summaryContent);
 
@@ -70,11 +76,10 @@ public class PDFGenerator {
             document.add(projects);
             Paragraph projectsContent = new Paragraph();
             projectsContent.setSpacingBefore(8);
-            List projectsList = new List();
-            projectsList.add(new ListItem("PROJECT 1", regular));
-            projectsList.add(new ListItem("PROJECT 2", regular));
-            projectsList.add(new ListItem("PROJECT 3", regular));
-            projectsContent.add(projectsList);
+            for(Project project : user.getProfile().getProjects()) {
+                projectsContent.add(new Chunk(project .getTitle() + "\n", subheading));
+                projectsContent.add(new Chunk(project .getDescription() + "\n", regular));
+            }
             projectsContent.add(lsPar);
             document.add(projectsContent);
 
@@ -86,17 +91,10 @@ public class PDFGenerator {
             Paragraph skillsContent = new Paragraph();
             skillsContent.setSpacingBefore(8);
             List skillsList = new List();
-            if(!skills.isEmpty() && !requirements.isEmpty()) {
-                for(String skill: requirements) {
-                    if(skills.size() > 4)
-                        break;
-                    else{
-                        if(skills.contains(skill))
-                            skillsList.add(new ListItem(skill, regular));
-
-                    }
+            if(!skills.isEmpty()) {
+                for(String skill: skills) {
+                    skillsList.add(new ListItem(skill, regular));
                 }
-
             }
             skillsContent.add(skillsList);
             skillsPar.add(lsPar);

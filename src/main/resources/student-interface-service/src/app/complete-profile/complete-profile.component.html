@@ -6,16 +6,18 @@
         <mat-step [stepControl]="firstFormGroup">
           <form [formGroup]="firstFormGroup">
             <ng-template matStepLabel>Fill out your name</ng-template>
-            <mat-form-field class="full-width">
-              <mat-label>First Name</mat-label>
-              <input matInput placeholder="First name" formControlName="firstCtrl" required
-                     [(ngModel)]="user.firstName">
-            </mat-form-field>
-            <mat-form-field class="full-width">
-              <mat-label>Surname</mat-label>
-              <input matInput placeholder="Surname" formControlName="firstCtrl" required
-                     [(ngModel)]="user.surname">
-            </mat-form-field>
+            <table class="full-width">
+              <td><mat-form-field class="full-width" appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input matInput placeholder="First name" formControlName="firstCtrl" required
+                       [(ngModel)]="user.firstName">
+              </mat-form-field></td>
+              <td><mat-form-field class="full-width" appearance="outline">
+                <mat-label>Surname</mat-label>
+                <input matInput placeholder="Surname" formControlName="firstCtrl" required
+                       [(ngModel)]="user.surname">
+              </mat-form-field></td>
+            </table>
             <div>
               <button mat-button matStepperNext>Next</button>
             </div>
@@ -24,7 +26,7 @@
         <mat-step [stepControl]="firstFormGroup">
           <form [formGroup]="firstFormGroup">
             <ng-template matStepLabel>Fill out your phone</ng-template>
-            <mat-form-field>
+            <mat-form-field appearance="outline">
               <mat-label>Phone</mat-label>
               <input matInput formControlName="firstCtrl" placeholder="08xxxxxxxx" required
                      [(ngModel)]="user.phone">
@@ -37,12 +39,12 @@
         </mat-step>
         <mat-step [stepControl]="firstFormGroup">
           <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>Fill out your skills</ng-template>
-            <p>Add skills you learned outside of your course</p>
-            <mat-form-field>
-              <mat-label>Skills</mat-label>
-              <input matInput formControlName="firstCtrl" placeholder="Adobe suite, Angular..." required
-                     [(ngModel)]="skillsText">
+            <ng-template matStepLabel>Fill out your bio</ng-template>
+            <p>This will be your summary/objective in the CVs you create. Don't worry, you can always change it</p>
+            <mat-form-field appearance="outline">
+              <mat-label>Summary</mat-label>
+              <textarea matInput formControlName="firstCtrl" placeholder="Bio" required
+                        [(ngModel)]="bio"></textarea>
             </mat-form-field>
             <div>
               <button mat-button matStepperPrevious>Back</button>

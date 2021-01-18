@@ -14,7 +14,7 @@
         </mat-card-content>
         <mat-card-actions *ngIf="position.requirements !== undefined || position.requirements !== null">
           <div>
-            <button (click)="onGenerateCv()" mat-raised-button color="primary">Generate Dynamic CV</button>
+            <a routerLink="/dynamic-cv"><button mat-raised-button color="primary">Generate Dynamic CV</button></a>
           </div>
         </mat-card-actions>
       </mat-card>

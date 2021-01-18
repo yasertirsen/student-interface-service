@@ -18,15 +18,13 @@ export class HomeComponent implements OnInit {
   @ViewChild('staticAlertFail', {static: false}) staticAlertFail: NgbAlert;
   socialUrl: string;
   user: UserModel;
-  token: string;
   isError: boolean;
   successMessage: string;
   failMessage: string;
 
   constructor(public dialog: MatDialog, private localStorage: LocalStorageService, private userService: UserService,
               private activatedRoute: ActivatedRoute) {
-    this.token = this.localStorage.retrieve('token');
-    this.userService.getCurrentUser(this.token).subscribe(user => {
+    this.userService.getCurrentUser().subscribe(user => {
       this.user = user;
       this.socialUrl = this.user.socialUrl;
     });

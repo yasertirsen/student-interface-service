@@ -25,21 +25,21 @@ public class ResumeServiceImpl implements ResumeService {
     @Override
     public ResponseEntity<InputStreamResource> generateDCv(User user) {
 
-            User userDb = userService.findUserByEmail(user.getEmail());
+//            User userDb = userService.findUserByEmail(user.getEmail());
             ArrayList<String> skills = new ArrayList<>();
-            ArrayList<String> requirements = new ArrayList<>();
-            if(!userDb.getProfile().getExternalSkills().isEmpty()) {
-                for(Skill skill : userDb.getProfile().getExternalSkills()) {
+//            ArrayList<String> requirements = new ArrayList<>();
+//            if(!userDb.getProfile().getExternalSkills().isEmpty()) {
+//                for(Skill skill : userDb.getProfile().getExternalSkills()) {
+//                    skills.add(skill.getSkillName().toLowerCase());
+//                }
+//            }
+            if(!user.getProfile().getExternalSkills().isEmpty()) {
+                for(Skill skill : user.getProfile().getExternalSkills()) {
                     skills.add(skill.getSkillName());
                 }
             }
-            if(!user.getProfile().getExternalSkills().isEmpty()) {
-                for(Skill skill : user.getProfile().getExternalSkills()) {
-                    requirements.add(skill.getSkillName());
-                }
-            }
 
-            ByteArrayInputStream bis = PDFGenerator.generateDynamicCv(skills, requirements, user);
+            ByteArrayInputStream bis = PDFGenerator.generateDynamicCv(skills, user);
 
             HttpHeaders headers = new HttpHeaders();
             headers.add("Content-Disposition", "inline; filename=" + user.getUsername() +"_CV.pdf");

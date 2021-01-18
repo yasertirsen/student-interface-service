@@ -1,0 +1,118 @@
+<div class="container">
+  <div class="row">
+    <div class="offset-2"></div>
+    <div class="col-md-12">
+      <h2>Customise your CV before applying</h2>
+      <mat-vertical-stepper [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Objective/Summary</ng-template>
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Summary</mat-label>
+                <textarea matInput placeholder="Summary" formControlName="firstCtrl" required
+                          [(ngModel)]="summary"></textarea>
+              </mat-form-field>
+            <div>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" *ngIf="this.user.profile.projects.length === 0">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Add a Project</ng-template>
+            <p>Including projects in your CV can improve your chances of getting the job, you can add one here</p>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Title</mat-label>
+              <input matInput placeholder="Title" formControlName="secondCtrl"
+                        [(ngModel)]="project.title">
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Description</mat-label>
+              <textarea matInput placeholder="Description" formControlName="secondCtrl"
+                        [(ngModel)]="project.description"></textarea>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="firstFormGroup" *ngIf="this.user.profile.projects.length > 0">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Choose your projects</ng-template>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Choose projects you want to include in this CV</mat-label>
+              <mat-chip-list #chipList aria-label="Skills selection">
+                <mat-chip
+                  color="primary"
+                  *ngFor="let project of projects"
+                  [selectable]="selectable"
+                  [removable]="removable"
+                  (removed)="removeProject(project)">
+                  {{project}}
+                  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+                <input
+                  class="full-width"
+                  placeholder="choose project..."
+                  #fruitInput
+                  [formControl]="projectsCtrl"
+                  [matAutocomplete]="auto"
+                  [matChipInputFor]="chipList"
+                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                  (matChipInputTokenEnd)="addProject($event)">
+              </mat-chip-list>
+              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedProject($event)">
+                <mat-option *ngFor="let project of filteredProjects | async" [value]="project">
+                  {{project}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="firstFormGroup">
+              <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel>Choose your skills</ng-template>
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Choose skills you want to include in this CV</mat-label>
+                  <mat-chip-list #chipList aria-label="Skills selection">
+                    <mat-chip
+                      color="primary"
+                      *ngFor="let skill of skills"
+                      [selectable]="selectable"
+                      [removable]="removable"
+                      (removed)="removeSkill(skill)">
+                      {{skill}}
+                      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                    </mat-chip>
+                    <input
+                      class="full-width"
+                      placeholder="choose skill..."
+                      #fruitInput
+                      [formControl]="skillsCtrl"
+                      [matAutocomplete]="auto"
+                      [matChipInputFor]="chipList"
+                      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                      (matChipInputTokenEnd)="addSkill($event)">
+                  </mat-chip-list>
+                  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedSkill($event)">
+                    <mat-option *ngFor="let skill of filteredSkills | async" [value]="skill">
+                      {{skill}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button (click)="onDone()">Done</button>
+                </div>
+              </form>
+            </mat-step>
+      </mat-vertical-stepper>
+    </div>
+  </div>
+</div>
+

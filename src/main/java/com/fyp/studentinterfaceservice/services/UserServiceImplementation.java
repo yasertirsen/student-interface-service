@@ -6,11 +6,7 @@ import com.fyp.studentinterfaceservice.exceptions.EmailExistsException;
 import com.fyp.studentinterfaceservice.exceptions.ProgradException;
 import com.fyp.studentinterfaceservice.exceptions.UnauthenticatedUserException;
 import com.fyp.studentinterfaceservice.exceptions.UsernameExistsException;
-import com.fyp.studentinterfaceservice.model.NotificationEmail;
-import com.fyp.studentinterfaceservice.model.Position;
-import com.fyp.studentinterfaceservice.model.User;
-import com.fyp.studentinterfaceservice.model.UserPrincipal;
-import com.fyp.studentinterfaceservice.model.UserProfile;
+import com.fyp.studentinterfaceservice.model.*;
 import com.fyp.studentinterfaceservice.services.interfaces.UserService;
 import com.google.gson.Gson;
 import org.apache.commons.lang3.StringUtils;
@@ -19,11 +15,8 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -32,17 +25,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import java.security.Principal;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 import static com.fyp.studentinterfaceservice.constant.ErrorConstants.EMAIL_ALREADY_EXISTS;
 import static com.fyp.studentinterfaceservice.constant.ErrorConstants.USERNAME_ALREADY_EXISTS;
-import static com.fyp.studentinterfaceservice.model.Role.ROLE_SUPER_ADMIN;
 import static com.fyp.studentinterfaceservice.model.Role.ROLE_USER;
 
 
@@ -206,6 +193,31 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
     @Override
     public User updateUser(@RequestBody User user) {
         return progradClient.update(bearerToken, user);
+    }
+
+    @Override
+    public List<String> getSkillsNames(UserProfile profile) {
+        return progradClient.getSkillsNames(bearerToken, profile);
+    }
+
+    @Override
+    public UserProfile addSkills(UserProfile profile) {
+        Set<Skill> skillSet = new HashSet<>();
+        for(Module module : profile.getCourse().getModules()) {
+            if(module.getSkill() != null) {
+                Skill skill = module.getSkill();
+                if(!profile.getExternalSkills().contains(skill)) {
+                    skillSet.add(skill);
+                }
+            }
+        }
+        profile.setExternalSkills(skillSet);
+        return progradClient.updateProfile(bearerToken, profile);
+    }
+
+    @Override
+    public UserProfile updateProfile(UserProfile profile) {
+        return progradClient.updateProfile(bearerToken, profile);
     }
 
 }

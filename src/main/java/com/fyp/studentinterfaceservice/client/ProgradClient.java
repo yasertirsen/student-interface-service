@@ -3,16 +3,13 @@ package com.fyp.studentinterfaceservice.client;
 import com.fyp.studentinterfaceservice.model.Course;
 import com.fyp.studentinterfaceservice.model.Position;
 import com.fyp.studentinterfaceservice.model.User;
+import com.fyp.studentinterfaceservice.model.UserProfile;
 import feign.Headers;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @FeignClient(url = "${feign.url}", name = "${feign.student}")
@@ -44,6 +41,14 @@ public interface ProgradClient {
     @Headers({"Content-Type: application/json"})
     ResponseEntity<User> findByToken(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestParam String token);
 
+    @PostMapping("/students/getSkillsNames")
+    @Headers({"Content-Type: application/json"})
+    List<String> getSkillsNames(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestBody UserProfile profile);
+
+    @PutMapping(value = "/students/updateProfile", consumes = "application/json", produces="application/json")
+    @ResponseBody
+    UserProfile updateProfile(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestBody UserProfile profile);
+
     //Courses endpoint
 
     @GetMapping(value = "/courses/findById")
@@ -68,10 +73,5 @@ public interface ProgradClient {
     List<Position> getAllPositions(@RequestHeader(AUTH_TOKEN) String bearerToken);
 
     @GetMapping(value = "/positions/findById", produces = "application/json")
-    public Position findPositionById(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestParam Long id);
-
-    //Resumes endpoint
-
-    @PostMapping("/resumes/generateDynamicCv")
-    public ResponseEntity<InputStreamResource> generateDynamicCv(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestBody User user);
+    Position findPositionById(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestParam Long id);
 }

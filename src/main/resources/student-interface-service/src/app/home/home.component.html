@@ -17,7 +17,7 @@
             alt="Profile"
             class="profile-img">
 
-            <mat-card-content *ngIf="user.firstName !== null">
+            <mat-card-content *ngIf="user.firstName !== null || user.firstName !== undefined">
               <h3>Welcome back {{user.firstName}}!</h3>
               <p>Become a Prograd by finding the perfect graduate opportunity for you!</p>
             </mat-card-content>
@@ -28,7 +28,7 @@
             <mat-card-content *ngIf="user.profile.course !== null">
               <p><strong>University</strong>: {{user.profile.course.university}}</p>
               <p><strong>Course</strong>: {{user.profile.course.name}}</p>
-              <p><strong>Skills</strong>: </p>
+              <p *ngIf="user.profile.externalSkills.length !== 0"><strong>Skills</strong>: </p>
               <ul>
                 <li *ngFor="let skill of user.profile.externalSkills">{{skill.skillName}}</li>
               </ul>

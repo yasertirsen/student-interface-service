@@ -16,15 +16,11 @@ export class CompleteProfileComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   user: UserModel;
-  token: string;
-  skillsText: string;
-  skillsNames: string[];
-  skill: SkillModel;
+  bio: string;
 
   constructor(private _formBuilder: FormBuilder, private localStorage: LocalStorageService,
               private userService: UserService, private router: Router) {
-    this.token = this.localStorage.retrieve('token');
-    this.userService.getCurrentUser(this.token).subscribe(user => {
+    this.userService.getCurrentUser().subscribe(user => {
       this.user = user;
       this.user.profile.externalSkills = [];
     });
@@ -40,12 +36,7 @@ export class CompleteProfileComponent implements OnInit {
   }
 
   onDone(): void {
-    this.skillsNames = this.skillsText.split(',');
-    for(let i in this.skillsNames) {
-      this.skill = {skillId: null, skillName: null, industry: null};
-      this.skill.skillName = this.skillsNames[i].replace(' ', '');
-      this.user.profile.externalSkills.push(this.skill);
-    }
+    this.user.profile.bio = this.bio;
     this.updateUser();
   }
 

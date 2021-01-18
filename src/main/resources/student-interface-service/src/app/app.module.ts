@@ -38,6 +38,9 @@ import {MatStepperModule} from "@angular/material/stepper";
 import { CompleteProfileComponent } from './complete-profile/complete-profile.component';
 import { AllJobsComponent } from './all-jobs/all-jobs.component';
 import { ViewJobComponent } from './shared/view-job/view-job.component';
+import { CvBuilderComponent } from './cv-builder/cv-builder.component';
+import {MatChipsModule} from "@angular/material/chips";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
 @NgModule({
   declarations: [
@@ -56,7 +59,8 @@ import { ViewJobComponent } from './shared/view-job/view-job.component';
     CourseDialogComponent,
     CompleteProfileComponent,
     AllJobsComponent,
-    ViewJobComponent
+    ViewJobComponent,
+    CvBuilderComponent
   ],
   imports: [
     BrowserModule,
@@ -81,7 +85,9 @@ import { ViewJobComponent } from './shared/view-job/view-job.component';
     MatTableModule,
     MatDialogModule,
     MatStepperModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatChipsModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

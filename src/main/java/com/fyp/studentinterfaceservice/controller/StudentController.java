@@ -6,6 +6,7 @@ import com.fyp.studentinterfaceservice.model.Position;
 import com.fyp.studentinterfaceservice.model.User;
 import com.fyp.studentinterfaceservice.model.UserPrincipal;
 import com.fyp.studentinterfaceservice.jwt.JWTTokenProvider;
+import com.fyp.studentinterfaceservice.model.UserProfile;
 import com.fyp.studentinterfaceservice.services.interfaces.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,6 +97,21 @@ public class StudentController {
     @GetMapping("/searchJobsApi/{location}/{keywords}")
     public List<Position> searchJobApi(@PathVariable String location, @PathVariable String keywords) {
         return userService.searchJobsApi(location, keywords);
+    }
+
+    @PostMapping("/getSkillsNames")
+    public List<String> getSkillsNames(@RequestBody UserProfile profile) {
+        return userService.getSkillsNames(profile);
+    }
+
+    @PutMapping("/updateProfile")
+    public UserProfile updateProfile(@RequestBody UserProfile profile) {
+        return userService.updateProfile(profile);
+    }
+
+    @PutMapping("/addSkills")
+    public UserProfile addSkills(@RequestBody UserProfile profile) {
+        return userService.addSkills(profile);
     }
 
 }

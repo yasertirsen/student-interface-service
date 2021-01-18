@@ -25,14 +25,14 @@ public class ResumeServiceImpl implements ResumeService {
     @Override
     public ResponseEntity<InputStreamResource> generateDCv(User user) {
 
-//            User userDb = userService.findUserByEmail(user.getEmail());
+            User userDb = userService.findUserByEmail(user.getEmail());
             ArrayList<String> skills = new ArrayList<>();
-//            ArrayList<String> requirements = new ArrayList<>();
-//            if(!userDb.getProfile().getExternalSkills().isEmpty()) {
-//                for(Skill skill : userDb.getProfile().getExternalSkills()) {
-//                    skills.add(skill.getSkillName().toLowerCase());
-//                }
-//            }
+
+            if(userDb.getProfile().getProjects().size() == 0) {
+                userDb.getProfile().getProjects().add(user.getProfile().getProjects().get(0));
+                userService.updateUser(userDb);
+            }
+
             if(!user.getProfile().getExternalSkills().isEmpty()) {
                 for(Skill skill : user.getProfile().getExternalSkills()) {
                     skills.add(skill.getSkillName());

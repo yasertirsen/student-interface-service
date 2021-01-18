@@ -22,7 +22,6 @@ export class CompleteProfileComponent implements OnInit {
               private userService: UserService, private router: Router) {
     this.userService.getCurrentUser().subscribe(user => {
       this.user = user;
-      this.user.profile.externalSkills = [];
     });
   }
 

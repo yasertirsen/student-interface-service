@@ -69,19 +69,21 @@ public class PDFGenerator {
             educationContent.add(lsPar);
             document.add(educationContent);
 
-            Paragraph projects = new Paragraph();
-            projects.setSpacingBefore(20);
-            projects.add(new Chunk("Projects\n", heading));
-            projects.add(lsHeading);
-            document.add(projects);
-            Paragraph projectsContent = new Paragraph();
-            projectsContent.setSpacingBefore(8);
-            for(Project project : user.getProfile().getProjects()) {
-                projectsContent.add(new Chunk(project .getTitle() + "\n", subheading));
-                projectsContent.add(new Chunk(project .getDescription() + "\n", regular));
+            if(user.getProfile().getProjects() != null) {
+                Paragraph projects = new Paragraph();
+                projects.setSpacingBefore(20);
+                projects.add(new Chunk("Projects\n", heading));
+                projects.add(lsHeading);
+                document.add(projects);
+                Paragraph projectsContent = new Paragraph();
+                projectsContent.setSpacingBefore(8);
+                for(Project project : user.getProfile().getProjects()) {
+                    projectsContent.add(new Chunk(project .getTitle() + "\n", subheading));
+                    projectsContent.add(new Chunk(project .getDescription() + "\n", regular));
+                }
+                projectsContent.add(lsPar);
+                document.add(projectsContent);
             }
-            projectsContent.add(lsPar);
-            document.add(projectsContent);
 
             Paragraph skillsPar = new Paragraph();
             skillsPar.setSpacingBefore(20);

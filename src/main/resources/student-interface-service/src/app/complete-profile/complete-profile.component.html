@@ -1,4 +1,9 @@
-<div class="container">
+<app-mat-spinner-overlay
+  overlay="true"
+  *ngIf="loading === true">
+</app-mat-spinner-overlay>
+
+<div class="container" *ngIf="loading === false">
   <div class="row">
     <div class="offset-2"></div>
     <div class="col-md-12">
@@ -9,13 +14,13 @@
             <table class="full-width">
               <td><mat-form-field class="full-width" appearance="outline">
                 <mat-label>First Name</mat-label>
-                <input matInput placeholder="First name" formControlName="firstCtrl" required
-                       [(ngModel)]="user.firstName">
+                <input type="text" matInput placeholder="First name" formControlName="firstName" required
+                       [(ngModel)]="firstName">
               </mat-form-field></td>
               <td><mat-form-field class="full-width" appearance="outline">
                 <mat-label>Surname</mat-label>
-                <input matInput placeholder="Surname" formControlName="firstCtrl" required
-                       [(ngModel)]="user.surname">
+                <input type="text" matInput placeholder="Surname" formControlName="surname" required
+                       [(ngModel)]="surname">
               </mat-form-field></td>
             </table>
             <div>
@@ -23,13 +28,13 @@
             </div>
           </form>
         </mat-step>
-        <mat-step [stepControl]="firstFormGroup">
-          <form [formGroup]="firstFormGroup">
+        <mat-step [stepControl]="phoneFormGroup">
+          <form [formGroup]="phoneFormGroup">
             <ng-template matStepLabel>Fill out your phone</ng-template>
             <mat-form-field appearance="outline">
               <mat-label>Phone</mat-label>
-              <input matInput formControlName="firstCtrl" placeholder="08xxxxxxxx" required
-                     [(ngModel)]="user.phone">
+              <input type="tel" matInput formControlName="phoneCtrl" placeholder="0812345678" pattern="[0-9]{10}" required
+                     [(ngModel)]="phone">
             </mat-form-field>
             <div>
               <button mat-button matStepperPrevious>Back</button>
@@ -37,13 +42,13 @@
             </div>
           </form>
         </mat-step>
-        <mat-step [stepControl]="firstFormGroup">
-          <form [formGroup]="firstFormGroup">
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
             <ng-template matStepLabel>Fill out your bio</ng-template>
             <p>This will be your summary/objective in the CVs you create. Don't worry, you can always change it</p>
             <mat-form-field appearance="outline">
               <mat-label>Summary</mat-label>
-              <textarea matInput formControlName="firstCtrl" placeholder="Bio" required
+              <textarea matInput formControlName="secondCtrl" placeholder="Bio" required
                         [(ngModel)]="bio"></textarea>
             </mat-form-field>
             <div>

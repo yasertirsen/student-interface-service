@@ -1,12 +1,11 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {LoginRequest} from "../models/login-request-payload";
 import {LoginResponse} from "../models/login-response-payload";
-import {map, tap} from "rxjs/operators";
+import {map} from "rxjs/operators";
 import {LocalStorageService} from "ngx-webstorage";
-import {ToastrService} from "ngx-toastr";
 import {ActivatedRoute, Router} from "@angular/router";
-import {NgbAlert} from "@ng-bootstrap/ng-bootstrap";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-login',
@@ -15,30 +14,24 @@ import {NgbAlert} from "@ng-bootstrap/ng-bootstrap";
 })
 export class LoginComponent implements OnInit {
 
-  @ViewChild('staticAlertSuccess', {static: false}) staticAlertSuccess: NgbAlert;
-  @ViewChild('staticAlertFail', {static: false}) staticAlertFail: NgbAlert;
-
-  registerSuccessMessage: string;
-  loginFailMessage: string = 'Login Failed. Please check your credentials and try again.';
   isError: boolean;
-
   model: LoginRequest = {
     email:'',
     password: ''
   };
 
   constructor(private client: HttpClient, private localStorage: LocalStorageService,
-              private activatedRoute: ActivatedRoute, private router: Router, private toastr: ToastrService) { }
+              private activatedRoute: ActivatedRoute, private router: Router,
+              private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-    setTimeout(() => this.staticAlertSuccess.close(), 10000);
-    setTimeout(() => this.staticAlertFail.close(), 10000);
-
     this.activatedRoute.queryParams
       .subscribe(params => {
         if (params.registered !== undefined && params.registered === 'true') {
-          this.registerSuccessMessage = 'Please check your email inbox to '
-            + 'activate your account before you login!';
+          this._snackBar.open('Please check your email inbox to '
+            + 'activate your account before you login!', 'Close', {
+            duration: 5000
+          });
         }
       });
   }
@@ -52,9 +45,11 @@ export class LoginComponent implements OnInit {
     })).subscribe(data => {
       this.isError = false;
       this.router.navigateByUrl('/home');
-      this.toastr.success('Login Successful');
     }, error => {
       this.isError = true;
+      this._snackBar.open('Login Failed. Please check your credentials and try again.', 'Close', {
+        duration: 5000,
+      });
     });
   }
 

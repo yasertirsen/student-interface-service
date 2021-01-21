@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {RegisterRequest} from "../models/register-request-payload";
-import {ToastrService} from "ngx-toastr";
 import {Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-register',
@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   };
 
   constructor(private client: HttpClient, private router: Router,
-              private toastr: ToastrService) { }
+              private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
@@ -31,7 +31,10 @@ export class RegisterComponent implements OnInit {
           {queryParams: {registered: 'true'}});
       }, error => {
         console.log(error);
-        this.toastr.error('Registration Failed! Please try again');
+        this._snackBar.open('Registration Failed! Please try again', 'Close',
+          {
+            duration: 5000
+          });
       });
   }
 }

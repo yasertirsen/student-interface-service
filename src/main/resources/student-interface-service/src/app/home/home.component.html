@@ -1,9 +1,14 @@
 <app-search-toolbar></app-search-toolbar>
-<div class="container">
+
+<app-mat-spinner-overlay
+  overlay="true"
+  *ngIf="loading === true">
+</app-mat-spinner-overlay>
+
+<div class="container" *ngIf="loading === false">
   <div class="row">
   <div class="offset-2"></div>
   <div class="col-md-12">
-
     <section>
       <div class="member-info">
         <mat-card>
@@ -11,13 +16,14 @@
           <mat-card-title>Dashboard</mat-card-title>
             <hr>
           <mat-card-subtitle>About You</mat-card-subtitle>
-          <img
-            mat-card-image
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/768px-Circle-icons-profile.svg.png"
-            alt="Profile"
-            class="profile-img">
+<!--          <img-->
+<!--            mat-card-image-->
+<!--            src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/768px-Circle-icons-profile.svg.png"-->
+<!--            alt="Profile"-->
+<!--            class="profile-img">-->
+            <mat-icon style="font-size: 150px">account_circle</mat-icon>
 
-            <mat-card-content *ngIf="user.firstName !== null || user.firstName !== undefined">
+            <mat-card-content *ngIf="user.firstName !== null">
               <h3>Welcome back {{user.firstName}}!</h3>
               <p>Become a Prograd by finding the perfect graduate opportunity for you!</p>
             </mat-card-content>
@@ -28,13 +34,25 @@
             <mat-card-content *ngIf="user.profile.course !== null">
               <p><strong>University</strong>: {{user.profile.course.university}}</p>
               <p><strong>Course</strong>: {{user.profile.course.name}}</p>
-              <p *ngIf="user.profile.externalSkills.length !== 0"><strong>Skills</strong>: </p>
-              <ul>
-                <li *ngFor="let skill of user.profile.externalSkills">{{skill.skillName}}</li>
-              </ul>
+              <mat-accordion *ngIf="user.profile.externalSkills.length !== 0">
+                <mat-expansion-panel (opened)="panelOpenState = true"
+                                     (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Skills
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      Your skills based on you course
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <ul>
+                    <li *ngFor="let skill of user.profile.externalSkills">{{skill.skillName}}</li>
+                  </ul>
+                </mat-expansion-panel>
+              </mat-accordion>
             </mat-card-content>
 
-          <mat-card-content *ngIf="user.profile.course === undefined && user.socialUrl === undefined && user.firstName === undefined">
+          <mat-card-content *ngIf="user.profile.course === null && user.socialUrl === null && user.firstName === null">
             <h3>Welcome back!</h3>
             <p>Finish completing your profile to get graduate programs based on your course!</p>
           </mat-card-content>
@@ -68,16 +86,6 @@
     </section>
     </div>
   </div>
-  <ngb-alert #staticAlertFail
-             *ngIf="this.isError"
-             type="danger" (closed)="failMessage = ''">{{ failMessage }}
-
-  </ngb-alert>
-
-  <ngb-alert #staticAlertSuccess
-             *ngIf="this.successMessage !== undefined && this.successMessage.length > 0 && socialUrl !== undefined"
-             type="success" (closed)="successMessage = ''">{{ successMessage }}
-  </ngb-alert>
 </div>
 
 

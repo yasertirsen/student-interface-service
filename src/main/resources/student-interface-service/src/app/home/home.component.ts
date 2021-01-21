@@ -1,11 +1,11 @@
-import {Component, Inject, OnInit, ViewChild} from '@angular/core';
+import {Component,  OnInit} from '@angular/core';
 import {UserModel} from "../models/user.model";
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
+import { MatDialog } from "@angular/material/dialog";
 import {AddLinkedinDialogComponent} from "./add-linkedin-dialog/add-linkedin-dialog.component";
 import {LocalStorageService} from "ngx-webstorage";
 import {UserService} from "../shared/user.service";
-import {NgbAlert} from "@ng-bootstrap/ng-bootstrap";
 import {ActivatedRoute} from "@angular/router";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-home',
@@ -14,19 +14,18 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class HomeComponent implements OnInit {
 
-  @ViewChild('staticAlertSuccess', {static: false}) staticAlertSuccess: NgbAlert;
-  @ViewChild('staticAlertFail', {static: false}) staticAlertFail: NgbAlert;
   socialUrl: string;
   user: UserModel;
   isError: boolean;
-  successMessage: string;
-  failMessage: string;
+  panelOpenState = false;
+  loading = true;
 
   constructor(public dialog: MatDialog, private localStorage: LocalStorageService, private userService: UserService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute, private _snackBar: MatSnackBar) {
     this.userService.getCurrentUser().subscribe(user => {
       this.user = user;
       this.socialUrl = this.user.socialUrl;
+      this.loading = false;
     });
   }
 
@@ -41,7 +40,9 @@ export class HomeComponent implements OnInit {
       this.socialUrl = result;
       this.user.socialUrl = this.socialUrl;
       this.updateUser();
-      this.successMessage = 'LinkedIn profile added successfully'
+      this._snackBar.open('LinkedIn profile added successfully', 'Close', {
+        duration: 5000,
+      });
     });
   }
 
@@ -52,15 +53,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    setTimeout(() => this.staticAlertSuccess.close(), 10000);
-    setTimeout(() => this.staticAlertFail.close(), 10000);
-
-    this.activatedRoute.queryParams
-      .subscribe(params => {
-        if (params.assigned !== undefined && params.assigned === 'true') {
-          this.successMessage = 'Course assigned successfully';
-        }
-      });
   }
 
 }

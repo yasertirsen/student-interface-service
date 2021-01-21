@@ -39,20 +39,6 @@
           </form>
         </mat-card-content>
       </div>
-
-      <div class="login-failed" *ngIf='this.isError'>
-        <p class="login-failed-text"></p>
-      </div>
-      <ngb-alert #staticAlertFail
-                 *ngIf="this.isError"
-                 type="danger"
-                 (closed)="loginFailMessage = ''">{{ loginFailMessage }}
-      </ngb-alert>
-      <ngb-alert #staticAlertSuccess
-                 *ngIf="undefined !== this.registerSuccessMessage && this.registerSuccessMessage.length > 0"
-                 type="success"
-                 (closed)="registerSuccessMessage = ''">{{ registerSuccessMessage }}
-      </ngb-alert>
     </div>
   </div>
 </div>

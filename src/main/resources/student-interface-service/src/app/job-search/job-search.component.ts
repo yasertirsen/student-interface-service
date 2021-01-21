@@ -3,6 +3,7 @@ import {PositionService} from "../shared/position.service";
 import {ActivatedRoute} from "@angular/router";
 import {PositionModel} from "../models/position.model";
 import {NgbAlert} from "@ng-bootstrap/ng-bootstrap";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-job-search',
@@ -11,30 +12,26 @@ import {NgbAlert} from "@ng-bootstrap/ng-bootstrap";
 })
 export class JobSearchComponent implements OnInit {
 
-  @ViewChild('staticAlertNoJobsFound', {static: false}) staticAlertNoJobsFound: NgbAlert;
-
   positions: PositionModel[];
   keywords: string;
   location: string;
-  noJobsFoundMessage: string = 'No jobs found, please try searching with fewer keywords';
-  isError: boolean;
   desc: string;
 
-  constructor(private positionService: PositionService, private activatedRoute: ActivatedRoute) {
+  constructor(private positionService: PositionService, private activatedRoute: ActivatedRoute,
+              private _snackBar: MatSnackBar) {
     this.keywords = this.activatedRoute.snapshot.params.keywords;
     this.location = this.activatedRoute.snapshot.params.location;
     this.positionService.searchJobsApi(this.location, this.keywords).subscribe( positions => {
       this.positions = positions;
-      this.desc = this.positions[0].description;
+      if (this.positions === undefined || this.positions.length === 0) {
+        this._snackBar.open('No jobs found, please try searching with fewer keywords', 'Close', {
+          duration: 5000,
+        });
+      }
     });
-
-    if (this.positions == undefined || this.positions.length == 0) {
-      this.isError = true;
-    }
   }
 
   ngOnInit(): void {
-    setTimeout(() => this.staticAlertNoJobsFound.close(), 10000);
   }
 
 }

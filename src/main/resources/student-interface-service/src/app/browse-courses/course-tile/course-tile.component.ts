@@ -4,10 +4,10 @@ import {MatDialog} from "@angular/material/dialog";
 import {LocalStorageService} from "ngx-webstorage";
 import {UserService} from "../../shared/user.service";
 import {UserModel} from "../../models/user.model";
-import {AddLinkedinDialogComponent} from "../../home/add-linkedin-dialog/add-linkedin-dialog.component";
 import {CourseDialogComponent} from "../course-dialog/course-dialog.component";
 import {Router} from "@angular/router";
 import {SkillModel} from "../../models/skill.model";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-course-tile',
@@ -23,7 +23,7 @@ export class CourseTileComponent implements OnInit {
   isError: boolean;
 
   constructor(private dialog: MatDialog, private localStorage: LocalStorageService, private userService: UserService,
-              private router: Router) {
+              private router: Router, private _snackBar: MatSnackBar) {
     this.userService.getCurrentUser().subscribe(user => {
       this.user = user;
       this.course = this.user.profile.course
@@ -46,13 +46,20 @@ export class CourseTileComponent implements OnInit {
       if(result) {
         this.user.profile.course = course;
         this.updateUser();
-        this.router.navigateByUrl('/home',
-          {queryParams: {assigned: 'true'}});
+        this.redirectTo('/home');
+        this._snackBar.open('Course assigned successfully', 'Close', {
+          duration: 5000,
+        });
       }
     });
   }
 
   updateUser(): void {
     this.userService.addSkills(this.user.profile).subscribe();
+  }
+
+  redirectTo(uri:string){
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+      this.router.navigate([uri]));
   }
 }

@@ -131,65 +131,6 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
         return findUserByEmail(email);
     }
 
-    public List<Position> searchJobsApi(String location, String keywords) {
-        Client careerjetClient = new Client("en_GB");
-        List<Position> positions = new ArrayList<>();
-
-        Map<String, String> args1 = new HashMap<String, String>();
-        args1.put("keywords", keywords);
-        args1.put("location", location);
-
-        args1.put("affid", "d5bae8e1fcebbd44fcda331aead3f612");
-
-        args1.put("user_ip",    "Placeholder");
-        args1.put("user_agent", "Placeholder");
-        args1.put("url", "http://127.0.0.1/result");
-
-        JSONObject results = (JSONObject) careerjetClient.search(args1);
-
-        // A list of jobs is returned
-        if (results.get("type").equals("JOBS")) {
-            JSONArray jobs = (JSONArray) results.get("jobs");
-            //System.out.println("Number of results:" + results.get("hits"));
-            int index = 0;
-
-            while( index < jobs.size()) {
-                JSONObject job = (JSONObject) jobs.get(index);
-                Position position = new Position();
-                position.setTitle(job.get("title").toString());
-                position.setDescription(job.get("description").toString());
-                position.setLocation(job.get("locations").toString());
-                position.setDate(job.get("date").toString());
-                position.setUrl(job.get("url").toString());
-
-                positions.add(position);
-                index++;
-            }
-        }
-
-        // The location was amiguous. Suggestions are returned.
-        // Add the location_id to the query to resolve the ambiguity.
-//        if (results.get("type").equals("LOCATIONS")) {
-//            System.out.println("Narrow down your location ");
-//            System.out.println("Please specify a location");
-//            JSONArray solvelocations = (JSONArray) results.get("solveLocations");
-//            int index = 0;
-//            while(index < solvelocations.size()) {
-//                JSONObject l = (JSONObject) solvelocations.get(index);
-//                System.out.println("NAME        :" + l.get("name"));
-//                System.out.println("LOCATION ID :" + l.get("location_id"));
-//                index++;
-//            }
-//        }
-
-        // An error occured. An error message is returned.
-        if (results.get("type").equals("ERROR")) {
-            System.out.println("An error occurred whilst processing the search query");
-            System.out.println("Error message    :" + results.get("ERROR"));
-        }
-        return positions;
-    }
-
     @Override
     public User updateUser(@RequestBody User user) {
         return progradClient.update(bearerToken, user);

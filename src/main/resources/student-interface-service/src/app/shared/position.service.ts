@@ -18,6 +18,15 @@ export class PositionService {
     return this.http.get<Array<PositionModel>>('http://localhost:8083/searchJobsApi/'+ location + '/' + keywords)
   }
 
+  searchPositions(location:string, keywords: string): Observable<Array<PositionModel>> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.token}`
+    });
+    return this.http.get<Array<PositionModel>>('http://localhost:8083/searchPositions/'+ location + '/' + keywords,
+      {headers: headers})
+  }
+
   getAllJobs(): Observable<Array<PositionModel>> {{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',

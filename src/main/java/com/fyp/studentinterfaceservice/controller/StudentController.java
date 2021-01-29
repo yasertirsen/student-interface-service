@@ -94,11 +94,6 @@ public class StudentController {
         return userService.verifyAccount(token);
     }
 
-    @GetMapping("/searchJobsApi/{location}/{keywords}")
-    public List<Position> searchJobApi(@PathVariable String location, @PathVariable String keywords) {
-        return userService.searchJobsApi(location, keywords);
-    }
-
     @PostMapping("/getSkillsNames")
     public List<String> getSkillsNames(@RequestBody UserProfile profile) {
         return userService.getSkillsNames(profile);

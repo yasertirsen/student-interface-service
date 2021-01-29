@@ -7,12 +7,12 @@
       <span class="spacer"></span>
       <mat-nav-list>
         <a matLine *ngIf="activeRoute === '/login'" routerLink="/register">Register</a>
-        <a matLine *ngIf="activeRoute === '/register'" routerLink="/login">Login</a>
-        <a matLine *ngIf="activeRoute !== '/register' && activeRoute !== '/login'" routerLink="/home">
+        <a matLine *ngIf="activeRoute === '/register' || activeRoute === '/'" routerLink="/login">Login</a>
+        <a matLine *ngIf="activeRoute !== '/register' && activeRoute !== '/login' && activeRoute !== '/'" routerLink="/home">
           <mat-icon>home</mat-icon></a>
-        <a matLine *ngIf="activeRoute !== '/register' && activeRoute !== '/login'" routerLink="/complete-profile">
+        <a matLine *ngIf="activeRoute !== '/register' && activeRoute !== '/login' && activeRoute !== '/'" routerLink="/complete-profile">
           <mat-icon>settings</mat-icon></a>
-        <a matLine *ngIf="activeRoute !== '/register' && activeRoute !== '/login'" routerLink="/jobs">
+        <a matLine *ngIf="activeRoute !== '/register' && activeRoute !== '/login' && activeRoute !== '/'" routerLink="/jobs">
           <mat-icon>work</mat-icon></a>
       </mat-nav-list>
     </mat-toolbar>

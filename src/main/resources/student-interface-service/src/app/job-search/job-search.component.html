@@ -1,12 +1,19 @@
 <app-search-toolbar></app-search-toolbar>
-<div class="body">
+
+<app-mat-spinner-overlay
+  overlay="true"
+  *ngIf="loading === true">
+</app-mat-spinner-overlay>
+
+<div class="body" *ngIf="loading === false">
   <div class="container">
     <div class="row">
       <hr />
       <div class="col-md-10 justify-content-center">
-        <h3><strong>Opportunities on Prograd</strong></h3>
-        <h3><strong>Other opportunities</strong></h3>
+        <h3 *ngIf="jobsApi.length !== 0"><strong>Opportunities on Prograd</strong></h3>
         <app-job-tile [positions]="positions"></app-job-tile>
+        <h3 *ngIf="jobsApi.length !== 0"><strong>Other opportunities</strong></h3>
+        <app-job-tile [positions]="jobsApi"></app-job-tile>
       </div>
     </div>
   </div>

@@ -45,6 +45,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSpinnerOverlayComponent } from './shared/mat-spinner-overlay/mat-spinner-overlay.component';
+import { CompanyProfileComponent } from './company-profile/company-profile.component';
+import { AllCompaniesComponent } from './all-companies/all-companies.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +67,9 @@ import { MatSpinnerOverlayComponent } from './shared/mat-spinner-overlay/mat-spi
     AllJobsComponent,
     ViewJobComponent,
     CvBuilderComponent,
-    MatSpinnerOverlayComponent
+    MatSpinnerOverlayComponent,
+    CompanyProfileComponent,
+    AllCompaniesComponent
   ],
   imports: [
     BrowserModule,

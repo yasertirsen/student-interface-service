@@ -1,0 +1,15 @@
+.company-card {
+  width: 100%;
+  margin: 10px 10px 10px 10px;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.example-header-image {
+  background-image: url('https://static.thenounproject.com/png/88781-200.png');
+  background-size: cover;
+}

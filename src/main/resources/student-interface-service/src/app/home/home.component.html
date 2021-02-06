@@ -16,12 +16,12 @@
           <mat-card-title>Dashboard</mat-card-title>
             <hr>
           <mat-card-subtitle>About You</mat-card-subtitle>
-<!--          <img-->
-<!--            mat-card-image-->
-<!--            src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/768px-Circle-icons-profile.svg.png"-->
-<!--            alt="Profile"-->
-<!--            class="profile-img">-->
-            <mat-icon style="font-size: 150px">account_circle</mat-icon>
+          <img *ngIf="retrievedImage !== null"
+            mat-card-avatar
+            [src]=retrievedImage
+            alt="Profile"
+            class="profile-img">
+            <mat-icon style="font-size: 150px" *ngIf="retrievedImage === null">account_circle</mat-icon>
 
             <mat-card-content *ngIf="user.firstName !== null">
               <h3>Welcome back {{user.firstName}}!</h3>

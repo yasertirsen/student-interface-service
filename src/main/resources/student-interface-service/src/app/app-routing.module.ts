@@ -10,6 +10,7 @@ import {CompleteProfileComponent} from "./complete-profile/complete-profile.comp
 import {AllJobsComponent} from "./all-jobs/all-jobs.component";
 import {ViewJobComponent} from "./shared/view-job/view-job.component";
 import {CvBuilderComponent} from "./cv-builder/cv-builder.component";
+import {AllCompaniesComponent} from "./all-companies/all-companies.component";
 
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
   {
     path: 'dynamic-cv',
     component: CvBuilderComponent
+  },
+  {
+    path: 'companies',
+    component: AllCompaniesComponent
   },
   {
     path: '**',

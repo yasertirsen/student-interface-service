@@ -24,6 +24,15 @@ export class UserService {
     });
   }
 
+  getUserAvatar(userId: number): Observable<any>{
+    return this.http.get('http://localhost:8083/getStudentAvatar/' + userId, {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${this.localStorage.retrieve('token')}`
+      })
+    });
+  }
+
   updateUser(user: UserModel): Observable<any>{
     return this.http.put('http://localhost:8083/update',
       {
@@ -94,6 +103,16 @@ export class UserService {
       {
         headers: new HttpHeaders({
           'Content-type': 'application/json',
+          'Authorization': `Bearer ${this.localStorage.retrieve('token')}`
+        })
+      });
+  }
+
+  uploadImage(imageData: FormData, userId: number): Observable<any> {
+    return this.http.post('http://localhost:8083/upload/image/' + userId,
+      imageData,
+      {
+        headers: new HttpHeaders({
           'Authorization': `Bearer ${this.localStorage.retrieve('token')}`
         })
       });

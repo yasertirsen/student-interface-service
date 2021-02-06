@@ -19,13 +19,21 @@ export class HomeComponent implements OnInit {
   isError: boolean;
   panelOpenState = false;
   loading = true;
+  retrievedImage: any = null;
+  base64Data: any;
 
   constructor(public dialog: MatDialog, private localStorage: LocalStorageService, private userService: UserService,
               private activatedRoute: ActivatedRoute, private _snackBar: MatSnackBar) {
     this.userService.getCurrentUser().subscribe(user => {
       this.user = user;
       this.socialUrl = this.user.socialUrl;
-      this.loading = false;
+      this.userService.getUserAvatar(this.user.studentId).subscribe(image => {
+        if(image.data !== null) {
+          this.base64Data = image.data;
+          this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+        }
+        this.loading = false;
+      });
     });
   }
 

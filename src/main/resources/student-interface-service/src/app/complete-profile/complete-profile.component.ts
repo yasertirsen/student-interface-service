@@ -22,6 +22,7 @@ export class CompleteProfileComponent implements OnInit {
   surname: string;
   phone: string;
   loading: boolean;
+  selectedFile: File;
 
   constructor(private _formBuilder: FormBuilder, private localStorage: LocalStorageService,
               private userService: UserService, private router: Router,
@@ -66,5 +67,28 @@ export class CompleteProfileComponent implements OnInit {
       });
       this.router.navigateByUrl('/home');
     });
+  }
+
+  onFileChanged(event) {
+    this.selectedFile = event.target.files[0];
+  }
+
+  onUpload() {
+    console.log(this.selectedFile);
+
+    const uploadImageData = new FormData();
+    uploadImageData.append('imageFile', this.selectedFile, this.user.username + '_avatar');
+
+    this.userService.uploadImage(uploadImageData, this.user.studentId).subscribe(response => {
+        this._snackBar.open('Image uploaded successfully', 'Close', {
+          duration: 5000
+        });
+
+    },
+      error => {
+        this._snackBar.open('Image uploaded successfully', 'Close', {
+          duration: 5000
+        });
+      });
   }
 }

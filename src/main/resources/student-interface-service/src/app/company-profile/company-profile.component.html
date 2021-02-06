@@ -1,0 +1,25 @@
+<app-search-toolbar></app-search-toolbar>
+
+<app-mat-spinner-overlay
+  overlay="true"
+  *ngIf="loading === true">
+</app-mat-spinner-overlay>
+
+<div class="container" *ngIf="loading === false">
+  <div class="row">
+    <div class="offset-2"></div>
+    <div class="col-md-12">
+      <section>
+        <div class="member-info">
+          <mat-card>
+            <mat-card-content>
+
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+

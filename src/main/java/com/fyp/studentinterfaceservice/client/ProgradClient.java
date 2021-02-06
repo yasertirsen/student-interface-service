@@ -1,14 +1,12 @@
 package com.fyp.studentinterfaceservice.client;
 
-import com.fyp.studentinterfaceservice.model.Course;
-import com.fyp.studentinterfaceservice.model.Position;
-import com.fyp.studentinterfaceservice.model.User;
-import com.fyp.studentinterfaceservice.model.UserProfile;
+import com.fyp.studentinterfaceservice.model.*;
 import feign.Headers;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -74,4 +72,26 @@ public interface ProgradClient {
 
     @GetMapping(value = "/positions/findById", produces = "application/json")
     Position findPositionById(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestParam Long id);
+
+    //Companies endpoint
+
+    @GetMapping("/companies/findByName")
+    Company findCompanyByName(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestParam String name);
+
+    @GetMapping("/companies/all")
+    List<Company> getAllCompanies(@RequestHeader(AUTH_TOKEN) String bearerToken);
+
+    @PostMapping("/companies/review")
+    Review review(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestBody Review review);
+
+    @GetMapping("/companies/reviews")
+    List<Review> getCompanyReviews(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestParam String name);
+
+    //files endpoint
+
+    @PostMapping("/files/upload")
+    ResponseEntity<String> uploadImage(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestBody Image img);
+
+    @GetMapping("/files/getImage")
+    Image getStudentAvatar(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestParam Long userId);
 }

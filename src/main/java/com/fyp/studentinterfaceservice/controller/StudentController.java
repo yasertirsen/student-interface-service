@@ -2,11 +2,8 @@ package com.fyp.studentinterfaceservice.controller;
 
 
 import com.fyp.studentinterfaceservice.exceptions.*;
-import com.fyp.studentinterfaceservice.model.Position;
-import com.fyp.studentinterfaceservice.model.User;
-import com.fyp.studentinterfaceservice.model.UserPrincipal;
+import com.fyp.studentinterfaceservice.model.*;
 import com.fyp.studentinterfaceservice.jwt.JWTTokenProvider;
-import com.fyp.studentinterfaceservice.model.UserProfile;
 import com.fyp.studentinterfaceservice.services.interfaces.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +13,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 import static com.fyp.studentinterfaceservice.constant.SecurityConstants.EXPIRATION_TIME;
@@ -107,6 +100,16 @@ public class StudentController {
     @PutMapping("/addSkills")
     public UserProfile addSkills(@RequestBody UserProfile profile) {
         return userService.addSkills(profile);
+    }
+
+    @PostMapping("/upload/image/{userId}")
+    public ResponseEntity<String> uploadImage(@RequestParam("imageFile") MultipartFile file, @PathVariable Long userId) throws IOException {
+        return userService.uploadImage(file, userId);
+    }
+
+    @GetMapping("/getStudentAvatar/{userId}")
+    public Image getImage(@PathVariable Long userId) {
+        return userService.getImage(userId);
     }
 
 }

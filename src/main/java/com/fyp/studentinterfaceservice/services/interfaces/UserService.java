@@ -5,11 +5,13 @@ import com.fyp.studentinterfaceservice.exceptions.ProgradException;
 import com.fyp.studentinterfaceservice.exceptions.UnauthenticatedUserException;
 import com.fyp.studentinterfaceservice.exceptions.UserNotFoundException;
 import com.fyp.studentinterfaceservice.exceptions.UsernameExistsException;
-import com.fyp.studentinterfaceservice.model.Position;
+import com.fyp.studentinterfaceservice.model.Image;
 import com.fyp.studentinterfaceservice.model.User;
 import com.fyp.studentinterfaceservice.model.UserProfile;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface UserService {
@@ -35,4 +37,8 @@ public interface UserService {
     UserProfile updateProfile(UserProfile profile);
 
     UserProfile addSkills(UserProfile profile);
+
+    ResponseEntity<String> uploadImage(MultipartFile file, Long userId) throws IOException;
+
+    Image getImage(Long userId);
 }

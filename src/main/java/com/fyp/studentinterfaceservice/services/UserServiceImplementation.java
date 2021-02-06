@@ -1,6 +1,5 @@
 package com.fyp.studentinterfaceservice.services;
 
-import com.careerjet.webservice.api.Client;
 import com.fyp.studentinterfaceservice.client.ProgradClient;
 import com.fyp.studentinterfaceservice.exceptions.EmailExistsException;
 import com.fyp.studentinterfaceservice.exceptions.ProgradException;
@@ -10,8 +9,6 @@ import com.fyp.studentinterfaceservice.model.*;
 import com.fyp.studentinterfaceservice.services.interfaces.UserService;
 import com.google.gson.Gson;
 import org.apache.commons.lang3.StringUtils;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,9 +21,13 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.time.Instant;
 import java.util.*;
+import java.util.zip.Deflater;
 
 import static com.fyp.studentinterfaceservice.constant.ErrorConstants.EMAIL_ALREADY_EXISTS;
 import static com.fyp.studentinterfaceservice.constant.ErrorConstants.USERNAME_ALREADY_EXISTS;
@@ -154,6 +155,38 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
         }
         profile.setExternalSkills(skillSet);
         return progradClient.updateProfile(bearerToken, profile);
+    }
+
+    @Override
+    public ResponseEntity<String> uploadImage(MultipartFile file, Long userId) throws IOException {
+        Image img = new Image(file.getOriginalFilename(), file.getContentType(),
+                compressBytes(file.getBytes()), userId);
+        return progradClient.uploadImage(bearerToken, img);
+    }
+
+    @Override
+    public Image getImage(Long userId) {
+        return progradClient.getStudentAvatar(bearerToken, userId);
+    }
+
+    public static byte[] compressBytes(byte[] data) {
+        Deflater deflater = new Deflater();
+        deflater.setInput(data);
+        deflater.finish();
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream(data.length);
+        byte[] buffer = new byte[1024];
+        while (!deflater.finished()) {
+            int count = deflater.deflate(buffer);
+            outputStream.write(buffer, 0, count);
+        }
+        try {
+            outputStream.close();
+        } catch (IOException e) {
+        }
+        System.out.println("Compressed Image Byte Size - " + outputStream.toByteArray().length);
+
+        return outputStream.toByteArray();
     }
 
     @Override

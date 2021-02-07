@@ -1,0 +1,61 @@
+<app-mat-spinner-overlay
+  overlay="true"
+  *ngIf="loading === true">
+</app-mat-spinner-overlay>
+
+<div class="container" *ngIf="loading === false">
+  <div class="row">
+    <div class="offset-2"></div>
+    <div class="col-md-6">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Review {{ company.name }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Type of review</mat-label>
+              <mat-select (selectionChange)="selectedType($event)" required>
+                <mat-option value="P">Positive</mat-option>
+                <mat-option value="N">Negative</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Hired or interviewed only?</mat-label>
+              <mat-select (selectionChange)="selectedHired($event)"  required>
+                <mat-option value="H">Hired</mat-option>
+                <mat-option value="I">Only interviewed</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>How was your experience with {{ company.name }}?</mat-label>
+              <textarea matInput
+                        class="content"
+                        [(ngModel)]="review.content"
+                        placeholder="Write your review here"
+                        required></textarea>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>What questions came up in your interview with {{ company.name }}?</mat-label>
+              <textarea matInput
+                        class="content"
+                        [(ngModel)]="review.questions"
+                        placeholder="Write as many questions as you can"
+                        required></textarea>
+            </mat-form-field>
+          </p>
+        </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
+          </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
+

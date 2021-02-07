@@ -9,8 +9,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Review {
     private long reviewId;
-    private String reviewType;
-    private String reviewContent;
-    private Long companyId;
+    private String type;
+    private String content;
+    private String questions;
+    private boolean hired;
+    private boolean interviewed;
     private Long studentId;
 }

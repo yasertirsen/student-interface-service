@@ -1,0 +1,12 @@
+.content {
+  height: 100px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.mat-card {
+  margin: 10px 10px 10px 10px;
+  width: 100%;
+}

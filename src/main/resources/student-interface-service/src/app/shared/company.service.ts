@@ -3,6 +3,8 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {LocalStorageService} from "ngx-webstorage";
 import {CompanyProfileModel} from "../models/company-profile.model";
+import {UserModel} from "../models/user.model";
+import {ReviewModel} from "../models/review.model";
 
 @Injectable({
   providedIn: 'root'
@@ -39,7 +41,11 @@ export class CompanyService {
   }
 
   updateCompanyProfile(profile : CompanyProfileModel): Observable<any> {
-    return this.http.get('', {
+    return this.http.put('http://localhost:8083/companies/updateProfile', {
+      "profileId": profile.profileId,
+      "hiredStudents": profile.hiredStudents,
+      "reviews": profile.reviews
+    } ,{
       headers: new HttpHeaders({
         'Content-type': 'application/json',
         'Authorization': `Bearer ${this.localStorage.retrieve('token')}`

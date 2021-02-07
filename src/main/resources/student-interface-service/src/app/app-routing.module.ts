@@ -11,6 +11,8 @@ import {AllJobsComponent} from "./all-jobs/all-jobs.component";
 import {ViewJobComponent} from "./shared/view-job/view-job.component";
 import {CvBuilderComponent} from "./cv-builder/cv-builder.component";
 import {AllCompaniesComponent} from "./all-companies/all-companies.component";
+import {CompanyProfileComponent} from "./company-profile/company-profile.component";
+import {ReviewComponent} from "./review/review.component";
 
 const routes: Routes = [
   {
@@ -57,6 +59,14 @@ const routes: Routes = [
   {
     path: 'companies',
     component: AllCompaniesComponent
+  },
+  {
+    path: 'company/:name',
+    component: CompanyProfileComponent
+  },
+  {
+    path: 'review/:name',
+    component: ReviewComponent
   },
   {
     path: '**',

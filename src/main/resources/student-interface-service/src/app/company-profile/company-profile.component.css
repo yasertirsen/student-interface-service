@@ -1,0 +1,23 @@
+mat-card-header{
+  background: #FF9800;
+  padding: 5px;
+  color:white;
+}
+
+.mat-card-subtitle {
+  color: white;
+}
+
+mat-card-content{
+  padding: 10px;
+}
+
+mat-card{
+  padding:0;
+  margin: 10px 10px 10px 10px;
+}
+
+.example-header-image {
+  background-image: url('https://static.thenounproject.com/png/88781-200.png');
+  background-size: cover;
+}

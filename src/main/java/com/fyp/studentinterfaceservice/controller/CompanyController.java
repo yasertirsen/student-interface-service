@@ -1,6 +1,7 @@
 package com.fyp.studentinterfaceservice.controller;
 
 import com.fyp.studentinterfaceservice.model.Company;
+import com.fyp.studentinterfaceservice.model.CompanyProfile;
 import com.fyp.studentinterfaceservice.model.Review;
 import com.fyp.studentinterfaceservice.services.interfaces.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +38,10 @@ public class CompanyController {
     @GetMapping("/rating/{name}")
     public double getRating(@PathVariable String name) {
         return companyService.getRating(name);
+    }
+
+    @PutMapping("/updateProfile")
+    public CompanyProfile updateProfile(@RequestBody CompanyProfile profile) {
+        return companyService.updateProfile(profile);
     }
 }

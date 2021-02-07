@@ -87,6 +87,9 @@ public interface ProgradClient {
     @GetMapping("/companies/reviews")
     List<Review> getCompanyReviews(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestParam String name);
 
+    @PutMapping("/companies/updateProfile")
+    CompanyProfile updateCompanyProfile(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestBody CompanyProfile profile);
+
     //files endpoint
 
     @PostMapping("/files/upload")

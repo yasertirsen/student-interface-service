@@ -47,6 +47,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSpinnerOverlayComponent } from './shared/mat-spinner-overlay/mat-spinner-overlay.component';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
 import { AllCompaniesComponent } from './all-companies/all-companies.component';
+import { ReviewComponent } from './review/review.component';
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -69,38 +71,40 @@ import { AllCompaniesComponent } from './all-companies/all-companies.component';
     CvBuilderComponent,
     MatSpinnerOverlayComponent,
     CompanyProfileComponent,
-    AllCompaniesComponent
+    AllCompaniesComponent,
+    ReviewComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    FontAwesomeModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    LayoutModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatCardModule,
-    NgxWebstorageModule.forRoot(),
-    BrowserAnimationsModule,
-    NgbModule,
-    MatTableModule,
-    MatDialogModule,
-    MatStepperModule,
-    ReactiveFormsModule,
-    MatChipsModule,
-    MatAutocompleteModule,
-    MatSnackBarModule,
-    MatMenuModule,
-    MatExpansionModule,
-    MatProgressSpinnerModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        FontAwesomeModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
+        LayoutModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatListModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatCardModule,
+        NgxWebstorageModule.forRoot(),
+        BrowserAnimationsModule,
+        NgbModule,
+        MatTableModule,
+        MatDialogModule,
+        MatStepperModule,
+        ReactiveFormsModule,
+        MatChipsModule,
+        MatAutocompleteModule,
+        MatSnackBarModule,
+        MatMenuModule,
+        MatExpansionModule,
+        MatProgressSpinnerModule,
+        MatSelectModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

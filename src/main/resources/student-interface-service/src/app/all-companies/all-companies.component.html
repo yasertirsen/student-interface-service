@@ -5,12 +5,15 @@
 
 <div class="container" *ngIf="loading === false">
   <div class="col-md-6" *ngFor="let company of companies">
-    <mat-card class="company-card" (click)="goToLink(company.name)">
+    <mat-card class="company-card" (click)="goToCompanyProfile(company.name)">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>{{company.name}}</mat-card-title>
         <mat-card-subtitle *ngIf="company.address !== null">{{ company.address }}</mat-card-subtitle>
-        <mat-card-subtitle><strong>{{ company.profile.rating }}<mat-icon style="font-size: 18px; justify-content: flex-end">star</mat-icon></strong></mat-card-subtitle>
+        <mat-card-subtitle>
+          {{ company.profile.rating }}
+            <mat-icon style="font-size: 18px; justify-content: flex-end">star</mat-icon>
+        </mat-card-subtitle>
       </mat-card-header>
     </mat-card>
   </div>

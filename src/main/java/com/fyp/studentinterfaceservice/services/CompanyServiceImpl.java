@@ -2,6 +2,7 @@ package com.fyp.studentinterfaceservice.services;
 
 import com.fyp.studentinterfaceservice.client.ProgradClient;
 import com.fyp.studentinterfaceservice.model.Company;
+import com.fyp.studentinterfaceservice.model.CompanyProfile;
 import com.fyp.studentinterfaceservice.model.Review;
 import com.fyp.studentinterfaceservice.services.interfaces.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,12 +45,17 @@ public class CompanyServiceImpl implements CompanyService {
         if(reviews != null && reviews.size() != 0) {
             double positive = 0;
             for(Review review : reviews) {
-                if(review.getReviewType().equalsIgnoreCase("P")) {
+                if(review.getType().equalsIgnoreCase("P")) {
                     positive++;
                 }
             }
             return ((positive / reviews.size()) * 5);
         }
         return 0.0;
+    }
+
+    @Override
+    public CompanyProfile updateProfile(CompanyProfile profile) {
+        return client.updateCompanyProfile(bearerToken, profile);
     }
 }

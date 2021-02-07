@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CompanyService} from "../shared/company.service";
 import {CompanyModel} from "../models/company.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-all-companies',
@@ -12,7 +13,7 @@ export class AllCompaniesComponent implements OnInit {
   companies: CompanyModel[] = [];
   rating: number;
 
-  constructor(private companyService: CompanyService) {
+  constructor(private companyService: CompanyService, private router: Router) {
     this.companyService.getAllCompanies().subscribe(data => {
       for(let company of data) {
         company.profile.rating = this.getRating(company);
@@ -24,8 +25,8 @@ export class AllCompaniesComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  goToLink(name: string) {
-    console.log(name);
+  goToCompanyProfile(name: string) {
+    this.router.navigateByUrl('/company/' + name);
   }
 
   getRating(company: CompanyModel): any {

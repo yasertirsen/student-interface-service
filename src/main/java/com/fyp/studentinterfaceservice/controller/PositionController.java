@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 public class PositionController {
@@ -26,6 +27,11 @@ public class PositionController {
     @GetMapping("/getPosition/{positionId}")
     public Position getPosition(@PathVariable Long positionId) {
         return positionService.getPosition(positionId);
+    }
+
+    @GetMapping("/getCompanyPositions/{companyId}")
+    public List<Position> getCompanyPositions(@PathVariable Long companyId) {
+        return positionService.getCompanyPositions(companyId);
     }
 
     @GetMapping("/searchPositions/{location}/{keywords}")

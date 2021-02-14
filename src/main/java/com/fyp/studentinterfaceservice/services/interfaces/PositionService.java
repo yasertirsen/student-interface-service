@@ -13,4 +13,6 @@ public interface PositionService {
     List<Position> searchPositions(String location, String keywords);
 
     List<Position> searchJobsApi(String location, String keywords);
+
+    List<Position> getCompanyPositions(Long companyId);
 }

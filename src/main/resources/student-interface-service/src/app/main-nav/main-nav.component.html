@@ -1,6 +1,60 @@
 <mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav"
+               fixedInViewport="false"
+               [attr.role]="'dialog'"
+               [mode]="'over'"
+               [opened]="(isHandset$ | async) === true">
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+<!--    <mat-nav-list>-->
+<!--        <a matLine routerLink="/home">-->
+<!--          <mat-icon>home</mat-icon>Home</a>-->
+<!--      <p></p>-->
+<!--        <a matLine routerLink="/complete-profile">-->
+<!--          <mat-icon>settings</mat-icon>Settings</a>-->
+<!--      <p></p>-->
+<!--        <a matLine routerLink="/jobs">-->
+<!--          <mat-icon>work</mat-icon>Jobs</a>-->
+<!--    </mat-nav-list>-->
+
+      <mat-accordion multi>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <strong>Find Jobs</strong>
+            </mat-panel-title>
+            <mat-panel-description>
+              <mat-icon color="primary">work</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+            <a matLine routerLink="/jobs">All Jobs</a>
+          <p></p>
+          <a matLine routerLink="/companies">Companies</a>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <strong>Dashboard</strong>
+            </mat-panel-title>
+            <mat-panel-description>
+              <mat-icon color="primary">account_circle</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <a matLine routerLink="/home">Dashboard</a>
+          <p></p>
+          <a matLine routerLink="/complete-profile">Edit Details</a>
+        </mat-expansion-panel>
+      </mat-accordion>
+  </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="activeRoute !== '/register' && activeRoute !== '/login' && activeRoute !== '/'">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
       <a routerLink="/home" *ngIf="activeRoute !== '/register' && activeRoute !== '/login'">
         <mat-icon>school</mat-icon>
         <span>Prograd</span></a>
@@ -8,12 +62,6 @@
       <mat-nav-list>
         <a matLine *ngIf="activeRoute === '/login'" routerLink="/register">Register</a>
         <a matLine *ngIf="activeRoute === '/register' || activeRoute === '/'" routerLink="/login">Login</a>
-        <a matLine *ngIf="activeRoute !== '/register' && activeRoute !== '/login' && activeRoute !== '/'" routerLink="/home">
-          <mat-icon>home</mat-icon></a>
-        <a matLine *ngIf="activeRoute !== '/register' && activeRoute !== '/login' && activeRoute !== '/'" routerLink="/complete-profile">
-          <mat-icon>settings</mat-icon></a>
-        <a matLine *ngIf="activeRoute !== '/register' && activeRoute !== '/login' && activeRoute !== '/'" routerLink="/jobs">
-          <mat-icon>work</mat-icon></a>
       </mat-nav-list>
     </mat-toolbar>
     <ng-content></ng-content>

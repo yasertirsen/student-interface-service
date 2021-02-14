@@ -109,4 +109,9 @@ public class PositionServiceImpl implements PositionService {
         }
         return positions;
     }
+
+    @Override
+    public List<Position> getCompanyPositions(Long companyId) {
+        return client.getCompanyPositions(bearerToken, companyId);
+    }
 }

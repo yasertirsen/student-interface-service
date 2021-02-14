@@ -73,6 +73,9 @@ public interface ProgradClient {
     @GetMapping(value = "/positions/findById", produces = "application/json")
     Position findPositionById(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestParam Long id);
 
+    @GetMapping(value= "/positions/getCompanyPositions/{companyId}", produces = "application/json")
+    List<Position> getCompanyPositions(@RequestHeader(AUTH_TOKEN) String bearerToken, @PathVariable Long companyId);
+
     //Companies endpoint
 
     @GetMapping("/companies/findByName")

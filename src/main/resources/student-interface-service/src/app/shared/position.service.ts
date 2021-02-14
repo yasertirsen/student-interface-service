@@ -27,6 +27,15 @@ export class PositionService {
       {headers: headers})
   }
 
+  getCompanyPositions(companyId: number): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.token}`
+    });
+    return this.http.get<Array<PositionModel>>('http://localhost:8083/getCompanyPositions/'+ companyId,
+      {headers: headers})
+  }
+
   getAllJobs(): Observable<Array<PositionModel>> {{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',

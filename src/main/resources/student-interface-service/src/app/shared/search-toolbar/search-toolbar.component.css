@@ -14,10 +14,15 @@
   justify-content: center;
 }
 
-mat-toolbar {
-  background: inherit;
-}
+
 
 .search-bar {
   margin: 10px 10px 10px 10px;
+}
+
+mat-form-field.mat-form-field {
+  margin: 10px 10px 10px 10px;
+  padding-top: 20px;
+  font-size: 14px;
+  width: 25%;
 }

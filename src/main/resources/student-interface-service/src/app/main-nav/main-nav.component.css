@@ -30,6 +30,11 @@ mat-toolbar a {
   text-decoration: none;
 }
 
+.sidenav mat-icon {
+  margin: 10px 10px 10px 10px;
+  color: dimgray;
+}
+
 mat-icon {
-  margin-right: 15px;
+  margin: 10px 10px 10px 10px;
 }

@@ -9,9 +9,7 @@ import {LocalStorageService} from "ngx-webstorage";
 import {UserService} from "../shared/user.service";
 import {UserModel} from "../models/user.model";
 import {ProjectModel} from "../models/project.model";
-import {ProfileModel} from "../models/profile.model";
 import {SkillModel} from "../models/skill.model";
-import {Router} from "@angular/router";
 import {ResumeService} from "../shared/resume.service";
 
 @Component({
@@ -20,6 +18,7 @@ import {ResumeService} from "../shared/resume.service";
   styleUrls: ['./cv-builder.component.css']
 })
 export class CvBuilderComponent implements OnInit {
+  loading = true;
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -69,7 +68,8 @@ export class CvBuilderComponent implements OnInit {
       this.userService.getSkillsNames(this.user.profile).subscribe(skills => {
         this.allSkills = skills
         this.skills.push(this.allSkills[0])
-      })
+        this.loading = false;
+      });
     });
   }
 
@@ -154,6 +154,7 @@ export class CvBuilderComponent implements OnInit {
   }
 
   onDone() {
+    this.loading = true;
     if(this.project.title !== null || this.project.description !== null) {
       this.user.profile.projects.push(this.project);
     }
@@ -161,7 +162,7 @@ export class CvBuilderComponent implements OnInit {
       for(let project of this.user.profile.projects) {
         if(!this.projects.includes(project.title)) {
           let index = this.user.profile.projects.indexOf(project);
-          this.user.profile.projects.splice(index, 1);
+          this.user.profile.projects.splice(index, this.user.profile.projects.length);
         }
       }
     }
@@ -172,6 +173,7 @@ export class CvBuilderComponent implements OnInit {
       this.user.profile.externalSkills.push(this.skill);
     }
     this.resumeService.generateDynamicCv(this.user).subscribe(res => {
+      this.loading = false;
       const fileURL = URL.createObjectURL(res);
       window.open(fileURL, '_blank');
     });

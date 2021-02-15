@@ -1,5 +1,6 @@
 package com.fyp.studentinterfaceservice.utilities;
 
+import com.fyp.studentinterfaceservice.client.ProgradClient;
 import com.fyp.studentinterfaceservice.model.Project;
 import com.fyp.studentinterfaceservice.model.User;
 import com.itextpdf.text.*;
@@ -7,20 +8,17 @@ import com.itextpdf.text.log.Logger;
 import com.itextpdf.text.log.LoggerFactory;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.LineSeparator;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.ArrayList;
-
-import static com.itextpdf.text.html.HtmlTags.IMG;
 
 public class PDFGenerator {
 
     private static Logger logger = LoggerFactory.getLogger(PDFGenerator.class);
 
-    public static ByteArrayInputStream generateDynamicCv(ArrayList<String> skills, User user) {
+    public static byte[] generateDynamicCv(ArrayList<String> skills, User user) {
         Document document = new Document();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
 
@@ -107,6 +105,6 @@ public class PDFGenerator {
             logger.error(e.toString());
         }
 
-        return new ByteArrayInputStream(out.toByteArray());
+        return out.toByteArray();
     }
 }

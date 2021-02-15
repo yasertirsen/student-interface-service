@@ -100,4 +100,7 @@ public interface ProgradClient {
 
     @GetMapping("/files/getImage")
     Image getStudentAvatar(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestParam Long userId);
+
+    @PostMapping(value = "/files/saveCv")
+    ResponseEntity<String> saveResume(@RequestHeader(AUTH_TOKEN) String bearerToken, Resume resume);
 }

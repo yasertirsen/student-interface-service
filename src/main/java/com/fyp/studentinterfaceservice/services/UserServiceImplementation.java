@@ -169,7 +169,7 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
         return progradClient.getStudentAvatar(bearerToken, userId);
     }
 
-    public static byte[] compressBytes(byte[] data) {
+    public byte[] compressBytes(byte[] data) {
         Deflater deflater = new Deflater();
         deflater.setInput(data);
         deflater.finish();
@@ -182,9 +182,9 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
         }
         try {
             outputStream.close();
-        } catch (IOException e) {
+        } catch (IOException ignored) {
         }
-        System.out.println("Compressed Image Byte Size - " + outputStream.toByteArray().length);
+        System.out.println("Compressed File Byte Size - " + outputStream.toByteArray().length);
 
         return outputStream.toByteArray();
     }

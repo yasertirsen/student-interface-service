@@ -1,5 +1,7 @@
 package com.fyp.studentinterfaceservice.services;
 
+import com.fyp.studentinterfaceservice.client.ProgradClient;
+import com.fyp.studentinterfaceservice.model.Resume;
 import com.fyp.studentinterfaceservice.model.Skill;
 import com.fyp.studentinterfaceservice.model.User;
 import com.fyp.studentinterfaceservice.services.interfaces.ResumeService;
@@ -11,15 +13,23 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.zip.Deflater;
+
+import static com.fyp.studentinterfaceservice.client.ProgradClient.bearerToken;
 
 @Service
 public class ResumeServiceImpl implements ResumeService {
 
     private final UserServiceImplementation userService;
+    private final ProgradClient client;
 
-    public ResumeServiceImpl(UserServiceImplementation userService) {
+    public ResumeServiceImpl(UserServiceImplementation userService, ProgradClient client) {
         this.userService = userService;
+        this.client = client;
     }
 
     @Override
@@ -39,7 +49,11 @@ public class ResumeServiceImpl implements ResumeService {
                 }
             }
 
-            ByteArrayInputStream bis = PDFGenerator.generateDynamicCv(skills, user);
+            byte[] data = PDFGenerator.generateDynamicCv(skills, user);
+
+            ByteArrayInputStream bis = new ByteArrayInputStream(data);
+            Resume resume = new Resume(user.getUsername() + "_CV" , userService.compressBytes(data), user.getStudentId());
+            client.saveResume(bearerToken, resume);
 
             HttpHeaders headers = new HttpHeaders();
             headers.add("Content-Disposition", "inline; filename=" + user.getUsername() +"_CV.pdf");
@@ -50,4 +64,5 @@ public class ResumeServiceImpl implements ResumeService {
                     .contentType(MediaType.APPLICATION_PDF)
                     .body(new InputStreamResource(bis));
     }
+
 }

@@ -43,13 +43,21 @@ public class PositionServiceImpl implements PositionService {
         for(Position position : positions) {
             Matcher matcher = Pattern.compile(pattern).matcher(position.getTitle().toLowerCase());
             if(matcher.find()) {
-                matchedPositions.add(position);
+                if(location.equalsIgnoreCase("undefined"))
+                    matchedPositions.add(position);
+                else {
+                    if(position.getLocation().equalsIgnoreCase(location))
+                        matchedPositions.add(position);
+                }
             }
         }
         return matchedPositions;
     }
 
     public List<Position> searchJobsApi(String location, String keywords) {
+        if(location.equalsIgnoreCase("undefined")) {
+            location = "";
+        }
         Client careerjetClient = new Client("en_GB");
         List<Position> positions = new ArrayList<>();
 

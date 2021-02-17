@@ -37,6 +37,10 @@ const routes: Routes = [
     component: JobSearchComponent
   },
   {
+    path: 'search/:keywords',
+    component: JobSearchComponent
+  },
+  {
     path: 'courses',
     component: BrowseCoursesComponent
   },

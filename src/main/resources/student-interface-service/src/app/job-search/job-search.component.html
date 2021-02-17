@@ -10,7 +10,7 @@
     <div class="row">
       <hr />
       <div class="col-md-10 justify-content-center">
-        <h3 *ngIf="jobsApi.length !== 0"><strong>Opportunities on Prograd</strong></h3>
+        <h3 *ngIf="positions.length !== 0"><strong>Opportunities on Prograd</strong></h3>
         <app-job-tile [positions]="positions"></app-job-tile>
         <h3 *ngIf="jobsApi.length !== 0"><strong>Other opportunities</strong></h3>
         <app-job-tile [positions]="jobsApi"></app-job-tile>

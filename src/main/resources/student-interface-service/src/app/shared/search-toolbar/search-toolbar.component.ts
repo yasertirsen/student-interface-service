@@ -18,21 +18,13 @@ export class SearchToolbarComponent implements OnInit {
   }
 
   onSearch() {
-    this.router.events.subscribe((event) => {
-      if(event instanceof NavigationEnd && event.url) {
-        this.activeRoute = event.url;
-      }
-    });
-    // if(this.activeRoute !== '/search') {
-    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-      this.router.navigateByUrl('/search/' + this.location + '/' + this.keywords));
-    // }
-    // else {
-    //   this.activatedRoute.params.subscribe(params => {
-    //     this.location = params['location'];
-    //     this.keywords = params['keywords'];
-    //   });
-      // window.location.reload();
-    // }
+    if(this.location === undefined){
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+        this.router.navigateByUrl('/search/' + this.keywords));
+    }
+    else {
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+        this.router.navigateByUrl('/search/' + this.location + '/' + this.keywords));
+    }
   }
 }

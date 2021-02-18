@@ -16,4 +16,8 @@ public class UserProfile {
     private Course course;
     private Set<Skill> externalSkills;
     private List<Project> projects;
+    private List<Experience> experiences;
+    private double averageGrade;
+    private String startCourse;
+    private String endCourse;
 }

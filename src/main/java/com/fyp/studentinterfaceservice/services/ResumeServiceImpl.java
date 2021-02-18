@@ -43,13 +43,7 @@ public class ResumeServiceImpl implements ResumeService {
                 userService.updateUser(userDb);
             }
 
-            if(!user.getProfile().getExternalSkills().isEmpty()) {
-                for(Skill skill : user.getProfile().getExternalSkills()) {
-                    skills.add(skill.getSkillName());
-                }
-            }
-
-            byte[] data = PDFGenerator.generateDynamicCv(skills, user);
+            byte[] data = PDFGenerator.generateDynamicCv(user);
 
             ByteArrayInputStream bis = new ByteArrayInputStream(data);
             Resume resume = new Resume(user.getUsername() + "_CV" , userService.compressBytes(data), user.getStudentId());

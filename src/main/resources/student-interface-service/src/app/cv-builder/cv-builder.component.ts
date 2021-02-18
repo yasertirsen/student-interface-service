@@ -29,22 +29,34 @@ export class CvBuilderComponent implements OnInit {
   separatorKeysCodes: number[] = [ENTER, COMMA];
   skillsCtrl = new FormControl();
   projectsCtrl = new FormControl();
+  experienceCtrl = new FormControl();
+  moduleCtrl = new FormControl();
   filteredSkills: Observable<string[]>;
   filteredProjects: Observable<string[]>;
+  filteredExperiences: Observable<string[]>;
+  filteredModules: Observable<string[]>;
   skills: string[] = [];
   allSkills: string[] = [];
   projects: string[] = [];
   allProjects: string[] = [];
+  experiences: string[] = [];
+  allExperiences: string[] = [];
+  modules: string[] = [];
+  allModules: string[] = [];
   user: UserModel;
   project: ProjectModel = {
     projectId: 0,
     title: null,
-    description: null
+    description: null,
+    date: null
   };
   skill: SkillModel;
+  averageGrade: number;
 
   @ViewChild('skillInput') skillInput: ElementRef<HTMLInputElement>;
   @ViewChild('projectInput') projectInput: ElementRef<HTMLInputElement>;
+  @ViewChild('experienceInput') experienceInput: ElementRef<HTMLInputElement>;
+  @ViewChild('moduleInput') moduleInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
   constructor(private _formBuilder: FormBuilder, private localStorage: LocalStorageService, private userService: UserService,
@@ -53,6 +65,10 @@ export class CvBuilderComponent implements OnInit {
       map((skill: string | null) => skill ? this._filter(skill) : this.allSkills.slice()));
     this.filteredProjects = this.projectsCtrl.valueChanges.pipe(
       map((project: string | null) => project ? this._projectsFilter(project) : this.allProjects.slice()));
+    this.filteredExperiences = this.experienceCtrl.valueChanges.pipe(
+      map((experience: string | null) => experience ? this._experiencesFilter(experience) : this.allExperiences.slice()));
+    this.filteredModules = this.moduleCtrl.valueChanges.pipe(
+      map((module: string | null) => module ? this._moduleFilter(module) : this.allModules.slice()));
     this.userService.getCurrentUser().subscribe(user => {
       this.user = user;
       if(this.user.profile.projects === undefined) {
@@ -63,6 +79,21 @@ export class CvBuilderComponent implements OnInit {
           this.allProjects.push(project.title);
         }
         this.projects.push(this.allProjects[0]);
+      }
+      if(this.user.profile.experiences === undefined) {
+        this.user.profile.experiences = [];
+      }
+      else {
+        for(let experience of this.user.profile.experiences) {
+          this.allExperiences.push(experience.role + ' - ' + experience.company);
+        }
+        this.experiences.push(this.allExperiences[0]);
+      }
+      if(this.user.profile.course !== null) {
+        for(let module of this.user.profile.course.modules) {
+          this.allModules.push(module.name);
+        }
+        this.modules.push(this.allModules[0]);
       }
       this.summary = this.user.profile.bio;
       this.userService.getSkillsNames(this.user.profile).subscribe(skills => {
@@ -99,7 +130,7 @@ export class CvBuilderComponent implements OnInit {
   }
 
   removeProject(project: string): void {
-    const index = this.skills.indexOf(project);
+    const index = this.projects.indexOf(project);
 
     if (index >= 0) {
       this.projects.splice(index, 1);
@@ -110,6 +141,64 @@ export class CvBuilderComponent implements OnInit {
     this.projects.push(event.option.viewValue);
     this.projectInput.nativeElement.value = '';
     this.projectsCtrl.setValue(null);
+  }
+
+  addExperience(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    if ((value || '').trim()) {
+      this.experiences.push(value.trim());
+    }
+
+    if (input) {
+      input.value = '';
+    }
+
+    this.experienceCtrl.setValue(null);
+  }
+
+  removeExperience(experience: string): void {
+    const index = this.experiences.indexOf(experience);
+
+    if (index >= 0) {
+      this.experiences.splice(index, 1);
+    }
+  }
+
+  selectedExperience(event: MatAutocompleteSelectedEvent): void {
+    this.experiences.push(event.option.viewValue);
+    this.experienceInput.nativeElement.value = '';
+    this.experienceCtrl.setValue(null);
+  }
+
+  addModule(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    if ((value || '').trim()) {
+      this.modules.push(value.trim());
+    }
+
+    if (input) {
+      input.value = '';
+    }
+
+    this.moduleCtrl.setValue(null);
+  }
+
+  removeModule(module: string): void {
+    const index = this.modules.indexOf(module);
+
+    if (index >= 0) {
+      this.modules.splice(index, 1);
+    }
+  }
+
+  selectedModule(event: MatAutocompleteSelectedEvent): void {
+    this.modules.push(event.option.viewValue);
+    this.moduleInput.nativeElement.value = '';
+    this.moduleCtrl.setValue(null);
   }
 
   addSkill(event: MatChipInputEvent): void {
@@ -153,6 +242,18 @@ export class CvBuilderComponent implements OnInit {
     return this.allProjects.filter(project => project.toLowerCase().indexOf(filterValue) === 0);
   }
 
+  private _experiencesFilter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.allExperiences.filter(experience => experience.toLowerCase().indexOf(filterValue) === 0);
+  }
+
+  private _moduleFilter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.allExperiences.filter(experience => experience.toLowerCase().indexOf(filterValue) === 0);
+  }
+
   onDone() {
     this.loading = true;
     if(this.project.title !== null || this.project.description !== null) {
@@ -172,10 +273,26 @@ export class CvBuilderComponent implements OnInit {
       this.skill = {skillId: 0, skillName: skill, industry: null}
       this.user.profile.externalSkills.push(this.skill);
     }
+    for(let experience of this.user.profile.experiences) {
+      if(!this.experiences.includes(experience.role + " - " + experience.company)) {
+        let index = this.user.profile.experiences.indexOf(experience);
+        this.user.profile.experiences.splice(index, 1);
+      }
+    }
+    for(let module of this.user.profile.course.modules) {
+      if(!this.modules.includes(module.name)) {
+        let index = this.user.profile.course.modules.indexOf(module);
+        this.user.profile.course.modules.splice(index, this.user.profile.course.modules.length);
+      }
+    }
     this.resumeService.generateDynamicCv(this.user).subscribe(res => {
-      this.loading = false;
       const fileURL = URL.createObjectURL(res);
       window.open(fileURL, '_blank');
     });
+    this.loading = false;
+  }
+
+  onSkip() {
+    this.user.profile.course.modules = [];
   }
 }

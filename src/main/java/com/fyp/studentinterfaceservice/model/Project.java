@@ -11,4 +11,5 @@ public class Project {
     private Long projectId;
     private String title;
     private String description;
+    private String date;
 }

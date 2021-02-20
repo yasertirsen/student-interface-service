@@ -62,7 +62,7 @@ export class CompleteProfileComponent implements OnInit {
   updateUser(): void {
     this.userService.updateUser(this.user).subscribe(user => {
       this.user = user;
-      this._snackBar.open('Profile updated, now you can generate dynamic CVs!', 'Close', {
+      this._snackBar.open('Profile updated successfully', 'Close', {
         duration: 5000
       });
       this.router.navigateByUrl('/home');
@@ -74,21 +74,16 @@ export class CompleteProfileComponent implements OnInit {
   }
 
   onUpload() {
-    console.log(this.selectedFile);
 
     const uploadImageData = new FormData();
     uploadImageData.append('imageFile', this.selectedFile, this.user.username + '_avatar');
 
     this.userService.uploadImage(uploadImageData, this.user.studentId).subscribe(response => {
-        this._snackBar.open('Image uploaded successfully', 'Close', {
-          duration: 5000
-        });
+
 
     },
       error => {
-        this._snackBar.open('Image uploaded successfully', 'Close', {
-          duration: 5000
-        });
+      console.log(error)
       });
   }
 }

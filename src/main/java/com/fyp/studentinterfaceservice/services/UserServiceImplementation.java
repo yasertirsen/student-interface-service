@@ -184,7 +184,6 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
             outputStream.close();
         } catch (IOException ignored) {
         }
-        System.out.println("Compressed File Byte Size - " + outputStream.toByteArray().length);
 
         return outputStream.toByteArray();
     }

@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Add Project</h1>
+<div class="content" mat-dialog-content>
+  <mat-form-field class="full-width" appearance="outline">
+    <mat-label>Title</mat-label>
+    <input matInput [(ngModel)]="project.title">
+  </mat-form-field>
+  <mat-form-field class="full-width" appearance="outline">
+    <mat-label>Description</mat-label>
+    <textarea matInput [(ngModel)]="project.description"></textarea>
+  </mat-form-field>
+  <mat-form-field class="full-width" appearance="outline">
+    <mat-label>Month</mat-label>
+    <mat-select [(ngModel)]="selectedMonth" name="month">
+      <mat-option *ngFor="let month of months" [value]="month.value">
+        {{month.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="full-width" appearance="outline">
+    <mat-label>Year</mat-label>
+    <input matInput [(ngModel)]="year">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button (click)="onAdd()" cdkFocusInitial>Add Project</button>
+</div>

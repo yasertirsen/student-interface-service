@@ -1,0 +1,111 @@
+<app-mat-spinner-overlay
+  overlay="true"
+  *ngIf="loading === true">
+</app-mat-spinner-overlay>
+
+<div class="container" *ngIf="loading === false">
+  <div class="row">
+    <div class="offset-2"></div>
+    <div class="col-md-12">
+      <mat-card class="full-width">
+        <mat-card-header>
+          <img *ngIf="retrievedImage !== null"
+               mat-card-avatar
+               [src]=retrievedImage
+               alt="Profile"
+               class="profile-img">
+          <!--                <mat-icon style="font-size: 150px">account_circle</mat-icon>-->
+          <mat-card-title>
+            <div class="center">
+              <strong>
+              {{ user.firstName }} {{user.surname}}
+              </strong>
+            </div>
+          </mat-card-title>
+        </mat-card-header>
+        <hr>
+        <mat-card-content>
+
+          <div class="center-flat">
+            <span class="user-details">
+            <mat-icon>email</mat-icon> {{user.email}}
+          </span>
+            <span class="user-details">
+            <mat-icon>phone</mat-icon> {{user.phone}}
+          </span>
+            <span class="user-details">
+            <mat-icon>link</mat-icon> {{user.socialUrl}}
+          </span>
+          </div>
+
+          <div class="center">
+            <button mat-fab color="primary"><mat-icon>download</mat-icon></button>
+          </div>
+          <hr>
+          <section>
+            <div class="section-header">
+              <div class="flex-container">
+                <h2>About Me</h2>
+                <button mat-icon-button color="primary" (click)="openSummaryDialog()"><mat-icon>edit</mat-icon></button>
+              </div>
+            </div>
+          </section>
+          <span>{{ user.profile.bio }}</span>
+          <hr>
+
+          <section>
+            <div class="section-header">
+              <div class="flex-container">
+                <h2>Education</h2>
+                <button mat-icon-button color="primary"><mat-icon>edit</mat-icon></button>
+              </div>
+            </div>
+          </section>
+          <span><strong>{{ user.profile.course.name}} - {{ user.profile.course.university }}</strong></span><br>
+          <span>{{ user.profile.startCourse}} - {{ user.profile.endCourse }}</span>
+          <hr>
+
+          <section>
+            <div class="section-header">
+              <div class="flex-container">
+                <h2>Skills</h2>
+                <button mat-icon-button color="primary"><mat-icon>edit</mat-icon></button>
+              </div>
+            </div>
+          </section>
+          <ul *ngFor="let skill of user.profile.externalSkills">
+            <li><strong>{{ skill.skillName}}</strong></li>
+          </ul>
+          <hr>
+
+          <section>
+            <div class="section-header">
+              <div class="flex-container">
+                <h2>Projects</h2>
+                <button mat-icon-button color="primary" (click)="openProjectDialog()"><mat-icon>add</mat-icon></button>
+              </div>
+            </div>
+          </section>
+          <ul *ngFor="let project of user.profile.projects">
+            <li><strong>{{ project.title }} - {{ project.date }}</strong></li>
+            {{ project.description }}
+          </ul>
+          <hr>
+
+          <section>
+            <div class="section-header">
+              <div class="flex-container">
+                <h2>Experience</h2>
+                <button mat-icon-button color="primary" (click)="openExperienceDialog()"><mat-icon>add</mat-icon></button>
+              </div>
+            </div>
+          </section>
+          <ul *ngFor="let experience of user.profile.experiences">
+            <li><strong>{{ experience.role }} - {{experience.company}}</strong></li>
+            {{ experience.description }}
+          </ul>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

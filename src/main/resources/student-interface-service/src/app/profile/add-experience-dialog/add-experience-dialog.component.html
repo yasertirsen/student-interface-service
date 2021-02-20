@@ -1,0 +1,59 @@
+<h1 mat-dialog-title>Add Experience</h1>
+<div class="content" mat-dialog-content>
+  <mat-form-field class="full-width" appearance="outline">
+    <mat-label>Role</mat-label>
+    <input matInput [(ngModel)]="experience.role" required>
+  </mat-form-field>
+  <mat-form-field class="full-width" appearance="outline">
+    <mat-label>Company</mat-label>
+    <input matInput [(ngModel)]="experience.company" required>
+  </mat-form-field>
+  <mat-form-field class="full-width" appearance="outline">
+    <mat-label>Location</mat-label>
+    <input matInput [(ngModel)]="experience.location" required>
+  </mat-form-field>
+  <mat-form-field class="full-width" appearance="outline">
+    <mat-label>Description</mat-label>
+    <textarea matInput [(ngModel)]="experience.description" required></textarea>
+  </mat-form-field>
+  <table class="full-width">
+    <td><mat-form-field class="full-width" appearance="outline">
+      <mat-label>Start Month</mat-label>
+      <mat-select [(ngModel)]="beginMonth" name="month" required>
+        <mat-option *ngFor="let month of months" [value]="month.value">
+          {{month.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field></td>
+    <td><mat-form-field class="full-width" appearance="outline">
+      <mat-label>Start Year</mat-label>
+      <input matInput [(ngModel)]="beginYear" required>
+    </mat-form-field></td>
+  </table>
+  <table class="full-width">
+    <td><mat-form-field class="full-width" appearance="outline">
+      <mat-label>End Month</mat-label>
+      <mat-select [(ngModel)]="endMonth" name="month" required>
+        <mat-option *ngFor="let month of months" [value]="month.value">
+          {{month.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field></td>
+    <td><mat-form-field class="full-width" appearance="outline">
+      <mat-label>End Year</mat-label>
+      <input matInput [(ngModel)]="endYear" required>
+    </mat-form-field></td>
+  </table>
+  <mat-form-field class="full-width" appearance="outline">
+    <mat-label>Voluntary Experience</mat-label>
+    <mat-select [(ngModel)]="selectedOption" name="option" required>
+      <mat-option *ngFor="let option of options" [value]="option.value">
+        {{option.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button (click)="onAdd()" cdkFocusInitial>Add Experience</button>
+</div>

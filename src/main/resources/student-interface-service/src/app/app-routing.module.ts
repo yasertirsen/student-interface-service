@@ -74,7 +74,7 @@ const routes: Routes = [
     component: ReviewComponent
   },
   {
-    path: 'profile',
+    path: 'settings',
     component: ProfileComponent
   },
   {

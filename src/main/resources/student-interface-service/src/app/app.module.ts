@@ -52,6 +52,9 @@ import {MatSelectModule} from "@angular/material/select";
 import { ProfileComponent } from './profile/profile.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { EditSummaryComponent } from './profile/edit-summary/edit-summary.component';
+import { AddProjectDialogComponent } from './profile/add-project-dialog/add-project-dialog.component';
+import { AddExperienceDialogComponent } from './profile/add-experience-dialog/add-experience-dialog.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +79,10 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     CompanyProfileComponent,
     AllCompaniesComponent,
     ReviewComponent,
-    ProfileComponent
+    ProfileComponent,
+    EditSummaryComponent,
+    AddProjectDialogComponent,
+    AddExperienceDialogComponent
   ],
     imports: [
         BrowserModule,

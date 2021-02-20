@@ -7,9 +7,6 @@
   <div class="row">
     <div class="offset-2"></div>
     <div class="col-md-12">
-      <h3>Choose profile picture</h3>
-      <input type="file" (change)="onFileChanged($event)">
-      <button mat-button color="primary" (click)="onUpload()">Upload</button>
       <mat-vertical-stepper [linear]="isLinear" #stepper>
         <mat-step [stepControl]="firstFormGroup">
           <form [formGroup]="firstFormGroup">
@@ -42,6 +39,18 @@
             <div>
               <button mat-button matStepperPrevious>Back</button>
               <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Choose a profile picture</ng-template>
+              <mat-label>Choose a profile picture</mat-label>
+            <br>
+              <input type="file" (change)="onFileChanged($event)">
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext (click)="onUpload()">Next</button>
             </div>
           </form>
         </mat-step>

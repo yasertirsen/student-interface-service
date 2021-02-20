@@ -1,0 +1,57 @@
+.profile-img {
+  height: 100px;
+  width: 100px;
+}
+
+.full-width {
+  width: 100% !important;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.mat-card-header {
+  margin: 20px 20px 20px 20px;
+}
+
+.user-details {
+  margin-right: 50px;
+  padding-left: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mat-card {
+  margin: 20px 20px 20px 20px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+.center-flat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-details mat-icon {
+  margin-right: 5px;
+}
+
+.section-header {
+  display: table-cell;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+

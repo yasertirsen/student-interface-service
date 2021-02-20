@@ -45,18 +45,20 @@ export class HomeComponent implements OnInit {
       });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.socialUrl = result;
-      this.user.socialUrl = this.socialUrl;
-      this.updateUser();
-      this._snackBar.open('LinkedIn profile added successfully', 'Close', {
-        duration: 5000,
-      });
+      if(result !== null && result !== '') {
+        this.socialUrl = result;
+        this.user.socialUrl = this.socialUrl;
+        this.updateUser();
+      }
     });
   }
 
   updateUser(): void {
     this.userService.updateUser(this.user).subscribe(user => {
       this.user = user;
+      this._snackBar.open('LinkedIn profile added successfully', 'Close', {
+        duration: 5000,
+      });
     });
   }
 

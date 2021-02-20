@@ -13,6 +13,7 @@ import {CvBuilderComponent} from "./cv-builder/cv-builder.component";
 import {AllCompaniesComponent} from "./all-companies/all-companies.component";
 import {CompanyProfileComponent} from "./company-profile/company-profile.component";
 import {ReviewComponent} from "./review/review.component";
+import {ProfileComponent} from "./profile/profile.component";
 
 const routes: Routes = [
   {
@@ -71,6 +72,10 @@ const routes: Routes = [
   {
     path: 'review/:name',
     component: ReviewComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
   },
   {
     path: '**',

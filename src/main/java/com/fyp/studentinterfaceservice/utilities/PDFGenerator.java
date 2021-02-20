@@ -45,11 +45,13 @@ public class PDFGenerator {
             title.add(lsPar);
             document.add(title);
 
-            document.add(createHeading("Summary"));
-            Paragraph summaryContent = initializeContent();
-            summaryContent.add(new Chunk(user.getProfile().getBio() + "\n", regular));
-            summaryContent.add(lsPar);
-            document.add(summaryContent);
+            if(user.getProfile().getBio() != null) {
+                document.add(createHeading("Summary"));
+                Paragraph summaryContent = initializeContent();
+                summaryContent.add(new Chunk(user.getProfile().getBio() + "\n", regular));
+                summaryContent.add(lsPar);
+                document.add(summaryContent);
+            }
 
             if(hasCourse) {
                 document.add(createHeading("Education"));
@@ -62,7 +64,7 @@ public class PDFGenerator {
                 document.add(educationContent);
             }
 
-            if (user.getProfile().getProjects() != null) {
+            if (!user.getProfile().getProjects().isEmpty()) {
                 document.add(createHeading("Projects"));
                 Paragraph projectsContent = initializeContent();
                 for (Project project : user.getProfile().getProjects()) {
@@ -74,7 +76,7 @@ public class PDFGenerator {
                 document.add(projectsContent);
             }
 
-            if(user.getProfile().getExperiences() != null) {
+            if(!user.getProfile().getExperiences().isEmpty()) {
                 document.add(createHeading("Experience"));
                 Paragraph experienceContent = initializeContent();
                 for(Experience experience : user.getProfile().getExperiences()) {

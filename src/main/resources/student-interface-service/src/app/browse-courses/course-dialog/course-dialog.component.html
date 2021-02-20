@@ -1,14 +1,15 @@
 <h1 mat-dialog-title>{{ data.course.name }}</h1>
-<div mat-dialog-content>
+<mat-dialog-content>
   <p>University: <strong>{{ data.course.university }}</strong></p>
   <p>Level: <strong>{{ data.course.level }}</strong></p>
-  <h3><strong>Skills:</strong></h3>
+  <h3><strong>Modules:</strong></h3>
   <ul>
-    <li *ngFor="let skill of skillNames">{{skill}}</li>
+    <li *ngFor="let module of data.course.modules">{{module.name}}</li>
   </ul>
+
   <p>You can assign this course to yourself by clicking <strong>Assign</strong></p>
-</div>
-<div mat-dialog-actions>
+</mat-dialog-content>
+<mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No Thanks</button>
   <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Assign</button>
-</div>
+</mat-dialog-actions>

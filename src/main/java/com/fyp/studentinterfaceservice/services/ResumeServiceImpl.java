@@ -38,7 +38,7 @@ public class ResumeServiceImpl implements ResumeService {
             User userDb = userService.findUserByEmail(user.getEmail());
             ArrayList<String> skills = new ArrayList<>();
 
-            if(userDb.getProfile().getProjects().size() == 0) {
+            if(!user.getProfile().getProjects().isEmpty()) {
                 userDb.getProfile().getProjects().add(user.getProfile().getProjects().get(0));
                 userService.updateUser(userDb);
             }

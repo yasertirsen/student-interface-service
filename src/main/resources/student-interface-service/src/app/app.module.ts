@@ -49,6 +49,9 @@ import { CompanyProfileComponent } from './company-profile/company-profile.compo
 import { AllCompaniesComponent } from './all-companies/all-companies.component';
 import { ReviewComponent } from './review/review.component';
 import {MatSelectModule} from "@angular/material/select";
+import { ProfileComponent } from './profile/profile.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -72,7 +75,8 @@ import {MatSelectModule} from "@angular/material/select";
     MatSpinnerOverlayComponent,
     CompanyProfileComponent,
     AllCompaniesComponent,
-    ReviewComponent
+    ReviewComponent,
+    ProfileComponent
   ],
     imports: [
         BrowserModule,
@@ -103,7 +107,9 @@ import {MatSelectModule} from "@angular/material/select";
         MatMenuModule,
         MatExpansionModule,
         MatProgressSpinnerModule,
-        MatSelectModule
+        MatSelectModule,
+        MatGridListModule,
+        MatDatepickerModule
     ],
   providers: [],
   bootstrap: [AppComponent]

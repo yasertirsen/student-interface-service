@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {LinkedinDialogData} from "../../models/linkedin-dialog-data";
 import {CourseDialogData} from "../../models/course-dialog-data";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-course-dialog',
@@ -9,7 +10,6 @@ import {CourseDialogData} from "../../models/course-dialog-data";
   styleUrls: ['./course-dialog.component.css']
 })
 export class CourseDialogComponent implements OnInit {
-  skillNames: string[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<CourseDialogComponent>,
@@ -20,11 +20,6 @@ export class CourseDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    for(let module of this.data.course.modules) {
-      if(module.skill !== null && module.skill.skillName !== null) {
-        this.skillNames.push(module.skill.skillName);
-      }
-    }
   }
 
 }

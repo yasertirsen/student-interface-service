@@ -71,6 +71,12 @@ export class CvBuilderComponent implements OnInit {
       map((module: string | null) => module ? this._moduleFilter(module) : this.allModules.slice()));
     this.userService.getCurrentUser().subscribe(user => {
       this.user = user;
+      if(this.user.profile.averageGrade === 0) {
+        this.averageGrade = 0;
+      }
+      else {
+        this.averageGrade = this.user.profile.averageGrade;
+      }
       if(this.user.profile.projects === undefined) {
         this.user.profile.projects = [];
       }

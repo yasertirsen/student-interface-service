@@ -21,9 +21,10 @@
             [src]=retrievedImage
             alt="Profile"
             class="profile-img">
-<!--            <mat-icon style="font-size: 150px">account_circle</mat-icon>-->
-
             <mat-card-content *ngIf="user.firstName !== null">
+              <span class="material-icons" *ngIf="retrievedImage === null" style="font-size: 150px">
+                account_circle
+              </span>
               <h3>Welcome back {{user.firstName}}!</h3>
               <p>Become a Prograd by finding the perfect graduate opportunity for you!</p>
             </mat-card-content>

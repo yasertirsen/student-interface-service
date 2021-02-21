@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 
 import static com.fyp.studentinterfaceservice.constant.SecurityConstants.EXPIRATION_TIME;
 
@@ -110,6 +111,11 @@ public class StudentController {
     @GetMapping("/getStudentAvatar/{userId}")
     public Image getImage(@PathVariable Long userId) {
         return userService.getImage(userId);
+    }
+
+    @GetMapping("/getAllSkills")
+    public Set<Skill> getAllSkills() {
+        return userService.getAllSkills();
     }
 
 }

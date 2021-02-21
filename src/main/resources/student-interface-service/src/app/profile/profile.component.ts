@@ -7,6 +7,7 @@ import {EditSummaryComponent} from "./edit-summary/edit-summary.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AddProjectDialogComponent} from "./add-project-dialog/add-project-dialog.component";
 import {AddExperienceDialogComponent} from "./add-experience-dialog/add-experience-dialog.component";
+import {AddSkillsDialogComponent} from "./add-skills-dialog/add-skills-dialog.component";
 
 @Component({
   selector: 'app-profile',
@@ -74,9 +75,27 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  openSkillsDialog(): void {
+    const skillsDialog =
+      this.dialog.open(AddSkillsDialogComponent, {
+        width: '500px',
+        data: this.user.profile.externalSkills
+      });
+    skillsDialog.afterClosed().subscribe(result => {
+      if(result !== undefined) {
+        this.user.profile.externalSkills = result;
+        this.updateUser();
+      }
+      else {
+        this._snackBar.open('No skills were added', 'Close', {
+          duration: 3000,
+        });
+      }
+    });
+  }
+
   updateUser(): void {
-    this.userService.updateUser(this.user).subscribe(user => {
-      this.user = user;
+    this.userService.updateProfile(this.user.profile).subscribe(data => {
       this._snackBar.open('Updated successfully', 'Close', {
         duration: 3000,
       });
@@ -85,5 +104,4 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

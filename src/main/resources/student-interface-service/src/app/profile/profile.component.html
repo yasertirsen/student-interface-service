@@ -14,9 +14,11 @@
                [src]=retrievedImage
                alt="Profile"
                class="profile-img">
-          <!--                <mat-icon style="font-size: 150px">account_circle</mat-icon>-->
           <mat-card-title>
             <div class="center">
+              <span class="material-icons" *ngIf="retrievedImage === null" style="font-size: 150px">
+                account_circle
+              </span>
               <strong>
               {{ user.firstName }} {{user.surname}}
               </strong>
@@ -57,7 +59,7 @@
             <div class="section-header">
               <div class="flex-container">
                 <h2>Education</h2>
-                <button mat-icon-button color="primary"><mat-icon>edit</mat-icon></button>
+                <button mat-icon-button color="primary" routerLink="/courses"><mat-icon>edit</mat-icon></button>
               </div>
             </div>
           </section>
@@ -69,7 +71,7 @@
             <div class="section-header">
               <div class="flex-container">
                 <h2>Skills</h2>
-                <button mat-icon-button color="primary"><mat-icon>edit</mat-icon></button>
+                <button mat-icon-button color="primary" (click)="openSkillsDialog()"><mat-icon>edit</mat-icon></button>
               </div>
             </div>
           </section>

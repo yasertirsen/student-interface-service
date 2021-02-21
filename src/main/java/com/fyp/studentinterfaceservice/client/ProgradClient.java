@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Set;
 
 @FeignClient(url = "${feign.url}", name = "${feign.student}")
 public interface ProgradClient {
@@ -46,6 +47,9 @@ public interface ProgradClient {
     @PutMapping(value = "/students/updateProfile", consumes = "application/json", produces="application/json")
     @ResponseBody
     UserProfile updateProfile(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestBody UserProfile profile);
+
+    @GetMapping("/students/getAllSkills")
+    Set<Skill> getAllSkills(@RequestHeader(AUTH_TOKEN) String bearerToken);
 
     //Courses endpoint
 

@@ -7,6 +7,7 @@ import {CourseModel} from "../models/course.model";
 import {SkillModel} from "../models/skill.model";
 import {ProjectModel} from "../models/project.model";
 import {LocalStorageService} from "ngx-webstorage";
+import {ExperienceModel} from "../models/experience.model";
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,15 @@ export class UserService {
 
   getCurrentUser(): Observable<any>{
     return this.http.get('http://localhost:8083/currentUser', {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${this.localStorage.retrieve('token')}`
+      })
+    });
+  }
+
+  getAllSkills(): Observable<any> {
+    return this.http.get('http://localhost:8083/getAllSkills', {
       headers: new HttpHeaders({
         'Content-type': 'application/json',
         'Authorization': `Bearer ${this.localStorage.retrieve('token')}`
@@ -81,8 +91,13 @@ export class UserService {
       {
         "profileId": profile.profileId,
         "course": profile.course,
+        "bio": profile.bio,
         "externalSkills": profile.externalSkills,
         "projects": profile.projects,
+        "experiences": profile.experiences,
+        "averageGrade": profile.averageGrade,
+        "startCourse": profile.startCourse,
+        "endCourse": profile.endCourse
       },
       {
         headers: new HttpHeaders({

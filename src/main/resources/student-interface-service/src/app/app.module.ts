@@ -55,6 +55,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { EditSummaryComponent } from './profile/edit-summary/edit-summary.component';
 import { AddProjectDialogComponent } from './profile/add-project-dialog/add-project-dialog.component';
 import { AddExperienceDialogComponent } from './profile/add-experience-dialog/add-experience-dialog.component';
+import { AddSkillsDialogComponent } from './profile/add-skills-dialog/add-skills-dialog.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,8 @@ import { AddExperienceDialogComponent } from './profile/add-experience-dialog/ad
     ProfileComponent,
     EditSummaryComponent,
     AddProjectDialogComponent,
-    AddExperienceDialogComponent
+    AddExperienceDialogComponent,
+    AddSkillsDialogComponent
   ],
     imports: [
         BrowserModule,

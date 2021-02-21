@@ -6,10 +6,37 @@
   <ul>
     <li *ngFor="let module of data.course.modules">{{module.name}}</li>
   </ul>
-
+  <table class="full-width">
+    <td><mat-form-field class="full-width" appearance="outline">
+      <mat-label>Starting Month</mat-label>
+      <mat-select [(ngModel)]="beginMonth" name="month" required>
+        <mat-option *ngFor="let month of months" [value]="month.value">
+          {{month.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field></td>
+    <td><mat-form-field class="full-width" appearance="outline">
+      <mat-label>Starting Year</mat-label>
+      <input matInput [(ngModel)]="beginYear" required>
+    </mat-form-field></td>
+  </table>
+  <table class="full-width">
+    <td><mat-form-field class="full-width" appearance="outline">
+      <mat-label>Graduating Month</mat-label>
+      <mat-select [(ngModel)]="endMonth" name="month" required>
+        <mat-option *ngFor="let month of months" [value]="month.value">
+          {{month.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field></td>
+    <td><mat-form-field class="full-width" appearance="outline">
+      <mat-label>Graduating Year</mat-label>
+      <input matInput [(ngModel)]="endYear" required>
+    </mat-form-field></td>
+  </table>
   <p>You can assign this course to yourself by clicking <strong>Assign</strong></p>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Assign</button>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button (click)="onAssign()" cdkFocusInitial>Assign</button>
 </mat-dialog-actions>

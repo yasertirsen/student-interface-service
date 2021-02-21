@@ -36,15 +36,24 @@ export class CourseTileComponent implements OnInit {
   openDialog(course: CourseModel): void {
     const dialogRef =
       this.dialog.open(CourseDialogComponent, {
-        width: '750px',
+        width: '500px',
         data: {
-          course: course
+          course,
+          start: undefined,
+          end: undefined
         }
       });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result) {
+      if(result.start === undefined || result.end === undefined) {
+        this._snackBar.open('Please enter starting graduating dates', 'Close', {
+          duration: 5000,
+        });
+      }
+      else {
         this.user.profile.course = course;
+        this.user.profile.startCourse = result.start;
+        this.user.profile.endCourse = result.end;
         this.updateUser();
         this.redirectTo('/home');
         this._snackBar.open('Course assigned successfully', 'Close', {
@@ -55,7 +64,7 @@ export class CourseTileComponent implements OnInit {
   }
 
   updateUser(): void {
-    this.userService.addSkills(this.user.profile).subscribe();
+    this.userService.updateProfile(this.user.profile).subscribe();
   }
 
   redirectTo(uri:string){

@@ -4,27 +4,25 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6087ee9a-e348-4dfe-aee5-2591ba764bf3" name="Default Changelist" comment="Modified CV builder and home pages">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/models/month.model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/profile/add-experience-dialog/add-experience-dialog.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/profile/add-experience-dialog/add-experience-dialog.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/profile/add-experience-dialog/add-experience-dialog.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/profile/add-project-dialog/add-project-dialog.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/profile/add-project-dialog/add-project-dialog.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/profile/add-project-dialog/add-project-dialog.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/profile/edit-summary/edit-summary.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/profile/edit-summary/edit-summary.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/profile/edit-summary/edit-summary.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/profile/profile.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/profile/profile.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/profile/profile.component.ts" afterDir="false" />
+    <list default="true" id="6087ee9a-e348-4dfe-aee5-2591ba764bf3" name="Default Changelist" comment="created profile as edit page and partially completed it">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/profile/add-skills-dialog/add-skills-dialog.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/profile/add-skills-dialog/add-skills-dialog.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/profile/add-skills-dialog/add-skills-dialog.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/client/ProgradClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/client/ProgradClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/controller/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/controller/StudentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/UserServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/UserServiceImplementation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/interfaces/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/interfaces/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/complete-profile/complete-profile.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/complete-profile/complete-profile.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/complete-profile/complete-profile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/complete-profile/complete-profile.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/main-nav/main-nav.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/main-nav/main-nav.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/browse-courses/course-dialog/course-dialog.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/browse-courses/course-dialog/course-dialog.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/browse-courses/course-dialog/course-dialog.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/browse-courses/course-dialog/course-dialog.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/browse-courses/course-dialog/course-dialog.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/browse-courses/course-dialog/course-dialog.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/browse-courses/course-tile/course-tile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/browse-courses/course-tile/course-tile.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/models/course-dialog-data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/models/course-dialog-data.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/profile/profile.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/profile/profile.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/profile/profile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/profile/profile.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/shared/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/shared/user.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/fyp/studentinterfaceservice/controller/StudentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/fyp/studentinterfaceservice/controller/StudentController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,6 +87,7 @@
       <recent name="D:\Dev\FYP\student-interface-service\src\main\java\com\fyp\studentinterfaceservice\model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Dev\Final Year Project\student-interface-service\src\main\resources\student-interface-service\src\app\profile" />
       <recent name="D:\Dev\FYP\student-interface-service\src\main\resources\student-interface-service\src\app\shared" />
       <recent name="D:\Dev\FYP\student-interface-service\src\main\resources\student-interface-service\src\app\shared\search-toolbar" />
       <recent name="D:\Dev\FYP\student-interface-service\src\main\resources\student-interface-service\src\app\home" />
@@ -253,7 +252,7 @@
       <workItem from="1612644269774" duration="12096000" />
       <workItem from="1612883284630" duration="316000" />
       <workItem from="1613333250383" duration="16622000" />
-      <workItem from="1613428041166" duration="38525000" />
+      <workItem from="1613428041166" duration="48385000" />
     </task>
     <task id="LOCAL-00001" summary="added added feign exception handling and fixed timeout response issue">
       <created>1604941323893</created>
@@ -486,7 +485,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613779804644</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="created profile as edit page and partially completed it">
+      <created>1613854049883</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1613854049883</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -509,7 +515,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/src/main/resources/student-interface-service" />
     </ignored-roots>
-    <MESSAGE value="added profile section in home page" />
     <MESSAGE value="added course controller and courses endpoints to prograd client. added logic to save modules from TUD website." />
     <MESSAGE value="added new elements to homepage" />
     <MESSAGE value="fixed buttons in homepage" />
@@ -534,7 +539,8 @@
     <MESSAGE value="Modified search algorithm to handle no location entered" />
     <MESSAGE value="added experience and average grade to student profile/cv" />
     <MESSAGE value="Modified CV builder and home pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modified CV builder and home pages" />
+    <MESSAGE value="created profile as edit page and partially completed it" />
+    <option name="LAST_COMMIT_MESSAGE" value="created profile as edit page and partially completed it" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -563,6 +569,16 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/ResumeServiceImpl.java</url>
           <line>42</line>
           <option name="timeStamp" value="74" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/controller/StudentController.java</url>
+          <line>97</line>
+          <option name="timeStamp" value="76" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/UserServiceImplementation.java</url>
+          <line>197</line>
+          <option name="timeStamp" value="78" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

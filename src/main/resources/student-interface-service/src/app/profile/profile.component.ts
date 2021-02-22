@@ -2,12 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import {UserModel} from "../models/user.model";
 import {UserService} from "../shared/user.service";
 import {MatDialog} from "@angular/material/dialog";
-import {AddLinkedinDialogComponent} from "../home/add-linkedin-dialog/add-linkedin-dialog.component";
 import {EditSummaryComponent} from "./edit-summary/edit-summary.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AddProjectDialogComponent} from "./add-project-dialog/add-project-dialog.component";
 import {AddExperienceDialogComponent} from "./add-experience-dialog/add-experience-dialog.component";
 import {AddSkillsDialogComponent} from "./add-skills-dialog/add-skills-dialog.component";
+import {ResumeService} from "../shared/resume.service";
+import {DomSanitizer} from "@angular/platform-browser";
+
+declare var require: any
+const FileSaver = require('file-saver');
 
 @Component({
   selector: 'app-profile',
@@ -21,7 +25,8 @@ export class ProfileComponent implements OnInit {
   base64Data: any;
 
   constructor(private userService: UserService, private dialog: MatDialog,
-              private _snackBar: MatSnackBar) {
+              private _snackBar: MatSnackBar, private resumeService: ResumeService,
+              private sanitizer: DomSanitizer) {
     this.userService.getCurrentUser().subscribe(user => {
       this.user = user;
       this.userService.getUserAvatar(this.user.studentId).subscribe(image => {
@@ -91,6 +96,14 @@ export class ProfileComponent implements OnInit {
           duration: 3000,
         });
       }
+    });
+  }
+
+  onDownload(): void {
+    this.resumeService.generateDynamicCv(this.user).subscribe(res => {
+      const fileURL = URL.createObjectURL(res);
+      FileSaver.saveAs(fileURL, this.user.username + '_CV');
+      //window.open(fileURL, '_blank');
     });
   }
 

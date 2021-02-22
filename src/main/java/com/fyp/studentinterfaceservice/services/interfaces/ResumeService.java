@@ -7,4 +7,6 @@ import org.springframework.http.ResponseEntity;
 public interface ResumeService {
 
     ResponseEntity<InputStreamResource> generateDCv(User user);
+
+    byte[] getCv(String username);
 }

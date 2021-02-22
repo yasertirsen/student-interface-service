@@ -35,13 +35,13 @@ public class ResumeServiceImpl implements ResumeService {
     @Override
     public ResponseEntity<InputStreamResource> generateDCv(User user) {
 
-            User userDb = userService.findUserByEmail(user.getEmail());
-            ArrayList<String> skills = new ArrayList<>();
-
-            if(!user.getProfile().getProjects().isEmpty()) {
-                userDb.getProfile().getProjects().add(user.getProfile().getProjects().get(0));
-                userService.updateUser(userDb);
-            }
+//            User userDb = userService.findUserByEmail(user.getEmail());
+//            ArrayList<String> skills = new ArrayList<>();
+//
+//            if(!user.getProfile().getProjects().isEmpty()) {
+//                userDb.getProfile().getProjects().add(user.getProfile().getProjects().get(0));
+//                userService.updateUser(userDb);
+//            }
 
             byte[] data = PDFGenerator.generateDynamicCv(user);
 
@@ -57,6 +57,17 @@ public class ResumeServiceImpl implements ResumeService {
                     .headers(headers)
                     .contentType(MediaType.APPLICATION_PDF)
                     .body(new InputStreamResource(bis));
+    }
+
+    @Override
+    public byte[] getCv(String username) {
+        User user = userService.findUserByUsername(username);
+
+        byte[] data = PDFGenerator.generateDynamicCv(user);
+
+        Resume resume = new Resume(user.getUsername() + "_CV" , userService.compressBytes(data), user.getStudentId());
+        client.saveResume(bearerToken, resume);
+        return data;
     }
 
 }

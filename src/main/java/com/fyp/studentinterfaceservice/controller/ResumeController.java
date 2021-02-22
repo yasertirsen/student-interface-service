@@ -22,4 +22,9 @@ public class ResumeController {
     public ResponseEntity<InputStreamResource> generateDynamicCv(@RequestBody User user) {
         return resumeService.generateDCv(user);
     }
+
+    @GetMapping("getCv/{username}")
+    public byte[] getCv(@PathVariable String username) {
+        return resumeService.getCv(username);
+    }
 }

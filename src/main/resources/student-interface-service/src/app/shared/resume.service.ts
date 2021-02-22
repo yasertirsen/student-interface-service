@@ -23,4 +23,13 @@ export class ResumeService {
     return this.http.post<Blob>('http://localhost:8083/generateDynamicCv/', user, { headers: headers, responseType: 'blob' });
   }
 
+  getCv(username: string): Observable<any> {
+    return this.http.get('http://localhost:8083/getCv/' + username, {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${this.localStorage.retrieve('token')}`
+      })
+    });
+  }
+
 }

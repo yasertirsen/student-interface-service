@@ -8,5 +8,5 @@ public interface ResumeService {
 
     ResponseEntity<InputStreamResource> generateDCv(User user);
 
-    byte[] getCv(String username);
+    ResponseEntity<InputStreamResource> getCv(String username);
 }

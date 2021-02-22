@@ -28,7 +28,7 @@ export class ResumeService {
       headers: new HttpHeaders({
         'Content-type': 'application/json',
         'Authorization': `Bearer ${this.localStorage.retrieve('token')}`
-      })
+      }), responseType: 'blob'
     });
   }
 

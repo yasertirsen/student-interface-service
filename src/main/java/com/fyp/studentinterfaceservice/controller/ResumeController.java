@@ -24,7 +24,7 @@ public class ResumeController {
     }
 
     @GetMapping("getCv/{username}")
-    public byte[] getCv(@PathVariable String username) {
+    public ResponseEntity<InputStreamResource> getCv(@PathVariable String username) {
         return resumeService.getCv(username);
     }
 }

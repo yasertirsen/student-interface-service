@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay, filter } from 'rxjs/operators';
-import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 
 @Component({
   selector: 'app-main-nav',
@@ -18,13 +17,7 @@ export class MainNavComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private activatedRouter: ActivatedRoute,
-              private router: Router) {
-    this.router.events.subscribe((event) => {
-      if(event instanceof NavigationEnd && event.url) {
-        this.activeRoute = event.url;
-      }
-    });
+  constructor(private breakpointObserver: BreakpointObserver) {
   }
 
 

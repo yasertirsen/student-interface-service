@@ -37,11 +37,14 @@ public class PDFGenerator {
             Paragraph title = new Paragraph();
             title.setAlignment(Element.ALIGN_CENTER);
             title.add(new Chunk(user.getFirstName() + " " + user.getSurname() + "\n", heading));
-            title.add(new Chunk("Email: " + user.getEmail() + "\n", regular));
+            StringBuilder details = new StringBuilder();
+            details.append(user.getEmail());
             if(user.getPhone() != null)
-                title.add(new Chunk("Phone: " + user.getPhone() + "\n", regular));
+                details.append(" | ").append(user.getPhone());
             if(user.getSocialUrl() != null)
-                title.add(new Chunk("LinkedIn: " + user.getSocialUrl() + "\n", regular));
+                details.append(" | ").append(user.getSocialUrl());
+            title.add(new Chunk(details.toString(), regular));
+            title.add(new Chunk("\n", regular));
             title.add(lsPar);
             document.add(title);
 
@@ -105,7 +108,7 @@ public class PDFGenerator {
                 document.add(skillsContent);
         }
 
-            if(hasCourse) {
+            if(hasCourse && user.getProfile().getCourse().getModules() != null) {
                 document.add(createHeading("Modules"));
                 Paragraph modulesContent = initializeContent();
                 List modulesList = new List();

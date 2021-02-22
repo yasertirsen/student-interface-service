@@ -2,7 +2,7 @@
   height: 100%;
 }
 .sidenav a{
-  color: black;
+  color: white;
 }
 
 .sidenav {
@@ -32,7 +32,7 @@ mat-toolbar a {
 
 .sidenav mat-icon {
   margin: 10px 10px 10px 10px;
-  color: dimgray;
+  color: #777777;
 }
 
 mat-icon {

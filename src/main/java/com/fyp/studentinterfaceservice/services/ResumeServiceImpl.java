@@ -1,6 +1,7 @@
 package com.fyp.studentinterfaceservice.services;
 
 import com.fyp.studentinterfaceservice.client.ProgradClient;
+import com.fyp.studentinterfaceservice.model.Module;
 import com.fyp.studentinterfaceservice.model.Resume;
 import com.fyp.studentinterfaceservice.model.Skill;
 import com.fyp.studentinterfaceservice.model.User;
@@ -17,6 +18,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.zip.Deflater;
 
 import static com.fyp.studentinterfaceservice.client.ProgradClient.bearerToken;
@@ -49,25 +51,25 @@ public class ResumeServiceImpl implements ResumeService {
             Resume resume = new Resume(user.getUsername() + "_CV" , userService.compressBytes(data), user.getStudentId());
             client.saveResume(bearerToken, resume);
 
-            HttpHeaders headers = new HttpHeaders();
-            headers.add("Content-Disposition", "inline; filename=" + user.getUsername() +"_CV.pdf");
-
             return ResponseEntity
                     .ok()
-                    .headers(headers)
                     .contentType(MediaType.APPLICATION_PDF)
                     .body(new InputStreamResource(bis));
     }
 
     @Override
-    public byte[] getCv(String username) {
+    public ResponseEntity<InputStreamResource> getCv(String username) {
         User user = userService.findUserByUsername(username);
+        user.getProfile().getCourse().setModules(null);
 
         byte[] data = PDFGenerator.generateDynamicCv(user);
-
+        ByteArrayInputStream bis = new ByteArrayInputStream(data);
         Resume resume = new Resume(user.getUsername() + "_CV" , userService.compressBytes(data), user.getStudentId());
         client.saveResume(bearerToken, resume);
-        return data;
+        return ResponseEntity
+                .ok()
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(new InputStreamResource(bis));
     }
 
 }

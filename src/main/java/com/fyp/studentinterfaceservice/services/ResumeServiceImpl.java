@@ -1,10 +1,7 @@
 package com.fyp.studentinterfaceservice.services;
 
 import com.fyp.studentinterfaceservice.client.ProgradClient;
-import com.fyp.studentinterfaceservice.model.Module;
-import com.fyp.studentinterfaceservice.model.Resume;
-import com.fyp.studentinterfaceservice.model.Skill;
-import com.fyp.studentinterfaceservice.model.User;
+import com.fyp.studentinterfaceservice.model.*;
 import com.fyp.studentinterfaceservice.services.interfaces.ResumeService;
 import com.fyp.studentinterfaceservice.utilities.PDFGenerator;
 import org.springframework.core.io.InputStreamResource;
@@ -12,6 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -35,26 +33,14 @@ public class ResumeServiceImpl implements ResumeService {
     }
 
     @Override
-    public ResponseEntity<InputStreamResource> generateDCv(User user) {
-
-//            User userDb = userService.findUserByEmail(user.getEmail());
-//            ArrayList<String> skills = new ArrayList<>();
-//
-//            if(!user.getProfile().getProjects().isEmpty()) {
-//                userDb.getProfile().getProjects().add(user.getProfile().getProjects().get(0));
-//                userService.updateUser(userDb);
-//            }
-
+    public Resume generateDCv(User user) {
             byte[] data = PDFGenerator.generateDynamicCv(user);
 
             ByteArrayInputStream bis = new ByteArrayInputStream(data);
             Resume resume = new Resume(user.getUsername() + "_CV" , userService.compressBytes(data), user.getStudentId());
             client.saveResume(bearerToken, resume);
 
-            return ResponseEntity
-                    .ok()
-                    .contentType(MediaType.APPLICATION_PDF)
-                    .body(new InputStreamResource(bis));
+            return client.saveResume(bearerToken, resume);
     }
 
     @Override
@@ -70,6 +56,13 @@ public class ResumeServiceImpl implements ResumeService {
                 .ok()
                 .contentType(MediaType.APPLICATION_PDF)
                 .body(new InputStreamResource(bis));
+    }
+
+    @Override
+    public Resume uploadCv(MultipartFile file, Long userId) throws IOException {
+        Resume resume = new Resume(file.getOriginalFilename(), userService.compressBytes(file.getBytes()),
+                userId);
+        return client.saveResume(bearerToken, resume);
     }
 
 }

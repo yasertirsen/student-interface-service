@@ -56,6 +56,9 @@ import { EditSummaryComponent } from './profile/edit-summary/edit-summary.compon
 import { AddProjectDialogComponent } from './profile/add-project-dialog/add-project-dialog.component';
 import { AddExperienceDialogComponent } from './profile/add-experience-dialog/add-experience-dialog.component';
 import { AddSkillsDialogComponent } from './profile/add-skills-dialog/add-skills-dialog.component';
+import { ApplyDialogComponent } from './cv-builder/apply-dialog/apply-dialog.component';
+import { MatRadioModule } from '@angular/material/radio';
+
 
 @NgModule({
   declarations: [
@@ -84,7 +87,8 @@ import { AddSkillsDialogComponent } from './profile/add-skills-dialog/add-skills
     EditSummaryComponent,
     AddProjectDialogComponent,
     AddExperienceDialogComponent,
-    AddSkillsDialogComponent
+    AddSkillsDialogComponent,
+    ApplyDialogComponent
   ],
     imports: [
         BrowserModule,
@@ -117,7 +121,8 @@ import { AddSkillsDialogComponent } from './profile/add-skills-dialog/add-skills
         MatProgressSpinnerModule,
         MatSelectModule,
         MatGridListModule,
-        MatDatepickerModule
+        MatDatepickerModule,
+        MatRadioModule
     ],
   providers: [],
   bootstrap: [AppComponent]

@@ -13,33 +13,29 @@ import {ExperienceModel} from "../models/experience.model";
   providedIn: 'root'
 })
 export class UserService {
+  headers: any;
 
-  constructor(private http: HttpClient, private localStorage: LocalStorageService) { }
+  constructor(private http: HttpClient, private localStorage: LocalStorageService) {
+    this.headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.localStorage.retrieve('token')}`
+    })
+  }
 
   getCurrentUser(): Observable<any>{
     return this.http.get('http://localhost:8083/currentUser', {
-      headers: new HttpHeaders({
-        'Content-type': 'application/json',
-        'Authorization': `Bearer ${this.localStorage.retrieve('token')}`
-      })
+      headers: this.headers
     });
   }
 
   getAllSkills(): Observable<any> {
     return this.http.get('http://localhost:8083/getAllSkills', {
-      headers: new HttpHeaders({
-        'Content-type': 'application/json',
-        'Authorization': `Bearer ${this.localStorage.retrieve('token')}`
-      })
+      headers: this.headers
     });
   }
 
   getUserAvatar(userId: number): Observable<any>{
     return this.http.get('http://localhost:8083/getStudentAvatar/' + userId, {
-      headers: new HttpHeaders({
-        'Content-type': 'application/json',
-        'Authorization': `Bearer ${this.localStorage.retrieve('token')}`
-      })
+      headers: this.headers
     });
   }
 
@@ -63,10 +59,7 @@ export class UserService {
         "resumePath": user.resumePath,
       },
       {
-        headers: new HttpHeaders({
-          'Content-type': 'application/json',
-          'Authorization': `Bearer ${this.localStorage.retrieve('token')}`
-        })
+        headers: this.headers
       });
   }
 
@@ -79,10 +72,7 @@ export class UserService {
         "projects": profile.projects,
       },
       {
-        headers: new HttpHeaders({
-          'Content-type': 'application/json',
-          'Authorization': `Bearer ${this.localStorage.retrieve('token')}`
-        })
+        headers: this.headers
       });
   }
 
@@ -100,10 +90,7 @@ export class UserService {
         "endCourse": profile.endCourse
       },
       {
-        headers: new HttpHeaders({
-          'Content-type': 'application/json',
-          'Authorization': `Bearer ${this.localStorage.retrieve('token')}`
-        })
+        headers: this.headers
       });
   }
 
@@ -116,10 +103,7 @@ export class UserService {
         "projects": profile.projects,
       },
       {
-        headers: new HttpHeaders({
-          'Content-type': 'application/json',
-          'Authorization': `Bearer ${this.localStorage.retrieve('token')}`
-        })
+        headers: this.headers
       });
   }
 
@@ -127,9 +111,7 @@ export class UserService {
     return this.http.post('http://localhost:8083/upload/image/' + userId,
       imageData,
       {
-        headers: new HttpHeaders({
-          'Authorization': `Bearer ${this.localStorage.retrieve('token')}`
-        })
+        headers: this.headers
       });
   }
 }

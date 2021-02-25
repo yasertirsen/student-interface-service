@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Apply</h1>
+<div class="content" mat-dialog-content>
+  <mat-form-field class="full-width" appearance="outline">
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="fullName" required>
+  </mat-form-field>
+  <mat-form-field class="full-width" appearance="outline">
+    <mat-label>Email</mat-label>
+    <input matInput [(ngModel)]="user.email" required>
+  </mat-form-field>
+  <label class="full-width">Apply with:</label>
+  <mat-radio-group
+  [(ngModel)]="dynamicCv">
+      <mat-radio-button value="true">Dynamic CV</mat-radio-button>
+    <mat-radio-button value="false">Upload Another CV</mat-radio-button>
+    <br>
+    <input type="file" name="file" (change)="onFileChanged($event)" *ngIf="dynamicCv === 'false'">
+  </mat-radio-group>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button (click)="onApply()" cdkFocusInitial>Apply</button>
+</div>

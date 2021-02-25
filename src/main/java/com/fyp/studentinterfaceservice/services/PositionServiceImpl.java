@@ -2,11 +2,13 @@ package com.fyp.studentinterfaceservice.services;
 
 import com.careerjet.webservice.api.Client;
 import com.fyp.studentinterfaceservice.client.ProgradClient;
+import com.fyp.studentinterfaceservice.model.Application;
 import com.fyp.studentinterfaceservice.model.Company;
 import com.fyp.studentinterfaceservice.model.Position;
 import com.fyp.studentinterfaceservice.services.interfaces.PositionService;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -121,5 +123,15 @@ public class PositionServiceImpl implements PositionService {
     @Override
     public List<Position> getCompanyPositions(Long companyId) {
         return client.getCompanyPositions(bearerToken, companyId);
+    }
+
+    @Override
+    public ResponseEntity<String> apply(Application application) {
+        return client.apply(bearerToken, application);
+    }
+
+    @Override
+    public List<Application> getApplicationsByEmail(String email) {
+        return client.getApplicationsByEmail(bearerToken, email);
     }
 }

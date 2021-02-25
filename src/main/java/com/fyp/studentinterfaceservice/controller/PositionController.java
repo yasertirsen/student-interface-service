@@ -1,11 +1,11 @@
 package com.fyp.studentinterfaceservice.controller;
 
+import com.fyp.studentinterfaceservice.model.Application;
 import com.fyp.studentinterfaceservice.model.Position;
 import com.fyp.studentinterfaceservice.services.interfaces.PositionService;
 import javafx.geometry.Pos;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Set;
@@ -42,5 +42,15 @@ public class PositionController {
     @GetMapping("/searchJobsApi/{location}/{keywords}")
     public List<Position> searchJobApi(@PathVariable String location, @PathVariable String keywords) {
         return positionService.searchJobsApi(location, keywords);
+    }
+
+    @PostMapping("/apply")
+    public ResponseEntity<String> apply(@RequestBody Application application) {
+        return positionService.apply(application);
+    }
+
+    @GetMapping("/getApplicationsByEmail")
+    public List<Application> getApplicationsByEmail(@RequestParam String email) {
+        return positionService.getApplicationsByEmail(email);
     }
 }

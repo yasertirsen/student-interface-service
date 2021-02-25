@@ -80,6 +80,12 @@ public interface ProgradClient {
     @GetMapping(value= "/positions/getCompanyPositions/{companyId}", produces = "application/json")
     List<Position> getCompanyPositions(@RequestHeader(AUTH_TOKEN) String bearerToken, @PathVariable Long companyId);
 
+    @PostMapping("/positions/apply")
+    ResponseEntity<String> apply(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestBody Application application);
+
+    @PostMapping("/positions/getApplicationsByEmail")
+    List<Application> getApplicationsByEmail(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestParam String email);
+
     //Companies endpoint
 
     @GetMapping("/companies/findByName")
@@ -106,5 +112,5 @@ public interface ProgradClient {
     Image getStudentAvatar(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestParam Long userId);
 
     @PostMapping(value = "/files/saveCv")
-    ResponseEntity<String> saveResume(@RequestHeader(AUTH_TOKEN) String bearerToken, Resume resume);
+    Resume saveResume(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestBody Resume resume);
 }

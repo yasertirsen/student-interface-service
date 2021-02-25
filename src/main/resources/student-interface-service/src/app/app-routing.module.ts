@@ -58,7 +58,7 @@ const routes: Routes = [
     component: ViewJobComponent
   },
   {
-    path: 'dynamic-cv',
+    path: 'apply/:positionId',
     component: CvBuilderComponent
   },
   {

@@ -11,6 +11,12 @@ import {UserModel} from "../models/user.model";
 import {ProjectModel} from "../models/project.model";
 import {SkillModel} from "../models/skill.model";
 import {ResumeService} from "../shared/resume.service";
+import {PositionService} from "../shared/position.service";
+import {ApplicationModel} from "../models/application.model";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatDialog} from "@angular/material/dialog";
+import {ApplyDialogComponent} from "./apply-dialog/apply-dialog.component";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-cv-builder',
@@ -52,6 +58,7 @@ export class CvBuilderComponent implements OnInit {
   };
   skill: SkillModel;
   averageGrade: number;
+  application: ApplicationModel;
 
   @ViewChild('skillInput') skillInput: ElementRef<HTMLInputElement>;
   @ViewChild('projectInput') projectInput: ElementRef<HTMLInputElement>;
@@ -60,7 +67,8 @@ export class CvBuilderComponent implements OnInit {
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
   constructor(private _formBuilder: FormBuilder, private localStorage: LocalStorageService, private userService: UserService,
-              private resumeService: ResumeService) {
+              private resumeService: ResumeService, private positionService: PositionService, private  _snackBar: MatSnackBar,
+              private dialog: MatDialog, private router: Router, private activatedRoute: ActivatedRoute) {
     this.filteredSkills = this.skillsCtrl.valueChanges.pipe(
       map((skill: string | null) => skill ? this._filter(skill) : this.allSkills.slice()));
     this.filteredProjects = this.projectsCtrl.valueChanges.pipe(
@@ -260,7 +268,7 @@ export class CvBuilderComponent implements OnInit {
     return this.allExperiences.filter(experience => experience.toLowerCase().indexOf(filterValue) === 0);
   }
 
-  onDone() {
+  onEditDetails() {
     this.loading = true;
     if(this.project.title !== null || this.project.description !== null) {
       this.user.profile.projects.push(this.project);
@@ -291,11 +299,31 @@ export class CvBuilderComponent implements OnInit {
         this.user.profile.course.modules.splice(index, this.user.profile.course.modules.length);
       }
     }
-    this.resumeService.generateDynamicCv(this.user).subscribe(res => {
-      const fileURL = URL.createObjectURL(res);
-      window.open(fileURL, '_blank');
-    });
     this.loading = false;
+    const applyDialog =
+      this.dialog.open(ApplyDialogComponent, {
+        width: '500px',
+        data: {user: this.user, positionId: this.activatedRoute.snapshot.params.positionId}
+      });
+    applyDialog.afterClosed().subscribe(result => {
+      if(result !== null) {
+        this.positionService.apply(result).subscribe(data => {
+            console.log(data)
+            this._snackBar.open('Applied successfully', 'Close', {
+              duration: 5000,
+            });
+          },
+          error => {
+            console.log(error)
+            this._snackBar.open('An error has occurred', 'Close', {
+              duration: 5000,
+            });
+          });
+      }
+      this.router.navigateByUrl('/home');
+    });
+    // const fileURL = URL.createObjectURL(res);
+    // window.open(fileURL, '_blank');
   }
 
   onSkip() {

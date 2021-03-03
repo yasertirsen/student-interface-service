@@ -2,8 +2,10 @@ package com.fyp.studentinterfaceservice.services;
 
 import com.careerjet.webservice.api.Client;
 import com.fyp.studentinterfaceservice.client.ProgradClient;
+import com.fyp.studentinterfaceservice.exceptions.ProgradException;
 import com.fyp.studentinterfaceservice.model.Application;
 import com.fyp.studentinterfaceservice.model.Company;
+import com.fyp.studentinterfaceservice.model.NotificationEmail;
 import com.fyp.studentinterfaceservice.model.Position;
 import com.fyp.studentinterfaceservice.services.interfaces.PositionService;
 import org.json.simple.JSONArray;
@@ -21,9 +23,11 @@ import static com.fyp.studentinterfaceservice.client.ProgradClient.bearerToken;
 public class PositionServiceImpl implements PositionService {
 
     private final ProgradClient client;
+    private final MailService mailService;
 
-    public PositionServiceImpl(ProgradClient client) {
+    public PositionServiceImpl(ProgradClient client, MailService mailService) {
         this.client = client;
+        this.mailService = mailService;
     }
 
     @Override
@@ -126,7 +130,12 @@ public class PositionServiceImpl implements PositionService {
     }
 
     @Override
-    public ResponseEntity<String> apply(Application application) {
+    public ResponseEntity<String> apply(Application application) throws ProgradException {
+        Position position = client.findPositionById(bearerToken, application.getPositionId());
+        mailService.sendMail(new NotificationEmail("New Response - " + position.getTitle(),
+                position.getCompany().getEmail(),  "Hi, \n" +
+                "A new application has been submitted to your job post on Prograd. Please check the applications below.\n" +
+                "http://localhost:4201/applications/" + position.getPositionId()));
         return client.apply(bearerToken, application);
     }
 

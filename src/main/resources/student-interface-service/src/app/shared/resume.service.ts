@@ -20,7 +20,7 @@ export class ResumeService {
   }
 
   generateDynamicCv(user: UserModel): any {
-    return this.http.post('http://localhost:8083/generateDynamicCv/', user, { headers: this.headers, responseType: 'blob' });
+    return this.http.post('http://localhost:8083/generateDynamicCv/', user, { headers: this.headers});
   }
 
   getCv(username: string): Observable<any> {
@@ -33,7 +33,8 @@ export class ResumeService {
     return this.http.post('http://localhost:8083/upload/cv/' + userId,
       cvData,
       {
-        headers: this.headers
+        headers: this.headers,
+        responseType: 'blob'
       });
   }
 

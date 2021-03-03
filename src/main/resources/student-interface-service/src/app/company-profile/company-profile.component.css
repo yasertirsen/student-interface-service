@@ -12,6 +12,14 @@ mat-card-content{
   padding: 10px;
 }
 
+mat-card-title{
+  padding: 10px;
+}
+
+mat-card-subtitle{
+  padding: 10px;
+}
+
 mat-card{
   padding:0;
   margin: 10px 10px 10px 10px;

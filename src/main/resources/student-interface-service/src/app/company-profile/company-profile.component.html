@@ -22,6 +22,13 @@
             <mat-card-content>
               <button class="spacer" mat-raised-button color="primary" (click)="onAddReview()">
                 <mat-icon>add</mat-icon>Add Review</button>
+              <h3><strong>Reviews</strong></h3>
+              <mat-card *ngFor="let review of company.profile.reviews">
+                <mat-card-title>{{review.content}}</mat-card-title>
+                <mat-card-subtitle *ngIf="review.type === 'P'">Positive</mat-card-subtitle>
+                <mat-card-subtitle *ngIf="review.type === 'N'">Negative</mat-card-subtitle>
+                <mat-card-content *ngIf="review.questions !== undefined"><strong>Interview Questions:</strong> {{review.content}}</mat-card-content>
+              </mat-card>
               <h3><strong>{{ companyName }}'s jobs</strong></h3>
               <app-job-tile [positions]="positions"></app-job-tile>
             </mat-card-content>

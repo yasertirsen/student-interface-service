@@ -50,6 +50,6 @@ export class PositionService {
         "email": application.email,
         "resume": application.resume,
         "positionId": application.positionId,
-    }, {headers: this.headers});
+    }, {headers: this.headers, responseType: 'blob'});
   }
 }

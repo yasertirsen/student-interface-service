@@ -19,17 +19,17 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
+      <div *ngIf="activeRoute !== '/register' && activeRoute !== '/login' && activeRoute !== '/'">
       <button
         type="button"
         aria-label="Toggle sidenav"
         mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="activeRoute !== '/register' && activeRoute !== '/login' && activeRoute !== '/'">
+        (click)="drawer.toggle()">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <a routerLink="/home" *ngIf="activeRoute !== '/register' && activeRoute !== '/login'">
+      <a routerLink="/home">
 <!--        <img src="https://i.imgur.com/khTyWq7.png" alt="Prograd icon">-->
-        <span class="mat-display-1"><b>prograd</b></span></a>
+        <span class="mat-display-1"><b>prograd</b></span></a></div>
       <span class="spacer"></span>
       <mat-nav-list>
         <a matLine *ngIf="activeRoute === '/login'" routerLink="/register">Register</a>

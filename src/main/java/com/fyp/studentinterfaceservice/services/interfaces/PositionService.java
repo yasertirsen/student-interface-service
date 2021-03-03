@@ -1,5 +1,6 @@
 package com.fyp.studentinterfaceservice.services.interfaces;
 
+import com.fyp.studentinterfaceservice.exceptions.ProgradException;
 import com.fyp.studentinterfaceservice.model.Application;
 import com.fyp.studentinterfaceservice.model.Position;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ public interface PositionService {
 
     List<Position> getCompanyPositions(Long companyId);
 
-    ResponseEntity<String> apply(Application application);
+    ResponseEntity<String> apply(Application application) throws ProgradException;
 
     List<Application> getApplicationsByEmail(String email);
 }

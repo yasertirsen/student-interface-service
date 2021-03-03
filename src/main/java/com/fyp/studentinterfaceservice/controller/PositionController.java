@@ -1,5 +1,6 @@
 package com.fyp.studentinterfaceservice.controller;
 
+import com.fyp.studentinterfaceservice.exceptions.ProgradException;
 import com.fyp.studentinterfaceservice.model.Application;
 import com.fyp.studentinterfaceservice.model.Position;
 import com.fyp.studentinterfaceservice.services.interfaces.PositionService;
@@ -45,7 +46,7 @@ public class PositionController {
     }
 
     @PostMapping("/apply")
-    public ResponseEntity<String> apply(@RequestBody Application application) {
+    public ResponseEntity<String> apply(@RequestBody Application application) throws ProgradException {
         return positionService.apply(application);
     }
 

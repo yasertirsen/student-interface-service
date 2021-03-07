@@ -52,4 +52,20 @@ export class PositionService {
         "positionId": application.positionId,
     }, {headers: this.headers, responseType: 'blob'});
   }
+
+  updateJob(position: PositionModel): Observable<any>{
+    return this.http.put('http://localhost:8083/positions/update',
+      {
+        "positionId": position.positionId,
+        "title": position.title,
+        "description": position.description,
+        "location": position.location,
+        "date": position.date,
+        "salary": position.salary,
+        "clicks": position.clicks,
+        "company": position.company,
+        "requirements": position.requirements
+      },
+      {headers: this.headers});
+  }
 }

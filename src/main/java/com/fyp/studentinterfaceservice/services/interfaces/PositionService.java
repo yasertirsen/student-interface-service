@@ -22,4 +22,6 @@ public interface PositionService {
     ResponseEntity<String> apply(Application application) throws ProgradException;
 
     List<Application> getApplicationsByEmail(String email);
+
+    Position update(Position position);
 }

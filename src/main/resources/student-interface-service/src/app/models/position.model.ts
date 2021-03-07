@@ -10,6 +10,7 @@ export interface PositionModel {
   salary: number;
   url: string;
   clicks: number;
+  priority: boolean;
   company: CompanyModel;
   requirements: SkillModel[];
 }

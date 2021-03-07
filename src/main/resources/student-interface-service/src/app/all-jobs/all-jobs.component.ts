@@ -9,12 +9,18 @@ import {LocalStorageService} from "ngx-webstorage";
   styleUrls: ['./all-jobs.component.css']
 })
 export class AllJobsComponent implements OnInit {
-  positions: PositionModel[];
+  positions: PositionModel[] = [];
+  priority: PositionModel[] = [];
 
-  constructor(private positionService: PositionService, private localStorage: LocalStorageService) {
+  constructor(private positionService: PositionService) {
     this.positionService.getAllJobs().subscribe(data => {
-      this.positions = data;
-    })
+      for(let position of data) {
+        if(position.priority === true)
+          this.priority.push(position);
+        else
+          this.positions.push(position);
+      }
+    });
   }
 
   ngOnInit(): void {

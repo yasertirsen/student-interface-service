@@ -86,6 +86,9 @@ public interface ProgradClient {
     @PostMapping("/positions/getApplicationsByEmail")
     List<Application> getApplicationsByEmail(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestParam String email);
 
+    @PutMapping("/positions/update")
+    Position updatePosition(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestBody Position position);
+
     //Companies endpoint
 
     @GetMapping("/companies/findByName")

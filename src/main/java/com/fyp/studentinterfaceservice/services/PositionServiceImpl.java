@@ -143,4 +143,9 @@ public class PositionServiceImpl implements PositionService {
     public List<Application> getApplicationsByEmail(String email) {
         return client.getApplicationsByEmail(bearerToken, email);
     }
+
+    @Override
+    public Position update(Position position) {
+        return client.updatePosition(bearerToken, position);
+    }
 }

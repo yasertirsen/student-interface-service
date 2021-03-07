@@ -54,4 +54,9 @@ public class PositionController {
     public List<Application> getApplicationsByEmail(@RequestParam String email) {
         return positionService.getApplicationsByEmail(email);
     }
+
+    @PutMapping("/positions/update")
+    public Position updatePosition(@RequestBody Position position) {
+        return positionService.update(position);
+    }
 }

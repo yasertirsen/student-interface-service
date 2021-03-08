@@ -56,7 +56,6 @@ export class UserService {
         "authorities": user.authorities,
         "isLocked": user.isLocked,
         "profile": user.profile,
-        "resumePath": user.resumePath,
       },
       {
         headers: this.headers
@@ -68,8 +67,16 @@ export class UserService {
       {
         "profileId": profile.profileId,
         "course": profile.course,
+        "bio": profile.bio,
         "externalSkills": profile.externalSkills,
         "projects": profile.projects,
+        "experiences": profile.experiences,
+        "averageGrade": profile.averageGrade,
+        "startCourse": profile.startCourse,
+        "endCourse": profile.endCourse,
+        "age": profile.age,
+        "race": profile.race,
+        "gender": profile.gender
       },
       {
         headers: this.headers
@@ -87,7 +94,10 @@ export class UserService {
         "experiences": profile.experiences,
         "averageGrade": profile.averageGrade,
         "startCourse": profile.startCourse,
-        "endCourse": profile.endCourse
+        "endCourse": profile.endCourse,
+        "age": profile.age,
+        "race": profile.race,
+        "gender": profile.gender
       },
       {
         headers: this.headers

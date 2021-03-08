@@ -45,7 +45,7 @@
         <mat-step [stepControl]="secondFormGroup">
           <form [formGroup]="secondFormGroup">
             <ng-template matStepLabel>Choose a profile picture</ng-template>
-              <mat-label>Choose a profile picture</mat-label>
+              <mat-label>Choose a profile picture (510x510)</mat-label>
             <br>
               <input type="file" (change)="onFileChanged($event)">
             <div>
@@ -63,6 +63,42 @@
               <textarea matInput formControlName="secondCtrl" placeholder="Bio" required
                         [(ngModel)]="bio"></textarea>
             </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Personal Information</ng-template>
+            <p>This information is optional. It will be sent to the employer if it is entered</p>
+              <p>
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Gender</mat-label>
+                  <mat-select (selectionChange)="selectedGender($event)">
+                    <mat-option value="M">Male</mat-option>
+                    <mat-option value="F">Female</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Age</mat-label>
+                  <mat-select (selectionChange)="selectedAge($event)">
+                    <mat-option *ngFor="let age of ages" [value]="age">{{age}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Race</mat-label>
+                  <mat-select (selectionChange)="selectedRace($event)">
+                    <mat-option *ngFor="let race of races" [value]="race">{{race}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </p>
             <div>
               <button mat-button matStepperPrevious>Back</button>
               <button mat-button (click)="onDone()">Done</button>

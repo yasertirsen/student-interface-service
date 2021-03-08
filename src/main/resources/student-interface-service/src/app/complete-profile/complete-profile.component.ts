@@ -5,6 +5,7 @@ import {LocalStorageService} from "ngx-webstorage";
 import {UserService} from "../shared/user.service";
 import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatSelectChange} from "@angular/material/select";
 
 @Component({
   selector: 'app-complete-profile',
@@ -23,6 +24,9 @@ export class CompleteProfileComponent implements OnInit {
   phone: string;
   loading: boolean;
   selectedFile: File;
+  races: string[] = ['White', 'Black or African-American', 'American Indian or Alaskan Native', 'Asian',
+    'Native Hawaiian or other Pacific islander', 'From multiple races'];
+  ages: string[] = ['17 or younger', '18-20', '21-29', '30-39', '40-49', '50-59', '60 or older'];
 
   constructor(private _formBuilder: FormBuilder, private localStorage: LocalStorageService,
               private userService: UserService, private router: Router,
@@ -57,6 +61,18 @@ export class CompleteProfileComponent implements OnInit {
     this.user.surname = this.surname;
     this.user.phone = this.phone;
     this.updateUser();
+  }
+
+  selectedGender(event: MatSelectChange) {
+    this.user.profile.gender = event.value;
+  }
+
+  selectedAge(event: MatSelectChange) {
+    this.user.profile.age = event.value;
+  }
+
+  selectedRace(event: MatSelectChange) {
+    this.user.profile.race = event.value;
   }
 
   updateUser(): void {

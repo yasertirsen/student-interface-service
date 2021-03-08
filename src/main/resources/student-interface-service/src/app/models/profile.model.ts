@@ -13,4 +13,7 @@ export interface ProfileModel {
   averageGrade: number;
   startCourse: string;
   endCourse: string;
+  gender: string;
+  race: string;
+  age: string;
 }

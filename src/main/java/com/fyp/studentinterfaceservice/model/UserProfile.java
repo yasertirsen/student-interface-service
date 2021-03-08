@@ -20,4 +20,7 @@ public class UserProfile {
     private double averageGrade;
     private String startCourse;
     private String endCourse;
+    private String gender;
+    private String race;
+    private String age;
 }

@@ -15,6 +15,5 @@ export interface UserModel {
   authorities: string[];
   isLocked: boolean;
   profile: ProfileModel;
-  resumePath: string;
 
 }

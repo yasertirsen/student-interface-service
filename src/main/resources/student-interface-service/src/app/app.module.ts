@@ -58,6 +58,8 @@ import { AddExperienceDialogComponent } from './profile/add-experience-dialog/ad
 import { AddSkillsDialogComponent } from './profile/add-skills-dialog/add-skills-dialog.component';
 import { ApplyDialogComponent } from './cv-builder/apply-dialog/apply-dialog.component';
 import { MatRadioModule } from '@angular/material/radio';
+import { AddCourseComponent } from './add-course/add-course.component';
+import { AddModuleDialogComponent } from './add-course/add-module-dialog/add-module-dialog.component';
 
 
 @NgModule({
@@ -88,7 +90,9 @@ import { MatRadioModule } from '@angular/material/radio';
     AddProjectDialogComponent,
     AddExperienceDialogComponent,
     AddSkillsDialogComponent,
-    ApplyDialogComponent
+    ApplyDialogComponent,
+    AddCourseComponent,
+    AddModuleDialogComponent
   ],
     imports: [
         BrowserModule,

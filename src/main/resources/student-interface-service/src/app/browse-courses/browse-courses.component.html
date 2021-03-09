@@ -1,8 +1,15 @@
 <div class="body">
   <div class="container">
     <div class="row">
-      <hr />
-      <div class="col-md-10 justify-content-center">
+      <div class="offset-2"></div>
+      <div class="col-md-10 ">
+        <div class="col-md-10 center">
+        <mat-card>
+          <h3 class="mat-h3">Browse courses below <br>
+            <strong>OR</strong></h3>
+          <button mat-raised-button color="primary" (click)="onAddCourse()">Add your course</button>
+        </mat-card>
+        </div>
         <app-course-tile [courses]="courses"></app-course-tile>
       </div>
     </div>

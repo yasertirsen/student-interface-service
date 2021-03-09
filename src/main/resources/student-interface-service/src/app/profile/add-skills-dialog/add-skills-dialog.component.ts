@@ -53,7 +53,7 @@ export class AddSkillsDialogComponent implements OnInit {
     const value = event.value;
 
     if ((value || '').trim()) {
-      this.skills.push({skillId: null, skillName: value.trim(), industry: null});
+      this.skills.push({skillId: null, skillName: value.trim()});
     }
 
     if (input) {
@@ -72,7 +72,7 @@ export class AddSkillsDialogComponent implements OnInit {
   }
 
   selectedSkill(event: MatAutocompleteSelectedEvent): void {
-    this.skills.push({skillId: null, skillName: event.option.viewValue, industry: null});
+    this.skills.push({skillId: null, skillName: event.option.viewValue});
     this.skillInput.nativeElement.value = '';
     this.skillsCtrl.setValue(null);
   }

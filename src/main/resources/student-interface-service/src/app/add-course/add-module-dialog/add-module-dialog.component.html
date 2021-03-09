@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Add Experience</h1>
+<div class="content" mat-dialog-content>
+  <mat-form-field class="full-width" appearance="outline">
+    <mat-label>Module Name</mat-label>
+    <input matInput [(ngModel)]="module.name" required>
+  </mat-form-field>
+  <p>Main skill learned in this module</p>
+  <mat-form-field class="full-width" appearance="outline">
+    <mat-label>Skill</mat-label>
+    <input matInput [(ngModel)]="module.skill.skillName">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button (click)="onAdd()" cdkFocusInitial>Add</button>
+</div>

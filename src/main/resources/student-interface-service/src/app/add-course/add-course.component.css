@@ -1,0 +1,14 @@
+.full-width {
+  width: 100%;
+}
+
+mat-card{
+  margin:10px 10px 10px 10px;
+  display:inline-block;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

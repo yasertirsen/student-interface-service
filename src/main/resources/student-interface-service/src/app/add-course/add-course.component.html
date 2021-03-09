@@ -1,0 +1,59 @@
+<app-mat-spinner-overlay
+  overlay="true"
+  *ngIf="loading === true">
+</app-mat-spinner-overlay>
+
+
+<div class="body" *ngIf="loading === false">
+      <div class="center">
+        <mat-card>
+         <mat-card-title>Add Course</mat-card-title>
+          <mat-card-content>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>University/College</mat-label>
+              <input type="text"
+                     placeholder="University"
+                     matInput
+                     [formControl]="myControl"
+                     [matAutocomplete]="auto"
+                     [(ngModel)]="course.university">
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+            <div *ngIf="course.university !== 'Technological University Dublin'">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Course Title</mat-label>
+              <input matInput [(ngModel)]="course.name" placeholder="Title" required>
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Level</mat-label>
+              <input matInput [(ngModel)]="course.level" placeholder="level of your course i.e. level 8" required>
+            </mat-form-field>
+            </div>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Course Page</mat-label>
+              <input matInput [(ngModel)]="course.url" type="url">
+            </mat-form-field>
+            <div *ngIf="course.university !== 'Technological University Dublin'">
+              <mat-card-subtitle>Modules</mat-card-subtitle>
+              <div *ngIf="course.modules.length > 0">
+                <ul *ngFor="let module of course.modules">
+                  <li>{{module.name}}</li>
+                </ul>
+              </div>
+              <button mat-raised-button color="primary" (click)="onAddModule()">Add Module</button>
+            </div>
+            <h3 class="mat-h3" *ngIf="course.university === 'Technological University Dublin'">
+              <strong>As a Technological University Dublin student, you can just provide the course page. <br>
+            Course information will be added automatically.</strong></h3>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="onAddCourse()">Add Course</button>
+          </mat-card-actions>
+        </mat-card>
+
+      </div>
+</div>

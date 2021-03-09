@@ -22,14 +22,12 @@ import java.util.Set;
 public class CourseServiceImpl implements CourseService {
 
     private final ProgradClient client;
-    private final UserService userService;
 
     @Value("${token.secret}")
     private String bearerToken;
 
-    public CourseServiceImpl(ProgradClient client, UserService userService) {
+    public CourseServiceImpl(ProgradClient client) {
         this.client = client;
-        this.userService = userService;
     }
 
     @Override
@@ -40,8 +38,15 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public Course add(Course course) throws ModuleParsingException {
         if(!course.getUrl().isEmpty()
-                && course.getUniversity().equalsIgnoreCase("TUD")) {
-            return client.addCourse(bearerToken, getTudCourseDetails(course));
+                && course.getUniversity().equalsIgnoreCase("Technological University Dublin")
+                || course.getUniversity().equalsIgnoreCase("TU Dublin")
+                || course.getUniversity().equalsIgnoreCase("TUD")) {
+            try {
+                return client.addCourse(bearerToken, getTudCourseDetails(course));
+            }
+            catch (ModuleParsingException e) {
+                return client.addCourse(bearerToken, course);
+            }
         }
         return client.addCourse(bearerToken, course);
     }

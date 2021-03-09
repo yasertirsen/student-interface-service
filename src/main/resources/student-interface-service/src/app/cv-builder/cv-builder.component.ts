@@ -284,7 +284,7 @@ export class CvBuilderComponent implements OnInit {
     this.user.profile.externalSkills = [];
     this.user.profile.bio = this.summary;
     for(let skill of this.skills) {
-      this.skill = {skillId: 0, skillName: skill, industry: null}
+      this.skill = {skillId: 0, skillName: skill}
       this.user.profile.externalSkills.push(this.skill);
     }
     for(let experience of this.user.profile.experiences) {

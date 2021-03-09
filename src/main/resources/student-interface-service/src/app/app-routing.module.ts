@@ -14,6 +14,7 @@ import {AllCompaniesComponent} from "./all-companies/all-companies.component";
 import {CompanyProfileComponent} from "./company-profile/company-profile.component";
 import {ReviewComponent} from "./review/review.component";
 import {ProfileComponent} from "./profile/profile.component";
+import {AddCourseComponent} from "./add-course/add-course.component";
 
 const routes: Routes = [
   {
@@ -76,6 +77,10 @@ const routes: Routes = [
   {
     path: 'settings',
     component: ProfileComponent
+  },
+  {
+    path: 'add-course',
+    component: AddCourseComponent
   },
   {
     path: '**',

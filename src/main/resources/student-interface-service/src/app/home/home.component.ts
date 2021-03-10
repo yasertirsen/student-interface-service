@@ -6,6 +6,8 @@ import {LocalStorageService} from "ngx-webstorage";
 import {UserService} from "../shared/user.service";
 import {ActivatedRoute} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {PositionModel} from "../models/position.model";
+import {PositionService} from "../shared/position.service";
 
 @Component({
   selector: 'app-home',
@@ -17,13 +19,13 @@ export class HomeComponent implements OnInit {
   socialUrl: string;
   user: UserModel;
   isError: boolean;
-  panelOpenState = false;
   loading = true;
   retrievedImage: any = null;
   base64Data: any;
+  recommendedPositions: PositionModel[] = [];
 
   constructor(public dialog: MatDialog, private localStorage: LocalStorageService, private userService: UserService,
-              private activatedRoute: ActivatedRoute, private _snackBar: MatSnackBar) {
+              private activatedRoute: ActivatedRoute, private _snackBar: MatSnackBar, private positionService: PositionService) {
     this.userService.getCurrentUser().subscribe(user => {
       this.user = user;
       this.socialUrl = this.user.socialUrl;
@@ -32,8 +34,17 @@ export class HomeComponent implements OnInit {
           this.base64Data = image.data;
           this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
         }
-        this.loading = false;
       });
+      this.positionService.getRecommendedJobs(this.user.email).subscribe(jobs => {
+        this.recommendedPositions = jobs
+        this.loading = false;
+      },
+        error => {
+        console.log(error);
+          this._snackBar.open('Error getting your recommended jobs', 'Close', {
+            duration: 3000,
+          });
+        });
     });
   }
 

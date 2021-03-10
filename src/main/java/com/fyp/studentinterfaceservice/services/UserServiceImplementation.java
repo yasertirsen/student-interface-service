@@ -174,6 +174,17 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
         return progradClient.getAllSkills(bearerToken);
     }
 
+    @Override
+    public User findUserById(Long studentId) {
+        return progradClient.findById(bearerToken, studentId);
+    }
+
+    @Override
+    public User changePassword(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return progradClient.add(user);
+    }
+
     public byte[] compressBytes(byte[] data) {
         Deflater deflater = new Deflater();
         deflater.setInput(data);

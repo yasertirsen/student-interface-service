@@ -8,6 +8,7 @@ import {SkillModel} from "../models/skill.model";
 import {ProjectModel} from "../models/project.model";
 import {LocalStorageService} from "ngx-webstorage";
 import {ExperienceModel} from "../models/experience.model";
+import {LoginRequest} from "../models/login-request-payload";
 
 @Injectable({
   providedIn: 'root'
@@ -21,10 +22,21 @@ export class UserService {
     })
   }
 
+  login(user: LoginRequest): Observable<any> {
+    return this.http.post('http://localhost:8083/login',
+      {"email": user.email,
+            "password": user.password});
+  }
+
   getCurrentUser(): Observable<any>{
     return this.http.get('http://localhost:8083/currentUser', {
       headers: this.headers
     });
+  }
+
+  getUserById(userId: number): Observable<any> {
+    return this.http.get('http://localhost:8083/getUserById/' + userId,
+      {headers: this.headers});
   }
 
   getAllSkills(): Observable<any> {

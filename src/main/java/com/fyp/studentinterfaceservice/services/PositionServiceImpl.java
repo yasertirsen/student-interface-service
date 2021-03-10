@@ -3,13 +3,12 @@ package com.fyp.studentinterfaceservice.services;
 import com.careerjet.webservice.api.Client;
 import com.fyp.studentinterfaceservice.client.ProgradClient;
 import com.fyp.studentinterfaceservice.exceptions.ProgradException;
-import com.fyp.studentinterfaceservice.model.Application;
-import com.fyp.studentinterfaceservice.model.Company;
-import com.fyp.studentinterfaceservice.model.NotificationEmail;
-import com.fyp.studentinterfaceservice.model.Position;
+import com.fyp.studentinterfaceservice.exceptions.StudentExceptionHandler;
+import com.fyp.studentinterfaceservice.model.*;
 import com.fyp.studentinterfaceservice.services.interfaces.PositionService;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +23,8 @@ public class PositionServiceImpl implements PositionService {
 
     private final ProgradClient client;
     private final MailService mailService;
+    @Value("${careerjet.api.key}")
+    private String apiKey;
 
     public PositionServiceImpl(ProgradClient client, MailService mailService) {
         this.client = client;
@@ -67,11 +68,11 @@ public class PositionServiceImpl implements PositionService {
         Client careerjetClient = new Client("en_GB");
         List<Position> positions = new ArrayList<>();
 
-        Map<String, String> args1 = new HashMap<String, String>();
+        Map<String, String> args1 = new HashMap<>();
         args1.put("keywords", keywords);
         args1.put("location", location);
 
-        args1.put("affid", "d5bae8e1fcebbd44fcda331aead3f612");
+        args1.put("affid", apiKey);
 
         args1.put("user_ip",    "Placeholder");
         args1.put("user_agent", "Placeholder");
@@ -136,6 +137,10 @@ public class PositionServiceImpl implements PositionService {
                 position.getCompany().getEmail(),  "Hi, \n" +
                 "A new application has been submitted to your job post on Prograd. Please check the applications below.\n" +
                 "http://localhost:4201/applications/" + position.getPositionId()));
+        mailService.sendMail(new NotificationEmail("New Application",
+                application.getEmail(),
+                "Hi, \n" +
+                "Your application for " + position.getTitle() + " has been submitted successfully.\n"));
         return client.apply(bearerToken, application);
     }
 
@@ -147,5 +152,31 @@ public class PositionServiceImpl implements PositionService {
     @Override
     public Position update(Position position) {
         return client.updatePosition(bearerToken, position);
+    }
+
+    @Override
+    public List<Position> getJobRecommendations(String email) {
+        List<Skill> skills = new ArrayList<>(Objects.requireNonNull(client.findByEmail(bearerToken, email).getBody()).getProfile().getExternalSkills());
+        List<String> skillNames = new ArrayList<>();
+        for(Skill skill : skills) {
+            skillNames.addAll(Arrays.asList(skill.getSkillName().toLowerCase().split(" ")));
+        }
+        String pattern = String.join("|", skillNames);
+
+        List<Position> filteredPositions = new ArrayList<>();
+        for(Position position : client.getAllPositions(bearerToken)) {
+            List<Skill> requirements = new ArrayList<>(position.getRequirements());
+            for(Skill req : requirements) {
+                Matcher matcher = Pattern.compile(pattern).matcher(req.getSkillName().toLowerCase());
+                if(matcher.find()) {
+                    filteredPositions.add(position);
+                    break;
+                }
+            }
+            if(filteredPositions.size() > 15)
+                break;
+        }
+
+        return filteredPositions;
     }
 }

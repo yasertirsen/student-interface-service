@@ -24,4 +24,6 @@ public interface PositionService {
     List<Application> getApplicationsByEmail(String email);
 
     Position update(Position position);
+
+    List<Position> getJobRecommendations(String email);
 }

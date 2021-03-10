@@ -15,6 +15,7 @@ import {CompanyProfileComponent} from "./company-profile/company-profile.compone
 import {ReviewComponent} from "./review/review.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {AddCourseComponent} from "./add-course/add-course.component";
+import {AlumniProfileComponent} from "./alumni-profile/alumni-profile.component";
 
 const routes: Routes = [
   {
@@ -81,6 +82,10 @@ const routes: Routes = [
   {
     path: 'add-course',
     component: AddCourseComponent
+  },
+  {
+    path: 'profile/:userId',
+    component: AlumniProfileComponent
   },
   {
     path: '**',

@@ -6,6 +6,7 @@ import {map} from "rxjs/operators";
 import {LocalStorageService} from "ngx-webstorage";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {UserService} from "../shared/user.service";
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
     password: ''
   };
 
-  constructor(private client: HttpClient, private localStorage: LocalStorageService,
+  constructor(private userService: UserService, private localStorage: LocalStorageService,
               private activatedRoute: ActivatedRoute, private router: Router,
               private _snackBar: MatSnackBar) { }
 
@@ -37,10 +38,10 @@ export class LoginComponent implements OnInit {
   }
 
   loginStudent(): void {
-    let url = 'http://localhost:8083/login';
-    this.client.post<LoginResponse>(url, this.model).pipe(map(data => {
+    this.userService.login(this.model).pipe(map(data => {
       this.localStorage.store('token', data.token);
       this.localStorage.store('email', data.email);
+      this.localStorage.store('id', data.studentId);
       this.localStorage.store('expiresIn', data.expiresIn);
     })).subscribe(data => {
       this.isError = false;

@@ -4,12 +4,9 @@ mat-card-header{
   color:white;
 }
 
-.mat-card-subtitle {
-  color: white;
-}
-
 mat-card-content{
-  padding: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
 }
 
 mat-card-title{
@@ -17,12 +14,13 @@ mat-card-title{
 }
 
 mat-card-subtitle{
-  padding: 10px;
+  font-weight: bold;
+  padding-left: 10px;
 }
 
 mat-card{
   padding:0;
-  margin: 10px 10px 10px 10px;
+  margin: 10px;
 }
 
 .example-header-image {
@@ -31,5 +29,14 @@ mat-card{
 }
 
 .spacer {
-  margin: 10px 10px 10px 10px;
+  margin: 10px;
 }
+
+a {
+  color: white;
+}
+
+.main-content {
+  padding-top: 10px;
+}
+

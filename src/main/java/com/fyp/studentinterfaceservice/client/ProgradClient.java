@@ -51,6 +51,9 @@ public interface ProgradClient {
     @GetMapping("/students/getAllSkills")
     Set<Skill> getAllSkills(@RequestHeader(AUTH_TOKEN) String bearerToken);
 
+    @GetMapping("/students/getById/{studentId}")
+    User findById(@RequestHeader(AUTH_TOKEN) String bearerToken, @PathVariable Long studentId);
+
     //Courses endpoint
 
     @GetMapping(value = "/courses/findById")

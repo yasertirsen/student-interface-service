@@ -60,6 +60,8 @@ import { ApplyDialogComponent } from './cv-builder/apply-dialog/apply-dialog.com
 import { MatRadioModule } from '@angular/material/radio';
 import { AddCourseComponent } from './add-course/add-course.component';
 import { AddModuleDialogComponent } from './add-course/add-module-dialog/add-module-dialog.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { AlumniProfileComponent } from './alumni-profile/alumni-profile.component';
 
 
 @NgModule({
@@ -92,7 +94,8 @@ import { AddModuleDialogComponent } from './add-course/add-module-dialog/add-mod
     AddSkillsDialogComponent,
     ApplyDialogComponent,
     AddCourseComponent,
-    AddModuleDialogComponent
+    AddModuleDialogComponent,
+    AlumniProfileComponent
   ],
     imports: [
         BrowserModule,
@@ -126,7 +129,8 @@ import { AddModuleDialogComponent } from './add-course/add-module-dialog/add-mod
         MatSelectModule,
         MatGridListModule,
         MatDatepickerModule,
-        MatRadioModule
+        MatRadioModule,
+        FlexLayoutModule
     ],
   providers: [],
   bootstrap: [AppComponent]

@@ -78,6 +78,16 @@ public class StudentController {
         return userService.getCurrentUser();
     }
 
+    @GetMapping("/getUserById/{studentId}")
+    public User getUserById(@PathVariable Long studentId) {
+        return userService.findUserById(studentId);
+    }
+
+    @PostMapping("/changePassword")
+    public User changePassword(@RequestBody User user){
+        return userService.changePassword(user);
+    }
+
     @PutMapping("/update")
     public User updateUser(@RequestBody User user) {
         return userService.updateUser(user);

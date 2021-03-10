@@ -59,4 +59,9 @@ public class PositionController {
     public Position updatePosition(@RequestBody Position position) {
         return positionService.update(position);
     }
+
+    @GetMapping("positions/recommend")
+    public List<Position> getJobRecommendations(@RequestParam String email) {
+        return positionService.getJobRecommendations(email);
+    }
 }

@@ -39,6 +39,11 @@ export class PositionService {
     return this.http.get<Array<PositionModel>>('http://localhost:8083/getAllPositions/', {headers: this.headers})
   }}
 
+  getRecommendedJobs(email: string): Observable<any> {{
+    return this.http.get('http://localhost:8083/positions/recommend',
+      {headers: this.headers, params: {email: email}});
+  }}
+
   getJob(id: number): Observable<PositionModel> {
     return this.http.get<PositionModel>('http://localhost:8083/getPosition/' + id, {headers: this.headers});
   }

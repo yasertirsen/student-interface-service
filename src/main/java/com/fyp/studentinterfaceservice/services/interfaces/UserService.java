@@ -45,4 +45,8 @@ public interface UserService {
     Image getImage(Long userId);
 
     Set<Skill> getAllSkills();
+
+    User findUserById(Long studentId);
+
+    User changePassword(User user);
 }

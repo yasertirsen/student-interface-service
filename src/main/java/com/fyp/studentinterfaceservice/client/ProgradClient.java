@@ -1,5 +1,6 @@
 package com.fyp.studentinterfaceservice.client;
 
+import com.fyp.studentinterfaceservice.dto.CompanyWrapper;
 import com.fyp.studentinterfaceservice.model.*;
 import feign.Headers;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -95,7 +96,7 @@ public interface ProgradClient {
     //Companies endpoint
 
     @GetMapping("/companies/findByName")
-    Company findCompanyByName(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestParam String name);
+    CompanyWrapper findCompanyByName(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestParam String name);
 
     @GetMapping("/companies/all")
     List<Company> getAllCompanies(@RequestHeader(AUTH_TOKEN) String bearerToken);

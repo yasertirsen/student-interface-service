@@ -1,6 +1,7 @@
 package com.fyp.studentinterfaceservice.services;
 
 import com.fyp.studentinterfaceservice.client.ProgradClient;
+import com.fyp.studentinterfaceservice.dto.CompanyWrapper;
 import com.fyp.studentinterfaceservice.model.Company;
 import com.fyp.studentinterfaceservice.model.CompanyProfile;
 import com.fyp.studentinterfaceservice.model.Review;
@@ -25,7 +26,7 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public Company getCompany(String name) {
+    public CompanyWrapper getCompany(String name) {
         return client.findCompanyByName(bearerToken, name);
     }
 
@@ -41,7 +42,7 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public double getRating(String name) {
-        List<Review> reviews = client.findCompanyByName(bearerToken, name).getProfile().getReviews();
+        List<Review> reviews = client.findCompanyByName(bearerToken, name).getCompany().getProfile().getReviews();
         if(reviews != null && reviews.size() != 0) {
             double positive = 0;
             for(Review review : reviews) {

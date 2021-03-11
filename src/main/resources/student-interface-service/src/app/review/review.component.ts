@@ -25,8 +25,8 @@ export class ReviewComponent implements OnInit {
     questions: null,
     reviewId: null,
     studentId: null,
-    type: null
-
+    type: null,
+    profileId: null
   };
 
   constructor(private userService: UserService, private companyService: CompanyService,
@@ -34,10 +34,11 @@ export class ReviewComponent implements OnInit {
               private router: Router) {
     this.companyName = this.activatedRoute.snapshot.params.name;
     this.companyService.getCompany(this.companyName).subscribe(data => {
-      this.company = data;
+      this.company = data.company;
       this.userService.getCurrentUser().subscribe(user => {
         this.user = user;
         this.review.studentId = this.user.studentId;
+        this.review.profileId = this.company.profile.profileId;
         this.loading = false;
       });
     });

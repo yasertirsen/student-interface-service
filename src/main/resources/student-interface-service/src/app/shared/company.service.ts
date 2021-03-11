@@ -3,8 +3,6 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {LocalStorageService} from "ngx-webstorage";
 import {CompanyProfileModel} from "../models/company-profile.model";
-import {UserModel} from "../models/user.model";
-import {ReviewModel} from "../models/review.model";
 
 @Injectable({
   providedIn: 'root'

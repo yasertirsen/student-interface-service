@@ -1,5 +1,6 @@
 package com.fyp.studentinterfaceservice.controller;
 
+import com.fyp.studentinterfaceservice.dto.CompanyWrapper;
 import com.fyp.studentinterfaceservice.model.Company;
 import com.fyp.studentinterfaceservice.model.CompanyProfile;
 import com.fyp.studentinterfaceservice.model.Review;
@@ -21,7 +22,7 @@ public class CompanyController {
     }
 
     @GetMapping("/{name}")
-    public Company getCompany(@PathVariable String name) {
+    public CompanyWrapper getCompany(@PathVariable String name) {
         return companyService.getCompany(name);
     }
 

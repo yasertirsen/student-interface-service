@@ -1,5 +1,6 @@
 package com.fyp.studentinterfaceservice.services.interfaces;
 
+import com.fyp.studentinterfaceservice.dto.CompanyWrapper;
 import com.fyp.studentinterfaceservice.model.Company;
 import com.fyp.studentinterfaceservice.model.CompanyProfile;
 import com.fyp.studentinterfaceservice.model.Review;
@@ -7,7 +8,8 @@ import com.fyp.studentinterfaceservice.model.Review;
 import java.util.List;
 
 public interface CompanyService {
-    Company getCompany(String id);
+    CompanyWrapper getCompany(String name);
+
 
     List<Company> getAllCompanies();
 

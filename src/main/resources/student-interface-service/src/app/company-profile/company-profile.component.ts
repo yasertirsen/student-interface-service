@@ -7,6 +7,8 @@ import {PositionService} from "../shared/position.service";
 import {UserService} from "../shared/user.service";
 import {ReviewModel} from "../models/review.model";
 import {LocalStorageService} from "ngx-webstorage";
+import {CompanyWrapperModel} from "../models/companyWrapper.model";
+import {forkJoin} from "rxjs";
 
 @Component({
   selector: 'app-company-profile',
@@ -16,44 +18,48 @@ import {LocalStorageService} from "ngx-webstorage";
 export class CompanyProfileComponent implements OnInit {
   loading = true;
   companyName: string;
-  company: CompanyModel;
+  company: CompanyWrapperModel = {
+    company: null,
+    users: []
+  };
   positions: PositionModel[];
-  reviews = new Map();
+  usersMap = new Map<number, string>();
 
   constructor(private companyService: CompanyService, private activatedRoute: ActivatedRoute,
               private router: Router, private positionService: PositionService, private userService: UserService,
-              private localStorage: LocalStorageService) {
-    this.companyName = this.activatedRoute.snapshot.params.name;
-    this.companyService.getCompany(this.companyName).subscribe(data =>{
-      this.company = data;
-      for(let review of this.company.profile.reviews) {
-        this.userService.getUserById(review.studentId).subscribe( poster => {
-          this.reviews.set(poster, review);
-        });
-      }
-      this.companyService.getRating(this.companyName).subscribe(rating => {
-        this.company.profile.rating = Number((Math.round(rating * 100) / 100).toFixed(2));
-        this.positionService.getCompanyPositions(this.company.companyId).subscribe(positions => {
-          this.positions = positions;
-          this.loading = false
-        });
-      });
-    })
-  }
+              private localStorage: LocalStorageService) {}
 
   ngOnInit(): void {
+    this._getIdFromUrl();
   }
 
   onAddReview() {
-    this.router.navigateByUrl('/review/' + this.company.name);
+    this.router.navigateByUrl('/review/' + this.company.company.name);
   }
 
-  onProfile(userId: number) {
-    this.router.navigateByUrl('/profile/' + userId);
+  private _getIdFromUrl() {
+    this.activatedRoute.params.subscribe(p => {
+      this.getDataForCompanyAndRating(p.name);
+    });
   }
 
-  notCurrentUser(email: string) {
-    return email !== this.localStorage.retrieve('email')
+  getDataForCompanyAndRating(name: string) {
+    let getCompany = this.companyService.getCompany(name);
+    let getRating = this.companyService.getRating(name);
 
+    forkJoin([getCompany, getRating]).subscribe(results => {
+      this.company = (results[0] as CompanyWrapperModel);
+      this.company.users.forEach(u => this.usersMap.set(u.studentId, u.firstName));
+      console.log(this.company);
+      const rating = (results[1] as number);
+      this.company.company.profile.rating = Number((Math.round(rating * 100) / 100).toFixed(2))
+      this.positionService.getCompanyPositions(this.company.company.companyId).subscribe(positions => {
+        this.positions = positions;
+        this.loading = false
+      });
+    }, error1 => {
+      this.loading = false;
+      console.log(error1);
+    });
   }
 }

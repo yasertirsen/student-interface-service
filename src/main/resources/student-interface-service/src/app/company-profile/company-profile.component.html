@@ -9,13 +9,13 @@
     <div class="col-md-12">
       <section>
         <div>
-          <mat-card>
+          <mat-card *ngIf="company !== null">
               <mat-card-header>
                 <div mat-card-avatar class="example-header-image"></div>
-                <mat-card-title>{{company.name}}</mat-card-title>
-                <mat-card-subtitle *ngIf="company.address !== null">{{ company.address }}</mat-card-subtitle>
+                <mat-card-title>{{company.company.name}}</mat-card-title>
+                <mat-card-subtitle *ngIf="company.company.address !== null">{{ company.company.address }}</mat-card-subtitle>
                 <mat-card-subtitle>
-                  {{ company.profile.rating }}
+                  {{ company.company.profile.rating }}
                     <mat-icon style="font-size: 18px; justify-content: flex-end" >star</mat-icon>
                 </mat-card-subtitle>
               </mat-card-header>
@@ -23,15 +23,14 @@
               <button class="spacer" mat-raised-button color="primary" (click)="onAddReview()">
                 <mat-icon>add</mat-icon>Add Review</button>
               <h3><strong>Reviews</strong></h3>
-              <mat-card *ngFor="let entry of reviews.entries()">
-                <mat-card-title><a (click)="onProfile(entry[0].studentId)" *ngIf="notCurrentUser(entry[0].email)">{{entry[0].firstName}}</a></mat-card-title>
-                <mat-card-title *ngIf="!notCurrentUser(entry[0].email)">{{entry[0].firstName}}</mat-card-title>
-                <mat-card-subtitle *ngIf="entry[1].type === 'P'">Positive</mat-card-subtitle>
-                <mat-card-subtitle *ngIf="entry[1].type === 'N'">Negative</mat-card-subtitle>
-                <mat-card-content ><h3 class="mat-h3"><strong>{{entry[1].content}}</strong></h3></mat-card-content>
-                <mat-card-content *ngIf="entry[1].questions !== undefined"><strong>Interview Questions:</strong> {{entry[1].questions}}</mat-card-content>
+              <mat-card *ngFor="let review of company.company.profile.reviews">
+                <mat-card-title><a [routerLink]="['/profile', review.studentId]">{{usersMap.get(review.studentId)}}</a></mat-card-title>
+                <mat-card-subtitle *ngIf="review.type === 'P'">Positive</mat-card-subtitle>
+                <mat-card-subtitle *ngIf="review.type === 'N'">Negative</mat-card-subtitle>
+                <mat-card-content ><h3 class="mat-h3"><strong>{{review.content}}</strong></h3></mat-card-content>
+                <mat-card-content *ngIf="review.questions !== undefined"><strong>Interview Questions:</strong> {{review.questions}}</mat-card-content>
               </mat-card>
-              <h3><strong>{{ companyName }}'s jobs</strong></h3>
+              <h3><strong>{{ company.company.name }}'s jobs</strong></h3>
               <app-job-tile [positions]="positions"></app-job-tile>
             </mat-card-content>
             <mat-card-actions>

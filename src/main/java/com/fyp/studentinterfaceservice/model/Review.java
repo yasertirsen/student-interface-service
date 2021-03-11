@@ -15,4 +15,5 @@ public class Review {
     private boolean hired;
     private boolean interviewed;
     private Long studentId;
+    private Long profileId;
 }

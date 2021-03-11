@@ -4,6 +4,7 @@ export interface ReviewModel{
   content: string;
   questions: string;
   hired: boolean;
-  interviewed;
+  interviewed: boolean;
   studentId: number;
+  profileId: number;
 }

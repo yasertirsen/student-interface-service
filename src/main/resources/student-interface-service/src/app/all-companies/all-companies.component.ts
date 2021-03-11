@@ -16,7 +16,7 @@ export class AllCompaniesComponent implements OnInit {
   constructor(private companyService: CompanyService, private router: Router) {
     this.companyService.getAllCompanies().subscribe(data => {
       for(let company of data) {
-        company.profile.rating = this.getRating(company);
+        this.getRating(company);
       }
       this.loading = false;
     });
@@ -29,9 +29,9 @@ export class AllCompaniesComponent implements OnInit {
     this.router.navigateByUrl('/company/' + name);
   }
 
-  getRating(company: CompanyModel): any {
+  getRating(company: CompanyModel): void {
     this.companyService.getRating(company.name).subscribe(data => {
-      company.profile.rating = data;
+      company.profile.rating = Number((Math.round(data * 100) / 100).toFixed(2));
       this.companies.push(company);
     });
   }

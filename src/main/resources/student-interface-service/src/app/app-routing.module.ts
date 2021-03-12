@@ -16,6 +16,7 @@ import {ReviewComponent} from "./review/review.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {AddCourseComponent} from "./add-course/add-course.component";
 import {AlumniProfileComponent} from "./alumni-profile/alumni-profile.component";
+import {AuthGuard} from "./_guards/auth.guard";
 
 const routes: Routes = [
   {
@@ -33,7 +34,8 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'search/:location/:keywords',
@@ -45,11 +47,13 @@ const routes: Routes = [
   },
   {
     path: 'courses',
-    component: BrowseCoursesComponent
+    component: BrowseCoursesComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'complete-profile',
-    component: CompleteProfileComponent
+    component: CompleteProfileComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'jobs',
@@ -61,7 +65,8 @@ const routes: Routes = [
   },
   {
     path: 'apply/:positionId',
-    component: CvBuilderComponent
+    component: CvBuilderComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'companies',
@@ -73,19 +78,23 @@ const routes: Routes = [
   },
   {
     path: 'review/:name',
-    component: ReviewComponent
+    component: ReviewComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'settings',
-    component: ProfileComponent
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'add-course',
-    component: AddCourseComponent
+    component: AddCourseComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'profile/:userId',
-    component: AlumniProfileComponent
+    component: AlumniProfileComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '**',

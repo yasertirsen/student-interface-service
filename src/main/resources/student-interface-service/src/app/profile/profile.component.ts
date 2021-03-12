@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {UserModel} from "../models/user.model";
-import {UserService} from "../shared/user.service";
+import {UserService} from "../services/user.service";
 import {MatDialog} from "@angular/material/dialog";
 import {EditSummaryComponent} from "./edit-summary/edit-summary.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AddProjectDialogComponent} from "./add-project-dialog/add-project-dialog.component";
 import {AddExperienceDialogComponent} from "./add-experience-dialog/add-experience-dialog.component";
 import {AddSkillsDialogComponent} from "./add-skills-dialog/add-skills-dialog.component";
-import {ResumeService} from "../shared/resume.service";
+import {ResumeService} from "../services/resume.service";
 import {DomSanitizer} from "@angular/platform-browser";
 
 declare var require: any

@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {CourseModel} from "../../models/course.model";
 import {MatDialog} from "@angular/material/dialog";
 import {LocalStorageService} from "ngx-webstorage";
-import {UserService} from "../../shared/user.service";
+import {UserService} from "../../services/user.service";
 import {UserModel} from "../../models/user.model";
 import {CourseDialogComponent} from "../course-dialog/course-dialog.component";
 import {Router} from "@angular/router";

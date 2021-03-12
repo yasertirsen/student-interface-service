@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {CompanyModel} from "../models/company.model";
-import {CompanyService} from "../shared/company.service";
+import {CompanyService} from "../services/company.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {UserService} from "../shared/user.service";
+import {UserService} from "../services/user.service";
 import {UserModel} from "../models/user.model";
 import {ReviewModel} from "../models/review.model";
 import {MatSelectChange} from "@angular/material/select";

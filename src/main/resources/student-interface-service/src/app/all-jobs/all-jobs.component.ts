@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PositionModel} from "../models/position.model";
-import {PositionService} from "../shared/position.service";
+import {PositionService} from "../services/position.service";
 import {LocalStorageService} from "ngx-webstorage";
 
 @Component({

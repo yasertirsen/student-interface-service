@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {CompanyService} from "../shared/company.service";
+import {CompanyService} from "../services/company.service";
 import {CompanyModel} from "../models/company.model";
 import {PositionModel} from "../models/position.model";
-import {PositionService} from "../shared/position.service";
-import {UserService} from "../shared/user.service";
+import {PositionService} from "../services/position.service";
+import {UserService} from "../services/user.service";
 import {ReviewModel} from "../models/review.model";
 import {LocalStorageService} from "ngx-webstorage";
 import {CompanyWrapperModel} from "../models/companyWrapper.model";
@@ -17,7 +17,6 @@ import {forkJoin} from "rxjs";
 })
 export class CompanyProfileComponent implements OnInit {
   loading = true;
-  companyName: string;
   company: CompanyWrapperModel = {
     company: null,
     users: []
@@ -26,18 +25,17 @@ export class CompanyProfileComponent implements OnInit {
   usersMap = new Map<number, string>();
 
   constructor(private companyService: CompanyService, private activatedRoute: ActivatedRoute,
-              private router: Router, private positionService: PositionService, private userService: UserService,
-              private localStorage: LocalStorageService) {}
+              private router: Router, private positionService: PositionService) {}
 
   ngOnInit(): void {
-    this._getIdFromUrl();
+    this._getNameFromUrl();
   }
 
   onAddReview() {
     this.router.navigateByUrl('/review/' + this.company.company.name);
   }
 
-  private _getIdFromUrl() {
+  private _getNameFromUrl() {
     this.activatedRoute.params.subscribe(p => {
       this.getDataForCompanyAndRating(p.name);
     });

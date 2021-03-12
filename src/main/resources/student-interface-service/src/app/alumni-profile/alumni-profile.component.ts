@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserModel} from "../models/user.model";
-import {UserService} from "../shared/user.service";
+import {UserService} from "../services/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {LocalStorageService} from "ngx-webstorage";
 

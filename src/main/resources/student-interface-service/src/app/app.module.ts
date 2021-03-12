@@ -62,6 +62,7 @@ import { AddCourseComponent } from './add-course/add-course.component';
 import { AddModuleDialogComponent } from './add-course/add-module-dialog/add-module-dialog.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AlumniProfileComponent } from './alumni-profile/alumni-profile.component';
+import { AuthGuard } from './_guards/auth.guard';
 
 
 @NgModule({
@@ -132,7 +133,9 @@ import { AlumniProfileComponent } from './alumni-profile/alumni-profile.componen
         MatRadioModule,
         FlexLayoutModule
     ],
-  providers: [],
+  providers: [
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

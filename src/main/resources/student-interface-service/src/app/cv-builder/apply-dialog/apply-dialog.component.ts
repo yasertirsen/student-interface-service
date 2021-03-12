@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {UserModel} from "../../models/user.model";
-import {ResumeService} from "../../shared/resume.service";
+import {ResumeService} from "../../services/resume.service";
 import {ApplicationModel} from "../../models/application.model";
 import {ActivatedRoute} from "@angular/router";
 

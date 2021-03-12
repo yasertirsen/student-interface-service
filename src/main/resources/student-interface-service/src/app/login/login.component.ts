@@ -2,11 +2,11 @@ import {Component, OnInit, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {LoginRequest} from "../models/login-request-payload";
 import {LoginResponse} from "../models/login-response-payload";
-import {map} from "rxjs/operators";
+import {delay, first, map} from "rxjs/operators";
 import {LocalStorageService} from "ngx-webstorage";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {UserService} from "../shared/user.service";
+import {UserService} from "../services/user.service";
 
 @Component({
   selector: 'app-login',
@@ -14,6 +14,7 @@ import {UserService} from "../shared/user.service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
 
   isError: boolean;
   model: LoginRequest = {
@@ -38,12 +39,9 @@ export class LoginComponent implements OnInit {
   }
 
   loginStudent(): void {
-    this.userService.login(this.model).pipe(map(data => {
-      this.localStorage.store('token', data.token);
-      this.localStorage.store('email', data.email);
-      this.localStorage.store('id', data.studentId);
-      this.localStorage.store('expiresIn', data.expiresIn);
-    })).subscribe(data => {
+    this.userService.login(this.model)
+      .pipe(first())
+      .subscribe(data => {
       this.isError = false;
       this.router.navigateByUrl('/home');
     }, error => {

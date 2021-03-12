@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {PositionService} from "../shared/position.service";
+import {PositionService} from "../services/position.service";
 import {ActivatedRoute} from "@angular/router";
 import {PositionModel} from "../models/position.model";
 import {NgbAlert} from "@ng-bootstrap/ng-bootstrap";

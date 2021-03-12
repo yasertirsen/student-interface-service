@@ -7,7 +7,7 @@ import {map} from "rxjs/operators";
 import {MatChipInputEvent} from "@angular/material/chips";
 import {SkillModel} from "../../models/skill.model";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {UserService} from "../../shared/user.service";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-add-skills-dialog',

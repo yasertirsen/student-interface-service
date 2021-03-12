@@ -14,10 +14,9 @@ export class PositionService {
   headers;
 
   constructor(private http: HttpClient, private localStorage: LocalStorageService) {
-    this.token = this.localStorage.retrieve('token');
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.token}`
+      'Authorization': `Bearer ${this.localStorage.retrieve('token')}`
     });
   }
 
@@ -41,7 +40,10 @@ export class PositionService {
 
   getRecommendedJobs(email: string): Observable<any> {{
     return this.http.get('http://localhost:8083/positions/recommend',
-      {headers: this.headers, params: {email: email}});
+      {headers: new HttpHeaders({
+          'Authorization': `Bearer ${this.localStorage.retrieve('token')}`
+        }),
+        params: {email: email}});
   }}
 
   getJob(id: number): Observable<PositionModel> {

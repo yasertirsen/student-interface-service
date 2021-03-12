@@ -3,11 +3,15 @@ import {UserModel} from "../models/user.model";
 import { MatDialog } from "@angular/material/dialog";
 import {AddLinkedinDialogComponent} from "./add-linkedin-dialog/add-linkedin-dialog.component";
 import {LocalStorageService} from "ngx-webstorage";
-import {UserService} from "../shared/user.service";
+import {UserService} from "../services/user.service";
 import {ActivatedRoute} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {PositionModel} from "../models/position.model";
-import {PositionService} from "../shared/position.service";
+import {PositionService} from "../services/position.service";
+import {ProfileModel} from "../models/profile.model";
+import {forkJoin} from "rxjs";
+import {CompanyWrapperModel} from "../models/companyWrapper.model";
+import {delay} from "rxjs/operators";
 
 @Component({
   selector: 'app-home',
@@ -24,28 +28,27 @@ export class HomeComponent implements OnInit {
   base64Data: any;
   recommendedPositions: PositionModel[] = [];
 
-  constructor(public dialog: MatDialog, private localStorage: LocalStorageService, private userService: UserService,
+  constructor(public dialog: MatDialog, private userService: UserService,
               private activatedRoute: ActivatedRoute, private _snackBar: MatSnackBar, private positionService: PositionService) {
-    this.userService.getCurrentUser().subscribe(user => {
-      this.user = user;
-      this.socialUrl = this.user.socialUrl;
-      this.userService.getUserAvatar(this.user.studentId).subscribe(image => {
-        if(image.data !== null) {
-          this.base64Data = image.data;
-          this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-        }
-      });
-      this.positionService.getRecommendedJobs(this.user.email).subscribe(jobs => {
-        this.recommendedPositions = jobs
-        this.loading = false;
-      },
-        error => {
-        console.log(error);
-          this._snackBar.open('Error getting your recommended jobs', 'Close', {
-            duration: 3000,
-          });
-        });
-    });
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
+    this.socialUrl = this.user.socialUrl;
+    this.getAvatarAndRecommendations();
+    //   this.userService.getUserAvatar(this.user.studentId).subscribe(image => {
+    //     if(image.data !== null) {
+    //       this.base64Data = image.data;
+    //       this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+    //     }
+    //   });
+    //   this.positionService.getRecommendedJobs(this.user.email).subscribe(jobs => {
+    //     this.recommendedPositions = jobs
+    //     this.loading = false;
+    //   },
+    //     error => {
+    //     console.log(error);
+    //       this._snackBar.open('Error getting your recommended jobs', 'Close', {
+    //         duration: 3000,
+    //       });
+    //     });
   }
 
   openDialog(): void {
@@ -66,9 +69,29 @@ export class HomeComponent implements OnInit {
 
   updateUser(): void {
     this.userService.updateUser(this.user).subscribe(user => {
-      this.user = user;
+      localStorage.setItem('currentUser', JSON.stringify(user));
       this._snackBar.open('LinkedIn profile added successfully', 'Close', {
         duration: 5000,
+      });
+    });
+  }
+
+  getAvatarAndRecommendations() {
+    let getAvatar = this.userService.getUserAvatar(this.user.studentId);
+    let getRecommendations = this.positionService.getRecommendedJobs(this.user.email);
+
+    forkJoin([getAvatar, getRecommendations]).subscribe(results => {
+      if(results[0].data !== null) {
+        this.base64Data = results[0].data;
+        this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+      }
+      this.recommendedPositions = results[1];
+      this.loading = false
+    }, error1 => {
+      this.loading = false;
+      console.log(error1);
+      this._snackBar.open('An error has occurred', 'Close', {
+        duration: 3000,
       });
     });
   }

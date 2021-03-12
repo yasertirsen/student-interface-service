@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {PositionModel} from "../../models/position.model";
 import {Router} from "@angular/router";
-import {PositionService} from "../position.service";
+import {PositionService} from "../../services/position.service";
 
 @Component({
   selector: 'app-job-tile',

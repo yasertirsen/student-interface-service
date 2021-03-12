@@ -3,12 +3,9 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {UserModel} from "../models/user.model";
 import {ProfileModel} from "../models/profile.model";
-import {CourseModel} from "../models/course.model";
-import {SkillModel} from "../models/skill.model";
-import {ProjectModel} from "../models/project.model";
 import {LocalStorageService} from "ngx-webstorage";
-import {ExperienceModel} from "../models/experience.model";
 import {LoginRequest} from "../models/login-request-payload";
+import {map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -19,13 +16,26 @@ export class UserService {
   constructor(private http: HttpClient, private localStorage: LocalStorageService) {
     this.headers = new HttpHeaders({
       'Authorization': `Bearer ${this.localStorage.retrieve('token')}`
-    })
+    });
   }
 
-  login(user: LoginRequest): Observable<any> {
-    return this.http.post('http://localhost:8083/login',
-      {"email": user.email,
-            "password": user.password});
+  login(details: LoginRequest): Observable<any> {
+    return this.http.post<any>('http://localhost:8083/login',
+      {"email": details.email,
+            "password": details.password})
+      .pipe(map(user => {
+              if(user && user.token) {
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                this.localStorage.store('token', user.token);
+                this.localStorage.store('email', user.email);
+                this.localStorage.store('expiresIn', user.expiresIn);
+              }
+              return user;
+    }));
+  }
+
+  logout() {
+    localStorage.removeItem('currentUser');
   }
 
   getCurrentUser(): Observable<any>{
@@ -47,7 +57,9 @@ export class UserService {
 
   getUserAvatar(userId: number): Observable<any>{
     return this.http.get('http://localhost:8083/getStudentAvatar/' + userId, {
-      headers: this.headers
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.localStorage.retrieve('token')}`
+      })
     });
   }
 

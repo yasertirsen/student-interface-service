@@ -5,11 +5,11 @@ import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {MatDialog} from "@angular/material/dialog";
 import {AddProjectDialogComponent} from "../profile/add-project-dialog/add-project-dialog.component";
 import {AddModuleDialogComponent} from "./add-module-dialog/add-module-dialog.component";
-import {UserService} from "../shared/user.service";
+import {UserService} from "../services/user.service";
 import {UserModel} from "../models/user.model";
 import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {CourseService} from "../shared/course.service";
+import {CourseService} from "../services/course.service";
 import {Observable} from "rxjs";
 import {map, startWith} from "rxjs/operators";
 

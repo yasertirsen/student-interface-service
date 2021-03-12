@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {PositionService} from "../position.service";
+import {PositionService} from "../../services/position.service";
 import {PositionModel} from "../../models/position.model";
-import {ResumeService} from "../resume.service";
+import {ResumeService} from "../../services/resume.service";
 import {UserModel} from "../../models/user.model";
 import {LocalStorageService} from "ngx-webstorage";
-import {UserService} from "../user.service";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-view-job',

@@ -39,11 +39,13 @@ const routes: Routes = [
   },
   {
     path: 'search/:location/:keywords',
-    component: JobSearchComponent
+    component: JobSearchComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'search/:keywords',
-    component: JobSearchComponent
+    component: JobSearchComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'courses',
@@ -57,7 +59,8 @@ const routes: Routes = [
   },
   {
     path: 'jobs',
-    component: AllJobsComponent
+    component: AllJobsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'job/:positionId',
@@ -70,11 +73,13 @@ const routes: Routes = [
   },
   {
     path: 'companies',
-    component: AllCompaniesComponent
+    component: AllCompaniesComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'company/:name',
-    component: CompanyProfileComponent
+    component: CompanyProfileComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'review/:name',

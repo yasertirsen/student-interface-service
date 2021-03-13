@@ -15,14 +15,14 @@ import {UserService} from "../services/user.service";
 })
 export class LoginComponent implements OnInit {
 
-
+  returnUrl: string;
   isError: boolean;
   model: LoginRequest = {
     email:'',
     password: ''
   };
 
-  constructor(private userService: UserService, private localStorage: LocalStorageService,
+  constructor(private userService: UserService,
               private activatedRoute: ActivatedRoute, private router: Router,
               private _snackBar: MatSnackBar) { }
 
@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
             duration: 5000
           });
         }
+        this.returnUrl = params.returnUrl? params.returnUrl: '/home'
       });
   }
 
@@ -43,21 +44,13 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(data => {
       this.isError = false;
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl(this.returnUrl);
     }, error => {
       this.isError = true;
       this._snackBar.open('Login Failed. Please check your credentials and try again.', 'Close', {
         duration: 5000,
       });
     });
-  }
-
-  getJwtToken() {
-    return this.localStorage.retrieve('token');
-  }
-
-  getEmail() {
-    return this.localStorage.retrieve('email');
   }
 }
 

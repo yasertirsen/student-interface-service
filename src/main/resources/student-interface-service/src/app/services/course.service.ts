@@ -8,13 +8,8 @@ import {LocalStorageService} from "ngx-webstorage";
   providedIn: 'root'
 })
 export class CourseService {
-  headers: any;
 
-  constructor(private http: HttpClient, private localStorage: LocalStorageService) {
-    this. headers = new HttpHeaders({
-      'Content-type': 'application/json',
-      'Authorization': `Bearer ${this.localStorage.retrieve('token')}`
-    })
+  constructor(private http: HttpClient) {
   }
 
   getAllCourses(): Observable<Array<CourseModel>> {
@@ -29,7 +24,6 @@ export class CourseService {
       "level": course.level,
       "url": course.url,
       "modules": course.modules
-    },
-      {headers : this.headers});
+    });
   }
 }

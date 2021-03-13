@@ -15,6 +15,9 @@
           <mat-icon>work</mat-icon>Jobs</a>
       <a mat-list-item routerLink="/companies" (click)="drawer.toggle()">
         <mat-icon>business</mat-icon>Companies</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item routerLink="/login" (click)="onLogout(drawer)">
+        <mat-icon>logout</mat-icon>Logout</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

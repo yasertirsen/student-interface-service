@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
@@ -63,6 +63,7 @@ import { AddModuleDialogComponent } from './add-course/add-module-dialog/add-mod
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AlumniProfileComponent } from './alumni-profile/alumni-profile.component';
 import { AuthGuard } from './_guards/auth.guard';
+import {TokenInterceptor} from "./shared/interceptor/TokenInterceptor";
 
 
 @NgModule({
@@ -134,7 +135,12 @@ import { AuthGuard } from './_guards/auth.guard';
         FlexLayoutModule
     ],
   providers: [
-    AuthGuard
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

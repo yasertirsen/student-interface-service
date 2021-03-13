@@ -9,23 +9,17 @@ import {ResumeModel} from "../models/ResumeModel";
   providedIn: 'root'
 })
 export class ResumeService {
-  token: string;
-  headers: any;
 
-  constructor(private http: HttpClient, private localStorage: LocalStorageService) {
-    this.token = this.localStorage.retrieve('token');
-    this.headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.token}`
-    });
+  constructor(private http: HttpClient) {
   }
 
   generateDynamicCv(user: UserModel): any {
-    return this.http.post('http://localhost:8083/generateDynamicCv/', user, { headers: this.headers});
+    return this.http.post('http://localhost:8083/generateDynamicCv/', user);
   }
 
   getCv(username: string): Observable<any> {
     return this.http.get('http://localhost:8083/getCv/' + username, {
-      headers: this.headers, responseType: 'blob'
+      responseType: 'blob'
     });
   }
 
@@ -33,7 +27,6 @@ export class ResumeService {
     return this.http.post('http://localhost:8083/upload/cv/' + userId,
       cvData,
       {
-        headers: this.headers,
         responseType: 'blob'
       });
   }

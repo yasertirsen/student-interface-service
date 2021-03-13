@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {UserModel} from "../models/user.model";
 import {ProfileModel} from "../models/profile.model";
-import {LocalStorageService} from "ngx-webstorage";
 import {LoginRequest} from "../models/login-request-payload";
 import {map} from "rxjs/operators";
 
@@ -11,12 +10,11 @@ import {map} from "rxjs/operators";
   providedIn: 'root'
 })
 export class UserService {
-  headers: any;
 
-  constructor(private http: HttpClient, private localStorage: LocalStorageService) {
-    this.headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.localStorage.retrieve('token')}`
-    });
+  constructor(private http: HttpClient) {}
+
+  public getToken(): string {
+    return localStorage.getItem('token');
   }
 
   login(details: LoginRequest): Observable<any> {
@@ -26,9 +24,9 @@ export class UserService {
       .pipe(map(user => {
               if(user && user.token) {
                 localStorage.setItem('currentUser', JSON.stringify(user));
-                this.localStorage.store('token', user.token);
-                this.localStorage.store('email', user.email);
-                this.localStorage.store('expiresIn', user.expiresIn);
+                localStorage.setItem('token', user.token);
+                localStorage.setItem('email', user.email);
+                localStorage.setItem('expiresIn', user.expiresIn);
               }
               return user;
     }));
@@ -39,28 +37,19 @@ export class UserService {
   }
 
   getCurrentUser(): Observable<any>{
-    return this.http.get('http://localhost:8083/currentUser', {
-      headers: this.headers
-    });
+    return this.http.get('http://localhost:8083/currentUser', );
   }
 
   getUserById(userId: number): Observable<any> {
-    return this.http.get('http://localhost:8083/getUserById/' + userId,
-      {headers: this.headers});
+    return this.http.get('http://localhost:8083/getUserById/' + userId);
   }
 
   getAllSkills(): Observable<any> {
-    return this.http.get('http://localhost:8083/getAllSkills', {
-      headers: this.headers
-    });
+    return this.http.get('http://localhost:8083/getAllSkills');
   }
 
   getUserAvatar(userId: number): Observable<any>{
-    return this.http.get('http://localhost:8083/getStudentAvatar/' + userId, {
-      headers: new HttpHeaders({
-        'Authorization': `Bearer ${this.localStorage.retrieve('token')}`
-      })
-    });
+    return this.http.get('http://localhost:8083/getStudentAvatar/' + userId);
   }
 
   updateUser(user: UserModel): Observable<any>{
@@ -80,9 +69,6 @@ export class UserService {
         "authorities": user.authorities,
         "isLocked": user.isLocked,
         "profile": user.profile,
-      },
-      {
-        headers: this.headers
       });
   }
 
@@ -101,9 +87,6 @@ export class UserService {
         "age": profile.age,
         "race": profile.race,
         "gender": profile.gender
-      },
-      {
-        headers: this.headers
       });
   }
 
@@ -122,9 +105,6 @@ export class UserService {
         "age": profile.age,
         "race": profile.race,
         "gender": profile.gender
-      },
-      {
-        headers: this.headers
       });
   }
 
@@ -135,17 +115,11 @@ export class UserService {
         "course": profile.course,
         "externalSkills": profile.externalSkills,
         "projects": profile.projects,
-      },
-      {
-        headers: this.headers
       });
   }
 
   uploadImage(imageData: FormData, userId: number): Observable<any> {
     return this.http.post('http://localhost:8083/upload/image/' + userId,
-      imageData,
-      {
-        headers: this.headers
-      });
+      imageData);
   }
 }

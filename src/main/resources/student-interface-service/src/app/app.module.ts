@@ -64,6 +64,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AlumniProfileComponent } from './alumni-profile/alumni-profile.component';
 import { AuthGuard } from './_guards/auth.guard';
 import {TokenInterceptor} from "./shared/interceptor/TokenInterceptor";
+import { GetUpdatesDialogComponent } from './company-profile/get-updates-dialog/get-updates-dialog.component';
 
 
 @NgModule({
@@ -97,7 +98,8 @@ import {TokenInterceptor} from "./shared/interceptor/TokenInterceptor";
     ApplyDialogComponent,
     AddCourseComponent,
     AddModuleDialogComponent,
-    AlumniProfileComponent
+    AlumniProfileComponent,
+    GetUpdatesDialogComponent
   ],
     imports: [
         BrowserModule,

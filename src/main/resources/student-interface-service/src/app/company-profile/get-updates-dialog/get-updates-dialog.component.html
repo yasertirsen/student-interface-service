@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Company Notifications</h1>
+<div class="content" mat-dialog-content>
+ <p>Allowing updates will send out a notification to you via email when the company posts new jobs</p>
+  <p>Do you agree?</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button (click)="onAdd()"  cdkFocusInitial>Confirm</button>
+</div>

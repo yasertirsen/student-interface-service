@@ -57,8 +57,6 @@ public class StudentController {
         if(passwordEncoder.matches(user.getPassword(), loggedUser.getPassword())) {
             authenticate(loggedUser.getEmail(), loggedUser.getPassword());
             UserPrincipal userPrincipal = new UserPrincipal(loggedUser);
-
-            loggedUser.setPassword(StringUtils.EMPTY);
             loggedUser.setExpiresIn(EXPIRATION_TIME);
             loggedUser.setToken(jwtTokenProvider.generateJwtToken(userPrincipal));
 

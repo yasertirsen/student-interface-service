@@ -110,6 +110,9 @@ public interface ProgradClient {
     @PutMapping("/companies/updateProfile")
     CompanyProfile updateCompanyProfile(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestBody CompanyProfile profile);
 
+    @PostMapping("/companies/addToMailing")
+    MailingList addToMailingList(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestParam Long companyId, @RequestParam String email);
+
     //files endpoint
 
     @PostMapping("/files/upload")

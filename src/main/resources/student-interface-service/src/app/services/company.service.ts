@@ -9,33 +9,18 @@ import {CompanyProfileModel} from "../models/company-profile.model";
 })
 export class CompanyService {
 
-  constructor(private http: HttpClient , private localStorage: LocalStorageService) { }
+  constructor(private http: HttpClient) { }
 
   getCompany(name: string): Observable<any> {
-    return this.http.get('http://localhost:8083/companies/' + name, {
-      headers: new HttpHeaders({
-        'Content-type': 'application/json',
-        'Authorization': `Bearer ${this.localStorage.retrieve('token')}`
-      })
-    });
+    return this.http.get('http://localhost:8083/companies/' + name);
   }
 
   getAllCompanies(): Observable<any> {
-    return this.http.get('http://localhost:8083/companies/all', {
-      headers: new HttpHeaders({
-        'Content-type': 'application/json',
-        'Authorization': `Bearer ${this.localStorage.retrieve('token')}`
-      })
-    });
+    return this.http.get('http://localhost:8083/companies/all');
   }
 
   getRating(name: string): Observable<any> {
-    return this.http.get('http://localhost:8083/companies/rating/' + name, {
-      headers: new HttpHeaders({
-        'Content-type': 'application/json',
-        'Authorization': `Bearer ${this.localStorage.retrieve('token')}`
-      })
-    });
+    return this.http.get('http://localhost:8083/companies/rating/' + name);
   }
 
   updateCompanyProfile(profile : CompanyProfileModel): Observable<any> {
@@ -43,11 +28,11 @@ export class CompanyService {
       "profileId": profile.profileId,
       "hiredStudents": profile.hiredStudents,
       "reviews": profile.reviews
-    } ,{
-      headers: new HttpHeaders({
-        'Content-type': 'application/json',
-        'Authorization': `Bearer ${this.localStorage.retrieve('token')}`
-      })
     });
+  }
+
+  addToMailingList(companyId: number, email:string): Observable<any> {
+    return this.http.post('http://localhost:8083/companies/addToMailing/' + companyId, {},
+      {params: {email: email}})
   }
 }

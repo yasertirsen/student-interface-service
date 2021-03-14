@@ -10,7 +10,7 @@ import {PositionModel} from "../models/position.model";
 import {PositionService} from "../services/position.service";
 import {ProfileModel} from "../models/profile.model";
 import {forkJoin} from "rxjs";
-import {CompanyWrapperModel} from "../models/companyWrapper.model";
+import {CompanyWrapperModel} from "../models/company-wrapper.model";
 import {delay} from "rxjs/operators";
 
 @Component({
@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit {
   constructor(public dialog: MatDialog, private userService: UserService,
               private activatedRoute: ActivatedRoute, private _snackBar: MatSnackBar, private positionService: PositionService) {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
+    console.log(this.user);
     this.socialUrl = this.user.socialUrl;
     this.getAvatarAndRecommendations();
   }
@@ -43,7 +44,7 @@ export class HomeComponent implements OnInit {
       });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result !== null && result !== '') {
+      if(result !== undefined) {
         this.socialUrl = result;
         this.user.socialUrl = this.socialUrl;
         this.updateUser();

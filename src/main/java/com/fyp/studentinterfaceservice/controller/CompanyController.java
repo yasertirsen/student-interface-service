@@ -3,6 +3,7 @@ package com.fyp.studentinterfaceservice.controller;
 import com.fyp.studentinterfaceservice.dto.CompanyWrapper;
 import com.fyp.studentinterfaceservice.model.Company;
 import com.fyp.studentinterfaceservice.model.CompanyProfile;
+import com.fyp.studentinterfaceservice.model.MailingList;
 import com.fyp.studentinterfaceservice.model.Review;
 import com.fyp.studentinterfaceservice.services.interfaces.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +45,10 @@ public class CompanyController {
     @PutMapping("/updateProfile")
     public CompanyProfile updateProfile(@RequestBody CompanyProfile profile) {
         return companyService.updateProfile(profile);
+    }
+
+    @PostMapping("/addToMailing/{companyId}")
+    public MailingList getMailingList(@PathVariable Long companyId, @RequestParam String email) {
+        return companyService.addToMailingList(companyId, email);
     }
 }

@@ -93,7 +93,9 @@ export class CompleteProfileComponent implements OnInit {
     uploadImageData.append('imageFile', this.selectedFile, this.user.username + '_avatar');
 
     this.userService.uploadImage(uploadImageData, this.user.studentId).subscribe(response => {
-      this._snackBar.open('Profile image updates successfully', 'Close');
+      this._snackBar.open('Profile image updates successfully', 'Close', {
+        duration: 3000
+      });
     },
       error => {
       console.log(error)

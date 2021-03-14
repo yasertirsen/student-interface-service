@@ -4,18 +4,29 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6087ee9a-e348-4dfe-aee5-2591ba764bf3" name="Default Changelist" comment="added token interceptor to add bearer token to outgoing requests.">
+    <list default="true" id="6087ee9a-e348-4dfe-aee5-2591ba764bf3" name="Default Changelist" comment="refactoring to remove unnecessary calls to db">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/model/MailingList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/company-profile/get-updates-dialog/get-updates-dialog.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/company-profile/get-updates-dialog/get-updates-dialog.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/company-profile/get-updates-dialog/get-updates-dialog.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/models/mailing-list.model.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/add-course/add-course.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/add-course/add-course.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/client/ProgradClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/client/ProgradClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/controller/CompanyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/controller/CompanyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/controller/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/controller/StudentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/CompanyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/CompanyServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/interfaces/CompanyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/interfaces/CompanyService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/alumni-profile/alumni-profile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/alumni-profile/alumni-profile.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/browse-courses/course-tile/course-tile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/browse-courses/course-tile/course-tile.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/company-profile/company-profile.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/company-profile/company-profile.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/company-profile/company-profile.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/company-profile/company-profile.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/company-profile/company-profile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/company-profile/company-profile.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/complete-profile/complete-profile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/complete-profile/complete-profile.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/cv-builder/cv-builder.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/cv-builder/cv-builder.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/home/home.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/home/home.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/profile/profile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/profile/profile.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/review/review.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/review/review.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/services/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/services/user.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/shared/view-job/view-job.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/shared/view-job/view-job.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/models/companyWrapper.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/models/company-wrapper.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/services/company.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/services/company.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/fyp/studentinterfaceservice/controller/StudentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/fyp/studentinterfaceservice/controller/StudentController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +72,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="javascript.karma.karma_node_package_dir" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../company-interface-service" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Prograd" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -99,14 +110,14 @@
       <recent name="com.fyp.studentinterfaceservice.services.UserServiceImplementation" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.fyp.studentinterfaceservice.dto" />
       <recent name="com.fyp.studentinterfaceservice.model" />
+      <recent name="com.fyp.studentinterfaceservice.dto" />
       <recent name="com.fyp.studentinterfaceservice.controller" />
       <recent name="com.fyp.studentinterfaceservice.utilities" />
       <recent name="com.fyp.studentinterfaceservice.models" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.StudentInterfaceServiceApplication">
+  <component name="RunManager" selected="npm.start">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -254,7 +265,7 @@
       <workItem from="1613428041166" duration="80682000" />
       <workItem from="1614292038680" duration="71982000" />
       <workItem from="1615480511107" duration="18883000" />
-      <workItem from="1615660823652" duration="7506000" />
+      <workItem from="1615660823652" duration="18352000" />
     </task>
     <task id="LOCAL-00001" summary="added added feign exception handling and fixed timeout response issue">
       <created>1604941323893</created>
@@ -571,7 +582,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615674697009</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="refactoring to remove unnecessary calls to db">
+      <created>1615721977166</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1615721977166</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -594,7 +612,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/src/main/resources/student-interface-service" />
     </ignored-roots>
-    <MESSAGE value="addition and modification to view all jobs and a single job on prograd" />
     <MESSAGE value="added logic tt generate dynamic CV, changed port, added resume controller &amp; service" />
     <MESSAGE value="added logic to generate dynamic cv and created cv builder page" />
     <MESSAGE value="minor fix" />
@@ -619,7 +636,8 @@
     <MESSAGE value="Modified company profile to display reviews in an efficient way. Fixed bug." />
     <MESSAGE value="added auth.guard to redirect to login when visiting a page that requires it" />
     <MESSAGE value="added token interceptor to add bearer token to outgoing requests." />
-    <option name="LAST_COMMIT_MESSAGE" value="added token interceptor to add bearer token to outgoing requests." />
+    <MESSAGE value="refactoring to remove unnecessary calls to db" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactoring to remove unnecessary calls to db" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

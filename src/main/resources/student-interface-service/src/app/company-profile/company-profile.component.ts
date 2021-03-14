@@ -7,8 +7,13 @@ import {PositionService} from "../services/position.service";
 import {UserService} from "../services/user.service";
 import {ReviewModel} from "../models/review.model";
 import {LocalStorageService} from "ngx-webstorage";
-import {CompanyWrapperModel} from "../models/companyWrapper.model";
+import {CompanyWrapperModel} from "../models/company-wrapper.model";
 import {forkJoin} from "rxjs";
+import {MatDialog} from "@angular/material/dialog";
+import {AddSkillsDialogComponent} from "../profile/add-skills-dialog/add-skills-dialog.component";
+import {GetUpdatesDialogComponent} from "./get-updates-dialog/get-updates-dialog.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {UserModel} from "../models/user.model";
 
 @Component({
   selector: 'app-company-profile',
@@ -17,6 +22,7 @@ import {forkJoin} from "rxjs";
 })
 export class CompanyProfileComponent implements OnInit {
   loading = true;
+  user: UserModel;
   company: CompanyWrapperModel = {
     company: null,
     users: []
@@ -25,7 +31,10 @@ export class CompanyProfileComponent implements OnInit {
   usersMap = new Map<number, string>();
 
   constructor(private companyService: CompanyService, private activatedRoute: ActivatedRoute,
-              private router: Router, private positionService: PositionService) {}
+              private router: Router, private positionService: PositionService,
+              private dialog: MatDialog, private _snackBar: MatSnackBar) {
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
+  }
 
   ngOnInit(): void {
     this._getNameFromUrl();
@@ -58,6 +67,26 @@ export class CompanyProfileComponent implements OnInit {
     }, error1 => {
       this.loading = false;
       console.log(error1);
+    });
+  }
+
+  onGetUpdates() {
+    const confirmDialog =
+      this.dialog.open(GetUpdatesDialogComponent, {
+        width: '500px'
+      });
+    confirmDialog.afterClosed().subscribe(result => {
+      if(result) {
+        this.companyService.addToMailingList(this.company.company.companyId, this.user.email).subscribe(data => {
+          console.log(data);
+          this._snackBar.open('Company notifications is ON', 'Close', {
+            duration: 3000
+          });
+        },
+          error => {
+          console.log(error);
+          });
+      }
     });
   }
 }

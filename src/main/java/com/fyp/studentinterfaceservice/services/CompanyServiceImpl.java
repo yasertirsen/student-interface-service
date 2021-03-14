@@ -4,6 +4,7 @@ import com.fyp.studentinterfaceservice.client.ProgradClient;
 import com.fyp.studentinterfaceservice.dto.CompanyWrapper;
 import com.fyp.studentinterfaceservice.model.Company;
 import com.fyp.studentinterfaceservice.model.CompanyProfile;
+import com.fyp.studentinterfaceservice.model.MailingList;
 import com.fyp.studentinterfaceservice.model.Review;
 import com.fyp.studentinterfaceservice.services.interfaces.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,5 +59,10 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public CompanyProfile updateProfile(CompanyProfile profile) {
         return client.updateCompanyProfile(bearerToken, profile);
+    }
+
+    @Override
+    public MailingList addToMailingList(Long companyId, String email) {
+        return client.addToMailingList(bearerToken, companyId, email);
     }
 }

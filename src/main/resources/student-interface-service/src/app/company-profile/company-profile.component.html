@@ -10,31 +10,52 @@
       <section>
         <div>
           <mat-card *ngIf="company !== null">
-              <mat-card-header>
-                <div mat-card-avatar class="example-header-image"></div>
-                <mat-card-title>{{company.company.name}}</mat-card-title>
-                <mat-card-subtitle *ngIf="company.company.address !== null">{{ company.company.address }}</mat-card-subtitle>
-                <mat-card-subtitle>
-                  {{ company.company.profile.rating }}
+            <div
+              gdAreas="header header | side content"
+              gdGap="16px"
+              gdRows="auto auto auto">
+              <div gdArea="header">
+                <mat-card-header>
+                  <div mat-card-avatar class="example-header-image"></div>
+                  <mat-card-title>{{company.company.name}}</mat-card-title>
+                  <mat-card-subtitle *ngIf="company.company.address !== null">{{ company.company.address }}</mat-card-subtitle>
+                  <button mat-fab class="spacer" color="accent" (click)="onGetUpdates()">
+                    <mat-icon>notifications</mat-icon></button>
+                  <div fxLayout="row"  fxFlex fxLayoutAlign="end center">
+                    <button class="spacer" mat-raised-button color="primary" (click)="onAddReview()">
+                      <mat-icon>add</mat-icon>Add Review</button>
+                  </div>
+                  <mat-card-subtitle>
+                    {{ company.company.profile.rating }}
                     <mat-icon style="font-size: 18px; justify-content: flex-end" >star</mat-icon>
-                </mat-card-subtitle>
-              </mat-card-header>
-            <mat-card-content class="main-content">
-              <button class="spacer" mat-raised-button color="primary" (click)="onAddReview()">
-                <mat-icon>add</mat-icon>Add Review</button>
-              <h3><strong>Reviews</strong></h3>
-              <mat-card *ngFor="let review of company.company.profile.reviews">
-                <mat-card-title><a [routerLink]="['/profile', review.studentId]">{{usersMap.get(review.studentId)}}</a></mat-card-title>
-                <mat-card-subtitle *ngIf="review.type === 'P'">Positive</mat-card-subtitle>
-                <mat-card-subtitle *ngIf="review.type === 'N'">Negative</mat-card-subtitle>
-                <mat-card-content ><h3 class="mat-h3"><strong>{{review.content}}</strong></h3></mat-card-content>
-                <mat-card-content *ngIf="review.questions !== undefined"><strong>Interview Questions:</strong> {{review.questions}}</mat-card-content>
-              </mat-card>
-              <h3><strong>{{ company.company.name }}'s jobs</strong></h3>
-              <app-job-tile [positions]="positions"></app-job-tile>
-            </mat-card-content>
-            <mat-card-actions>
-            </mat-card-actions>
+                  </mat-card-subtitle>
+                </mat-card-header>
+                <hr>
+              </div>
+              <div gdArea="side">
+                <mat-card-content>
+                  <h3><strong>Reviews</strong></h3>
+                  <mat-card *ngFor="let review of company.company.profile.reviews">
+                    <mat-card-title><a [routerLink]="['/profile', review.studentId]"
+                    *ngIf="user.studentId !== review.studentId">{{usersMap.get(review.studentId)}}</a></mat-card-title>
+                    <mat-card-title><a [routerLink]="'/home'"
+                                       *ngIf="user.studentId === review.studentId">{{usersMap.get(review.studentId)}}</a></mat-card-title>
+                    <mat-card-subtitle *ngIf="review.type === 'P'">Positive</mat-card-subtitle>
+                    <mat-card-subtitle *ngIf="review.type === 'N'">Negative</mat-card-subtitle>
+                    <mat-card-content ><h3 class="mat-h3"><strong>{{review.content}}</strong></h3></mat-card-content>
+                    <mat-card-content *ngIf="review.questions !== undefined"><strong>Interview Questions:</strong> {{review.questions}}</mat-card-content>
+                  </mat-card>
+                </mat-card-content>
+              </div>
+              <div gdArea="content">
+                <mat-card-content>
+                  <h3><strong>{{ company.company.name }}'s jobs</strong></h3>
+                  <app-job-tile [positions]="positions"></app-job-tile>
+                </mat-card-content>
+              </div>
+            </div>
+
+
           </mat-card>
         </div>
       </section>

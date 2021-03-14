@@ -23,6 +23,9 @@
             </div>
 
             <div gdArea="side">
+              <span class="material-icons" *ngIf="retrievedImage === null" style="font-size: 150px">
+                account_circle
+              </span>
               <mat-card-subtitle *ngIf="user.profile.course !== null && user.socialUrl !== null && user.firstName !== null">About You</mat-card-subtitle>
               <img *ngIf="retrievedImage !== null"
                    mat-card-avatar
@@ -30,9 +33,6 @@
                    alt="Profile"
                    class="profile-img">
               <mat-card-content *ngIf="user.firstName !== null">
-              <span class="material-icons" *ngIf="retrievedImage === null" style="font-size: 150px">
-                account_circle
-              </span>
                 <h3>Welcome back {{user.firstName}}!</h3>
                 <p>Become a Prograd by finding the perfect graduate opportunity for you!</p>
               </mat-card-content>
@@ -106,7 +106,7 @@
               </mat-card-content>
 
               <mat-card-content *ngIf="user.profile.course === null && user.socialUrl === null && user.firstName === null">
-                <h3>Welcome back!</h3>
+                <h3>Hey there!</h3>
                 <p>Finish completing your profile to get graduate programs based on your course!</p>
               </mat-card-content>
 

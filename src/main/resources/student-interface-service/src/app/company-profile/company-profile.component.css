@@ -1,7 +1,4 @@
 mat-card-header{
-  background: #FF9800;
-  padding: 5px;
-  color:white;
 }
 
 mat-card-content{
@@ -24,6 +21,7 @@ mat-card{
 }
 
 .example-header-image {
+  margin: 8px;
   background-image: url('https://static.thenounproject.com/png/88781-200.png');
   background-size: cover;
 }

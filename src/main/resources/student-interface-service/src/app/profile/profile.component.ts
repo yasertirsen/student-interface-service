@@ -25,10 +25,8 @@ export class ProfileComponent implements OnInit {
   base64Data: any;
 
   constructor(private userService: UserService, private dialog: MatDialog,
-              private _snackBar: MatSnackBar, private resumeService: ResumeService,
-              private sanitizer: DomSanitizer) {
-    this.userService.getCurrentUser().subscribe(user => {
-      this.user = user;
+              private _snackBar: MatSnackBar, private resumeService: ResumeService) {
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
       this.userService.getUserAvatar(this.user.studentId).subscribe(image => {
         if(image.data !== null) {
           this.base64Data = image.data;
@@ -36,7 +34,6 @@ export class ProfileComponent implements OnInit {
         }
         this.loading = false;
       });
-    });
   }
 
   openSummaryDialog(): void {
@@ -109,6 +106,8 @@ export class ProfileComponent implements OnInit {
 
   updateUser(): void {
     this.userService.updateProfile(this.user.profile).subscribe(data => {
+      this.user.profile = data;
+      localStorage.setItem('currentUser', JSON.stringify(this.user));
       this._snackBar.open('Updated successfully', 'Close', {
         duration: 3000,
       });

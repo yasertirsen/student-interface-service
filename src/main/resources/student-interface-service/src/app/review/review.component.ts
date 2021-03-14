@@ -32,15 +32,13 @@ export class ReviewComponent implements OnInit {
   constructor(private userService: UserService, private companyService: CompanyService,
               private activatedRoute: ActivatedRoute, private _snackBar: MatSnackBar,
               private router: Router) {
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.companyName = this.activatedRoute.snapshot.params.name;
     this.companyService.getCompany(this.companyName).subscribe(data => {
       this.company = data.company;
-      this.userService.getCurrentUser().subscribe(user => {
-        this.user = user;
-        this.review.studentId = this.user.studentId;
-        this.review.profileId = this.company.profile.profileId;
-        this.loading = false;
-      });
+      this.review.studentId = this.user.studentId;
+      this.review.profileId = this.company.profile.profileId;
+      this.loading = false;
     });
   }
 

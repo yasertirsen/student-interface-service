@@ -22,12 +22,10 @@ export class CourseTileComponent implements OnInit {
   skill: SkillModel;
   isError: boolean;
 
-  constructor(private dialog: MatDialog, private localStorage: LocalStorageService, private userService: UserService,
+  constructor(private dialog: MatDialog, private userService: UserService,
               private router: Router, private _snackBar: MatSnackBar) {
-    this.userService.getCurrentUser().subscribe(user => {
-      this.user = user;
-      this.course = this.user.profile.course
-    })
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
+    this.course = this.user.profile.course
   }
 
   ngOnInit(): void {
@@ -64,7 +62,10 @@ export class CourseTileComponent implements OnInit {
   }
 
   updateUser(): void {
-    this.userService.updateProfile(this.user.profile).subscribe();
+    this.userService.updateProfile(this.user.profile).subscribe(data => {
+      this.user.profile = data;
+      localStorage.setItem('currentUser', JSON.stringify(this.user));
+    });
   }
 
   redirectTo(uri:string){

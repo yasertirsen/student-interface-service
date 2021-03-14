@@ -66,9 +66,10 @@ export class CvBuilderComponent implements OnInit {
   @ViewChild('moduleInput') moduleInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
-  constructor(private _formBuilder: FormBuilder, private localStorage: LocalStorageService, private userService: UserService,
+  constructor(private _formBuilder: FormBuilder, private userService: UserService,
               private resumeService: ResumeService, private positionService: PositionService, private  _snackBar: MatSnackBar,
               private dialog: MatDialog, private router: Router, private activatedRoute: ActivatedRoute) {
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.filteredSkills = this.skillsCtrl.valueChanges.pipe(
       map((skill: string | null) => skill ? this._filter(skill) : this.allSkills.slice()));
     this.filteredProjects = this.projectsCtrl.valueChanges.pipe(
@@ -77,8 +78,6 @@ export class CvBuilderComponent implements OnInit {
       map((experience: string | null) => experience ? this._experiencesFilter(experience) : this.allExperiences.slice()));
     this.filteredModules = this.moduleCtrl.valueChanges.pipe(
       map((module: string | null) => module ? this._moduleFilter(module) : this.allModules.slice()));
-    this.userService.getCurrentUser().subscribe(user => {
-      this.user = user;
       if(this.user.profile.averageGrade === 0) {
         this.averageGrade = 0;
       }
@@ -115,7 +114,6 @@ export class CvBuilderComponent implements OnInit {
         this.skills.push(this.allSkills[0])
         this.loading = false;
       });
-    });
   }
 
   ngOnInit(): void {
@@ -322,8 +320,6 @@ export class CvBuilderComponent implements OnInit {
       }
       this.router.navigateByUrl('/home');
     });
-    // const fileURL = URL.createObjectURL(res);
-    // window.open(fileURL, '_blank');
   }
 
   onSkip() {

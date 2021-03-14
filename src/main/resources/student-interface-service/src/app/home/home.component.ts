@@ -33,22 +33,6 @@ export class HomeComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.socialUrl = this.user.socialUrl;
     this.getAvatarAndRecommendations();
-    //   this.userService.getUserAvatar(this.user.studentId).subscribe(image => {
-    //     if(image.data !== null) {
-    //       this.base64Data = image.data;
-    //       this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-    //     }
-    //   });
-    //   this.positionService.getRecommendedJobs(this.user.email).subscribe(jobs => {
-    //     this.recommendedPositions = jobs
-    //     this.loading = false;
-    //   },
-    //     error => {
-    //     console.log(error);
-    //       this._snackBar.open('Error getting your recommended jobs', 'Close', {
-    //         duration: 3000,
-    //       });
-    //     });
   }
 
   openDialog(): void {

@@ -34,9 +34,7 @@ export class AddCourseComponent implements OnInit {
   unis: string[] = [];
   constructor(private dialog: MatDialog, private userService: UserService, private router: Router,
               private _snackBar: MatSnackBar, private courseService: CourseService) {
-    this.userService.getCurrentUser().subscribe(user => {
-      this.user = user;
-    });
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.courseService.getAllCourses().subscribe(data => {
       for(let course of data) {
         if(!this.unis.includes(course.university))
@@ -75,6 +73,8 @@ export class AddCourseComponent implements OnInit {
 
   updateUser(): void {
     this.userService.updateProfile(this.user.profile).subscribe(data => {
+      this.user.profile = data;
+      localStorage.setItem('currentUser', JSON.stringify(this.user));
       this._snackBar.open('Course added successfully', 'Close', {
         duration: 3000,
       });

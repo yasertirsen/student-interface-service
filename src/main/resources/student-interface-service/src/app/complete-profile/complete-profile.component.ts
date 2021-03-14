@@ -28,17 +28,15 @@ export class CompleteProfileComponent implements OnInit {
     'Native Hawaiian or other Pacific islander', 'From multiple races'];
   ages: string[] = ['17 or younger', '18-20', '21-29', '30-39', '40-49', '50-59', '60 or older'];
 
-  constructor(private _formBuilder: FormBuilder, private localStorage: LocalStorageService,
+  constructor(private _formBuilder: FormBuilder,
               private userService: UserService, private router: Router,
               private _snackBar: MatSnackBar) {
     this.loading = true;
-    this.userService.getCurrentUser().subscribe(user => {
-      this.user = user;
-      this.firstName = this.user.firstName;
-      this.surname = this.user.surname;
-      this.phone = this.user.phone;
-      this.bio = this.user.profile.bio;
-    });
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
+    this.firstName = this.user.firstName;
+    this.surname = this.user.surname;
+    this.phone = this.user.phone;
+    this.bio = this.user.profile.bio;
     this.loading = false;
   }
 
@@ -77,7 +75,7 @@ export class CompleteProfileComponent implements OnInit {
 
   updateUser(): void {
     this.userService.updateUser(this.user).subscribe(user => {
-      this.user = user;
+      localStorage.setItem('currentUser', JSON.stringify(user));
       this._snackBar.open('Profile updated successfully', 'Close', {
         duration: 5000
       });
@@ -95,8 +93,7 @@ export class CompleteProfileComponent implements OnInit {
     uploadImageData.append('imageFile', this.selectedFile, this.user.username + '_avatar');
 
     this.userService.uploadImage(uploadImageData, this.user.studentId).subscribe(response => {
-
-
+      this._snackBar.open('Profile image updates successfully', 'Close');
     },
       error => {
       console.log(error)

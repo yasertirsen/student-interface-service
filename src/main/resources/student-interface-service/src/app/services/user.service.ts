@@ -36,16 +36,8 @@ export class UserService {
     localStorage.removeItem('currentUser');
   }
 
-  getCurrentUser(): Observable<any>{
-    return this.http.get('http://localhost:8083/currentUser', );
-  }
-
   getUserById(userId: number): Observable<any> {
     return this.http.get('http://localhost:8083/getUserById/' + userId);
-  }
-
-  getAllSkills(): Observable<any> {
-    return this.http.get('http://localhost:8083/getAllSkills');
   }
 
   getUserAvatar(userId: number): Observable<any>{

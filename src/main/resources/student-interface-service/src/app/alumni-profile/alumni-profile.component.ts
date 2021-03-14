@@ -15,8 +15,7 @@ export class AlumniProfileComponent implements OnInit {
   retrievedImage: any = null;
   base64Data: any;
 
-  constructor(private userService: UserService, private activatedRoute: ActivatedRoute,
-              private localStorage: LocalStorageService, private router: Router) {
+  constructor(private userService: UserService, private activatedRoute: ActivatedRoute) {
     this.userService.getUserById(this.activatedRoute.snapshot.params.userId).subscribe(data => {
       this.user = data;
       this.userService.getUserAvatar(this.user.studentId).subscribe(image => {

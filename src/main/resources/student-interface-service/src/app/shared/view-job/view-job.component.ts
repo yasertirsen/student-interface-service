@@ -18,24 +18,13 @@ export class ViewJobComponent implements OnInit {
   user: UserModel;
 
   constructor(private resumeService: ResumeService, private positionService: PositionService, private userService: UserService,
-              private activatedRoute: ActivatedRoute, private localStorage: LocalStorageService, router: Router) {
+              private activatedRoute: ActivatedRoute) {
     this.positionId = this.activatedRoute.snapshot.params.positionId;
     this.positionService.getJob(this.positionId).subscribe(position => {
       this.position = position;
-      this.userService.getCurrentUser().subscribe(user => {
-        this.user = user;
-        this.user.profile.externalSkills = this.position.requirements;
-      });
     });
   }
 
   ngOnInit(): void {
-  }
-
-  onGenerateCv() {
-    // this.resumeService.generateDynamicCv(this.user).subscribe(res => {
-    //   const fileURL = URL.createObjectURL(res);
-    //   window.open(fileURL, '_blank');
-    // });
   }
 }

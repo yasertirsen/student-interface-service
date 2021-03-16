@@ -12,7 +12,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class CompanyProfile {
     private long profileId;
-    private Set<User> hiredStudents;
+    private Set<Long> hiredStudents;
     private List<Review> reviews;
 }
 

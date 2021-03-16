@@ -11,6 +11,7 @@ export interface PositionModel {
   url: string;
   clicks: number;
   priority: boolean;
+  archive: boolean;
   company: CompanyModel;
   requirements: SkillModel[];
 }

@@ -64,7 +64,8 @@ const routes: Routes = [
   },
   {
     path: 'job/:positionId',
-    component: ViewJobComponent
+    component: ViewJobComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'apply/:positionId',

@@ -5,13 +5,15 @@ import {UserModel} from "../models/user.model";
 import {ProfileModel} from "../models/profile.model";
 import {LoginRequest} from "../models/login-request-payload";
 import {map} from "rxjs/operators";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  tokenExpirationTimer: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   public getToken(): string {
     return localStorage.getItem('token');
@@ -28,12 +30,24 @@ export class UserService {
                 localStorage.setItem('email', user.email);
                 localStorage.setItem('expiresIn', user.expiresIn);
               }
+              this.autoLogout(user.expiresIn);
               return user;
     }));
   }
 
   logout() {
     localStorage.removeItem('currentUser');
+    this.router.navigateByUrl('/login');
+    if(this.tokenExpirationTimer) {
+      clearTimeout(this.tokenExpirationTimer);
+    }
+    this.tokenExpirationTimer = null;
+  }
+
+  autoLogout(expirationDuration: number) {
+    this.tokenExpirationTimer = setTimeout(() => {
+      this.logout();
+    }, expirationDuration);
   }
 
   getUserById(userId: number): Observable<any> {

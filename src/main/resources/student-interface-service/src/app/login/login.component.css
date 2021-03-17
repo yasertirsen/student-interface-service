@@ -1,18 +1,15 @@
-.login-form{
-  height: 30vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .full-width {
   width: 100%;
 }
 
-.text-center {
-  font-weight: bold;
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.login-header h4 {
-  font-weight: bold;
+mat-card {
+  margin: 10px;
+  text-align: center;
 }

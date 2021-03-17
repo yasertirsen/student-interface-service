@@ -26,14 +26,13 @@
                       <mat-icon>add</mat-icon>Add Review</button>
                   </div>
                   <mat-card-subtitle>
-                    {{ company.company.profile.rating }}
-                    <mat-icon style="font-size: 18px; justify-content: flex-end" >star</mat-icon>
+                    <ngb-rating [(rate)]="company.company.profile.rating" [readonly]="true" [max]="5"></ngb-rating>
                   </mat-card-subtitle>
                 </mat-card-header>
                 <hr>
               </div>
               <div gdArea="side">
-                <mat-card-content>
+                <mat-card-content *ngIf="company.company.profile.reviews.length > 0">
                   <h3><strong>Reviews</strong></h3>
                   <mat-card *ngFor="let review of company.company.profile.reviews">
                     <mat-card-title><a [routerLink]="['/profile', review.studentId]"
@@ -46,16 +45,22 @@
                     <mat-card-content *ngIf="review.questions !== undefined"><strong>Interview Questions:</strong> {{review.questions}}</mat-card-content>
                   </mat-card>
                 </mat-card-content>
+                <mat-card-content *ngIf="company.company.profile.reviews.length === 0">
+                <h3 class="mat-h3" style="text-align: center">
+                  No Reviews</h3>
+                </mat-card-content>
               </div>
               <div gdArea="content">
-                <mat-card-content>
+                <mat-card-content *ngIf="positions.length > 0">
                   <h3><strong>{{ company.company.name }}'s jobs</strong></h3>
                   <app-job-tile [positions]="positions"></app-job-tile>
                 </mat-card-content>
+                <mat-card-content *ngIf="positions.length === 0">
+                  <h3 class="mat-h3" style="text-align: center">
+                    No Jobs</h3>
+                </mat-card-content>
               </div>
             </div>
-
-
           </mat-card>
         </div>
       </section>

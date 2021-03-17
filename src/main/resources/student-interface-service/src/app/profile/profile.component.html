@@ -4,7 +4,7 @@
 </app-mat-spinner-overlay>
 
 <div class="container" *ngIf="loading === false">
-  <div class="row">
+  <div class="row" *ngIf="user.firstName !== undefined && user.surname !== undefined">
     <div class="offset-2"></div>
     <div class="col-md-12">
       <mat-card class="full-width">
@@ -32,11 +32,15 @@
             <span class="user-details">
             <mat-icon>email</mat-icon> {{user.email}}
           </span>
-            <span class="user-details">
-            <mat-icon>phone</mat-icon> {{user.phone}}
+            <span class="user-details" *ngIf="user.phone !== null">
+            <span class="material-icons">
+                phone
+              </span>{{user.phone}}
           </span>
-            <span class="user-details">
-            <mat-icon>link</mat-icon> {{user.socialUrl}}
+            <span class="user-details" *ngIf="user.socialUrl !== null">
+            <span class="material-icons">
+                link
+              </span> {{user.socialUrl}}
           </span>
           </div>
 
@@ -63,10 +67,11 @@
               </div>
             </div>
           </section>
+          <div class="course-details" *ngIf="user.profile.course !== null">
           <span><strong>{{ user.profile.course.name}} - {{ user.profile.course.university }}</strong></span><br>
           <span>{{ user.profile.startCourse}} - {{ user.profile.endCourse }}</span>
+          </div>
           <hr>
-
           <section>
             <div class="section-header">
               <div class="flex-container">

@@ -1,58 +1,47 @@
-<div class="container">
-  <div class="row">
-    <div class="offset-3"></div>
-    <div class="col-md-6">
-
-      <div class="register-header">
-        <h4 class="text-center">Create Account</h4>
-        <p class="text-center">Get started with your Prograd account!</p>
-        <hr>
-      </div>
-
-      <div class="register-form">
-        <mat-card-content>
-          <form #f="ngForm" (ngSubmit)="f.form.valid && registerStudent()" novalidate>
-            <mat-form-field class="full-width" appearance="outline">
-              <mat-label>Username</mat-label>
-              <input matInput
-                     placeholder="Username"
-                     name="username"
-                     [(ngModel)]="model.username"
-                     #username="ngModel"
-                     [ngClass]="{ 'is-invalid': f.submitted && username.invalid}"
-                     required>
-            </mat-form-field>
-
-            <mat-form-field class="full-width" appearance="outline">
-              <mat-label>Email</mat-label>
-              <input matInput
-                     placeholder="Email"
-                     name="email"
-                     [(ngModel)]="model.email"
-                     #email="ngModel"
-                     [ngClass]="{ 'is-invalid': f.submitted && email.invalid}"
-                     required email>
-
-            </mat-form-field>
-            <mat-form-field class="full-width" appearance="outline">
-              <mat-label>Password</mat-label>
-              <input matInput
-                     placeholder="Password"
-                     name="password"
-                     type="password"
-                     [(ngModel)]="model.password"
-                     #password="ngModel"
-                     [ngClass]="{ 'is-invalid': f.submitted && password.invalid}"
-                     required>
-            </mat-form-field>
-            <button mat-raised-button type="submit" color="accent">
-              <i class="fa fa-user"></i>
-              <span> Register</span>
-            </button>
-          </form>
-        </mat-card-content>
-
-      </div>
-    </div>
-  </div>
+<div class="picsum-img-wrapper">
+  <img src="assets/images/prograd2.jpg" alt="Random second slide">
+</div>
+<div class="logo"><span class="mat-display-4"><b>prograd</b></span></div>
+<mat-card class="centered">
+  <mat-card-title>Jumpstart Your Career</mat-card-title>
+  <hr>
+  <mat-card-content>
+    <form #f="ngForm" (ngSubmit)="f.form.valid && registerStudent()" novalidate>
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput
+             placeholder="Email"
+             name="email"
+             [(ngModel)]="model.email"
+             #email="ngModel"
+             [ngClass]="{ 'is-invalid': f.submitted && email.invalid}"
+             required email>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Username</mat-label>
+      <input matInput
+             placeholder="Username"
+             name="username"
+             [(ngModel)]="model.username"
+             #username="ngModel"
+             [ngClass]="{ 'is-invalid': f.submitted && username.invalid}"
+             required>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="Password"
+             name="password"
+             type="password"
+             [(ngModel)]="model.password"
+             #password="ngModel"
+             [ngClass]="{ 'is-invalid': f.submitted && password.invalid}"
+             required>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit"><mat-icon>perm_identity</mat-icon>Register</button>
+    </form>
+  </mat-card-content>
+</mat-card>
+<div class="carousel-caption">
+  <h3>Get Started With Prograd</h3>
+  <p>Find the perfect internship or graduate opportunity you've been looking for.</p>
 </div>

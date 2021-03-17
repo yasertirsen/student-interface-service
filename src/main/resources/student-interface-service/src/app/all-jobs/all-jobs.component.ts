@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PositionModel} from "../models/position.model";
 import {PositionService} from "../services/position.service";
-import {LocalStorageService} from "ngx-webstorage";
 
 @Component({
   selector: 'app-all-jobs',
@@ -11,15 +10,18 @@ import {LocalStorageService} from "ngx-webstorage";
 export class AllJobsComponent implements OnInit {
   positions: PositionModel[] = [];
   priority: PositionModel[] = [];
+  loading = true;
 
   constructor(private positionService: PositionService) {
     this.positionService.getAllJobs().subscribe(data => {
       for(let position of data) {
         if(position.priority === true)
           this.priority.push(position);
-        else
+        if(!position.archive)
           this.positions.push(position);
       }
+      this.loading = false;
+      console.log(this.positions);
     });
   }
 

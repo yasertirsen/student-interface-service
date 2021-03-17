@@ -11,8 +11,7 @@
         <mat-card-title>{{company.name}}</mat-card-title>
         <mat-card-subtitle *ngIf="company.address !== null">{{ company.address }}</mat-card-subtitle>
         <mat-card-subtitle>
-          {{ company.profile.rating }}
-            <mat-icon style="font-size: 18px; justify-content: flex-end">star</mat-icon>
+          <ngb-rating [(rate)]="company.profile.rating" [readonly]="true" [max]="5"></ngb-rating>
         </mat-card-subtitle>
       </mat-card-header>
     </mat-card>

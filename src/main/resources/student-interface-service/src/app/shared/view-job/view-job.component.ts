@@ -16,12 +16,14 @@ export class ViewJobComponent implements OnInit {
   positionId: number;
   position: PositionModel;
   user: UserModel;
+  loading = true;
 
   constructor(private resumeService: ResumeService, private positionService: PositionService, private userService: UserService,
               private activatedRoute: ActivatedRoute) {
     this.positionId = this.activatedRoute.snapshot.params.positionId;
     this.positionService.getJob(this.positionId).subscribe(position => {
       this.position = position;
+      this.loading = false;
     });
   }
 

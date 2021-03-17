@@ -114,16 +114,6 @@ export class UserService {
       });
   }
 
-  addSkills(profile: ProfileModel): Observable<any>{
-    return this.http.put('http://localhost:8083/addSkills',
-      {
-        "profileId": profile.profileId,
-        "course": profile.course,
-        "externalSkills": profile.externalSkills,
-        "projects": profile.projects,
-      });
-  }
-
   uploadImage(imageData: FormData, userId: number): Observable<any> {
     return this.http.post('http://localhost:8083/upload/image/' + userId,
       imageData);

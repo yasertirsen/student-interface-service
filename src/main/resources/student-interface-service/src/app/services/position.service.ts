@@ -57,6 +57,8 @@ export class PositionService {
         "date": position.date,
         "salary": position.salary,
         "clicks": position.clicks,
+        "priority": position.priority,
+        "archive": position.archive,
         "company": position.company,
         "requirements": position.requirements
       });

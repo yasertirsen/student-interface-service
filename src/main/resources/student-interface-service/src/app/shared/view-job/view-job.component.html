@@ -1,9 +1,15 @@
-<div class="container">
+<app-mat-spinner-overlay
+  overlay="true"
+  *ngIf="loading === true">
+</app-mat-spinner-overlay>
+
+<div class="container" *ngIf="!loading">
   <div class="row">
     <div class="offset-2"></div>
     <div class="col-md-12">
       <mat-card>
         <mat-card-title>{{ position.title }}</mat-card-title>
+        <mat-card-subtitle>{{position.date}}</mat-card-subtitle>
         <mat-card-subtitle>{{ position.location}} </mat-card-subtitle>
         <mat-card-subtitle>{{position.company.name}}</mat-card-subtitle>
         <mat-card-content><p>{{ position.description}}</p>

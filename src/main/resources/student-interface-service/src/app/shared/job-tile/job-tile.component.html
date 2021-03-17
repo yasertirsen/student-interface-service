@@ -1,10 +1,11 @@
-<div class="row position" *ngFor="let position of positions">
-  <div class="col-md-11" *ngIf="!position.archive">
-    <mat-card>
+<div class="row position">
+  <div class="col-md-11">
+    <mat-card *ngFor="let position of obs | async">
       <mat-card-title><a class="position-name" (click)="goToLink(position)">{{position.title}}</a></mat-card-title>
       <mat-card-subtitle>{{ position.location}} </mat-card-subtitle>
       <mat-card-subtitle *ngIf="position.company !== null">{{position.company.name}}</mat-card-subtitle>
       <mat-card-content [innerHTML]="position.description"></mat-card-content>
     </mat-card>
+    <mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
   </div>
 </div>

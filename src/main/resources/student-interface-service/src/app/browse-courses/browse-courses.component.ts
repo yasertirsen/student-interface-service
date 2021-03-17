@@ -11,16 +11,9 @@ import {Router} from "@angular/router";
 export class BrowseCoursesComponent implements OnInit {
 
   courses: CourseModel[];
-  isError: boolean;
+  loading = true;
 
   constructor(private courseService: CourseService, private router: Router) {
-    this.courseService.getAllCourses().subscribe( course => {
-      this.courses = course;
-    });
-
-    if (this.courses == undefined || this.courses.length == 0) {
-      this.isError = true;
-    }
   }
 
   onAddCourse(): void {
@@ -28,6 +21,10 @@ export class BrowseCoursesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.courseService.getAllCourses().subscribe( course => {
+      this.courses = course;
+      this.loading = false;
+    });
   }
 
 }

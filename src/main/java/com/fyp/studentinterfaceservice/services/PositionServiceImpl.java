@@ -25,6 +25,8 @@ public class PositionServiceImpl implements PositionService {
     private final MailService mailService;
     @Value("${careerjet.api.key}")
     private String apiKey;
+    @Value("${frontend.port}")
+    private String frontendPort;
 
     public PositionServiceImpl(ProgradClient client, MailService mailService) {
         this.client = client;
@@ -136,8 +138,8 @@ public class PositionServiceImpl implements PositionService {
         mailService.sendMail(new NotificationEmail("New Response - " + position.getTitle(),
                 position.getCompany().getEmail(),  "Hi, \n" +
                 "A new application has been submitted to your job post on Prograd. Please check the applications below.\n" +
-                "http://localhost:4201/applications/" + position.getPositionId()));
-        mailService.sendMail(new NotificationEmail("New Application",
+                frontendPort + "applications/" + position.getPositionId()));
+        mailService.sendMail(new NotificationEmail("Application Successful - " + position.getTitle(),
                 application.getEmail(),
                 "Hi, \n" +
                 "Your application for " + position.getTitle() + " has been submitted successfully.\n"));
@@ -156,27 +158,24 @@ public class PositionServiceImpl implements PositionService {
 
     @Override
     public List<Position> getJobRecommendations(String email) {
-        List<Skill> skills = new ArrayList<>(Objects.requireNonNull(client.findByEmail(bearerToken, email).getBody()).getProfile().getExternalSkills());
-        List<String> skillNames = new ArrayList<>();
-        for(Skill skill : skills) {
-            skillNames.addAll(Arrays.asList(skill.getSkillName().toLowerCase().split(" ")));
-        }
-        String pattern = String.join("|", skillNames);
-
-        List<Position> filteredPositions = new ArrayList<>();
-        for(Position position : client.getAllPositions(bearerToken)) {
-            List<Skill> requirements = new ArrayList<>(position.getRequirements());
-            for(Skill req : requirements) {
-                Matcher matcher = Pattern.compile(pattern).matcher(req.getSkillName().toLowerCase());
-                if(matcher.find()) {
-                    filteredPositions.add(position);
+        List<String> skills = new ArrayList<>();
+        Objects.requireNonNull(client.findByEmail(bearerToken, email).getBody()).getProfile().getExternalSkills()
+                .forEach(skill -> {
+                    skills.add(skill.getSkillName());
+                });
+        List<Position> positions = new ArrayList<>();
+        if(skills.size() > 0) {
+            for(Position position : client.getAllPositions(bearerToken)) {
+                position.getRequirements().forEach(req -> {
+                    if(skills.contains(req.getSkillName())) {
+                        if(!positions.contains(position))
+                            positions.add(position);
+                    }
+                });
+                if(positions.size() > 10)
                     break;
-                }
             }
-            if(filteredPositions.size() > 15)
-                break;
         }
-
-        return filteredPositions;
+        return positions;
     }
 }

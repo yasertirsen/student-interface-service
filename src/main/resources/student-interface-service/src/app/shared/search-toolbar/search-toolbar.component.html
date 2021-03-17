@@ -1,29 +1,29 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <form (ngSubmit)="onSearch()" class="form-check-inline search">
+      <div class="form-outline spacer">
+        <input type="text"
+               class="form-control"
+               placeholder="Job title or keywords"
+               [(ngModel)]="keywords"
+               [ngModelOptions]="{standalone: true}"/>
+      </div>
 
-  <mat-toolbar>
-    <mat-toolbar-row>
-      <form (ngSubmit)="onSearch()" class="form-check-inline search">
-        <mat-form-field appearance="outline">
-          <input matInput placeholder="Job title or keywords"
-                 [(ngModel)]="keywords"
-                 [ngModelOptions]="{standalone: true}">
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <input matInput placeholder="City"
-                 [(ngModel)]="location"
-                 [ngModelOptions]="{standalone: true}">
-        </mat-form-field>
-        <button
-          mat-raised-button
-          type="submit"
-          color="accent"
-          class="search-btn">
-          <mat-icon>search</mat-icon>
-          <span>Search</span>
-        </button>
-      </form>
-    </mat-toolbar-row>
-  </mat-toolbar>
-
-
-
+      <div class="form-outline spacer">
+        <input type="text"
+               class="form-control"
+               placeholder="City"
+               [(ngModel)]="location"
+               [ngModelOptions]="{standalone: true}"/>
+      </div>
+      <button
+        mat-raised-button
+        type="submit"
+        color="accent"
+        class="search-btn">
+        <mat-icon>search</mat-icon>
+        <span>Search</span>
+      </button>
+    </form>
+  </mat-toolbar-row>
+</mat-toolbar>

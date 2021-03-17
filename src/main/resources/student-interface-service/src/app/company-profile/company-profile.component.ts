@@ -1,16 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {CompanyService} from "../services/company.service";
-import {CompanyModel} from "../models/company.model";
 import {PositionModel} from "../models/position.model";
 import {PositionService} from "../services/position.service";
-import {UserService} from "../services/user.service";
-import {ReviewModel} from "../models/review.model";
-import {LocalStorageService} from "ngx-webstorage";
 import {CompanyWrapperModel} from "../models/company-wrapper.model";
 import {forkJoin} from "rxjs";
 import {MatDialog} from "@angular/material/dialog";
-import {AddSkillsDialogComponent} from "../profile/add-skills-dialog/add-skills-dialog.component";
 import {GetUpdatesDialogComponent} from "./get-updates-dialog/get-updates-dialog.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {UserModel} from "../models/user.model";

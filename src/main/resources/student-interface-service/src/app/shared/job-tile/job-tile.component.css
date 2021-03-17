@@ -2,6 +2,10 @@
   padding-bottom: 8px;
 }
 
+mat-card {
+  margin: 8px;
+}
+
 a {
   color: white;
 }

@@ -30,9 +30,10 @@
         (click)="drawer.toggle()">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
+      </div>
       <a routerLink="/home">
-<!--        <img src="https://i.imgur.com/khTyWq7.png" alt="Prograd icon">-->
-        <span class="mat-display-1"><b>prograd</b></span></a></div>
+        <!--        <img src="https://i.imgur.com/khTyWq7.png" alt="Prograd icon">-->
+        <span class="mat-display-1"><b>prograd</b></span></a>
       <span class="spacer"></span>
       <mat-nav-list>
         <a matLine *ngIf="activeRoute === '/login'" routerLink="/register">Register</a>

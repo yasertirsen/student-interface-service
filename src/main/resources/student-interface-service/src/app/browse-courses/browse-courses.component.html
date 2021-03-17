@@ -10,7 +10,7 @@
           <button mat-raised-button color="primary" (click)="onAddCourse()">Add your course</button>
         </mat-card>
         </div>
-        <app-course-tile [courses]="courses"></app-course-tile>
+        <app-course-tile [courses]="courses" *ngIf="!loading"></app-course-tile>
       </div>
     </div>
   </div>

@@ -106,11 +106,6 @@ public class StudentController {
         return userService.updateProfile(profile);
     }
 
-    @PutMapping("/addSkills")
-    public UserProfile addSkills(@RequestBody UserProfile profile) {
-        return userService.addSkills(profile);
-    }
-
     @PostMapping("/upload/image/{userId}")
     public ResponseEntity<String> uploadImage(@RequestParam("imageFile") MultipartFile file, @PathVariable Long userId) throws IOException {
         return userService.uploadImage(file, userId);

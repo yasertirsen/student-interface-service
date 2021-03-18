@@ -31,14 +31,17 @@
       <mat-label>Password</mat-label>
       <input matInput placeholder="Password"
              name="password"
-             type="password"
+             [type]="hide ? 'password' : 'text'"
              [(ngModel)]="model.password"
              #password="ngModel"
              [ngClass]="{ 'is-invalid': f.submitted && password.invalid}"
              required>
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" type="button">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon></button>
     </mat-form-field>
-    <button mat-raised-button color="primary" type="submit"><mat-icon>perm_identity</mat-icon>Register</button>
+    <button mat-raised-button color="primary" type="submit" style="margin-bottom: 10px"><mat-icon>perm_identity</mat-icon>Register</button>
     </form>
+    <p>Are you hiring? <a href="http://localhost:4201/"><strong>Prograd Employers</strong></a></p>
   </mat-card-content>
 </mat-card>
 <div class="carousel-caption">

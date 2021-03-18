@@ -1,9 +1,6 @@
-import {Component, OnInit, Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {Component, OnInit} from '@angular/core';
 import {LoginRequest} from "../models/login-request-payload";
-import {LoginResponse} from "../models/login-response-payload";
-import {delay, first, map} from "rxjs/operators";
-import {LocalStorageService} from "ngx-webstorage";
+import {first} from "rxjs/operators";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {UserService} from "../services/user.service";
@@ -14,7 +11,7 @@ import {UserService} from "../services/user.service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  hide = true;
   returnUrl: string;
   isError: boolean;
   model: LoginRequest = {

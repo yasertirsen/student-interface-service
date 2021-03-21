@@ -44,7 +44,6 @@ export class ProfileComponent implements OnInit {
       });
     summaryDialog.afterClosed().subscribe(result => {
       if(result !== undefined) {
-        console.log(result)
         this.user.profile.bio = result;
         this.updateUser();
       }

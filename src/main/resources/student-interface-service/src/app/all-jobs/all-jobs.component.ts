@@ -21,7 +21,6 @@ export class AllJobsComponent implements OnInit {
           this.positions.push(position);
       }
       this.loading = false;
-      console.log(this.positions);
     });
   }
 

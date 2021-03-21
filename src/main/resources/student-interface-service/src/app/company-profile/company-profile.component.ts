@@ -52,7 +52,6 @@ export class CompanyProfileComponent implements OnInit {
     forkJoin([getCompany, getRating]).subscribe(results => {
       this.company = (results[0] as CompanyWrapperModel);
       this.company.users.forEach(u => this.usersMap.set(u.studentId, u.firstName));
-      console.log(this.company);
       const rating = (results[1] as number);
       this.company.company.profile.rating = Number((Math.round(rating * 100) / 100).toFixed(2))
       this.positionService.getCompanyPositions(this.company.company.companyId).subscribe(positions => {
@@ -73,7 +72,6 @@ export class CompanyProfileComponent implements OnInit {
     confirmDialog.afterClosed().subscribe(result => {
       if(result) {
         this.companyService.addToMailingList(this.company.company.companyId, this.user.email).subscribe(data => {
-          console.log(data);
           this._snackBar.open('Company notifications is ON', 'Close', {
             duration: 3000
           });

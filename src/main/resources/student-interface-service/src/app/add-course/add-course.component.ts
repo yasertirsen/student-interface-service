@@ -40,7 +40,6 @@ export class AddCourseComponent implements OnInit {
         if(!this.unis.includes(course.university))
           this.unis.push(course.university);
       }
-      console.log(this.unis);
       this.loading = false;
     });
   }

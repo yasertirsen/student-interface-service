@@ -31,7 +31,6 @@ export class HomeComponent implements OnInit {
   constructor(public dialog: MatDialog, private userService: UserService,
               private activatedRoute: ActivatedRoute, private _snackBar: MatSnackBar, private positionService: PositionService) {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
-    console.log(this.user);
     this.socialUrl = this.user.socialUrl;
     this.getAvatarAndRecommendations();
   }

@@ -38,8 +38,9 @@
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" type="button">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon></button>
           </mat-form-field>
-          <button mat-raised-button color="primary" type="submit"><mat-icon>login</mat-icon>Login</button>
+          <button mat-raised-button color="primary" type="submit" class="spacer"><mat-icon>login</mat-icon>Login</button>
         </form>
+        <a routerLink="/change-password"><strong>Forgot password?</strong></a>
       </mat-card-content>
     </div>
   </div>

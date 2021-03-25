@@ -1,6 +1,7 @@
 package com.fyp.studentinterfaceservice.controller;
 
 import com.fyp.studentinterfaceservice.exceptions.ProgradException;
+import com.fyp.studentinterfaceservice.exceptions.UserNotFoundException;
 import com.fyp.studentinterfaceservice.model.Application;
 import com.fyp.studentinterfaceservice.model.Position;
 import com.fyp.studentinterfaceservice.services.interfaces.PositionService;
@@ -61,7 +62,7 @@ public class PositionController {
     }
 
     @GetMapping("positions/recommend")
-    public List<Position> getJobRecommendations(@RequestParam String email) {
+    public List<Position> getJobRecommendations(@RequestParam String email) throws UserNotFoundException {
         return positionService.getJobRecommendations(email);
     }
 }

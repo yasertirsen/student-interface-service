@@ -72,7 +72,7 @@ public class StudentController {
     }
 
     @GetMapping("/currentUser")
-    public User getCurrentUser() throws UnauthenticatedUserException {
+    public User getCurrentUser() throws UnauthenticatedUserException, UserNotFoundException {
         return userService.getCurrentUser();
     }
 
@@ -81,19 +81,24 @@ public class StudentController {
         return userService.findUserById(studentId);
     }
 
-    @PostMapping("/changePassword")
-    public User changePassword(@RequestBody User user){
-        return userService.changePassword(user);
-    }
-
     @PutMapping("/update")
     public User updateUser(@RequestBody User user) {
         return userService.updateUser(user);
     }
 
     @GetMapping("/verification/{token}")
-    public ResponseEntity<String> verifyAccount(@PathVariable String token) {
+    public ResponseEntity<String> verifyAccount(@PathVariable String token) throws UserNotFoundException {
         return userService.verifyAccount(token);
+    }
+
+    @GetMapping("/sendVerify")
+    public ResponseEntity<String> sendVerifyEmail(@RequestParam String email) throws UserNotFoundException, ProgradException {
+        return userService.sendVerifyEmail(email);
+    }
+
+    @PutMapping("/changePassword/{token}")
+    public User verifyChangePassword(@PathVariable String token, @RequestParam String password) throws UserNotFoundException {
+        return userService.verifyChangePassword(token, password);
     }
 
     @PostMapping("/getSkillsNames")

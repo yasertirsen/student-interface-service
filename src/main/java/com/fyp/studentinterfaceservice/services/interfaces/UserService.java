@@ -20,15 +20,15 @@ public interface UserService {
 
     User register(User user) throws UsernameExistsException, EmailExistsException, UserNotFoundException, ProgradException;
 
-    User findUserByEmail(String email);
+    User findUserByEmail(String email) throws UserNotFoundException;
 
     User findUserByUsername(String username);
 
-    User findUserByToken(String token);
+    User findUserByToken(String token) throws UserNotFoundException;
 
-    User getCurrentUser() throws UnauthenticatedUserException;
+    User getCurrentUser() throws UnauthenticatedUserException, UserNotFoundException;
 
-    ResponseEntity<String> verifyAccount(String token);
+    ResponseEntity<String> verifyAccount(String token) throws UserNotFoundException;
 
     List<User> getAllStudents();
 
@@ -48,5 +48,7 @@ public interface UserService {
 
     User findUserById(Long studentId);
 
-    User changePassword(User user);
+    User verifyChangePassword(String token, String password) throws UserNotFoundException;
+
+    ResponseEntity<String> sendVerifyEmail(String email) throws UserNotFoundException, ProgradException;
 }

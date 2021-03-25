@@ -1,14 +1,11 @@
 package com.fyp.studentinterfaceservice.services;
 
 import com.fyp.studentinterfaceservice.client.ProgradClient;
-import com.fyp.studentinterfaceservice.exceptions.EmailExistsException;
-import com.fyp.studentinterfaceservice.exceptions.ProgradException;
-import com.fyp.studentinterfaceservice.exceptions.UnauthenticatedUserException;
-import com.fyp.studentinterfaceservice.exceptions.UsernameExistsException;
+import com.fyp.studentinterfaceservice.exceptions.*;
 import com.fyp.studentinterfaceservice.model.*;
 import com.fyp.studentinterfaceservice.services.interfaces.UserService;
 import com.google.gson.Gson;
-import org.apache.commons.lang3.StringUtils;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -53,7 +50,7 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
     }
 
     @Override
-    public User register(User user) throws UsernameExistsException, EmailExistsException, ProgradException {
+    public User register(User user) throws UsernameExistsException, EmailExistsException, ProgradException, UserNotFoundException {
         validateUsernameAndEmail(user.getUsername(), user.getEmail());
 
         String verificationToken = UUID.randomUUID().toString();
@@ -67,7 +64,6 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
         user.setProfile(new UserProfile());
 
         User registeredUser = progradClient.add(user);
-        registeredUser.setPassword(StringUtils.EMPTY);
 
         mailService.sendMail(new NotificationEmail("Account Activation - Prograd",
                 user.getEmail(), "Thank you for signing up to Prograd, " +
@@ -77,7 +73,7 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
         return registeredUser;
     }
 
-    private void validateUsernameAndEmail(String newUsername, String newEmail) throws UsernameExistsException, EmailExistsException {
+    private void validateUsernameAndEmail(String newUsername, String newEmail) throws UsernameExistsException, EmailExistsException, UserNotFoundException {
         User userByEmail = findUserByEmail(newEmail);
         if(userByEmail != null) {
             throw new EmailExistsException(EMAIL_ALREADY_EXISTS);
@@ -89,7 +85,7 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
     }
 
     @Override
-    public User findUserByEmail(String email) {
+    public User findUserByEmail(String email) throws UserNotFoundException {
         return progradClient.findByEmail(bearerToken, email).getBody();
     }
 
@@ -99,10 +95,11 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
     }
 
     @Override
-    public User findUserByToken(String token) {
+    public User findUserByToken(String token) throws UserNotFoundException {
         return progradClient.findByToken(bearerToken, token).getBody();
     }
 
+    @SneakyThrows
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = findUserByEmail(username);
@@ -112,7 +109,7 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
     }
 
     @Override
-    public ResponseEntity<String> verifyAccount(String token) {
+    public ResponseEntity<String> verifyAccount(String token) throws UserNotFoundException {
         User user = findUserByToken(token);
         user.setEnabled(true);
         progradClient.update(bearerToken, user);
@@ -126,7 +123,7 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
     }
 
     @Override
-    public User getCurrentUser() throws UnauthenticatedUserException {
+    public User getCurrentUser() throws UnauthenticatedUserException, UserNotFoundException {
         String email = (String) SecurityContextHolder.
                 getContext().getAuthentication().getPrincipal();
         return findUserByEmail(email);
@@ -180,9 +177,23 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
     }
 
     @Override
-    public User changePassword(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        return progradClient.add(user);
+    public User verifyChangePassword(String token, String password) throws UserNotFoundException {
+        User user = findUserByToken(token);
+        user.setPassword(passwordEncoder.encode(password));
+        return updateUser(user);
+    }
+
+    @Override
+    public ResponseEntity<String> sendVerifyEmail(String email) throws UserNotFoundException, ProgradException {
+        User user = findUserByEmail(email);
+        String token = UUID.randomUUID().toString();
+        mailService.sendMail(new NotificationEmail("Change Password - Prograd",
+                user.getEmail(), "We received a change password request, " +
+                "please click the link below to change your password " +
+                "http://localhost:4202/new-password/" + token));
+        user.setToken(token);
+        updateUser(user);
+        return new ResponseEntity<>(new Gson().toJson("Verification email sent"), HttpStatus.OK);
     }
 
     public byte[] compressBytes(byte[] data) {

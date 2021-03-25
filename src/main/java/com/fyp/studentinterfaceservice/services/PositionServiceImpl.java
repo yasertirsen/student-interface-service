@@ -4,6 +4,7 @@ import com.careerjet.webservice.api.Client;
 import com.fyp.studentinterfaceservice.client.ProgradClient;
 import com.fyp.studentinterfaceservice.exceptions.ProgradException;
 import com.fyp.studentinterfaceservice.exceptions.StudentExceptionHandler;
+import com.fyp.studentinterfaceservice.exceptions.UserNotFoundException;
 import com.fyp.studentinterfaceservice.model.*;
 import com.fyp.studentinterfaceservice.services.interfaces.PositionService;
 import org.json.simple.JSONArray;
@@ -157,7 +158,7 @@ public class PositionServiceImpl implements PositionService {
     }
 
     @Override
-    public List<Position> getJobRecommendations(String email) {
+    public List<Position> getJobRecommendations(String email) throws UserNotFoundException {
         List<String> skills = new ArrayList<>();
         Objects.requireNonNull(client.findByEmail(bearerToken, email).getBody()).getProfile().getExternalSkills()
                 .forEach(skill -> {

@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~@angular/material/theming';
+$custom-typography: mat-typography-config(
+  $font-family: 'Lato, "Helvetica Neue", sans-serif;'
+);
+@include mat-core($custom-typography);
+
+html, body { height: 100%; }
+//* { margin: 0; font-family: Lato, "Helvetica Neue", sans-serif; }

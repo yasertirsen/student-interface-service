@@ -1,6 +1,7 @@
 package com.fyp.studentinterfaceservice.services.interfaces;
 
 import com.fyp.studentinterfaceservice.exceptions.ProgradException;
+import com.fyp.studentinterfaceservice.exceptions.UserNotFoundException;
 import com.fyp.studentinterfaceservice.model.Application;
 import com.fyp.studentinterfaceservice.model.Position;
 import org.springframework.http.ResponseEntity;
@@ -25,5 +26,5 @@ public interface PositionService {
 
     Position update(Position position);
 
-    List<Position> getJobRecommendations(String email);
+    List<Position> getJobRecommendations(String email) throws UserNotFoundException;
 }

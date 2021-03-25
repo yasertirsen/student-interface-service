@@ -1,6 +1,7 @@
 package com.fyp.studentinterfaceservice.client;
 
 import com.fyp.studentinterfaceservice.dto.CompanyWrapper;
+import com.fyp.studentinterfaceservice.exceptions.UserNotFoundException;
 import com.fyp.studentinterfaceservice.model.*;
 import feign.Headers;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -31,7 +32,7 @@ public interface ProgradClient {
 
     @GetMapping(value = "/students/findByEmail")
     @Headers({"Content-Type: application/json"})
-    ResponseEntity<User> findByEmail(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestParam String email);
+    ResponseEntity<User> findByEmail(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestParam String email) throws UserNotFoundException;
 
     @GetMapping(value = "/students/findByUsername")
     @Headers({"Content-Type: application/json"})
@@ -39,7 +40,7 @@ public interface ProgradClient {
 
     @GetMapping(value = "/students/findByToken")
     @Headers({"Content-Type: application/json"})
-    ResponseEntity<User> findByToken(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestParam String token);
+    ResponseEntity<User> findByToken(@RequestHeader(AUTH_TOKEN) String bearerToken, @RequestParam String token) throws UserNotFoundException;
 
     @PostMapping("/students/getSkillsNames")
     @Headers({"Content-Type: application/json"})

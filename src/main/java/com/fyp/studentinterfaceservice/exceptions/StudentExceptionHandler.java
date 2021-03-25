@@ -37,13 +37,15 @@ public class StudentExceptionHandler {
             case 403:
                 toReturn = accessDeniedException();
                 break;
-//            case 423:
-//                toReturn = accountLockedException();
-//                break;
             case 500:
                 toReturn = internalServerErrorException();
         }
         return toReturn;
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<HttpCustomResponse> userNotFound() {
+        return createHttpResponse(UNAUTHORIZED, USER_WAS_NOT_FOUND);
     }
 
     @ExceptionHandler(IncorrectPasswordException.class)
@@ -80,16 +82,6 @@ public class StudentExceptionHandler {
     public ResponseEntity<HttpCustomResponse> illegalStateException() {
         return createHttpResponse(NOT_IMPLEMENTED, UNEXPECTED_VALUE);
     }
-
-//    @ExceptionHandler(DisabledException.class)
-//    public ResponseEntity<HttpCustomResponse> accountDisabledException() {
-//        return createHttpResponse(FORBIDDEN, ACCOUNT_DISABLED);
-//    }
-//
-//    @ExceptionHandler(LockedException.class)
-//    public ResponseEntity<HttpCustomResponse> accountLockedException() {
-//        return createHttpResponse(LOCKED, ACCOUNT_LOCKED);
-//    }
 
     @ExceptionHandler(AccessDeniedException.class)
     public ResponseEntity<HttpCustomResponse> accessDeniedException() {

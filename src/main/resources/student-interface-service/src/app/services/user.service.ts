@@ -58,6 +58,17 @@ export class UserService {
     return this.http.get('http://localhost:8083/getStudentAvatar/' + userId);
   }
 
+  verifyToken(token: string, password: string): Observable<any>{
+    return this.http.put('http://localhost:8083/changePassword/' + token, {},
+      {params: {password: password}});
+  }
+
+  sendVerify(email: string): Observable<any>{
+    return this.http.get('http://localhost:8083/sendVerify/',
+      {params: {email: email}});
+  }
+
+
   updateUser(user: UserModel): Observable<any>{
     return this.http.put('http://localhost:8083/update',
       {

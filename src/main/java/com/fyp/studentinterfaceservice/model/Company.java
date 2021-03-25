@@ -26,6 +26,7 @@ public class Company {
     private Boolean isLocked;
     private Long expiresIn;
     private String token;
-    private Boolean enabled;
+    private boolean enabled;
+    private boolean subscribed;
     private CompanyProfile profile;
 }

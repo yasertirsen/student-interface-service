@@ -33,7 +33,7 @@ import static com.fyp.studentinterfaceservice.model.Role.ROLE_USER;
 
 @Service
 @Qualifier("UserDetailsService")
-public class UserServiceImplementation implements UserService, UserDetailsService {
+public class UserServiceImpl implements UserService, UserDetailsService {
 
     private final BCryptPasswordEncoder passwordEncoder;
     private final ProgradClient progradClient;
@@ -43,7 +43,7 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
   private String bearerToken;
 
     @Autowired
-    public UserServiceImplementation(BCryptPasswordEncoder passwordEncoder, ProgradClient progradClient, MailService mailService) {
+    public UserServiceImpl(BCryptPasswordEncoder passwordEncoder, ProgradClient progradClient, MailService mailService) {
         this.passwordEncoder = passwordEncoder;
         this.progradClient = progradClient;
         this.mailService = mailService;

@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {UserModel} from "../../models/user.model";
+import {UserModel} from "../../model/user.model";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {LinkedinDialogData} from "../../models/linkedin-dialog-data";
+import {LinkedinDialogData} from "../../model/linkedin-dialog-data";
 
 @Component({
   selector: 'app-add-linkedin-dialog',

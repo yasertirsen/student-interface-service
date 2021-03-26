@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {LoginRequest} from "../models/login-request-payload";
+import {LoginRequest} from "../model/login-request-payload";
 import {first} from "rxjs/operators";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {UserService} from "../services/user.service";
+import {UserService} from "../service/user.service";
 
 @Component({
   selector: 'app-login',

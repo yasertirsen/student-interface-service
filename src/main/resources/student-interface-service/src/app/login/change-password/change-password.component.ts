@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {UserService} from "../services/user.service";
+import {UserService} from "../../service/user.service";
 
 @Component({
   selector: 'app-change-password',
@@ -18,7 +18,7 @@ export class ChangePasswordComponent implements OnInit {
         {duration: 5000});
     },
       error => {
-        this._snackBar.open('An error has occurred', 'Close',
+        this._snackBar.open('You have entered an unregistered email', 'Close',
           {duration: 5000});
       });
   }

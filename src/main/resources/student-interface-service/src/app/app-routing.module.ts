@@ -17,8 +17,8 @@ import {ProfileComponent} from "./profile/profile.component";
 import {AddCourseComponent} from "./add-course/add-course.component";
 import {AlumniProfileComponent} from "./alumni-profile/alumni-profile.component";
 import {AuthGuard} from "./_guards/auth.guard";
-import {ChangePasswordComponent} from "./change-password/change-password.component";
-import {VerifyChangePasswordComponent} from "./verify-change-password/verify-change-password.component";
+import {ChangePasswordComponent} from "./login/change-password/change-password.component";
+import {VerifyChangePasswordComponent} from "./login/verify-change-password/verify-change-password.component";
 
 const routes: Routes = [
   {

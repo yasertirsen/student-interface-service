@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialogRef} from "@angular/material/dialog";
-import {ModuleModel} from "../../models/module.model";
-import {SkillModel} from "../../models/skill.model";
+import {ModuleModel} from "../../model/module.model";
+import {SkillModel} from "../../model/skill.model";
 
 @Component({
   selector: 'app-add-module-dialog',

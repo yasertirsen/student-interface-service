@@ -5,29 +5,23 @@ import com.fyp.studentinterfaceservice.model.*;
 import com.fyp.studentinterfaceservice.services.interfaces.ResumeService;
 import com.fyp.studentinterfaceservice.utilities.PDFGenerator;
 import org.springframework.core.io.InputStreamResource;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.zip.Deflater;
 
 import static com.fyp.studentinterfaceservice.client.ProgradClient.bearerToken;
 
 @Service
 public class ResumeServiceImpl implements ResumeService {
 
-    private final UserServiceImplementation userService;
+    private final UserServiceImpl userService;
     private final ProgradClient client;
 
-    public ResumeServiceImpl(UserServiceImplementation userService, ProgradClient client) {
+    public ResumeServiceImpl(UserServiceImpl userService, ProgradClient client) {
         this.userService = userService;
         this.client = client;
     }

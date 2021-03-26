@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {CourseModel} from "../models/course.model";
-import {ModuleModel} from "../models/module.model";
+import {CourseModel} from "../model/course.model";
+import {ModuleModel} from "../model/module.model";
 import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {MatDialog} from "@angular/material/dialog";
 import {AddProjectDialogComponent} from "../profile/add-project-dialog/add-project-dialog.component";
 import {AddModuleDialogComponent} from "./add-module-dialog/add-module-dialog.component";
-import {UserService} from "../services/user.service";
-import {UserModel} from "../models/user.model";
+import {UserService} from "../service/user.service";
+import {UserModel} from "../model/user.model";
 import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {CourseService} from "../services/course.service";
+import {CourseService} from "../service/course.service";
 import {Observable} from "rxjs";
 import {map, startWith} from "rxjs/operators";
 

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {UserModel} from "../models/user.model";
-import {ProfileModel} from "../models/profile.model";
-import {LoginRequest} from "../models/login-request-payload";
+import {UserModel} from "../model/user.model";
+import {ProfileModel} from "../model/profile.model";
+import {LoginRequest} from "../model/login-request-payload";
 import {map} from "rxjs/operators";
 import {Router} from "@angular/router";
 

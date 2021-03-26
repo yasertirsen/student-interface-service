@@ -5,9 +5,9 @@ import {Observable} from "rxjs";
 import {MatAutocomplete, MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
 import {map} from "rxjs/operators";
 import {MatChipInputEvent} from "@angular/material/chips";
-import {SkillModel} from "../../models/skill.model";
+import {SkillModel} from "../../model/skill.model";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {UserService} from "../../services/user.service";
+import {UserService} from "../../service/user.service";
 
 @Component({
   selector: 'app-add-skills-dialog',

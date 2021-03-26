@@ -1,7 +1,7 @@
 import {ChangeDetectorRef, Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {PositionModel} from "../../models/position.model";
+import {PositionModel} from "../../model/position.model";
 import {Router} from "@angular/router";
-import {PositionService} from "../../services/position.service";
+import {PositionService} from "../../service/position.service";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
 import {Observable} from "rxjs";

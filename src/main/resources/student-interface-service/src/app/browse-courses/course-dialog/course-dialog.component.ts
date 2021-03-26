@@ -1,10 +1,10 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {LinkedinDialogData} from "../../models/linkedin-dialog-data";
-import {CourseDialogData} from "../../models/course-dialog-data";
+import {LinkedinDialogData} from "../../model/linkedin-dialog-data";
+import {CourseDialogData} from "../../model/course-dialog-data";
 import {FormControl, FormGroup} from "@angular/forms";
-import {CourseModel} from "../../models/course.model";
-import {Month} from "../../models/month.model";
+import {CourseModel} from "../../model/course.model";
+import {Month} from "../../model/month.model";
 
 @Component({
   selector: 'app-course-dialog',

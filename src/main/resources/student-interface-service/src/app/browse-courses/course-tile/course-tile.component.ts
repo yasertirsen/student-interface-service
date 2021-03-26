@@ -1,16 +1,16 @@
 import {ChangeDetectorRef, Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {CourseModel} from "../../models/course.model";
+import {CourseModel} from "../../model/course.model";
 import {MatDialog} from "@angular/material/dialog";
-import {UserService} from "../../services/user.service";
-import {UserModel} from "../../models/user.model";
+import {UserService} from "../../service/user.service";
+import {UserModel} from "../../model/user.model";
 import {CourseDialogComponent} from "../course-dialog/course-dialog.component";
 import {Router} from "@angular/router";
-import {SkillModel} from "../../models/skill.model";
+import {SkillModel} from "../../model/skill.model";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatTableDataSource} from "@angular/material/table";
 import {Observable} from "rxjs";
 import {MatPaginator} from "@angular/material/paginator";
-import {PositionModel} from "../../models/position.model";
+import {PositionModel} from "../../model/position.model";
 
 @Component({
   selector: 'app-course-tile',

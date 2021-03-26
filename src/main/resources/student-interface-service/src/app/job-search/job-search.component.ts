@@ -1,7 +1,7 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {PositionService} from "../services/position.service";
+import {PositionService} from "../service/position.service";
 import {ActivatedRoute} from "@angular/router";
-import {PositionModel} from "../models/position.model";
+import {PositionModel} from "../model/position.model";
 import {NgbAlert} from "@ng-bootstrap/ng-bootstrap";
 import {MatSnackBar} from "@angular/material/snack-bar";
 

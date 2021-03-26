@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {UserModel} from "../models/user.model";
+import {UserModel} from "../model/user.model";
 import {LocalStorageService} from "ngx-webstorage";
-import {UserService} from "../services/user.service";
+import {UserService} from "../service/user.service";
 import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatSelectChange} from "@angular/material/select";

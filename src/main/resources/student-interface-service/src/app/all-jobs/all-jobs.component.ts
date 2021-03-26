@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {PositionModel} from "../models/position.model";
-import {PositionService} from "../services/position.service";
+import {PositionModel} from "../model/position.model";
+import {PositionService} from "../service/position.service";
 
 @Component({
   selector: 'app-all-jobs',

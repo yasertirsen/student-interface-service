@@ -1,16 +1,16 @@
 import {Component,  OnInit} from '@angular/core';
-import {UserModel} from "../models/user.model";
+import {UserModel} from "../model/user.model";
 import { MatDialog } from "@angular/material/dialog";
 import {AddLinkedinDialogComponent} from "./add-linkedin-dialog/add-linkedin-dialog.component";
 import {LocalStorageService} from "ngx-webstorage";
-import {UserService} from "../services/user.service";
+import {UserService} from "../service/user.service";
 import {ActivatedRoute} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {PositionModel} from "../models/position.model";
-import {PositionService} from "../services/position.service";
-import {ProfileModel} from "../models/profile.model";
+import {PositionModel} from "../model/position.model";
+import {PositionService} from "../service/position.service";
+import {ProfileModel} from "../model/profile.model";
 import {forkJoin} from "rxjs";
-import {CompanyWrapperModel} from "../models/company-wrapper.model";
+import {CompanyWrapperModel} from "../model/company-wrapper.model";
 import {delay} from "rxjs/operators";
 
 @Component({

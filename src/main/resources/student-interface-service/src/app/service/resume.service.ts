@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {LocalStorageService} from "ngx-webstorage";
 import {Observable} from "rxjs";
-import {UserModel} from "../models/user.model";
-import {ResumeModel} from "../models/ResumeModel";
+import {UserModel} from "../model/user.model";
+import {ResumeModel} from "../model/ResumeModel";
 
 @Injectable({
   providedIn: 'root'

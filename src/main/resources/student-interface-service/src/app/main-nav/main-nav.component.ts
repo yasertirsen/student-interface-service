@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay, filter } from 'rxjs/operators';
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {MatSidenav} from "@angular/material/sidenav";
-import {UserService} from "../services/user.service";
+import {UserService} from "../service/user.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({

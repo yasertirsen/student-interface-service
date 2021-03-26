@@ -66,8 +66,8 @@ import { AuthGuard } from './_guards/auth.guard';
 import {TokenInterceptor} from "./shared/interceptor/TokenInterceptor";
 import { GetUpdatesDialogComponent } from './company-profile/get-updates-dialog/get-updates-dialog.component';
 import {MatPaginatorModule} from "@angular/material/paginator";
-import { ChangePasswordComponent } from './change-password/change-password.component';
-import { VerifyChangePasswordComponent } from './verify-change-password/verify-change-password.component';
+import { ChangePasswordComponent } from './login/change-password/change-password.component';
+import { VerifyChangePasswordComponent } from './login/verify-change-password/verify-change-password.component';
 
 
 @NgModule({

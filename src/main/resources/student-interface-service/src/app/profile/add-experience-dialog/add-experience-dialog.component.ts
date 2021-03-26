@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {ExperienceModel} from "../../models/experience.model";
-import {Month} from "../../models/month.model";
+import {ExperienceModel} from "../../model/experience.model";
+import {Month} from "../../model/month.model";
 
 interface Flag {
   value: string;

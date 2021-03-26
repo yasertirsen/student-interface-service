@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {CompanyModel} from "../models/company.model";
-import {CompanyService} from "../services/company.service";
+import {CompanyModel} from "../model/company.model";
+import {CompanyService} from "../service/company.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {UserService} from "../services/user.service";
-import {UserModel} from "../models/user.model";
-import {ReviewModel} from "../models/review.model";
+import {UserService} from "../service/user.service";
+import {UserModel} from "../model/user.model";
+import {ReviewModel} from "../model/review.model";
 import {MatSelectChange} from "@angular/material/select";
 import {MatSnackBar} from "@angular/material/snack-bar";
 

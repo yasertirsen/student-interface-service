@@ -23,7 +23,7 @@ import java.util.Set;
 import static com.fyp.studentinterfaceservice.constant.SecurityConstants.EXPIRATION_TIME;
 
 @RestController
-public class StudentController {
+public class UserController {
 
     private final UserService userService;
     private final JWTTokenProvider jwtTokenProvider;
@@ -32,7 +32,7 @@ public class StudentController {
 
 
     @Autowired
-    public StudentController(UserService userService, JWTTokenProvider jwtTokenProvider, BCryptPasswordEncoder passwordEncoder, AuthenticationManager authenticationManager) {
+    public UserController(UserService userService, JWTTokenProvider jwtTokenProvider, BCryptPasswordEncoder passwordEncoder, AuthenticationManager authenticationManager) {
         this.userService = userService;
         this.jwtTokenProvider = jwtTokenProvider;
         this.passwordEncoder = passwordEncoder;

@@ -24,7 +24,7 @@ public class CourseServiceImpl implements CourseService {
     private final ProgradClient client;
 
     @Value("${token.secret}")
-    private String bearerToken;
+    private String SECRET_TOKEN;
 
     public CourseServiceImpl(ProgradClient client) {
         this.client = client;
@@ -32,7 +32,7 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public ResponseEntity<Course> findCourseById(Long id) {
-        return client.findCourseById(bearerToken, id);
+        return client.findCourseById(SECRET_TOKEN, id);
     }
 
     @Override
@@ -42,18 +42,18 @@ public class CourseServiceImpl implements CourseService {
                 || course.getUniversity().equalsIgnoreCase("TU Dublin")
                 || course.getUniversity().equalsIgnoreCase("TUD")) {
             try {
-                return client.addCourse(bearerToken, getTudCourseDetails(course));
+                return client.addCourse(SECRET_TOKEN, getTudCourseDetails(course));
             }
             catch (ModuleParsingException e) {
-                return client.addCourse(bearerToken, course);
+                return client.addCourse(SECRET_TOKEN, course);
             }
         }
-        return client.addCourse(bearerToken, course);
+        return client.addCourse(SECRET_TOKEN, course);
     }
 
     @Override
     public List<Course> getAllCourses() {
-        return client.getAllCourses(bearerToken);
+        return client.getAllCourses(SECRET_TOKEN);
     }
 
     private Course getTudCourseDetails(Course course) throws ModuleParsingException {

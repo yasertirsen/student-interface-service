@@ -13,5 +13,6 @@ public class SecurityConstants {
     public static final String OPTIONS_HTTP_METHOD = "OPTIONS";
     public static final String[] PUBLIC_URLS = {"/register", "/login", "/verification/**", "/sendVerify/**",
     "/changePassword/**"};
+    public static final String SECRET_TOKEN = "$iTv=(~B&s3VH3&M)mjN#`e_i8qzM]";
 }
 

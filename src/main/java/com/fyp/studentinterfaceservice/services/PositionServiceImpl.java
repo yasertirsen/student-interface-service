@@ -3,9 +3,11 @@ package com.fyp.studentinterfaceservice.services;
 import com.careerjet.webservice.api.Client;
 import com.fyp.studentinterfaceservice.client.ProgradClient;
 import com.fyp.studentinterfaceservice.exceptions.ProgradException;
-import com.fyp.studentinterfaceservice.exceptions.StudentExceptionHandler;
 import com.fyp.studentinterfaceservice.exceptions.UserNotFoundException;
-import com.fyp.studentinterfaceservice.model.*;
+import com.fyp.studentinterfaceservice.model.Application;
+import com.fyp.studentinterfaceservice.model.Company;
+import com.fyp.studentinterfaceservice.model.NotificationEmail;
+import com.fyp.studentinterfaceservice.model.Position;
 import com.fyp.studentinterfaceservice.services.interfaces.PositionService;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -17,7 +19,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static com.fyp.studentinterfaceservice.client.ProgradClient.bearerToken;
+import static com.fyp.studentinterfaceservice.constant.SecurityConstants.SECRET_TOKEN;
 
 @Service
 public class PositionServiceImpl implements PositionService {
@@ -36,17 +38,17 @@ public class PositionServiceImpl implements PositionService {
 
     @Override
     public List<Position> getAllPositions() {
-        return client.getAllPositions(bearerToken);
+        return client.getAllPositions(SECRET_TOKEN);
     }
 
     @Override
     public Position getPosition(Long id) {
-        return client.findPositionById(bearerToken, id);
+        return client.findPositionById(SECRET_TOKEN, id);
     }
 
     @Override
     public List<Position> searchPositions(String location, String keywords) {
-        List<Position> positions = client.getAllPositions(bearerToken);
+        List<Position> positions = client.getAllPositions(SECRET_TOKEN);
         List<String> keywordsList = new ArrayList<>(Arrays.asList(keywords.toLowerCase().split(" ")));
         String pattern = String.join("|", keywordsList);
         List<Position> matchedPositions = new ArrayList<>();
@@ -130,12 +132,12 @@ public class PositionServiceImpl implements PositionService {
 
     @Override
     public List<Position> getCompanyPositions(Long companyId) {
-        return client.getCompanyPositions(bearerToken, companyId);
+        return client.getCompanyPositions(SECRET_TOKEN, companyId);
     }
 
     @Override
     public ResponseEntity<String> apply(Application application) throws ProgradException {
-        Position position = client.findPositionById(bearerToken, application.getPositionId());
+        Position position = client.findPositionById(SECRET_TOKEN, application.getPositionId());
         mailService.sendMail(new NotificationEmail("New Response - " + position.getTitle(),
                 position.getCompany().getEmail(),  "Hi, \n" +
                 "A new application has been submitted to your job post on Prograd. Please check the applications below.\n" +
@@ -144,29 +146,29 @@ public class PositionServiceImpl implements PositionService {
                 application.getEmail(),
                 "Hi, \n" +
                 "Your application for " + position.getTitle() + " has been submitted successfully.\n"));
-        return client.apply(bearerToken, application);
+        return client.apply(SECRET_TOKEN, application);
     }
 
     @Override
     public List<Application> getApplicationsByEmail(String email) {
-        return client.getApplicationsByEmail(bearerToken, email);
+        return client.getApplicationsByEmail(SECRET_TOKEN, email);
     }
 
     @Override
     public Position update(Position position) {
-        return client.updatePosition(bearerToken, position);
+        return client.updatePosition(SECRET_TOKEN, position);
     }
 
     @Override
     public List<Position> getJobRecommendations(String email) throws UserNotFoundException {
         List<String> skills = new ArrayList<>();
-        Objects.requireNonNull(client.findByEmail(bearerToken, email).getBody()).getProfile().getExternalSkills()
+        Objects.requireNonNull(client.findByEmail(SECRET_TOKEN, email).getBody()).getProfile().getExternalSkills()
                 .forEach(skill -> {
                     skills.add(skill.getSkillName());
                 });
         List<Position> positions = new ArrayList<>();
         if(skills.size() > 0) {
-            for(Position position : client.getAllPositions(bearerToken)) {
+            for(Position position : client.getAllPositions(SECRET_TOKEN)) {
                 position.getRequirements().forEach(req -> {
                     if(skills.contains(req.getSkillName())) {
                         if(!positions.contains(position))

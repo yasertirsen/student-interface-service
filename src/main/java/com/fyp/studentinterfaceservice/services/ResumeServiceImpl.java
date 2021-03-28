@@ -1,7 +1,8 @@
 package com.fyp.studentinterfaceservice.services;
 
 import com.fyp.studentinterfaceservice.client.ProgradClient;
-import com.fyp.studentinterfaceservice.model.*;
+import com.fyp.studentinterfaceservice.model.Resume;
+import com.fyp.studentinterfaceservice.model.User;
 import com.fyp.studentinterfaceservice.services.interfaces.ResumeService;
 import com.fyp.studentinterfaceservice.utilities.PDFGenerator;
 import org.springframework.core.io.InputStreamResource;
@@ -13,7 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
-import static com.fyp.studentinterfaceservice.client.ProgradClient.bearerToken;
+import static com.fyp.studentinterfaceservice.constant.SecurityConstants.SECRET_TOKEN;
 
 @Service
 public class ResumeServiceImpl implements ResumeService {
@@ -32,9 +33,9 @@ public class ResumeServiceImpl implements ResumeService {
 
             ByteArrayInputStream bis = new ByteArrayInputStream(data);
             Resume resume = new Resume(user.getUsername() + "_CV" , userService.compressBytes(data), user.getStudentId());
-            client.saveResume(bearerToken, resume);
+            client.saveResume(SECRET_TOKEN, resume);
 
-            return client.saveResume(bearerToken, resume);
+            return client.saveResume(SECRET_TOKEN, resume);
     }
 
     @Override
@@ -45,7 +46,7 @@ public class ResumeServiceImpl implements ResumeService {
         byte[] data = PDFGenerator.generateDynamicCv(user);
         ByteArrayInputStream bis = new ByteArrayInputStream(data);
         Resume resume = new Resume(user.getUsername() + "_CV" , userService.compressBytes(data), user.getStudentId());
-        client.saveResume(bearerToken, resume);
+        client.saveResume(SECRET_TOKEN, resume);
         return ResponseEntity
                 .ok()
                 .contentType(MediaType.APPLICATION_PDF)
@@ -56,7 +57,7 @@ public class ResumeServiceImpl implements ResumeService {
     public Resume uploadCv(MultipartFile file, Long userId) throws IOException {
         Resume resume = new Resume(file.getOriginalFilename(), userService.compressBytes(file.getBytes()),
                 userId);
-        return client.saveResume(bearerToken, resume);
+        return client.saveResume(SECRET_TOKEN, resume);
     }
 
 }

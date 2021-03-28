@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     private final MailService mailService;
 
   @Value("${token.secret}")
-  private String bearerToken;
+  private String SECRET_TOKEN;
 
     @Autowired
     public UserServiceImpl(BCryptPasswordEncoder passwordEncoder, ProgradClient progradClient, MailService mailService) {
@@ -86,17 +86,17 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public User findUserByEmail(String email) throws UserNotFoundException {
-        return progradClient.findByEmail(bearerToken, email).getBody();
+        return progradClient.findByEmail(SECRET_TOKEN, email).getBody();
     }
 
     @Override
     public User findUserByUsername(String username) {
-        return progradClient.findByUsername(bearerToken, username).getBody();
+        return progradClient.findByUsername(SECRET_TOKEN, username).getBody();
     }
 
     @Override
     public User findUserByToken(String token) throws UserNotFoundException {
-        return progradClient.findByToken(bearerToken, token).getBody();
+        return progradClient.findByToken(SECRET_TOKEN, token).getBody();
     }
 
     @SneakyThrows
@@ -112,14 +112,14 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public ResponseEntity<String> verifyAccount(String token) throws UserNotFoundException {
         User user = findUserByToken(token);
         user.setEnabled(true);
-        progradClient.update(bearerToken, user);
+        progradClient.update(SECRET_TOKEN, user);
 
         return new ResponseEntity<>(new Gson().toJson("Account Activated Successfully"), HttpStatus.OK);
     }
 
     @Override
     public List<User> getAllStudents() {
-        return progradClient.getAllStudents(bearerToken);
+        return progradClient.getAllStudents(SECRET_TOKEN);
     }
 
     @Override
@@ -131,12 +131,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public User updateUser(@RequestBody User user) {
-        return progradClient.update(bearerToken, user);
+        return progradClient.update(SECRET_TOKEN, user);
     }
 
     @Override
     public List<String> getSkillsNames(UserProfile profile) {
-        return progradClient.getSkillsNames(bearerToken, profile);
+        return progradClient.getSkillsNames(SECRET_TOKEN, profile);
     }
 
     @Override
@@ -151,29 +151,29 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             }
         }
         profile.setExternalSkills(skillSet);
-        return progradClient.updateProfile(bearerToken, profile);
+        return progradClient.updateProfile(SECRET_TOKEN, profile);
     }
 
     @Override
     public ResponseEntity<String> uploadImage(MultipartFile file, Long userId) throws IOException {
         Image img = new Image(file.getOriginalFilename(), file.getContentType(),
                 compressBytes(file.getBytes()), userId);
-        return progradClient.uploadImage(bearerToken, img);
+        return progradClient.uploadImage(SECRET_TOKEN, img);
     }
 
     @Override
     public Image getImage(Long userId) {
-        return progradClient.getStudentAvatar(bearerToken, userId);
+        return progradClient.getStudentAvatar(SECRET_TOKEN, userId);
     }
 
     @Override
     public Set<Skill> getAllSkills() {
-        return progradClient.getAllSkills(bearerToken);
+        return progradClient.getAllSkills(SECRET_TOKEN);
     }
 
     @Override
     public User findUserById(Long studentId) {
-        return progradClient.findById(bearerToken, studentId);
+        return progradClient.findById(SECRET_TOKEN, studentId);
     }
 
     @Override
@@ -217,7 +217,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public UserProfile updateProfile(UserProfile profile) {
-        return progradClient.updateProfile(bearerToken, profile);
+        return progradClient.updateProfile(SECRET_TOKEN, profile);
     }
 
 }

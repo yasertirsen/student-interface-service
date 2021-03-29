@@ -18,7 +18,7 @@ public class CompanyServiceImpl implements CompanyService {
 
     private final ProgradClient client;
     @Value("${token.secret}")
-    private String SECRET_TOKEN;
+    private String secretToken;
 
 
     @Autowired
@@ -28,22 +28,22 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public CompanyWrapper getCompany(String name) {
-        return client.findCompanyByName(SECRET_TOKEN, name);
+        return client.findCompanyByName(secretToken, name);
     }
 
     @Override
     public List<Company> getAllCompanies() {
-        return client.getAllCompanies(SECRET_TOKEN);
+        return client.getAllCompanies(secretToken);
     }
 
     @Override
     public Review review(Review review) {
-        return client.review(SECRET_TOKEN, review);
+        return client.review(secretToken, review);
     }
 
     @Override
     public double getRating(String name) {
-        List<Review> reviews = client.findCompanyByName(SECRET_TOKEN, name).getCompany().getProfile().getReviews();
+        List<Review> reviews = client.findCompanyByName(secretToken, name).getCompany().getProfile().getReviews();
         if(reviews != null && reviews.size() != 0) {
             double positive = 0;
             for(Review review : reviews) {
@@ -58,11 +58,11 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public CompanyProfile updateProfile(CompanyProfile profile) {
-        return client.updateCompanyProfile(SECRET_TOKEN, profile);
+        return client.updateCompanyProfile(secretToken, profile);
     }
 
     @Override
     public MailingList addToMailingList(Long companyId, String email) {
-        return client.addToMailingList(SECRET_TOKEN, companyId, email);
+        return client.addToMailingList(secretToken, companyId, email);
     }
 }

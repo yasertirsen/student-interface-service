@@ -38,9 +38,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     private final BCryptPasswordEncoder passwordEncoder;
     private final ProgradClient progradClient;
     private final MailService mailService;
-
-  @Value("${token.secret}")
-  private String SECRET_TOKEN;
+    @Value("${token.secret}")
+    private String secretToken;
 
     @Autowired
     public UserServiceImpl(BCryptPasswordEncoder passwordEncoder, ProgradClient progradClient, MailService mailService) {
@@ -86,17 +85,17 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public User findUserByEmail(String email) throws UserNotFoundException {
-        return progradClient.findByEmail(SECRET_TOKEN, email).getBody();
+        return progradClient.findByEmail(secretToken, email).getBody();
     }
 
     @Override
     public User findUserByUsername(String username) {
-        return progradClient.findByUsername(SECRET_TOKEN, username).getBody();
+        return progradClient.findByUsername(secretToken, username).getBody();
     }
 
     @Override
     public User findUserByToken(String token) throws UserNotFoundException {
-        return progradClient.findByToken(SECRET_TOKEN, token).getBody();
+        return progradClient.findByToken(secretToken, token).getBody();
     }
 
     @SneakyThrows
@@ -112,14 +111,14 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public ResponseEntity<String> verifyAccount(String token) throws UserNotFoundException {
         User user = findUserByToken(token);
         user.setEnabled(true);
-        progradClient.update(SECRET_TOKEN, user);
+        progradClient.update(secretToken, user);
 
         return new ResponseEntity<>(new Gson().toJson("Account Activated Successfully"), HttpStatus.OK);
     }
 
     @Override
     public List<User> getAllStudents() {
-        return progradClient.getAllStudents(SECRET_TOKEN);
+        return progradClient.getAllStudents(secretToken);
     }
 
     @Override
@@ -131,12 +130,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public User updateUser(@RequestBody User user) {
-        return progradClient.update(SECRET_TOKEN, user);
+        return progradClient.update(secretToken, user);
     }
 
     @Override
     public List<String> getSkillsNames(UserProfile profile) {
-        return progradClient.getSkillsNames(SECRET_TOKEN, profile);
+        return progradClient.getSkillsNames(secretToken, profile);
     }
 
     @Override
@@ -151,29 +150,29 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             }
         }
         profile.setExternalSkills(skillSet);
-        return progradClient.updateProfile(SECRET_TOKEN, profile);
+        return progradClient.updateProfile(secretToken, profile);
     }
 
     @Override
     public ResponseEntity<String> uploadImage(MultipartFile file, Long userId) throws IOException {
         Image img = new Image(file.getOriginalFilename(), file.getContentType(),
                 compressBytes(file.getBytes()), userId);
-        return progradClient.uploadImage(SECRET_TOKEN, img);
+        return progradClient.uploadImage(secretToken, img);
     }
 
     @Override
     public Image getImage(Long userId) {
-        return progradClient.getStudentAvatar(SECRET_TOKEN, userId);
+        return progradClient.getStudentAvatar(secretToken, userId);
     }
 
     @Override
     public Set<Skill> getAllSkills() {
-        return progradClient.getAllSkills(SECRET_TOKEN);
+        return progradClient.getAllSkills(secretToken);
     }
 
     @Override
     public User findUserById(Long studentId) {
-        return progradClient.findById(SECRET_TOKEN, studentId);
+        return progradClient.findById(secretToken, studentId);
     }
 
     @Override
@@ -217,7 +216,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public UserProfile updateProfile(UserProfile profile) {
-        return progradClient.updateProfile(SECRET_TOKEN, profile);
+        return progradClient.updateProfile(secretToken, profile);
     }
 
 }

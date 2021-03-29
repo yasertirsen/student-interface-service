@@ -19,8 +19,6 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static com.fyp.studentinterfaceservice.constant.SecurityConstants.SECRET_TOKEN;
-
 @Service
 public class PositionServiceImpl implements PositionService {
 
@@ -30,6 +28,8 @@ public class PositionServiceImpl implements PositionService {
     private String apiKey;
     @Value("${frontend.port}")
     private String frontendPort;
+    @Value("${token.secret}")
+    private String secretToken;
 
     public PositionServiceImpl(ProgradClient client, MailService mailService) {
         this.client = client;
@@ -38,17 +38,17 @@ public class PositionServiceImpl implements PositionService {
 
     @Override
     public List<Position> getAllPositions() {
-        return client.getAllPositions(SECRET_TOKEN);
+        return client.getAllPositions(secretToken);
     }
 
     @Override
     public Position getPosition(Long id) {
-        return client.findPositionById(SECRET_TOKEN, id);
+        return client.findPositionById(secretToken, id);
     }
 
     @Override
     public List<Position> searchPositions(String location, String keywords) {
-        List<Position> positions = client.getAllPositions(SECRET_TOKEN);
+        List<Position> positions = client.getAllPositions(secretToken);
         List<String> keywordsList = new ArrayList<>(Arrays.asList(keywords.toLowerCase().split(" ")));
         String pattern = String.join("|", keywordsList);
         List<Position> matchedPositions = new ArrayList<>();
@@ -132,12 +132,12 @@ public class PositionServiceImpl implements PositionService {
 
     @Override
     public List<Position> getCompanyPositions(Long companyId) {
-        return client.getCompanyPositions(SECRET_TOKEN, companyId);
+        return client.getCompanyPositions(secretToken, companyId);
     }
 
     @Override
     public ResponseEntity<String> apply(Application application) throws ProgradException {
-        Position position = client.findPositionById(SECRET_TOKEN, application.getPositionId());
+        Position position = client.findPositionById(secretToken, application.getPositionId());
         mailService.sendMail(new NotificationEmail("New Response - " + position.getTitle(),
                 position.getCompany().getEmail(),  "Hi, \n" +
                 "A new application has been submitted to your job post on Prograd. Please check the applications below.\n" +
@@ -146,29 +146,29 @@ public class PositionServiceImpl implements PositionService {
                 application.getEmail(),
                 "Hi, \n" +
                 "Your application for " + position.getTitle() + " has been submitted successfully.\n"));
-        return client.apply(SECRET_TOKEN, application);
+        return client.apply(secretToken, application);
     }
 
     @Override
     public List<Application> getApplicationsByEmail(String email) {
-        return client.getApplicationsByEmail(SECRET_TOKEN, email);
+        return client.getApplicationsByEmail(secretToken, email);
     }
 
     @Override
     public Position update(Position position) {
-        return client.updatePosition(SECRET_TOKEN, position);
+        return client.updatePosition(secretToken, position);
     }
 
     @Override
     public List<Position> getJobRecommendations(String email) throws UserNotFoundException {
         List<String> skills = new ArrayList<>();
-        Objects.requireNonNull(client.findByEmail(SECRET_TOKEN, email).getBody()).getProfile().getExternalSkills()
+        Objects.requireNonNull(client.findByEmail(secretToken, email).getBody()).getProfile().getExternalSkills()
                 .forEach(skill -> {
                     skills.add(skill.getSkillName());
                 });
         List<Position> positions = new ArrayList<>();
         if(skills.size() > 0) {
-            for(Position position : client.getAllPositions(SECRET_TOKEN)) {
+            for(Position position : client.getAllPositions(secretToken)) {
                 position.getRequirements().forEach(req -> {
                     if(skills.contains(req.getSkillName())) {
                         if(!positions.contains(position))

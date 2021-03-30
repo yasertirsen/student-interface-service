@@ -9,6 +9,9 @@ import {MatDialog} from "@angular/material/dialog";
 import {GetUpdatesDialogComponent} from "./get-updates-dialog/get-updates-dialog.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {UserModel} from "../model/user.model";
+import {UserService} from "../service/user.service";
+import {AddExperienceDialogComponent} from "../profile/add-experience-dialog/add-experience-dialog.component";
+import {HiredStudentsDialogComponent} from "./hired-students-dialog/hired-students-dialog.component";
 
 @Component({
   selector: 'app-company-profile',
@@ -24,10 +27,12 @@ export class CompanyProfileComponent implements OnInit {
   };
   positions: PositionModel[];
   usersMap = new Map<number, string>();
+  hiredStudents: UserModel[];
 
   constructor(private companyService: CompanyService, private activatedRoute: ActivatedRoute,
               private router: Router, private positionService: PositionService,
-              private dialog: MatDialog, private _snackBar: MatSnackBar) {
+              private dialog: MatDialog, private _snackBar: MatSnackBar,
+              private userService: UserService) {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
   }
 
@@ -48,8 +53,9 @@ export class CompanyProfileComponent implements OnInit {
   getDataForCompanyAndRating(name: string) {
     let getCompany = this.companyService.getCompany(name);
     let getRating = this.companyService.getRating(name);
+    let getHiredStudents = this.userService.getHiredStudentsByUni(name, this.user.studentId)
 
-    forkJoin([getCompany, getRating]).subscribe(results => {
+    forkJoin([getCompany, getRating, getHiredStudents]).subscribe(results => {
       this.company = (results[0] as CompanyWrapperModel);
       this.company.users.forEach(u => this.usersMap.set(u.studentId, u.firstName));
       const rating = (results[1] as number);
@@ -58,6 +64,8 @@ export class CompanyProfileComponent implements OnInit {
         this.positions = positions;
         this.loading = false
       });
+      this.hiredStudents = results[2];
+      console.log(this.hiredStudents);
     }, error1 => {
       this.loading = false;
       console.log(error1);
@@ -81,5 +89,12 @@ export class CompanyProfileComponent implements OnInit {
           });
       }
     });
+  }
+
+  onViewHired() {
+      this.dialog.open(HiredStudentsDialogComponent, {
+        width: '500px',
+        data: {hiredStudents: this.hiredStudents}
+      });
   }
 }

@@ -5,9 +5,7 @@ import com.fyp.studentinterfaceservice.exceptions.*;
 import com.fyp.studentinterfaceservice.model.*;
 import com.fyp.studentinterfaceservice.jwt.JWTTokenProvider;
 import com.fyp.studentinterfaceservice.services.interfaces.UserService;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -124,6 +122,11 @@ public class UserController {
     @GetMapping("/getAllSkills")
     public Set<Skill> getAllSkills() {
         return userService.getAllSkills();
+    }
+
+    @GetMapping("/uniHiredStudents/{userId}")
+    public List<User> getUniHiredStudents(@RequestParam String companyName, @PathVariable Long userId) {
+        return userService.getUniHiredStudents(companyName, userId);
     }
 
 }

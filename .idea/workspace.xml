@@ -4,18 +4,21 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6087ee9a-e348-4dfe-aee5-2591ba764bf3" name="Default Changelist" comment="import optimization and changed token secret">
+    <list default="true" id="6087ee9a-e348-4dfe-aee5-2591ba764bf3" name="Default Changelist" comment="removed key from constants">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/company-profile/hired-students-dialog/hired-students-dialog.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/company-profile/hired-students-dialog/hired-students-dialog.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/company-profile/hired-students-dialog/hired-students-dialog.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/constant/SecurityConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/constant/SecurityConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/CompanyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/CompanyServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/CourseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/CourseServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/PositionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/PositionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/ResumeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/ResumeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.fyp.studentinterfaceservice.StudentInterfaceServiceApplicationTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.fyp.studentinterfaceservice.StudentInterfaceServiceApplicationTests.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.fyp.studentinterfaceservice.StudentInterfaceServiceApplicationTests.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.fyp.studentinterfaceservice.StudentInterfaceServiceApplicationTests.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/interfaces/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/interfaces/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/alumni-profile/alumni-profile.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/alumni-profile/alumni-profile.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/company-profile/company-profile.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/company-profile/company-profile.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/company-profile/company-profile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/company-profile/company-profile.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/service/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/service/user.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/shared/interceptor/TokenInterceptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/shared/interceptor/TokenInterceptor.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/shared/job-tile/job-tile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/shared/job-tile/job-tile.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +109,7 @@
       <recent name="com.fyp.studentinterfaceservice.models" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.StudentInterfaceServiceApplication">
+  <component name="RunManager" selected="npm.start">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -263,14 +266,7 @@
       <workItem from="1616010479991" duration="21014000" />
       <workItem from="1616289006273" duration="29974000" />
       <workItem from="1616861651928" duration="9832000" />
-      <workItem from="1616972373745" duration="3005000" />
-    </task>
-    <task id="LOCAL-00005" summary="Added account verification and mail services">
-      <created>1605413333612</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1605413333612</updated>
+      <workItem from="1616972373745" duration="13391000" />
     </task>
     <task id="LOCAL-00006" summary="code clean up">
       <created>1605556877172</created>
@@ -608,7 +604,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616974029624</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="removed key from constants">
+      <created>1616984220796</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1616984220796</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -631,7 +634,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/src/main/resources/student-interface-service" />
     </ignored-roots>
-    <MESSAGE value="Added side nav" />
     <MESSAGE value="Modified side nav and search bar" />
     <MESSAGE value="Modified search algorithm to handle no location entered" />
     <MESSAGE value="added experience and average grade to student profile/cv" />
@@ -656,7 +658,8 @@
     <MESSAGE value="implemented change password for student user" />
     <MESSAGE value="minor changes and refactoring" />
     <MESSAGE value="import optimization and changed token secret" />
-    <option name="LAST_COMMIT_MESSAGE" value="import optimization and changed token secret" />
+    <MESSAGE value="removed key from constants" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed key from constants" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

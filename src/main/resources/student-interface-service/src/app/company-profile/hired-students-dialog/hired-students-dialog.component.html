@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Hired students from your university</h1>
+<div class="content" mat-dialog-content>
+  <mat-divider></mat-divider>
+  <div *ngFor="let user of data.hiredStudents">
+    <h2>{{user.firstName}} {{user.surname}}</h2>
+    <p>Contact Details:</p>
+    <ul>
+      <li *ngIf="user.socialUrl !== null"><a mat-flat-button href="//{{user.socialUrl}}" target="_blank">{{user.socialUrl}}</a></li>
+      <li><a mat-flat-button href="mailto:{{user.email}}">{{user.email}}</a></li>
+    </ul>
+    <mat-divider></mat-divider>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">OK</button>
+</div>

@@ -47,8 +47,8 @@
                         <mat-panel-description>
                         </mat-panel-description>
                       </mat-expansion-panel-header>
-                      <h2 *ngIf="user.socialUrl !== undefined"><a href="{{user.socialUrl}}">{{user.socialUrl}}</a></h2>
-                      <h2><a href="mailto:{{user.email}}">{{user.email}}</a></h2>
+                      <a class="mat-flat-button" *ngIf="user.socialUrl !== undefined" href="//{{user.socialUrl}}">{{user.socialUrl}}</a><br>
+                      <a class="mat-flat-button"  href="mailto:{{user.email}}">{{user.email}}</a>
 
                     </mat-expansion-panel>
                     <mat-expansion-panel *ngIf="user.profile.course !== null">

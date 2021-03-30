@@ -129,4 +129,9 @@ export class UserService {
     return this.http.post('http://localhost:8083/upload/image/' + userId,
       imageData);
   }
+
+  getHiredStudentsByUni(companyName: string, userId: number): Observable<any> {
+    return this.http.get('http://localhost:8083/uniHiredStudents/' + userId,
+      {params: {companyName: companyName}});
+  }
 }

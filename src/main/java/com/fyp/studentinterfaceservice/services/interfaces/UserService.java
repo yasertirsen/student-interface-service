@@ -38,8 +38,6 @@ public interface UserService {
 
     UserProfile updateProfile(UserProfile profile);
 
-    UserProfile addSkills(UserProfile profile);
-
     ResponseEntity<String> uploadImage(MultipartFile file, Long userId) throws IOException;
 
     Image getImage(Long userId);
@@ -51,4 +49,6 @@ public interface UserService {
     User verifyChangePassword(String token, String password) throws UserNotFoundException;
 
     ResponseEntity<String> sendVerifyEmail(String email) throws UserNotFoundException, ProgradException;
+
+    List<User> getUniHiredStudents(String companyName, Long userId);
 }

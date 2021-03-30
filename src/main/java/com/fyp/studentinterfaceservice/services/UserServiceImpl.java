@@ -139,21 +139,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public UserProfile addSkills(UserProfile profile) {
-        Set<Skill> skillSet = new HashSet<>();
-        for(Module module : profile.getCourse().getModules()) {
-            if(module.getSkill() != null) {
-                Skill skill = module.getSkill();
-                if(!profile.getExternalSkills().contains(skill)) {
-                    skillSet.add(skill);
-                }
-            }
-        }
-        profile.setExternalSkills(skillSet);
-        return progradClient.updateProfile(secretToken, profile);
-    }
-
-    @Override
     public ResponseEntity<String> uploadImage(MultipartFile file, Long userId) throws IOException {
         Image img = new Image(file.getOriginalFilename(), file.getContentType(),
                 compressBytes(file.getBytes()), userId);
@@ -193,6 +178,21 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         user.setToken(token);
         updateUser(user);
         return new ResponseEntity<>(new Gson().toJson("Verification email sent"), HttpStatus.OK);
+    }
+
+    @Override
+    public List<User> getUniHiredStudents(String companyName, Long userId) {
+        Company company = progradClient.findCompanyByName(secretToken, companyName).getCompany();
+        String university = progradClient.findById(secretToken, userId).getProfile().getCourse().getUniversity();
+        List<User> hiredStudents = new ArrayList<>();
+        User user;
+        for(Long id: company.getProfile().getHiredStudents()) {
+            user = progradClient.findById(secretToken, id);
+            if(user.getProfile().getCourse().getUniversity().equalsIgnoreCase(university)) {
+                hiredStudents.add(user);
+            }
+        }
+        return hiredStudents;
     }
 
     public byte[] compressBytes(byte[] data) {

@@ -68,6 +68,7 @@ import { GetUpdatesDialogComponent } from './company-profile/get-updates-dialog/
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { ChangePasswordComponent } from './login/change-password/change-password.component';
 import { VerifyChangePasswordComponent } from './login/verify-change-password/verify-change-password.component';
+import { HiredStudentsDialogComponent } from './company-profile/hired-students-dialog/hired-students-dialog.component';
 
 
 @NgModule({
@@ -104,7 +105,8 @@ import { VerifyChangePasswordComponent } from './login/verify-change-password/ve
     AlumniProfileComponent,
     GetUpdatesDialogComponent,
     ChangePasswordComponent,
-    VerifyChangePasswordComponent
+    VerifyChangePasswordComponent,
+    HiredStudentsDialogComponent
   ],
   imports: [
     BrowserModule,

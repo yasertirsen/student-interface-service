@@ -31,10 +31,15 @@ export class JobTileComponent implements OnInit, OnDestroy {
   }
 
   constructor(private router: Router, private positionService: PositionService,
-              private changeDetectorRef: ChangeDetectorRef) {}
+              private changeDetectorRef: ChangeDetectorRef) {
+  }
 
   ngOnInit(): void {
     this.datasource = new MatTableDataSource<PositionModel>(this.positions);
+    for(let i = 0; i < this.datasource.data.length; i++) {
+      if(this.datasource.data[i].archive)
+        this.datasource.data.splice(i, 1);
+    }
     this.changeDetectorRef.detectChanges();
     this.obs = this.datasource.connect();
   }

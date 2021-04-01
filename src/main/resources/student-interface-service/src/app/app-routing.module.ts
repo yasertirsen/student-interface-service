@@ -19,6 +19,7 @@ import {AlumniProfileComponent} from "./alumni-profile/alumni-profile.component"
 import {AuthGuard} from "./_guards/auth.guard";
 import {ChangePasswordComponent} from "./login/change-password/change-password.component";
 import {VerifyChangePasswordComponent} from "./login/verify-change-password/verify-change-password.component";
+import {ViewCvsComponent} from "./view-cvs/view-cvs.component";
 
 const routes: Routes = [
   {
@@ -110,6 +111,11 @@ const routes: Routes = [
   {
     path: 'profile/:userId',
     component: AlumniProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'cvs',
+    component: ViewCvsComponent,
     canActivate: [AuthGuard]
   },
   {

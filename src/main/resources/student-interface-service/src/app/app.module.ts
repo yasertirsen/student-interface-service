@@ -69,6 +69,9 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import { ChangePasswordComponent } from './login/change-password/change-password.component';
 import { VerifyChangePasswordComponent } from './login/verify-change-password/verify-change-password.component';
 import { HiredStudentsDialogComponent } from './company-profile/hired-students-dialog/hired-students-dialog.component';
+import { ViewCvsComponent } from './view-cvs/view-cvs.component';
+import {MatSortModule} from "@angular/material/sort";
+import { EditNamesDialogComponent } from './view-cvs/edit-names-dialog/edit-names-dialog.component';
 
 
 @NgModule({
@@ -106,7 +109,9 @@ import { HiredStudentsDialogComponent } from './company-profile/hired-students-d
     GetUpdatesDialogComponent,
     ChangePasswordComponent,
     VerifyChangePasswordComponent,
-    HiredStudentsDialogComponent
+    HiredStudentsDialogComponent,
+    ViewCvsComponent,
+    EditNamesDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -142,7 +147,8 @@ import { HiredStudentsDialogComponent } from './company-profile/hired-students-d
     MatDatepickerModule,
     MatRadioModule,
     FlexLayoutModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [
     AuthGuard,

@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.util.List;
 
 @Service
 public class ResumeServiceImpl implements ResumeService {
@@ -29,13 +30,10 @@ public class ResumeServiceImpl implements ResumeService {
     }
 
     @Override
-    public Resume generateDCv(User user) {
+    public Resume generateDCv(User user, String companyName, String jobTitle) {
             byte[] data = PDFGenerator.generateDynamicCv(user);
-
-            ByteArrayInputStream bis = new ByteArrayInputStream(data);
-            Resume resume = new Resume(user.getUsername() + "_CV" , userService.compressBytes(data), user.getStudentId());
-            client.saveResume(secretToken, resume);
-
+            Resume resume = new Resume(companyName + "_" + jobTitle + "_CV",
+                    userService.compressBytes(data), user.getStudentId());
             return client.saveResume(secretToken, resume);
     }
 
@@ -59,6 +57,17 @@ public class ResumeServiceImpl implements ResumeService {
         Resume resume = new Resume(file.getOriginalFilename(), userService.compressBytes(file.getBytes()),
                 userId);
         return client.saveResume(secretToken, resume);
+    }
+
+    @Override
+    public List<Resume> getAllCvs(Long userId) {
+        return client.getAllCvs(secretToken, userId);
+    }
+
+    @Override
+    public Resume updateCv(Resume resume) {
+        resume.setData(userService.compressBytes(resume.getData()));
+        return client.updateCv(secretToken, resume);
     }
 
 }

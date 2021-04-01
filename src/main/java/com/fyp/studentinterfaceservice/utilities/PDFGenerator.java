@@ -63,6 +63,8 @@ public class PDFGenerator {
                 educationContent.add(new Chunk(user.getProfile().getStartCourse() + " - "
                         + user.getProfile().getEndCourse() + "\n", bold));
                 educationContent.add(new Chunk(user.getProfile().getCourse().getUniversity() + "\n", regular));
+                if(user.getProfile().getAverageGrade() != 0)
+                    educationContent.add(new Chunk("Average Grade: " + user.getProfile().getAverageGrade() + "\n", regular));
                 educationContent.add(lsPar);
                 document.add(educationContent);
             }
@@ -72,7 +74,8 @@ public class PDFGenerator {
                 Paragraph projectsContent = initializeContent();
                 for (Project project : user.getProfile().getProjects()) {
                     projectsContent.add(new Chunk(project.getTitle() + "\n", subheading));
-                    projectsContent.add(new Chunk(project.getDate() + "\n", subheading));
+                    if(project.getDate() != null)
+                        projectsContent.add(new Chunk(project.getDate() + "\n", subheading));
                     projectsContent.add(new Chunk(project.getDescription() + "\n", regular));
                 }
                 projectsContent.add(lsPar);
@@ -108,7 +111,7 @@ public class PDFGenerator {
                 document.add(skillsContent);
         }
 
-            if(hasCourse && user.getProfile().getCourse().getModules() != null) {
+            if(hasCourse && !user.getProfile().getCourse().getModules().isEmpty()) {
                 document.add(createHeading("Modules"));
                 Paragraph modulesContent = initializeContent();
                 List modulesList = new List();

@@ -25,7 +25,8 @@ export class ApplyDialogComponent implements OnInit {
 
 
   constructor(public apply: MatDialogRef<ApplyDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: {user: UserModel, positionId: number},
+              @Inject(MAT_DIALOG_DATA) public data: {user: UserModel, positionId: number, companyName: string,
+                jobTitle: string},
               private resumeService: ResumeService) {
     this.user = data.user;
     this.application.positionId = data.positionId;
@@ -39,7 +40,7 @@ export class ApplyDialogComponent implements OnInit {
   onApply(): void {
     if(this.selectedFile !== undefined && this.dynamicCv === 'false') {
       const uploadCvData = new FormData();
-      uploadCvData.append('cvFile', this.selectedFile, 'cvFile');
+      uploadCvData.append('cvFile', this.selectedFile, 'dynamicCv');
       this.resumeService.uploadCv(uploadCvData, this.user.studentId).subscribe(response => {
         this.application.resume = response;
           this.sendApplication()
@@ -49,7 +50,7 @@ export class ApplyDialogComponent implements OnInit {
         });
     }
     else {
-      this.resumeService.generateDynamicCv(this.user).subscribe(res => {
+      this.resumeService.generateDynamicCv(this.user, this.data.companyName, this.data.jobTitle).subscribe(res => {
         this.application.resume = res;
         this.sendApplication()
       });

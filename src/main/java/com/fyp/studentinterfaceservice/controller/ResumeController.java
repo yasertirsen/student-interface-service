@@ -21,9 +21,9 @@ public class ResumeController {
         this.resumeService = resumeService;
     }
 
-    @PostMapping("/generateDynamicCv")
-    public Resume generateDynamicCv(@RequestBody User user) {
-        return resumeService.generateDCv(user);
+    @PostMapping("/generateDynamicCv/{companyName}/{jobTitle}")
+    public Resume generateDynamicCv(@RequestBody User user, @PathVariable String companyName, @PathVariable String jobTitle) {
+        return resumeService.generateDCv(user, companyName, jobTitle);
     }
 
     @GetMapping("getCv/{username}")
@@ -34,5 +34,15 @@ public class ResumeController {
     @PostMapping(value = "upload/cv/{userId}")
     public Resume uploadCv(@RequestParam("cvFile") MultipartFile file, @PathVariable Long userId) throws IOException {
         return resumeService.uploadCv(file, userId);
+    }
+
+    @GetMapping("getAllCvs/{userId}")
+    public List<Resume> getAllCvs(@PathVariable Long userId) {
+        return resumeService.getAllCvs(userId);
+    }
+
+    @PutMapping("/updateCv")
+    public Resume updateCv(@RequestBody Resume resume) {
+        return resumeService.updateCv(resume);
     }
 }

@@ -5,7 +5,6 @@ import {map} from "rxjs/operators";
 import {Observable} from "rxjs";
 import {COMMA, ENTER} from "@angular/cdk/keycodes";
 import {MatChipInputEvent} from "@angular/material/chips";
-import {LocalStorageService} from "ngx-webstorage";
 import {UserService} from "../service/user.service";
 import {UserModel} from "../model/user.model";
 import {ProjectModel} from "../model/project.model";
@@ -17,6 +16,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatDialog} from "@angular/material/dialog";
 import {ApplyDialogComponent} from "./apply-dialog/apply-dialog.component";
 import {ActivatedRoute, Router} from "@angular/router";
+import {PositionModel} from "../model/position.model";
 
 @Component({
   selector: 'app-cv-builder',
@@ -25,6 +25,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class CvBuilderComponent implements OnInit {
   loading = true;
+  position: PositionModel;
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -57,7 +58,6 @@ export class CvBuilderComponent implements OnInit {
     date: null
   };
   skill: SkillModel;
-  averageGrade: number;
   application: ApplicationModel;
 
   @ViewChild('skillInput') skillInput: ElementRef<HTMLInputElement>;
@@ -78,12 +78,6 @@ export class CvBuilderComponent implements OnInit {
       map((experience: string | null) => experience ? this._experiencesFilter(experience) : this.allExperiences.slice()));
     this.filteredModules = this.moduleCtrl.valueChanges.pipe(
       map((module: string | null) => module ? this._moduleFilter(module) : this.allModules.slice()));
-      if(this.user.profile.averageGrade === 0) {
-        this.averageGrade = 0;
-      }
-      else {
-        this.averageGrade = this.user.profile.averageGrade;
-      }
       if(this.user.profile.projects === undefined) {
         this.user.profile.projects = [];
       }
@@ -106,12 +100,14 @@ export class CvBuilderComponent implements OnInit {
         for(let module of this.user.profile.course.modules) {
           this.allModules.push(module.name);
         }
-        this.modules.push(this.allModules[0]);
+        if(this.allModules.length > 0)
+          this.modules.push(this.allModules[0]);
       }
       this.summary = this.user.profile.bio;
       this.userService.getSkillsNames(this.user.profile).subscribe(skills => {
         this.allSkills = skills
-        this.skills.push(this.allSkills[0])
+        if(this.allSkills.length > 0)
+          this.skills.push(this.allSkills[0])
         this.loading = false;
       });
   }
@@ -124,6 +120,12 @@ export class CvBuilderComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.nullValidator]
     });
+    this.positionService.getJob(this.activatedRoute.snapshot.params.positionId).subscribe(data => {
+      this.position = data;
+    },
+      error => {
+        console.log(error);
+      });
   }
 
   addProject(event: MatChipInputEvent): void {
@@ -291,30 +293,29 @@ export class CvBuilderComponent implements OnInit {
         this.user.profile.experiences.splice(index, 1);
       }
     }
-    for(let module of this.user.profile.course.modules) {
-      if(!this.modules.includes(module.name)) {
-        let index = this.user.profile.course.modules.indexOf(module);
-        this.user.profile.course.modules.splice(index, this.user.profile.course.modules.length);
-      }
+    this.user.profile.course.modules = [];
+    for(let module of this.modules) {
+      this.user.profile.course.modules.push({moduleId: 0,name: module, skill: null});
     }
     this.loading = false;
     const applyDialog =
       this.dialog.open(ApplyDialogComponent, {
         width: '500px',
-        data: {user: this.user, positionId: this.activatedRoute.snapshot.params.positionId}
+        data: {user: this.user, positionId: this.position.positionId, companyName: this.position.company.name,
+          jobTitle: this.position.title}
       });
     applyDialog.afterClosed().subscribe(result => {
       if(result !== null) {
         this.positionService.apply(result).subscribe(data => {
             console.log(data)
             this._snackBar.open('Applied successfully', 'Close', {
-              duration: 5000,
+              duration: 3000,
             });
           },
           error => {
             console.log(error)
             this._snackBar.open('An error has occurred', 'Close', {
-              duration: 5000,
+              duration: 3000,
             });
           });
       }

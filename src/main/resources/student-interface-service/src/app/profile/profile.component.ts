@@ -99,7 +99,6 @@ export class ProfileComponent implements OnInit {
     this.resumeService.getCv(this.user.username).subscribe(res => {
       const fileURL = URL.createObjectURL(res);
       FileSaver.saveAs(fileURL, this.user.username + '_CV');
-      //window.open(fileURL, '_blank');
     });
   }
 

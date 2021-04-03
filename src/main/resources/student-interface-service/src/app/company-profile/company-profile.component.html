@@ -32,10 +32,10 @@
                 <hr>
               </div>
               <div gdArea="side">
-                <p *ngIf="hiredStudents.length !== 0" class="spacer">
+                <h2 *ngIf="hiredStudents.length !== 0" class="spacer">
                   This company has hired {{hiredStudents.length}} students from your university,
-                  <a mat-flat-button (click)="onViewHired()">Get in touch!</a>
-                </p>
+                  <a class="position-name" (click)="onViewHired()">Get in touch!</a>
+                </h2>
                 <mat-card-content *ngIf="company.company.profile.reviews.length > 0">
                   <h3><strong>Reviews</strong></h3>
                   <mat-card *ngFor="let review of company.company.profile.reviews">

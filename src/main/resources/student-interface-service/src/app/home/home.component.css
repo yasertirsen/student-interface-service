@@ -27,6 +27,8 @@
 
 .mat-card{
   flex-direction: column;
+  margin: 10px;
+  background-color: #222222 !important;
 }
 
 .mat-card-header {

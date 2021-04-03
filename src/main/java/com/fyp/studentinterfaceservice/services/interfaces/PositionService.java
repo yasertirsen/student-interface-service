@@ -7,6 +7,7 @@ import com.fyp.studentinterfaceservice.model.Position;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
+import java.util.Map;
 
 public interface PositionService {
 
@@ -27,4 +28,6 @@ public interface PositionService {
     Position update(Position position);
 
     List<Position> getJobRecommendations(String email) throws UserNotFoundException;
+
+    Map<String, Integer> applicationsStats(String email);
 }

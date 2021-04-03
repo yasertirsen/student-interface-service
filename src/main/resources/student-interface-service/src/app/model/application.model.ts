@@ -6,4 +6,6 @@ export interface ApplicationModel {
   email: string;
   resume: ResumeModel;
   positionId: number;
+  status: string;
+  date: string;
 }

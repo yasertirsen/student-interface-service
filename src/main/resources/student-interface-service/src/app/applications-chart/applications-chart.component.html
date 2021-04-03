@@ -1,0 +1,24 @@
+<app-mat-spinner-overlay
+  overlay="true"
+  *ngIf="loading">
+</app-mat-spinner-overlay>
+
+<mat-card class="centered" *ngIf="!loading">
+  <mat-card-title>My Applications</mat-card-title>
+  <hr>
+  <mat-card-subtitle>Here you can track your application responses <br>
+  You can use this information to improve your profile by adding more skills, projects and experiences</mat-card-subtitle>
+  <google-chart [title]="title"
+                [type]="type"
+                [data]="data"
+                [width]="width"
+                [height]="height"
+                *ngIf="data.length > 0">
+  </google-chart>
+</mat-card>
+
+<mat-card class="centered" style="height: 50%; width: 50%" *ngIf="data.length === 0">
+  <mat-card-title>My Applications</mat-card-title>
+  <hr>
+  <mat-card-subtitle>No Data</mat-card-subtitle>
+</mat-card>

@@ -85,7 +85,7 @@ public interface ProgradClient {
     @PostMapping("/positions/apply")
     ResponseEntity<String> apply(@RequestHeader(AUTH_TOKEN) String secretToken, @RequestBody Application application);
 
-    @PostMapping("/positions/getApplicationsByEmail")
+    @GetMapping("/positions/getApplicationsByEmail")
     List<Application> getApplicationsByEmail(@RequestHeader(AUTH_TOKEN) String secretToken, @RequestParam String email);
 
     @PutMapping("/positions/update")

@@ -20,7 +20,9 @@ export class ApplyDialogComponent implements OnInit {
     fullName: null,
     email: null,
     resume: null,
-    positionId: null
+    positionId: null,
+    status: null,
+    date: null
   };
 
 

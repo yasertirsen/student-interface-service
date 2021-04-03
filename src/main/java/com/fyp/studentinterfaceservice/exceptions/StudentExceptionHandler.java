@@ -1,5 +1,6 @@
 package com.fyp.studentinterfaceservice.exceptions;
 
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.fyp.studentinterfaceservice.model.HttpCustomResponse;
 import feign.FeignException;
 import feign.RetryableException;
@@ -88,10 +89,10 @@ public class StudentExceptionHandler {
         return createHttpResponse(FORBIDDEN, NOT_ENOUGH_PERMISSION);
     }
 
-//    @ExceptionHandler(TokenExpiredException.class)
-//    public ResponseEntity<HttpCustomResponse> tokenExpiredException(TokenExpiredException e) {
-//        return createHttpResponse(UNAUTHORIZED, e.getMessage());
-//    }
+    @ExceptionHandler(TokenExpiredException.class)
+    public ResponseEntity<HttpCustomResponse> tokenExpiredException(TokenExpiredException e) {
+        return createHttpResponse(UNAUTHORIZED, LOGIN_TOKEN_EXPIRED);
+    }
 
 
     @ExceptionHandler(InvalidDataFormatException.class)

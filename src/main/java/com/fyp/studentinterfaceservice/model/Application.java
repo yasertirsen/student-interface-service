@@ -13,4 +13,6 @@ public class Application {
     private String email;
     private Resume resume;
     private Long positionId;
+    private String status;
+    private String date;
 }

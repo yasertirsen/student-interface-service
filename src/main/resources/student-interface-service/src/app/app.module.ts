@@ -72,7 +72,8 @@ import { HiredStudentsDialogComponent } from './company-profile/hired-students-d
 import { ViewCvsComponent } from './view-cvs/view-cvs.component';
 import {MatSortModule} from "@angular/material/sort";
 import { EditNamesDialogComponent } from './view-cvs/edit-names-dialog/edit-names-dialog.component';
-
+import { GoogleChartsModule } from 'angular-google-charts';
+import { ApplicationsChartComponent } from './applications-chart/applications-chart.component';
 
 @NgModule({
   declarations: [
@@ -111,7 +112,8 @@ import { EditNamesDialogComponent } from './view-cvs/edit-names-dialog/edit-name
     VerifyChangePasswordComponent,
     HiredStudentsDialogComponent,
     ViewCvsComponent,
-    EditNamesDialogComponent
+    EditNamesDialogComponent,
+    ApplicationsChartComponent
   ],
   imports: [
     BrowserModule,
@@ -148,7 +150,8 @@ import { EditNamesDialogComponent } from './view-cvs/edit-names-dialog/edit-name
     MatRadioModule,
     FlexLayoutModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    GoogleChartsModule
   ],
   providers: [
     AuthGuard,

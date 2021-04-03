@@ -63,4 +63,9 @@ export class PositionService {
         "requirements": position.requirements
       });
   }
+
+  getUserApplicationsStats(email: string): Observable<any> {
+    return this.http.get('http://localhost:8083/applicationsStats',
+      {params: {email: email}});
+  }
 }

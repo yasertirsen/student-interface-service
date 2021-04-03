@@ -15,9 +15,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static com.fyp.studentinterfaceservice.constant.Constants.*;
 
 @Service
 public class PositionServiceImpl implements PositionService {
@@ -88,7 +92,6 @@ public class PositionServiceImpl implements PositionService {
         // A list of jobs is returned
         if (results.get("type").equals("JOBS")) {
             JSONArray jobs = (JSONArray) results.get("jobs");
-            //System.out.println("Number of results:" + results.get("hits"));
             int index = 0;
 
             while( index < jobs.size()) {
@@ -106,23 +109,6 @@ public class PositionServiceImpl implements PositionService {
                 index++;
             }
         }
-
-        // The location was amiguous. Suggestions are returned.
-        // Add the location_id to the query to resolve the ambiguity.
-//        if (results.get("type").equals("LOCATIONS")) {
-//            System.out.println("Narrow down your location ");
-//            System.out.println("Please specify a location");
-//            JSONArray solvelocations = (JSONArray) results.get("solveLocations");
-//            int index = 0;
-//            while(index < solvelocations.size()) {
-//                JSONObject l = (JSONObject) solvelocations.get(index);
-//                System.out.println("NAME        :" + l.get("name"));
-//                System.out.println("LOCATION ID :" + l.get("location_id"));
-//                index++;
-//            }
-//        }
-
-        // An error occured. An error message is returned.
         if (results.get("type").equals("ERROR")) {
             System.out.println("An error occurred whilst processing the search query");
             System.out.println("Error message    :" + results.get("ERROR"));
@@ -146,6 +132,9 @@ public class PositionServiceImpl implements PositionService {
                 application.getEmail(),
                 "Hi, \n" +
                 "Your application for " + position.getTitle() + " has been submitted successfully.\n"));
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        application.setDate(dtf.format(LocalDateTime.now()));
+        application.setStatus(NO_RESPONSE);
         return client.apply(secretToken, application);
     }
 
@@ -180,5 +169,25 @@ public class PositionServiceImpl implements PositionService {
             }
         }
         return positions;
+    }
+
+    @Override
+    public Map<String, Integer> applicationsStats(String email) {
+        Map<String, Integer> stats = new HashMap<>();
+        List<Application> applications = client.getApplicationsByEmail(secretToken, email);
+        if(!applications.isEmpty()) {
+            List<String> responses = new ArrayList<>();
+            applications.forEach(application -> {
+                responses.add(application.getStatus());
+            });
+
+            stats.put(NO_RESPONSE, Collections.frequency(responses, NO_RESPONSE));
+            stats.put(REJECTED, Collections.frequency(responses, REJECTED));
+            stats.put(ASKED_FOR_INTERVIEW, Collections.frequency(responses, ASKED_FOR_INTERVIEW));
+            stats.put(OFFERED, Collections.frequency(responses, OFFERED));
+            stats.put(UNDER_REVIEW, Collections.frequency(responses, UNDER_REVIEW));
+            return stats;
+        }
+        return new HashMap<>();
     }
 }

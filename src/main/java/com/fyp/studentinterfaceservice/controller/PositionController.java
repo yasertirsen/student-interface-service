@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 @RestController
@@ -61,8 +62,13 @@ public class PositionController {
         return positionService.update(position);
     }
 
-    @GetMapping("positions/recommend")
+    @GetMapping("/positions/recommend")
     public List<Position> getJobRecommendations(@RequestParam String email) throws UserNotFoundException {
         return positionService.getJobRecommendations(email);
+    }
+
+    @GetMapping("/applicationsStats")
+    public Map<String, Integer> getApplicationsStats(@RequestParam String email) {
+        return positionService.applicationsStats(email);
     }
 }

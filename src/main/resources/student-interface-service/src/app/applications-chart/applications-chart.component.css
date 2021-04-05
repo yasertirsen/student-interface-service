@@ -4,16 +4,28 @@
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-}
-
-table {
-  width: 100%;
-}
-
-mat-card {
   background-color: white !important;
 }
 
-mat-card-title, mat-card-subtitle {
-  color: #1a1a1a;
+.content-card {
+  margin: 10px;
+}
+
+.stats-card {
+  text-align: center;
+  background-color: white;
+  width: 100%;
+}
+
+.stats-card mat-card-title, .stats-card mat-card-subtitle {
+  color: #222222;
+}
+
+
+/*mat-card-title, mat-card-subtitle {*/
+/*  color: #1a1a1a;*/
+/*}*/
+
+.full-width {
+  width: 100%;
 }

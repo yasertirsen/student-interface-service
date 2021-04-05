@@ -19,4 +19,8 @@ public class Resume {
         this.data = data;
         this.studentId = studentId;
     }
+
+    public Resume(byte[] data) {
+        this.data = data;
+    }
 }

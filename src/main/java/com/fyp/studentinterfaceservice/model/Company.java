@@ -29,4 +29,8 @@ public class Company {
     private boolean enabled;
     private boolean subscribed;
     private CompanyProfile profile;
+
+    public Company(String name) {
+        this.name = name;
+    }
 }

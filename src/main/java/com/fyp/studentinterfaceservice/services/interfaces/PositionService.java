@@ -3,11 +3,11 @@ package com.fyp.studentinterfaceservice.services.interfaces;
 import com.fyp.studentinterfaceservice.exceptions.ProgradException;
 import com.fyp.studentinterfaceservice.exceptions.UserNotFoundException;
 import com.fyp.studentinterfaceservice.model.Application;
+import com.fyp.studentinterfaceservice.model.ApplicationWrapper;
 import com.fyp.studentinterfaceservice.model.Position;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
-import java.util.Map;
 
 public interface PositionService {
 
@@ -29,5 +29,5 @@ public interface PositionService {
 
     List<Position> getJobRecommendations(String email) throws UserNotFoundException;
 
-    Map<String, Integer> applicationsStats(String email);
+    ApplicationWrapper applicationsStats(String email);
 }

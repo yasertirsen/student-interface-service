@@ -52,6 +52,7 @@ export class ViewCvsComponent implements OnInit {
   }
 
   onCv(cv: any) {
+    console.log(cv);
     let byteCharacters = atob(cv.data);
     let byteNumbers = new Array(byteCharacters.length);
     for (let i = 0; i < byteCharacters.length; i++) {
@@ -60,7 +61,6 @@ export class ViewCvsComponent implements OnInit {
     let byteArray = new Uint8Array(byteNumbers);
     let blob = new Blob([byteArray], {type: "application/pdf"});
     let fileURL = URL.createObjectURL(blob);
-    console.log(cv.data);
     window.open(fileURL, '_blank');
   }
 

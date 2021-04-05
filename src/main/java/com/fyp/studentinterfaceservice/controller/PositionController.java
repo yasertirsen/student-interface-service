@@ -3,6 +3,7 @@ package com.fyp.studentinterfaceservice.controller;
 import com.fyp.studentinterfaceservice.exceptions.ProgradException;
 import com.fyp.studentinterfaceservice.exceptions.UserNotFoundException;
 import com.fyp.studentinterfaceservice.model.Application;
+import com.fyp.studentinterfaceservice.model.ApplicationWrapper;
 import com.fyp.studentinterfaceservice.model.Position;
 import com.fyp.studentinterfaceservice.services.interfaces.PositionService;
 import javafx.geometry.Pos;
@@ -68,7 +69,7 @@ public class PositionController {
     }
 
     @GetMapping("/applicationsStats")
-    public Map<String, Integer> getApplicationsStats(@RequestParam String email) {
+    public ApplicationWrapper getApplicationsStats(@RequestParam String email) {
         return positionService.applicationsStats(email);
     }
 }

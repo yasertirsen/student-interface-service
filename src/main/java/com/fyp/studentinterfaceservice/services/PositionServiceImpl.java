@@ -4,10 +4,7 @@ import com.careerjet.webservice.api.Client;
 import com.fyp.studentinterfaceservice.client.ProgradClient;
 import com.fyp.studentinterfaceservice.exceptions.ProgradException;
 import com.fyp.studentinterfaceservice.exceptions.UserNotFoundException;
-import com.fyp.studentinterfaceservice.model.Application;
-import com.fyp.studentinterfaceservice.model.Company;
-import com.fyp.studentinterfaceservice.model.NotificationEmail;
-import com.fyp.studentinterfaceservice.model.Position;
+import com.fyp.studentinterfaceservice.model.*;
 import com.fyp.studentinterfaceservice.services.interfaces.PositionService;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -15,11 +12,16 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.zip.DataFormatException;
+import java.util.zip.Inflater;
 
 import static com.fyp.studentinterfaceservice.constant.Constants.*;
 
@@ -172,22 +174,50 @@ public class PositionServiceImpl implements PositionService {
     }
 
     @Override
-    public Map<String, Integer> applicationsStats(String email) {
-        Map<String, Integer> stats = new HashMap<>();
+    public ApplicationWrapper applicationsStats(String email) {
+        ApplicationWrapper applicationsData = new ApplicationWrapper();
+        List<ApplicationPosition> applicationPosition = new ArrayList<>();
+        Map<String, Integer> statusMap = new HashMap<>();
         List<Application> applications = client.getApplicationsByEmail(secretToken, email);
         if(!applications.isEmpty()) {
             List<String> responses = new ArrayList<>();
             applications.forEach(application -> {
+                if(application.getResume() != null && application.getResume().getData() != null) {
+                    application.setResume(new Resume(decompressBytes(application.getResume().getData())));
+                }
+                Position position = client.findPositionById(secretToken, application.getPositionId());
+                position.setCompany(new Company(position.getCompany().getName()));
+                applicationPosition.add(
+                        new ApplicationPosition(application,
+                                position));
                 responses.add(application.getStatus());
             });
 
-            stats.put(NO_RESPONSE, Collections.frequency(responses, NO_RESPONSE));
-            stats.put(REJECTED, Collections.frequency(responses, REJECTED));
-            stats.put(ASKED_FOR_INTERVIEW, Collections.frequency(responses, ASKED_FOR_INTERVIEW));
-            stats.put(OFFERED, Collections.frequency(responses, OFFERED));
-            stats.put(UNDER_REVIEW, Collections.frequency(responses, UNDER_REVIEW));
-            return stats;
+            statusMap.put(NO_RESPONSE, Collections.frequency(responses, NO_RESPONSE));
+            statusMap.put(REJECTED, Collections.frequency(responses, REJECTED));
+            statusMap.put(ASKED_FOR_INTERVIEW, Collections.frequency(responses, ASKED_FOR_INTERVIEW));
+            statusMap.put(OFFERED, Collections.frequency(responses, OFFERED));
+            statusMap.put(UNDER_REVIEW, Collections.frequency(responses, UNDER_REVIEW));
+            applicationsData.setStatusData(statusMap);
+            applicationsData.setApplications(applicationPosition);
         }
-        return new HashMap<>();
+        return applicationsData;
+    }
+
+    public static byte[] decompressBytes(byte[] data) {
+        Inflater inflater = new Inflater();
+        inflater.setInput(data);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream(data.length);
+        byte[] buffer = new byte[1024];
+        try {
+            while (!inflater.finished()) {
+                int count = inflater.inflate(buffer);
+                outputStream.write(buffer, 0, count);
+            }
+            outputStream.close();
+        } catch (IOException | DataFormatException ioe) {
+            ioe.printStackTrace();
+        }
+        return outputStream.toByteArray();
     }
 }

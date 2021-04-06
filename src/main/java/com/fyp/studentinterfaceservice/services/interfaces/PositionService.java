@@ -30,4 +30,6 @@ public interface PositionService {
     List<Position> getJobRecommendations(String email) throws UserNotFoundException;
 
     ApplicationWrapper applicationsStats(String email);
+
+    Application updateApplication(Application application);
 }

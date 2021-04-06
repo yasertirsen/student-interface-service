@@ -54,9 +54,7 @@
                     <h2><strong>{{user.profile.course.name}}</strong></h2>
                     <span><strong>{{user.profile.course.university}}</strong></span><br>
                     <span><strong>{{user.profile.course.level}}</strong></span><br>
-                    <ul *ngFor="let module of user.profile.course.modules">
-                      <li>{{module.name}}</li>
-                    </ul>
+                    <span><strong>{{user.profile.startCourse}} - {{user.profile.endCourse}}</strong></span><br>
                   </mat-expansion-panel>
 
                   <mat-expansion-panel *ngIf="user.profile.projects.length !== 0">

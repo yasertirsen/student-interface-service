@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserModel} from "../model/user.model";
 import {UserService} from "../service/user.service";
 import {MatDialog} from "@angular/material/dialog";
@@ -8,7 +8,6 @@ import {AddProjectDialogComponent} from "./add-project-dialog/add-project-dialog
 import {AddExperienceDialogComponent} from "./add-experience-dialog/add-experience-dialog.component";
 import {AddSkillsDialogComponent} from "./add-skills-dialog/add-skills-dialog.component";
 import {ResumeService} from "../service/resume.service";
-import {DomSanitizer} from "@angular/platform-browser";
 
 declare var require: any
 const FileSaver = require('file-saver');
@@ -84,6 +83,7 @@ export class ProfileComponent implements OnInit {
       });
     skillsDialog.afterClosed().subscribe(result => {
       if(result !== undefined) {
+        console.log(result)
         this.user.profile.externalSkills = result;
         this.updateUser();
       }
@@ -105,6 +105,7 @@ export class ProfileComponent implements OnInit {
   updateUser(): void {
     this.userService.updateProfile(this.user.profile).subscribe(data => {
       this.user.profile = data;
+      console.log(data);
       localStorage.setItem('currentUser', JSON.stringify(this.user));
       this._snackBar.open('Updated successfully', 'Close', {
         duration: 3000,

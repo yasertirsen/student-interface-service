@@ -23,7 +23,7 @@
                     <mat-icon>notifications</mat-icon></button>
                   <div fxLayout="row"  fxFlex fxLayoutAlign="end center">
                     <button class="spacer" mat-raised-button color="primary" (click)="onAddReview()">
-                      <mat-icon>add</mat-icon>Add Review</button>
+                      <mat-icon>rate_review</mat-icon>Leave Review</button>
                   </div>
                   <mat-card-subtitle>
                     <ngb-rating [(rate)]="company.company.profile.rating" [readonly]="true" [max]="5"></ngb-rating>

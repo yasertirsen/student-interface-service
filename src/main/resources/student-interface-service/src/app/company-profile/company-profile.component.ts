@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {CompanyService} from "../service/company.service";
 import {PositionModel} from "../model/position.model";
@@ -10,7 +10,6 @@ import {GetUpdatesDialogComponent} from "./get-updates-dialog/get-updates-dialog
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {UserModel} from "../model/user.model";
 import {UserService} from "../service/user.service";
-import {AddExperienceDialogComponent} from "../profile/add-experience-dialog/add-experience-dialog.component";
 import {HiredStudentsDialogComponent} from "./hired-students-dialog/hired-students-dialog.component";
 
 @Component({

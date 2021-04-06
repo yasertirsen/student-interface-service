@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Injectable} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {PositionModel} from "../model/position.model";
 import {ApplicationModel} from "../model/application.model";
@@ -67,5 +67,9 @@ export class PositionService {
   getUserApplicationsStats(email: string): Observable<any> {
     return this.http.get('http://localhost:8083/applicationsStats',
       {params: {email: email}});
+  }
+
+  updateApplication(application: ApplicationModel): Observable<any> {
+    return this.http.put('http://localhost:8083/application/update', application);
   }
 }

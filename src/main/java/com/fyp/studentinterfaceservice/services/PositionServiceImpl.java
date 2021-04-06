@@ -17,7 +17,6 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.zip.DataFormatException;
@@ -30,6 +29,7 @@ public class PositionServiceImpl implements PositionService {
 
     private final ProgradClient client;
     private final MailService mailService;
+    private final UserServiceImpl userService;
     @Value("${careerjet.api.key}")
     private String apiKey;
     @Value("${frontend.port}")
@@ -37,9 +37,10 @@ public class PositionServiceImpl implements PositionService {
     @Value("${token.secret}")
     private String secretToken;
 
-    public PositionServiceImpl(ProgradClient client, MailService mailService) {
+    public PositionServiceImpl(ProgradClient client, MailService mailService, UserServiceImpl userService) {
         this.client = client;
         this.mailService = mailService;
+        this.userService = userService;
     }
 
     @Override
@@ -202,6 +203,13 @@ public class PositionServiceImpl implements PositionService {
             applicationsData.setApplications(applicationPosition);
         }
         return applicationsData;
+    }
+
+    @Override
+    public Application updateApplication(Application application) {
+        if(application.getResume() != null && application.getResume().getData() != null)
+            application.getResume().setData(userService.compressBytes(application.getResume().getData()));
+        return client.updateApplication(secretToken, application);
     }
 
     public static byte[] decompressBytes(byte[] data) {

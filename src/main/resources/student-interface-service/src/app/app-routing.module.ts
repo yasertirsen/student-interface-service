@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {RegisterComponent} from "./register/register.component";
 import {LoginComponent} from "./login/login.component";
 import {NotFoundComponent} from "./not-found/not-found.component";
@@ -19,7 +19,6 @@ import {AlumniProfileComponent} from "./alumni-profile/alumni-profile.component"
 import {AuthGuard} from "./_guards/auth.guard";
 import {ChangePasswordComponent} from "./login/change-password/change-password.component";
 import {VerifyChangePasswordComponent} from "./login/verify-change-password/verify-change-password.component";
-import {ViewCvsComponent} from "./view-cvs/view-cvs.component";
 import {ApplicationsChartComponent} from "./applications-chart/applications-chart.component";
 
 const routes: Routes = [
@@ -112,11 +111,6 @@ const routes: Routes = [
   {
     path: 'profile/:userId',
     component: AlumniProfileComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'cvs',
-    component: ViewCvsComponent,
     canActivate: [AuthGuard]
   },
   {

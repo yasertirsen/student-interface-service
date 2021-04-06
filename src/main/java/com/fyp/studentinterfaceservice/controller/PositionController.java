@@ -6,13 +6,10 @@ import com.fyp.studentinterfaceservice.model.Application;
 import com.fyp.studentinterfaceservice.model.ApplicationWrapper;
 import com.fyp.studentinterfaceservice.model.Position;
 import com.fyp.studentinterfaceservice.services.interfaces.PositionService;
-import javafx.geometry.Pos;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 @RestController
 public class PositionController {
@@ -71,5 +68,10 @@ public class PositionController {
     @GetMapping("/applicationsStats")
     public ApplicationWrapper getApplicationsStats(@RequestParam String email) {
         return positionService.applicationsStats(email);
+    }
+
+    @PutMapping("application/update")
+    public Application updateApplication(@RequestBody Application application) {
+        return positionService.updateApplication(application);
     }
 }

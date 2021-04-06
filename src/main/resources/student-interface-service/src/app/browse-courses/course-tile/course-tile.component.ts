@@ -5,12 +5,10 @@ import {UserService} from "../../service/user.service";
 import {UserModel} from "../../model/user.model";
 import {CourseDialogComponent} from "../course-dialog/course-dialog.component";
 import {Router} from "@angular/router";
-import {SkillModel} from "../../model/skill.model";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatTableDataSource} from "@angular/material/table";
 import {Observable} from "rxjs";
 import {MatPaginator} from "@angular/material/paginator";
-import {PositionModel} from "../../model/position.model";
 
 @Component({
   selector: 'app-course-tile',
@@ -66,12 +64,18 @@ export class CourseTileComponent implements OnInit, OnDestroy {
       });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result.start === undefined || result.end === undefined) {
+      console.log(result);
+      if(result.start === null || result.end === null) {
         this._snackBar.open('Please enter starting graduating dates', 'Close', {
           duration: 5000,
         });
       }
       else {
+        this.user.profile.externalSkills = [];
+        for(let module of course.modules) {
+          if(module.skill !== null && module.skill.skillName !== null)
+            this.user.profile.externalSkills.push(module.skill);
+        }
         this.user.profile.course = course;
         this.user.profile.startCourse = result.start;
         this.user.profile.endCourse = result.end;

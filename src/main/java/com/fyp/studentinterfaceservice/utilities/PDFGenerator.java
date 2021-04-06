@@ -2,7 +2,6 @@ package com.fyp.studentinterfaceservice.utilities;
 
 import com.fyp.studentinterfaceservice.model.*;
 import com.itextpdf.text.*;
-import com.itextpdf.text.List;
 import com.itextpdf.text.log.Logger;
 import com.itextpdf.text.log.LoggerFactory;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -64,7 +63,7 @@ public class PDFGenerator {
                         + user.getProfile().getEndCourse() + "\n", bold));
                 educationContent.add(new Chunk(user.getProfile().getCourse().getUniversity() + "\n", regular));
                 if(user.getProfile().getAverageGrade() != 0)
-                    educationContent.add(new Chunk("Average Grade: " + user.getProfile().getAverageGrade() + "\n", regular));
+                    educationContent.add(new Chunk("Average Grade: " + user.getProfile().getAverageGrade() + "%\n", regular));
                 educationContent.add(lsPar);
                 document.add(educationContent);
             }
@@ -111,16 +110,18 @@ public class PDFGenerator {
                 document.add(skillsContent);
         }
 
-            if(hasCourse && !user.getProfile().getCourse().getModules().isEmpty()) {
-                document.add(createHeading("Modules"));
-                Paragraph modulesContent = initializeContent();
-                List modulesList = new List();
-                for(Module module : user.getProfile().getCourse().getModules()) {
-                    modulesList.add(new ListItem(module.getName(), regular));
+            if(hasCourse && user.getProfile().getCourse().getModules() != null) {
+                if(!user.getProfile().getCourse().getModules().isEmpty()){
+                    document.add(createHeading("Modules"));
+                    Paragraph modulesContent = initializeContent();
+                    List modulesList = new List();
+                    for(Module module : user.getProfile().getCourse().getModules()) {
+                        modulesList.add(new ListItem(module.getName(), regular));
+                    }
+                    modulesContent.add(modulesList);
+                    modulesContent.add(lsPar);
+                    document.add(modulesContent);
                 }
-                modulesContent.add(modulesList);
-                modulesContent.add(lsPar);
-                document.add(modulesContent);
         }
             document.close();
         }catch(DocumentException e) {

@@ -100,8 +100,6 @@ export class CvBuilderComponent implements OnInit {
         for(let module of this.user.profile.course.modules) {
           this.allModules.push(module.name);
         }
-        if(this.allModules.length > 0)
-          this.modules.push(this.allModules[0]);
       }
       this.summary = this.user.profile.bio;
       this.userService.getSkillsNames(this.user.profile).subscribe(skills => {

@@ -2,8 +2,8 @@ package com.fyp.studentinterfaceservice.controller;
 
 
 import com.fyp.studentinterfaceservice.exceptions.*;
-import com.fyp.studentinterfaceservice.model.*;
 import com.fyp.studentinterfaceservice.jwt.JWTTokenProvider;
+import com.fyp.studentinterfaceservice.model.*;
 import com.fyp.studentinterfaceservice.services.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,7 +21,7 @@ import java.util.Set;
 import static com.fyp.studentinterfaceservice.constant.SecurityConstants.EXPIRATION_TIME;
 
 @RestController
-public class UserController {
+public class UserController extends StudentExceptionHandler {
 
     private final UserService userService;
     private final JWTTokenProvider jwtTokenProvider;
@@ -50,19 +50,14 @@ public class UserController {
     @PostMapping("/login")
     @ResponseBody
     public ResponseEntity<User> login(@RequestBody User user) throws Exception {
-
+        authenticate(user.getEmail(), user.getPassword());
         User loggedUser = userService.findUserByEmail(user.getEmail());
-        if(passwordEncoder.matches(user.getPassword(), loggedUser.getPassword())) {
-            authenticate(loggedUser.getEmail(), loggedUser.getPassword());
-            UserPrincipal userPrincipal = new UserPrincipal(loggedUser);
-            loggedUser.setExpiresIn(EXPIRATION_TIME);
-            loggedUser.setToken(jwtTokenProvider.generateJwtToken(userPrincipal));
+        UserPrincipal userPrincipal = new UserPrincipal(loggedUser);
 
-            return new ResponseEntity<>(loggedUser, HttpStatus.OK);
-        }
-        else
-            throw new IncorrectPasswordException();
+        loggedUser.setExpiresIn(EXPIRATION_TIME);
+        loggedUser.setToken(jwtTokenProvider.generateJwtToken(userPrincipal));
 
+        return new ResponseEntity<>(loggedUser, HttpStatus.OK);
     }
 
     private void authenticate(String username, String password) {

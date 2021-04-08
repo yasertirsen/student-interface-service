@@ -52,12 +52,12 @@ export class ApplicationsChartComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.positionService.getUserApplicationsStats(this.user.email).subscribe(data => {
       console.log(data);
-      if(data.statusData !== null) {
+      if(!!data.statusData && !!data.applications) {
         this.noData = false;
         this.datasource.data = data.applications;
         for (let response of Object.keys(data.statusData)) {
           if(data.statusData[response] > 0) {
-            this.data.push(['Applications ' + data.applications.length, response + ': ' + data.statusData[response], data.statusData[response]]);
+            this.data.push(['Applications: ' + data.applications.length, response + ': ' + data.statusData[response], data.statusData[response]]);
           }
         }
       }

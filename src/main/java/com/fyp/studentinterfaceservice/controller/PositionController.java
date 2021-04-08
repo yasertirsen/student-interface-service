@@ -1,6 +1,7 @@
 package com.fyp.studentinterfaceservice.controller;
 
 import com.fyp.studentinterfaceservice.exceptions.ProgradException;
+import com.fyp.studentinterfaceservice.exceptions.StudentExceptionHandler;
 import com.fyp.studentinterfaceservice.exceptions.UserNotFoundException;
 import com.fyp.studentinterfaceservice.model.Application;
 import com.fyp.studentinterfaceservice.model.ApplicationWrapper;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class PositionController {
+public class PositionController extends StudentExceptionHandler {
 
     private final PositionService positionService;
 

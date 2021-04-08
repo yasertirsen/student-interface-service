@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {CompanyProfileModel} from "../model/company-profile.model";
@@ -23,11 +23,7 @@ export class CompanyService {
   }
 
   updateCompanyProfile(profile : CompanyProfileModel): Observable<any> {
-    return this.http.put('http://localhost:8083/companies/updateProfile', {
-      "profileId": profile.profileId,
-      "hiredStudents": profile.hiredStudents,
-      "reviews": profile.reviews
-    });
+    return this.http.put('http://localhost:8083/companies/updateProfile', profile);
   }
 
   addToMailingList(companyId: number, email:string): Observable<any> {

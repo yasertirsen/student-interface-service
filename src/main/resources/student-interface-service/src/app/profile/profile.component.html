@@ -4,27 +4,24 @@
 </app-mat-spinner-overlay>
 
 <div class="container" *ngIf="loading === false">
-  <div class="row" *ngIf="user.firstName !== undefined && user.surname !== undefined">
-    <div class="offset-2"></div>
-    <div class="col-md-12">
       <mat-card class="full-width">
         <mat-card-header>
-          <img *ngIf="retrievedImage !== null"
+          <img *ngIf="!!retrievedImage"
                mat-card-avatar
                [src]=retrievedImage
                alt="Profile"
                class="profile-img">
           <mat-card-title>
             <div class="center">
-              <span class="material-icons" *ngIf="retrievedImage === null" style="font-size: 150px">
+              <span class="material-icons" *ngIf="!retrievedImage" style="font-size: 150px">
                 account_circle
               </span>
-              <strong>
+              <strong *ngIf="!!user.firstName && !!user.surname">
               {{ user.firstName }} {{user.surname}}
               </strong>
             </div>
             <div fxLayout="row"  fxFlex fxLayoutAlign="end center">
-              <a mat-flat-button routerLink="/complete-profile"><mat-icon>edit</mat-icon></a>
+              <button mat-icon-button color="primary" routerLink="/complete-profile"><mat-icon>edit</mat-icon></button>
             </div>
           </mat-card-title>
         </mat-card-header>
@@ -35,12 +32,12 @@
             <span class="user-details">
             <mat-icon>email</mat-icon> {{user.email}}
           </span>
-            <span class="user-details" *ngIf="user.phone !== null">
+            <span class="user-details" *ngIf="!!user.phone">
             <span class="material-icons">
                 phone
               </span>{{user.phone}}
           </span>
-            <span class="user-details" *ngIf="user.socialUrl !== null">
+            <span class="user-details" *ngIf="!!user.socialUrl">
             <span class="material-icons">
                 link
               </span> {{user.socialUrl}}
@@ -70,7 +67,7 @@
               </div>
             </div>
           </section>
-          <div class="course-details" *ngIf="user.profile.course !== null">
+          <div class="course-details" *ngIf="!!user.profile.course">
           <span><strong>{{ user.profile.course.name}} - {{ user.profile.course.university }}</strong></span><br>
           <span>{{ user.profile.startCourse}} - {{ user.profile.endCourse }}</span>
           </div>
@@ -116,6 +113,4 @@
           </ul>
         </mat-card-content>
       </mat-card>
-    </div>
-  </div>
 </div>

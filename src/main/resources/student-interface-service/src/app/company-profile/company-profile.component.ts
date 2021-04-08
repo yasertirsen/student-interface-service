@@ -58,13 +58,12 @@ export class CompanyProfileComponent implements OnInit {
       this.company = (results[0] as CompanyWrapperModel);
       this.company.users.forEach(u => this.usersMap.set(u.studentId, u.firstName));
       const rating = (results[1] as number);
-      this.company.company.profile.rating = Number((Math.round(rating * 100) / 100).toFixed(2))
+      this.company.company.profile.rating = Number((Math.round(rating * 100) / 100).toFixed(2));
       this.positionService.getCompanyPositions(this.company.company.companyId).subscribe(positions => {
         this.positions = positions;
         this.loading = false
       });
       this.hiredStudents = results[2];
-      console.log(this.hiredStudents);
     }, error1 => {
       this.loading = false;
       console.log(error1);
@@ -77,23 +76,21 @@ export class CompanyProfileComponent implements OnInit {
         width: '500px'
       });
     confirmDialog.afterClosed().subscribe(result => {
-      if(result) {
+      if (result) {
         this.companyService.addToMailingList(this.company.company.companyId, this.user.email).subscribe(data => {
-          this._snackBar.open('Company notifications is ON', 'Close', {
-            duration: 3000
-          });
-        },
+            this._snackBar.open('Company notifications is ON', 'Close', {duration: 3000});
+          },
           error => {
-          console.log(error);
+            console.log(error);
           });
       }
     });
   }
 
-  onViewHired() {
-      this.dialog.open(HiredStudentsDialogComponent, {
-        width: '500px',
-        data: {hiredStudents: this.hiredStudents}
-      });
+  onViewHired(): void {
+    this.dialog.open(HiredStudentsDialogComponent, {
+      width: '500px',
+      data: {hiredStudents: this.hiredStudents}
+    });
   }
 }

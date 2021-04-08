@@ -1,7 +1,7 @@
 package com.fyp.studentinterfaceservice.controller;
 
-import com.fyp.studentinterfaceservice.client.ProgradClient;
 import com.fyp.studentinterfaceservice.exceptions.ModuleParsingException;
+import com.fyp.studentinterfaceservice.exceptions.StudentExceptionHandler;
 import com.fyp.studentinterfaceservice.model.Course;
 import com.fyp.studentinterfaceservice.services.interfaces.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class CourseController {
+public class CourseController extends StudentExceptionHandler {
 
     private final CourseService courseService;
 

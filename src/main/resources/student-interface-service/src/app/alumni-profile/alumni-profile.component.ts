@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserModel} from "../model/user.model";
 import {UserService} from "../service/user.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {LocalStorageService} from "ngx-webstorage";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-alumni-profile',
@@ -19,7 +18,7 @@ export class AlumniProfileComponent implements OnInit {
     this.userService.getUserById(this.activatedRoute.snapshot.params.userId).subscribe(data => {
       this.user = data;
       this.userService.getUserAvatar(this.user.studentId).subscribe(image => {
-        if(image.data !== null) {
+        if(!!image.data) {
           this.base64Data = image.data;
           this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
         }

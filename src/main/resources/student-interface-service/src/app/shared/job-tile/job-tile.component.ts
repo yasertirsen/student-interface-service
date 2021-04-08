@@ -5,7 +5,6 @@ import {PositionService} from "../../service/position.service";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
 import {Observable} from "rxjs";
-import {MatSort} from "@angular/material/sort";
 
 @Component({
   selector: 'app-job-tile',
@@ -48,7 +47,7 @@ export class JobTileComponent implements OnInit, OnDestroy {
     position.clicks++;
     this.positionService.updateJob(position).subscribe(data => {
     });
-    if(position.url !== null) {
+    if(!!position.url) {
       window.open(position.url, "_blank")
     }
     else {

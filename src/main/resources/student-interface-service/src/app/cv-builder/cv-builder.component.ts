@@ -96,7 +96,7 @@ export class CvBuilderComponent implements OnInit {
         }
         this.experiences.push(this.allExperiences[0]);
       }
-      if(this.user.profile.course !== null) {
+      if(!!this.user.profile.course) {
         for(let module of this.user.profile.course.modules) {
           this.allModules.push(module.name);
         }
@@ -268,7 +268,7 @@ export class CvBuilderComponent implements OnInit {
 
   onEditDetails() {
     this.loading = true;
-    if(this.project.title !== null || this.project.description !== null) {
+    if(!!this.project.title || !!this.project.description) {
       this.user.profile.projects.push(this.project);
     }
     else {
@@ -303,7 +303,7 @@ export class CvBuilderComponent implements OnInit {
           jobTitle: this.position.title}
       });
     applyDialog.afterClosed().subscribe(result => {
-      if(result !== null) {
+      if(!!result) {
         this.positionService.apply(result).subscribe(data => {
             console.log(data)
             this._snackBar.open('Applied successfully', 'Close', {

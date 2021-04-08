@@ -1,13 +1,10 @@
-mat-card-header{
-}
-
 mat-card-content{
   padding-left: 10px;
   padding-bottom: 10px;
 }
 
 mat-card-title{
-  padding: 10px;
+  margin: 5px;
 }
 
 mat-card-subtitle{
@@ -15,15 +12,19 @@ mat-card-subtitle{
   padding-left: 10px;
 }
 
-mat-card{
-  padding:0;
+.content-card{
   margin: 10px;
+  background-color: #222222 !important;
 }
 
-.example-header-image {
+.review-card {
   margin: 8px;
-  background-image: url('https://static.thenounproject.com/png/88781-200.png');
-  background-size: cover;
+}
+
+.icon {
+  margin: 8px;
+  color: white;
+  font-size: 50px;
 }
 
 .spacer {
@@ -41,3 +42,28 @@ a {
 h3 {
   font-family: Lato, sans-serif;
 }
+
+hr {
+  background-color: #424242;
+}
+
+.star {
+  position: relative;
+  display: inline-block;
+  font-size: 1.5rem;
+  color: #d3d3d3;
+}
+
+.full {
+  color: #ffcd38;
+}
+
+.half {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  color: #ffcd38;
+}
+
+
+

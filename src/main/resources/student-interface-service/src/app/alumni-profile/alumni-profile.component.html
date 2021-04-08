@@ -23,23 +23,23 @@
               </div>
 
               <div gdArea="side">
-                <img *ngIf="retrievedImage !== null"
+                <img *ngIf="!!retrievedImage"
                      mat-card-avatar
                      [src]=retrievedImage
                      alt="Profile"
                      class="profile-img">
-                <mat-card-content *ngIf="user.firstName !== null">
+                <mat-card-content *ngIf="!!user.firstName">
               <span class="material-icons" *ngIf="retrievedImage === null" style="font-size: 150px">
                 account_circle
               </span>
                 </mat-card-content>
 
-                <mat-card-subtitle *ngIf="user.profile.course !== null">
+                <mat-card-subtitle *ngIf="!!user.profile.course">
                   Details:
                 </mat-card-subtitle>
                 <mat-card-content>
                   <mat-accordion multi>
-                    <mat-expansion-panel *ngIf="user.profile.course !== null">
+                    <mat-expansion-panel *ngIf="!!user.profile.course">
                       <mat-expansion-panel-header>
                         <mat-panel-title>
                           Contact Information
@@ -51,7 +51,7 @@
                       <a class="mat-flat-button"  href="mailto:{{user.email}}">{{user.email}}</a>
 
                     </mat-expansion-panel>
-                    <mat-expansion-panel *ngIf="user.profile.course !== null">
+                    <mat-expansion-panel *ngIf="!!user.profile.course">
                       <mat-expansion-panel-header>
                         <mat-panel-title>
                           Education

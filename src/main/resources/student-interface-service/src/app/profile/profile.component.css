@@ -23,8 +23,9 @@
   align-items: center;
 }
 
-.mat-card {
-  margin: 20px 20px 20px 20px;
+mat-card {
+  margin: 20px;
+  background-color: #222222 !important;
 }
 
 .center {
@@ -52,6 +53,10 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+
+hr {
+  background-color: #424242;
 }
 
 

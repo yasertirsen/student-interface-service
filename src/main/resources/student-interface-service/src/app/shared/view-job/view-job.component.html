@@ -4,9 +4,6 @@
 </app-mat-spinner-overlay>
 
 <div class="container" *ngIf="!loading">
-  <div class="row">
-    <div class="offset-2"></div>
-    <div class="col-md-12">
       <mat-card>
         <mat-card-title>{{ position.title }}</mat-card-title>
         <mat-card-subtitle>{{position.date}}</mat-card-subtitle>
@@ -18,13 +15,11 @@
             <li *ngFor="let skill of position.requirements">{{skill.skillName}}</li>
           </ul>
         </mat-card-content>
-        <mat-card-actions *ngIf="position.requirements !== undefined || position.requirements !== null">
+        <mat-card-actions *ngIf="!!position.requirements">
           <div>
             <a routerLink="/apply/{{position.positionId}}"><button mat-raised-button color="primary">Apply</button></a>
           </div>
         </mat-card-actions>
       </mat-card>
-    </div>
-  </div>
 </div>
 

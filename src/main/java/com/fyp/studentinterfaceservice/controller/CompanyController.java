@@ -1,6 +1,7 @@
 package com.fyp.studentinterfaceservice.controller;
 
 import com.fyp.studentinterfaceservice.dto.CompanyWrapper;
+import com.fyp.studentinterfaceservice.exceptions.StudentExceptionHandler;
 import com.fyp.studentinterfaceservice.model.Company;
 import com.fyp.studentinterfaceservice.model.CompanyProfile;
 import com.fyp.studentinterfaceservice.model.MailingList;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/companies")
-public class CompanyController {
+public class CompanyController extends StudentExceptionHandler {
 
     private final CompanyService companyService;
 

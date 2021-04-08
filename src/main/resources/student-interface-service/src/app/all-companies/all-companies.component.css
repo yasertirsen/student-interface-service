@@ -1,6 +1,6 @@
 .company-card {
   width: 100%;
-  margin: 10px 10px 10px 10px;
+  margin: 10px;
 }
 
 .container {
@@ -12,4 +12,22 @@
 .example-header-image {
   background-image: url('https://static.thenounproject.com/png/88781-200.png');
   background-size: cover;
+}
+
+.star {
+  position: relative;
+  display: inline-block;
+  font-size: 1rem;
+  color: #d3d3d3;
+}
+
+.full {
+  color: #ffcd38;
+}
+
+.half {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  color: #ffcd38;
 }

@@ -5,17 +5,9 @@
   *ngIf="loading === true">
 </app-mat-spinner-overlay>
 
-<div class="body" *ngIf="!loading">
-  <div class="container">
-    <div class="row">
-      <div class="offset-2"></div>
-      <hr />
-      <div class="col-md-10 justify-content-center">
-        <h3 *ngIf="positions.length !== 0"><strong>Opportunities on Prograd</strong></h3>
-        <app-job-tile [positions]="positions"></app-job-tile>
-        <h3 *ngIf="jobsApi.length !== 0"><strong>Other opportunities</strong></h3>
-        <app-job-tile [positions]="jobsApi"></app-job-tile>
-      </div>
-    </div>
-  </div>
+<div class="container">
+  <h3 *ngIf="positions.length !== 0"><strong>Opportunities on Prograd</strong></h3>
+  <app-job-tile [positions]="positions"></app-job-tile>
+  <h3 *ngIf="jobsApi.length !== 0"><strong>Other opportunities</strong></h3>
+  <app-job-tile [positions]="jobsApi"></app-job-tile>
 </div>

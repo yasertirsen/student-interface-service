@@ -1,17 +1,13 @@
-import {Component,  OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserModel} from "../model/user.model";
-import { MatDialog } from "@angular/material/dialog";
+import {MatDialog} from "@angular/material/dialog";
 import {AddLinkedinDialogComponent} from "./add-linkedin-dialog/add-linkedin-dialog.component";
-import {LocalStorageService} from "ngx-webstorage";
 import {UserService} from "../service/user.service";
 import {ActivatedRoute} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {PositionModel} from "../model/position.model";
 import {PositionService} from "../service/position.service";
-import {ProfileModel} from "../model/profile.model";
 import {forkJoin} from "rxjs";
-import {CompanyWrapperModel} from "../model/company-wrapper.model";
-import {delay} from "rxjs/operators";
 
 @Component({
   selector: 'app-home',
@@ -65,7 +61,7 @@ export class HomeComponent implements OnInit {
     let getRecommendations = this.positionService.getRecommendedJobs(this.user.email);
 
     forkJoin([getAvatar, getRecommendations]).subscribe(results => {
-      if(results[0].data !== null) {
+      if(!!results[0].data) {
         this.base64Data = results[0].data;
         this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
       }

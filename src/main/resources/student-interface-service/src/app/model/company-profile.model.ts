@@ -1,9 +1,9 @@
-import {UserModel} from "./user.model";
 import {ReviewModel} from "./review.model";
 
 export interface CompanyProfileModel {
   profileId: number;
-  hiredStudents: UserModel[];
+  hiredStudents: number[];
   reviews: ReviewModel[];
   rating: number;
+  bio: string;
 }

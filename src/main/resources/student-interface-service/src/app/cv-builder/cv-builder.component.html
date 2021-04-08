@@ -128,7 +128,7 @@
             </div>
           </form>
         </mat-step>
-        <mat-step [stepControl]="secondFormGroup" *ngIf="this.user.profile.course !== null">
+        <mat-step [stepControl]="secondFormGroup" *ngIf="!!this.user.profile.course">
           <form [formGroup]="secondFormGroup">
             <ng-template matStepLabel>Modules (Optional)</ng-template>
             <mat-form-field class="full-width" appearance="outline">

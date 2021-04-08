@@ -1,75 +1,72 @@
 <app-mat-spinner-overlay
   overlay="true"
-  *ngIf="loading === true">
+  *ngIf="loading">
 </app-mat-spinner-overlay>
 
-<div class="container" *ngIf="loading === false">
-  <div class="row">
-    <div class="offset-2"></div>
-    <div class="col-md-12">
-      <section>
-        <div>
-          <mat-card *ngIf="company !== null">
-            <div
-              gdAreas="header header | side content"
-              gdGap="16px"
-              gdRows="auto auto auto">
-              <div gdArea="header">
-                <mat-card-header>
-                  <div mat-card-avatar class="example-header-image"></div>
-                  <mat-card-title>{{company.company.name}}</mat-card-title>
-                  <mat-card-subtitle *ngIf="company.company.address !== null">{{ company.company.address }}</mat-card-subtitle>
-                  <button mat-fab class="spacer" color="accent" (click)="onGetUpdates()">
-                    <mat-icon>notifications</mat-icon></button>
-                  <div fxLayout="row"  fxFlex fxLayoutAlign="end center">
-                    <button class="spacer" mat-raised-button color="primary" (click)="onAddReview()">
-                      <mat-icon>rate_review</mat-icon>Leave Review</button>
-                  </div>
-                  <mat-card-subtitle>
-                    <ngb-rating [(rate)]="company.company.profile.rating" [readonly]="true" [max]="5"></ngb-rating>
-                  </mat-card-subtitle>
-                </mat-card-header>
-                <hr>
-              </div>
-              <div gdArea="side">
-                <h2 *ngIf="hiredStudents.length !== 0" class="spacer">
-                  This company has hired {{hiredStudents.length}} students from your university,
-                  <a class="position-name" (click)="onViewHired()">Get in touch!</a>
-                </h2>
-                <mat-card-content *ngIf="company.company.profile.reviews.length > 0">
-                  <h3><strong>Reviews</strong></h3>
-                  <mat-card *ngFor="let review of company.company.profile.reviews">
-                    <mat-card-title><a [routerLink]="['/profile', review.studentId]"
-                    *ngIf="user.studentId !== review.studentId">{{usersMap.get(review.studentId)}}</a></mat-card-title>
-                    <mat-card-title><a [routerLink]="'/home'"
-                                       *ngIf="user.studentId === review.studentId">{{usersMap.get(review.studentId)}}</a></mat-card-title>
-                    <mat-card-subtitle *ngIf="review.type === 'P'">Positive</mat-card-subtitle>
-                    <mat-card-subtitle *ngIf="review.type === 'N'">Negative</mat-card-subtitle>
-                    <mat-card-content ><h3 class="mat-h3"><strong>{{review.content}}</strong></h3></mat-card-content>
-                    <mat-card-content *ngIf="review.questions !== undefined"><strong>Interview Questions:</strong> {{review.questions}}</mat-card-content>
-                  </mat-card>
-                </mat-card-content>
-                <mat-card-content *ngIf="company.company.profile.reviews.length === 0">
-                <h3 class="mat-h3" style="text-align: center">
-                  No Reviews</h3>
-                </mat-card-content>
-              </div>
-              <div gdArea="content">
-                <mat-card-content *ngIf="positions.length > 0">
-                  <h3><strong>{{ company.company.name }}'s jobs</strong></h3>
-                  <app-job-tile [positions]="positions"></app-job-tile>
-                </mat-card-content>
-                <mat-card-content *ngIf="positions.length === 0">
-                  <h3 class="mat-h3" style="text-align: center">
-                    No Jobs</h3>
-                </mat-card-content>
-              </div>
-            </div>
+<div class="container" *ngIf="!loading">
+  <mat-card class="content-card" *ngIf="!!company">
+    <div
+      gdAreas="header header | side content"
+      gdGap="16px"
+      gdRows="auto auto auto">
+      <div gdArea="header">
+        <mat-card-header>
+          <mat-icon mat-card-avatar class="icon">business</mat-icon>
+          <mat-card-title>{{company.company.name}}</mat-card-title>
+          <mat-card-subtitle *ngIf="!!company.company.address">{{ company.company.address }}</mat-card-subtitle>
+          <button mat-fab class="spacer" color="accent" (click)="onGetUpdates()">
+            <mat-icon>notifications</mat-icon></button>
+          <div fxLayout="row"  fxFlex fxLayoutAlign="end center">
+            <button class="spacer" mat-raised-button color="primary" (click)="onAddReview()">
+              <mat-icon style="margin-right:5px">rate_review</mat-icon>Leave Review</button>
+          </div>
+          <mat-card-subtitle>
+            <ng-template #t let-fill="fill">
+              <span class="star" [class.full]="fill === 100">
+                <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+              </span>
+            </ng-template>
+            <ngb-rating [(rate)]="company.company.profile.rating" [starTemplate]="t" [readonly]="true" [max]="5"></ngb-rating>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <h3>{{company.company.profile.bio}}</h3>
+        <hr>
+      </div>
+      <div gdArea="side">
+        <h2 *ngIf="hiredStudents.length !== 0" class="spacer">
+          This company has hired {{hiredStudents.length}} students from your university,
+          <a class="position-name" (click)="onViewHired()">Get in touch!</a>
+        </h2>
+        <mat-card-content *ngIf="company.company.profile.reviews.length > 0">
+          <h3><strong>Reviews</strong></h3>
+          <mat-card class="review-card" *ngFor="let review of company.company.profile.reviews">
+            <mat-card-title><a [routerLink]="['/profile', review.studentId]"
+                               *ngIf="user.studentId !== review.studentId">{{usersMap.get(review.studentId)}}</a></mat-card-title>
+            <mat-card-title><a [routerLink]="'/home'"
+                               *ngIf="user.studentId === review.studentId">{{usersMap.get(review.studentId)}}</a></mat-card-title>
+            <mat-card-subtitle *ngIf="review.type === 'P'">Positive</mat-card-subtitle>
+            <mat-card-subtitle *ngIf="review.type === 'N'">Negative</mat-card-subtitle>
+            <mat-card-content ><h3 class="mat-h3"><strong>{{review.content}}</strong></h3></mat-card-content>
+            <mat-card-content *ngIf="review.questions !== undefined"><strong>Interview Questions:</strong> {{review.questions}}</mat-card-content>
           </mat-card>
-        </div>
-      </section>
+        </mat-card-content>
+        <mat-card-content *ngIf="company.company.profile.reviews.length === 0">
+          <h3 class="mat-h3" style="text-align: center">
+            No Reviews</h3>
+        </mat-card-content>
+      </div>
+      <div gdArea="content">
+        <mat-card-content *ngIf="positions.length > 0">
+          <h3><strong>{{ company.company.name }}'s jobs</strong></h3>
+          <app-job-tile [positions]="positions"></app-job-tile>
+        </mat-card-content>
+        <mat-card-content *ngIf="positions.length === 0">
+          <h3 class="mat-h3" style="text-align: center">
+            No Jobs</h3>
+        </mat-card-content>
+      </div>
     </div>
-  </div>
+  </mat-card>
 </div>
 
 

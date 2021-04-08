@@ -23,7 +23,10 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.time.Instant;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.UUID;
 import java.util.zip.Deflater;
 
 import static com.fyp.studentinterfaceservice.constant.ErrorConstants.EMAIL_ALREADY_EXISTS;
@@ -102,8 +105,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = findUserByEmail(username);
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-
         return new UserPrincipal(user);
     }
 
@@ -164,6 +165,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public User verifyChangePassword(String token, String password) throws UserNotFoundException {
         User user = findUserByToken(token);
         user.setPassword(passwordEncoder.encode(password));
+        user.setEnabled(true);
         return updateUser(user);
     }
 
@@ -183,16 +185,21 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public List<User> getUniHiredStudents(String companyName, Long userId) {
         Company company = progradClient.findCompanyByName(secretToken, companyName).getCompany();
-        String university = progradClient.findById(secretToken, userId).getProfile().getCourse().getUniversity();
-        List<User> hiredStudents = new ArrayList<>();
-        User user;
-        for(Long id: company.getProfile().getHiredStudents()) {
-            user = progradClient.findById(secretToken, id);
-            if(user.getProfile().getCourse().getUniversity().equalsIgnoreCase(university)) {
-                hiredStudents.add(user);
+        User loggedUser = progradClient.findById(secretToken, userId);
+        if(loggedUser.getProfile().getCourse() == null)
+            return new ArrayList<>();
+        else {
+            List<User> hiredStudents = new ArrayList<>();
+            User user;
+            for (Long id : company.getProfile().getHiredStudents()) {
+                user = progradClient.findById(secretToken, id);
+                if (user.getProfile().getCourse().getUniversity()
+                        .equalsIgnoreCase(loggedUser.getProfile().getCourse().getUniversity())) {
+                    hiredStudents.add(user);
+                }
             }
+            return hiredStudents;
         }
-        return hiredStudents;
     }
 
     public byte[] compressBytes(byte[] data) {

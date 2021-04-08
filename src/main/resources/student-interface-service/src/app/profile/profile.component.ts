@@ -27,7 +27,7 @@ export class ProfileComponent implements OnInit {
               private _snackBar: MatSnackBar, private resumeService: ResumeService) {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
       this.userService.getUserAvatar(this.user.studentId).subscribe(image => {
-        if(image.data !== null) {
+        if(!!image.data) {
           this.base64Data = image.data;
           this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
         }
@@ -83,7 +83,6 @@ export class ProfileComponent implements OnInit {
       });
     skillsDialog.afterClosed().subscribe(result => {
       if(result !== undefined) {
-        console.log(result)
         this.user.profile.externalSkills = result;
         this.updateUser();
       }

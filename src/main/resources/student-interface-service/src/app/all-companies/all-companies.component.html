@@ -9,9 +9,14 @@
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>{{company.name}}</mat-card-title>
-        <mat-card-subtitle *ngIf="company.address !== null">{{ company.address }}</mat-card-subtitle>
+        <mat-card-subtitle *ngIf="!!company.address">{{ company.address }}</mat-card-subtitle>
         <mat-card-subtitle>
-          <ngb-rating [(rate)]="company.profile.rating" [readonly]="true" [max]="5"></ngb-rating>
+          <ng-template #t let-fill="fill">
+              <span class="star" [class.full]="fill === 100">
+                <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+              </span>
+          </ng-template>
+          <ngb-rating [(rate)]="company.profile.rating" [starTemplate]="t" [readonly]="true" [max]="5"></ngb-rating>
         </mat-card-subtitle>
       </mat-card-header>
     </mat-card>

@@ -43,11 +43,13 @@ com\fyp\studentinterfaceservice\services\PositionServiceImpl.class
 com\fyp\studentinterfaceservice\dto\SimpleStudent.class
 com\fyp\studentinterfaceservice\filter\JwtAccessDeniedHandler.class
 com\fyp\studentinterfaceservice\exceptions\ProgradException.class
+com\fyp\studentinterfaceservice\constant\Constants.class
 com\fyp\studentinterfaceservice\model\NotificationEmail.class
 com\fyp\studentinterfaceservice\model\Skill.class
 com\fyp\studentinterfaceservice\model\RefreshTokenRequest.class
 com\fyp\studentinterfaceservice\utilities\PDFGenerator.class
 com\fyp\studentinterfaceservice\filter\JwtAuthenticationEntryPoint.class
+com\fyp\studentinterfaceservice\model\ApplicationWrapper.class
 com\fyp\studentinterfaceservice\model\UserPrincipal.class
 com\fyp\studentinterfaceservice\model\Review.class
 com\fyp\studentinterfaceservice\client\ProgradClient.class
@@ -62,4 +64,5 @@ com\fyp\studentinterfaceservice\model\Application.class
 com\fyp\studentinterfaceservice\model\Role.class
 com\fyp\studentinterfaceservice\filter\JwtAuthorizationFilter.class
 com\fyp\studentinterfaceservice\exceptions\CoreApplicationException.class
+com\fyp\studentinterfaceservice\model\ApplicationPosition.class
 com\fyp\studentinterfaceservice\services\interfaces\ResumeService.class

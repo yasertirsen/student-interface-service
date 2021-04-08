@@ -14,5 +14,6 @@ public class CompanyProfile {
     private long profileId;
     private Set<Long> hiredStudents;
     private List<Review> reviews;
+    private String bio;
 }
 

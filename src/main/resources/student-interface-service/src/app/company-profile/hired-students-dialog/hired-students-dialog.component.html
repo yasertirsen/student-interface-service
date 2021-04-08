@@ -5,7 +5,7 @@
     <h2>{{user.firstName}} {{user.surname}} - {{user.profile.course.name}}</h2>
     <p>Contact Details:</p>
     <ul>
-      <li *ngIf="user.socialUrl !== null"><a mat-flat-button href="//{{user.socialUrl}}" target="_blank">{{user.socialUrl}}</a></li>
+      <li *ngIf="!!user.socialUrl"><a mat-flat-button href="//{{user.socialUrl}}" target="_blank">{{user.socialUrl}}</a></li>
       <li><a mat-flat-button href="mailto:{{user.email}}">{{user.email}}</a></li>
     </ul>
     <mat-divider></mat-divider>

@@ -7,4 +7,21 @@ $custom-typography: mat-typography-config(
 @include mat-core($custom-typography);
 
 html, body { height: 100%; }
-//* { margin: 0; font-family: Lato, "Helvetica Neue", sans-serif; }
+
+::-webkit-scrollbar
+{
+  width: 14px;
+
+  &-track {
+    background: transparent;
+  }
+  &-thumb {
+    background: #6e6e6e;
+    border: 3px solid #303030;
+    border-radius: 10px;
+
+    &:hover {
+      background: #424242;
+    }
+  }
+}

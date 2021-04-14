@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CompanyService} from "../service/company.service";
 import {CompanyModel} from "../model/company.model";
 import {Router} from "@angular/router";
@@ -11,7 +11,6 @@ import {Router} from "@angular/router";
 export class AllCompaniesComponent implements OnInit {
   loading = true;
   companies: CompanyModel[] = [];
-  rating: number;
 
   constructor(private companyService: CompanyService, private router: Router) {
     this.companyService.getAllCompanies().subscribe(data => {

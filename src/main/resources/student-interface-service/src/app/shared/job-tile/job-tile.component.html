@@ -1,8 +1,8 @@
-<mat-card *ngFor="let position of obs | async">
+<mat-card *ngFor="let position of obs | async" class="content">
   <mat-card-title><a class="position-name" (click)="goToLink(position)">{{position.title}}</a></mat-card-title>
-  <mat-card-subtitle>{{ position.location}} </mat-card-subtitle>
+  <mat-card-subtitle>{{position.location}} </mat-card-subtitle>
   <mat-card-subtitle *ngIf="!!position.company">{{position.company.name}}</mat-card-subtitle>
-  <mat-card-content [innerHTML]="position.description"></mat-card-content>
+  <mat-card-content class="description" [innerHTML]="position.description"></mat-card-content>
 </mat-card>
 <mat-paginator [pageSizeOptions]="[10, 25, 100]" *ngIf="positions.length > 9"></mat-paginator>
 

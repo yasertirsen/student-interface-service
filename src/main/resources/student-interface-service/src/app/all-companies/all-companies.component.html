@@ -1,24 +1,59 @@
 <app-mat-spinner-overlay
   overlay="true"
-  *ngIf="loading === true">
+  *ngIf="loading">
 </app-mat-spinner-overlay>
 
-<div class="container" *ngIf="loading === false">
-  <div class="col-md-6" *ngFor="let company of companies">
-    <mat-card class="company-card" (click)="goToCompanyProfile(company.name)">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{company.name}}</mat-card-title>
-        <mat-card-subtitle *ngIf="!!company.address">{{ company.address }}</mat-card-subtitle>
-        <mat-card-subtitle>
-          <ng-template #t let-fill="fill">
-              <span class="star" [class.full]="fill === 100">
-                <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
-              </span>
-          </ng-template>
-          <ngb-rating [(rate)]="company.profile.rating" [starTemplate]="t" [readonly]="true" [max]="5"></ngb-rating>
-        </mat-card-subtitle>
-      </mat-card-header>
-    </mat-card>
-  </div>
+<div class="container" *ngIf="!loading">
+  <mat-card class="card-container">
+    <mat-card-title>Browse Companies</mat-card-title>
+    <hr>
+    <div
+      fxLayout="row wrap"
+      fxLayout.lt-sm="column"
+      fxLayoutGap="32px"
+      fxLayoutAlign="flex-start">
+      <ng-container *ngFor="let _ of let company of companies">
+        <mat-card fxFlex="0 1 calc(33.33% - 32px)"
+                  fxFlex.lt-md="0 1 calc(50% - 32px)"
+                  fxFlex.lt-sm="100%"
+                  class="company-card"
+                  (click)="goToCompanyProfile(company.name)">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{company.name}}</mat-card-title>
+            <mat-card-subtitle *ngIf="!!company.address">{{ company.address }}</mat-card-subtitle>
+            <mat-card-subtitle>
+              <ng-template #t let-fill="fill">
+                    <span class="star" [class.full]="fill === 100">
+                      <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+                    </span>
+              </ng-template>
+              <ngb-rating [(rate)]="company.profile.rating" [starTemplate]="t" [readonly]="true" [max]="5"></ngb-rating>
+            </mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+      </ng-container>
+    </div>
+  </mat-card>
+
+<!--  <div class="col-md-6" *ngFor="let company of companies">-->
+<!--    <mat-card class="company-card" (click)="goToCompanyProfile(company.name)">-->
+<!--      <mat-card-header>-->
+<!--        <div mat-card-avatar class="example-header-image"></div>-->
+<!--        <mat-card-title>{{company.name}}</mat-card-title>-->
+<!--        <mat-card-subtitle *ngIf="!!company.address">{{ company.address }}</mat-card-subtitle>-->
+<!--        <mat-card-subtitle>-->
+<!--          <ng-template #t let-fill="fill">-->
+<!--              <span class="star" [class.full]="fill === 100">-->
+<!--                <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;-->
+<!--              </span>-->
+<!--          </ng-template>-->
+<!--          <ngb-rating [(rate)]="company.profile.rating" [starTemplate]="t" [readonly]="true" [max]="5"></ngb-rating>-->
+<!--        </mat-card-subtitle>-->
+<!--      </mat-card-header>-->
+<!--    </mat-card>-->
+<!--  </div>-->
+
+
 </div>
+

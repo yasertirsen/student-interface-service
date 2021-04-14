@@ -1,0 +1,45 @@
+<div class="picsum-img-wrapper">
+  <img src="assets/images/salaries.jpg" alt="salaries_image">
+</div>
+
+<div class="container">
+  <mat-card class="centered">
+    <mat-card-title>Search Salaries and Compensation</mat-card-title>
+    <hr>
+    <mat-card-content>
+      <form (ngSubmit)="onSearch()" [formGroup]="searchForm" class="form-check-inline full-width">
+        <div class="form-outline spacer">
+          <input type="text"
+                 class="form-control"
+                 placeholder="Job title"
+                 formControlName="keywords"/>
+        </div>
+
+        <div class="form-outline spacer">
+          <input type="text"
+                 class="form-control"
+                 placeholder="Location"
+                 formControlName="location"
+                  [value]="location"/>
+        </div>
+        <button
+          mat-raised-button
+          type="submit"
+          color="accent"
+          class="search-btn">
+          <mat-icon>search</mat-icon>
+          <span>Search</span>
+        </button>
+      </form>
+
+      <div *ngIf="averageSalary > 0" style="margin-top: 5vh;">
+        <span class="mat-display-1">The average annual salary for {{keywords}} is &euro;{{averageSalary}} in {{location}}</span>
+      </div>
+
+      <div *ngIf="averageSalary === 0">
+        <h2>Could not find salary information about this role</h2>
+        <p>Try using less words for job title or changing location</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

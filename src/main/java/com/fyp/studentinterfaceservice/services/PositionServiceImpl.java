@@ -212,6 +212,20 @@ public class PositionServiceImpl implements PositionService {
         return client.updateApplication(secretToken, application);
     }
 
+    @Override
+    public double searchSalaries(String keywords, String location) {
+        List<Position> positions = client.searchByJobsByTitle(secretToken, keywords);
+        double salaries = 0.0;
+        int count = 0;
+        for(Position position : positions) {
+            if(position.getLocation().equalsIgnoreCase(location)) {
+                salaries+= position.getSalary();
+                count++;
+            }
+        }
+        return Math.round((salaries/count) * 100.0) / 100.0;
+    }
+
     public static byte[] decompressBytes(byte[] data) {
         Inflater inflater = new Inflater();
         inflater.setInput(data);

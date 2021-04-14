@@ -20,6 +20,7 @@ import {AuthGuard} from "./_guards/auth.guard";
 import {ChangePasswordComponent} from "./login/change-password/change-password.component";
 import {VerifyChangePasswordComponent} from "./login/verify-change-password/verify-change-password.component";
 import {ApplicationsChartComponent} from "./applications-chart/applications-chart.component";
+import {SearchSalariesComponent} from "./search-salaries/search-salaries.component";
 
 const routes: Routes = [
   {
@@ -116,6 +117,11 @@ const routes: Routes = [
   {
     path: 'applications',
     component: ApplicationsChartComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'salaries',
+    component: SearchSalariesComponent,
     canActivate: [AuthGuard]
   },
   {

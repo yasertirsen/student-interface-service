@@ -72,6 +72,7 @@ import {MatSortModule} from "@angular/material/sort";
 import {UpdateStatusDialogComponent} from './applications-chart/update-status-dialog/update-status-dialog.component';
 import {GoogleChartsModule} from 'angular-google-charts';
 import {ApplicationsChartComponent} from './applications-chart/applications-chart.component';
+import {SearchSalariesComponent} from './search-salaries/search-salaries.component';
 
 @NgModule({
   declarations: [
@@ -110,7 +111,8 @@ import {ApplicationsChartComponent} from './applications-chart/applications-char
     VerifyChangePasswordComponent,
     HiredStudentsDialogComponent,
     UpdateStatusDialogComponent,
-    ApplicationsChartComponent
+    ApplicationsChartComponent,
+    SearchSalariesComponent
   ],
   imports: [
     BrowserModule,

@@ -20,6 +20,10 @@ export class PositionService {
     return this.http.get<Array<PositionModel>>('http://localhost:8083/searchPositions/'+ location + '/' + keywords)
   }
 
+  searchSalaries(keywords: string, location: string): Observable<any> {
+    return this.http.get('http://localhost:8083/searchSalary/' + keywords + '/' + location);
+  }
+
   getCompanyPositions(companyId: number): Observable<any> {
     return this.http.get<Array<PositionModel>>('http://localhost:8083/getCompanyPositions/'+ companyId)
   }

@@ -1,6 +1,6 @@
 .picsum-img-wrapper {
   width: 100vw;
-  height: 92vh;
+  height: auto;
   display:table-cell;
   vertical-align:middle;
   text-align:center;

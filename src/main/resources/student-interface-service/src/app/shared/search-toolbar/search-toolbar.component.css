@@ -4,16 +4,21 @@
   justify-content: center;
 }
 
+input[type="text"]
+{
+  color: #222222;
+}
+
 .mat-toolbar-row {
   justify-content: center;
 }
 
 .search-bar {
-  margin: 10px 10px 10px 10px;
+  margin: 10px;
 }
 
 mat-form-field.mat-form-field {
-  margin: 10px 10px 10px 10px;
+  margin: 10px;
   padding-top: 20px;
   font-size: 14px;
   width: 25%;

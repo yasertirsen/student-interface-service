@@ -1,0 +1,66 @@
+mat-card {
+  text-align: center;
+  background-color: rgba(66, 66, 66, 0.85);
+}
+
+input[type="text"]
+{
+  color: #222222;
+}
+
+.centered {
+  position: absolute;
+  width: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.spacer {
+  width: 37.5%;
+  margin-left: 5px;
+}
+
+.search-btn {
+  width: 25%;
+  margin-left: 5px;
+}
+
+.search {
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+.full-width {
+  width: 75%;
+}
+
+.picsum-img-wrapper {
+  width: 100vw;
+  height: auto;
+  font-size: 0;
+  display:table-cell;
+  vertical-align:middle;
+  text-align:center;
+}
+
+.picsum-img-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to top, #424242, #ffffff);
+  opacity: 0.50;
+}
+
+img {
+  display: block;
+  font-size: 0;
+  position: relative;
+  max-width:100%;
+  height:auto;
+  max-height:100%;
+}

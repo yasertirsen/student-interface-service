@@ -94,6 +94,9 @@ public interface ProgradClient {
     @PutMapping("/positions/application/update")
     Application updateApplication(@RequestHeader(AUTH_TOKEN) String secretToken, @RequestBody Application application);
 
+    @GetMapping("/positions/searchByTitle/{keywords}")
+    List<Position> searchByJobsByTitle(@RequestHeader(AUTH_TOKEN) String secretToken, @PathVariable String keywords);
+
     //Companies endpoint
 
     @GetMapping("/companies/findByName")

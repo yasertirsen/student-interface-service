@@ -32,4 +32,6 @@ public interface PositionService {
     ApplicationWrapper applicationsStats(String email);
 
     Application updateApplication(Application application);
+
+    double searchSalaries(String keywords, String location);
 }

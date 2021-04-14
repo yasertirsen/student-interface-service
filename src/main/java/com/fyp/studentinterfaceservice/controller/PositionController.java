@@ -71,8 +71,13 @@ public class PositionController extends StudentExceptionHandler {
         return positionService.applicationsStats(email);
     }
 
-    @PutMapping("application/update")
+    @PutMapping("/application/update")
     public Application updateApplication(@RequestBody Application application) {
         return positionService.updateApplication(application);
+    }
+
+    @GetMapping("/searchSalary/{keywords}/{location}")
+    public double searchSalary(@PathVariable String keywords, @PathVariable String location) {
+        return positionService.searchSalaries(keywords, location);
     }
 }

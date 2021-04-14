@@ -29,3 +29,15 @@
 .full-width {
   width: 100%;
 }
+
+.no-response {
+  background-color: #ffc260 !important;
+}
+
+.response {
+  background-color: #536DFE !important;
+}
+
+.success {
+  background-color: #3CD4A0 !important;
+}

@@ -1,8 +1,6 @@
 package com.fyp.studentinterfaceservice.filter;
 
 import com.fyp.studentinterfaceservice.jwt.JWTTokenProvider;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -16,14 +14,12 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 import java.util.List;
 
 import static com.fyp.studentinterfaceservice.constant.SecurityConstants.OPTIONS_HTTP_METHOD;
 import static com.fyp.studentinterfaceservice.constant.SecurityConstants.TOKEN_PREFIX;
 
-@Data
 @Component
 public class JwtAuthorizationFilter extends OncePerRequestFilter {
 

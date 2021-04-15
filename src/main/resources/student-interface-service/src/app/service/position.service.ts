@@ -28,13 +28,13 @@ export class PositionService {
     return this.http.get<Array<PositionModel>>('http://localhost:8083/getCompanyPositions/'+ companyId)
   }
 
-  getAllJobs(): Observable<Array<PositionModel>> {{
+  getAllJobs(): Observable<Array<PositionModel>> {
     return this.http.get<Array<PositionModel>>('http://localhost:8083/getAllPositions/')
-  }}
+  }
 
-  getRecommendedJobs(email: string): Observable<any> {{
+  getRecommendedJobs(email: string): Observable<any> {
     return this.http.get('http://localhost:8083/positions/recommend',
-      {params: {email: email}});}
+      {params: {email: email}});
   }
 
   getJob(id: number): Observable<PositionModel> {
@@ -42,30 +42,12 @@ export class PositionService {
   }
 
   apply(application: ApplicationModel): Observable<any> {
-    return this.http.post('http://localhost:8083/apply',
-      {
-        "fullName": application.fullName,
-        "email": application.email,
-        "resume": application.resume,
-        "positionId": application.positionId,
-    }, {responseType: 'blob'});
+    return this.http.post('http://localhost:8083/apply', application,
+      {responseType: 'blob'});
   }
 
   updateJob(position: PositionModel): Observable<any>{
-    return this.http.put('http://localhost:8083/positions/update',
-      {
-        "positionId": position.positionId,
-        "title": position.title,
-        "description": position.description,
-        "location": position.location,
-        "date": position.date,
-        "salary": position.salary,
-        "clicks": position.clicks,
-        "priority": position.priority,
-        "archive": position.archive,
-        "company": position.company,
-        "requirements": position.requirements
-      });
+    return this.http.put('http://localhost:8083/positions/update', position);
   }
 
   getUserApplicationsStats(email: string): Observable<any> {

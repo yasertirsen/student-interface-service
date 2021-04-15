@@ -104,8 +104,16 @@ export class CvBuilderComponent implements OnInit {
       this.summary = this.user.profile.bio;
       this.userService.getSkillsNames(this.user.profile).subscribe(skills => {
         this.allSkills = skills
-        if(this.allSkills.length > 0)
-          this.skills.push(this.allSkills[0])
+        this.positionService.getJob(this.activatedRoute.snapshot.params.positionId).subscribe(data => {
+            this.position = data;
+            for(let skill of this.position.requirements) {
+              if(this.allSkills.includes(skill.skillName))
+                this.skills.push(skill.skillName);
+            }
+          },
+          error => {
+            console.log(error);
+          });
         this.loading = false;
       });
   }
@@ -118,12 +126,6 @@ export class CvBuilderComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.nullValidator]
     });
-    this.positionService.getJob(this.activatedRoute.snapshot.params.positionId).subscribe(data => {
-      this.position = data;
-    },
-      error => {
-        console.log(error);
-      });
   }
 
   addProject(event: MatChipInputEvent): void {

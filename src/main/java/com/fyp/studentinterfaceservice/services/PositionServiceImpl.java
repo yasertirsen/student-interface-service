@@ -17,8 +17,10 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import java.util.zip.DataFormatException;
 import java.util.zip.Inflater;
 
@@ -161,15 +163,25 @@ public class PositionServiceImpl implements PositionService {
             for(Position position : client.getAllPositions(secretToken)) {
                 position.getRequirements().forEach(req -> {
                     if(skills.contains(req.getSkillName())) {
-                        if(!positions.contains(position))
-                            positions.add(position);
+                        positions.add(position);
                     }
                 });
-                if(positions.size() > 10)
-                    break;
             }
         }
-        return positions;
+
+        List<Position> top15Positions = positions.stream()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet().stream()
+                .sorted(Map.Entry.comparingByValue())
+                .limit(15)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+
+        for (int i = 0, j = top15Positions.size() - 1; i < j; i++) {
+            top15Positions.add(i, top15Positions.remove(j));
+        }
+
+        return top15Positions;
     }
 
     @Override

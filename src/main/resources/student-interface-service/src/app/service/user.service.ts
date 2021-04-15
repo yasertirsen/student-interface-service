@@ -25,8 +25,9 @@ export class UserService {
             "password": details.password})
       .pipe(map(user => {
               if(user && user.token) {
-                localStorage.setItem('currentUser', JSON.stringify(user));
                 localStorage.setItem('token', user.token);
+                user.token = null;
+                localStorage.setItem('currentUser', JSON.stringify(user));
                 localStorage.setItem('email', user.email);
                 localStorage.setItem('expiresIn', user.expiresIn);
               }
@@ -74,59 +75,15 @@ export class UserService {
 
 
   updateUser(user: UserModel): Observable<any>{
-    return this.http.put('http://localhost:8083/update',
-      {
-        "studentId": user.studentId,
-        "firstName": user.firstName,
-        "surname": user.surname,
-        "password": user.password,
-        "email": user.email,
-        "username": user.username,
-        "phone": user.phone,
-        "socialUrl": user.socialUrl,
-        "created": user.created,
-        "enabled": user.enabled,
-        "role": user.role,
-        "authorities": user.authorities,
-        "isLocked": user.isLocked,
-        "profile": user.profile,
-      });
+    return this.http.put('http://localhost:8083/update', user);
   }
 
   getSkillsNames(profile: ProfileModel): Observable<any>{
-    return this.http.post('http://localhost:8083/getSkillsNames',
-      {
-        "profileId": profile.profileId,
-        "course": profile.course,
-        "bio": profile.bio,
-        "externalSkills": profile.externalSkills,
-        "projects": profile.projects,
-        "experiences": profile.experiences,
-        "averageGrade": profile.averageGrade,
-        "startCourse": profile.startCourse,
-        "endCourse": profile.endCourse,
-        "age": profile.age,
-        "race": profile.race,
-        "gender": profile.gender
-      });
+    return this.http.post('http://localhost:8083/getSkillsNames', profile);
   }
 
   updateProfile(profile: ProfileModel): Observable<any>{
-    return this.http.put('http://localhost:8083/updateProfile',
-      {
-        "profileId": profile.profileId,
-        "course": profile.course,
-        "bio": profile.bio,
-        "externalSkills": profile.externalSkills,
-        "projects": profile.projects,
-        "experiences": profile.experiences,
-        "averageGrade": profile.averageGrade,
-        "startCourse": profile.startCourse,
-        "endCourse": profile.endCourse,
-        "age": profile.age,
-        "race": profile.race,
-        "gender": profile.gender
-      });
+    return this.http.put('http://localhost:8083/updateProfile', profile);
   }
 
   uploadImage(imageData: FormData, userId: number): Observable<any> {

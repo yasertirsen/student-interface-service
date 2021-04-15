@@ -32,8 +32,8 @@ public class PositionServiceImpl implements PositionService {
     private final UserServiceImpl userService;
     @Value("${careerjet.api.key}")
     private String apiKey;
-    @Value("${frontend.port}")
-    private String frontendPort;
+    @Value("${company.frontend.port}")
+    private String companyFrontendPort;
     @Value("${token.secret}")
     private String secretToken;
 
@@ -128,13 +128,11 @@ public class PositionServiceImpl implements PositionService {
     public ResponseEntity<String> apply(Application application) throws ProgradException {
         Position position = client.findPositionById(secretToken, application.getPositionId());
         mailService.sendMail(new NotificationEmail("New Response - " + position.getTitle(),
-                position.getCompany().getEmail(),  "Hi, \n" +
-                "A new application has been submitted to your job post on Prograd. Please check the applications below.\n" +
-                frontendPort + "applications/" + position.getPositionId()));
+                position.getCompany().getEmail(), "A new application has been submitted to your job post on Prograd. Please check the applications below.",
+                companyFrontendPort + "applications/" + position.getPositionId()));
         mailService.sendMail(new NotificationEmail("Application Successful - " + position.getTitle(),
                 application.getEmail(),
-                "Hi, \n" +
-                "Your application for " + position.getTitle() + " has been submitted successfully.\n"));
+                "Your application for " + position.getTitle() + " has been submitted successfully.", ""));
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         application.setDate(dtf.format(LocalDateTime.now()));
         application.setStatus(NO_RESPONSE);

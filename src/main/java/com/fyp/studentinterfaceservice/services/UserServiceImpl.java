@@ -43,6 +43,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     private final MailService mailService;
     @Value("${token.secret}")
     private String secretToken;
+    @Value("${frontend.port}")
+    private String frontendPort;
 
     @Autowired
     public UserServiceImpl(BCryptPasswordEncoder passwordEncoder, ProgradClient progradClient, MailService mailService) {
@@ -68,9 +70,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         User registeredUser = progradClient.add(user);
 
         mailService.sendMail(new NotificationEmail("Account Activation - Prograd",
-                user.getEmail(), "Thank you for signing up to Prograd, " +
-                "please click the link below to activate your account " +
-                "http://localhost:8083/verification/" + verificationToken));
+                user.getEmail(), "Thank you for signing up to Prograd, please click the link below to activate your account",
+                frontendPort + "login?token=" + verificationToken));
 
         return registeredUser;
     }
@@ -174,8 +175,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         User user = findUserByEmail(email);
         String token = UUID.randomUUID().toString();
         mailService.sendMail(new NotificationEmail("Change Password - Prograd",
-                user.getEmail(), "We received a change password request, " +
-                "please click the link below to change your password " +
+                user.getEmail(), "We received a change password request, please click the link below to change your password.",
                 "http://localhost:4202/new-password/" + token));
         user.setToken(token);
         updateUser(user);

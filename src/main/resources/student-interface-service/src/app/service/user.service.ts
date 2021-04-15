@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {UserModel} from "../model/user.model";
@@ -48,6 +48,10 @@ export class UserService {
     this.tokenExpirationTimer = setTimeout(() => {
       this.logout();
     }, expirationDuration);
+  }
+
+  verify(token: string): Observable<any> {
+    return this.http.get('http://localhost:8083/verification/' + token);
   }
 
   getUserById(userId: number): Observable<any> {

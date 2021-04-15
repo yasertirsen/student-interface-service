@@ -26,11 +26,19 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.queryParams
       .subscribe(params => {
-        if (params.registered !== undefined && params.registered === 'true') {
+        if(params.registered !== undefined && params.registered === 'true') {
           this._snackBar.open('Please check your email inbox to '
             + 'activate your account before you login!', 'Close', {
             duration: 5000
           });
+        }
+        if(!!params.token) {
+          this.userService.verify(params.token).subscribe(data => {
+              this._snackBar.open(data, 'Close', {duration: 3000});
+          },
+            error => {
+              this._snackBar.open('Error while verifying account', 'Close', {duration: 3000});
+            });
         }
         this.returnUrl = params.returnUrl? params.returnUrl: '/home'
       });

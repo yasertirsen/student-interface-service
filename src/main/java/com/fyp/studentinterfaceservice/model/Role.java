@@ -2,16 +2,14 @@ package com.fyp.studentinterfaceservice.model;
 
 import lombok.Getter;
 
-import static com.fyp.studentinterfaceservice.constant.Authority.*;
+import static com.fyp.studentinterfaceservice.constant.Authority.ADMIN_AUTHORITIES;
+import static com.fyp.studentinterfaceservice.constant.Authority.USER_AUTHORITIES;
 
 @Getter
 public enum Role {
 
     ROLE_USER(USER_AUTHORITIES),
-    ROLE_DEVELOPER(DEVELOPER_AUTHORITIES),
-    ROLE_MANAGER(MANAGER_AUTHORITIES),
-    ROLE_ADMIN(ADMIN_AUTHORITIES),
-    ROLE_SUPER_ADMIN(SUPER_ADMIN_AUTHORITIES);
+    ROLE_ADMIN(ADMIN_AUTHORITIES);
 
     private final String[] authorities;
 

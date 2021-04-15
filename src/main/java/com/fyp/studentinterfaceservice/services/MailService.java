@@ -26,7 +26,7 @@ public class MailService {
             messageHelper.setFrom("noreply@prograd.com");
             messageHelper.setTo(notificationEmail.getRecipient());
             messageHelper.setSubject(notificationEmail.getSubject());
-            messageHelper.setText(notificationEmail.getBody());
+            messageHelper.setText(mailContentBuilder.build(notificationEmail), true);
         };
         try {
             mailSender.send(messagePreparator);

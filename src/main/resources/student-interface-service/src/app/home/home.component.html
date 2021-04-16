@@ -138,7 +138,8 @@
               <mat-card-subtitle>Recommended Jobs</mat-card-subtitle>
               <app-job-tile [positions]="recommendedPositions"></app-job-tile>
               </div>
-              <mat-card-subtitle style="text-align: center" *ngIf="recommendedPositions.length === 0">
+              <mat-card-subtitle style="text-align: center" *ngIf="recommendedPositions.length === 0
+              && user.profile.externalSkills.length === 0">
                 Please add skills to be recommended jobs
               </mat-card-subtitle>
             </div>

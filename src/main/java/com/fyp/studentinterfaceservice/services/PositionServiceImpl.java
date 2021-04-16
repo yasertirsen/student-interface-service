@@ -155,9 +155,7 @@ public class PositionServiceImpl implements PositionService {
     public List<Position> getJobRecommendations(String email) throws UserNotFoundException {
         List<String> skills = new ArrayList<>();
         Objects.requireNonNull(client.findByEmail(secretToken, email).getBody()).getProfile().getExternalSkills()
-                .forEach(skill -> {
-                    skills.add(skill.getSkillName());
-                });
+                .forEach(skill -> skills.add(skill.getSkillName()));
         List<Position> positions = new ArrayList<>();
         if(skills.size() > 0) {
             for(Position position : client.getAllPositions(secretToken)) {
@@ -177,9 +175,7 @@ public class PositionServiceImpl implements PositionService {
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
 
-        for (int i = 0, j = top15Positions.size() - 1; i < j; i++) {
-            top15Positions.add(i, top15Positions.remove(j));
-        }
+        Collections.reverse(top15Positions);
 
         return top15Positions;
     }

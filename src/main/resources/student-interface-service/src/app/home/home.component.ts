@@ -66,6 +66,7 @@ export class HomeComponent implements OnInit {
         this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
       }
       this.recommendedPositions = results[1];
+      console.log(results[1]);
       this.loading = false
     }, error1 => {
       this.loading = false;

@@ -7,10 +7,10 @@
   <div class="row">
     <div class="offset-2"></div>
     <div class="col-md-12">
-      <mat-vertical-stepper [linear]="isLinear" #stepper>
+      <mat-vertical-stepper [linear]="isLinear">
         <mat-step [stepControl]="firstFormGroup">
           <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>Fill out your name</ng-template>
+            <ng-template matStepLabel>Name</ng-template>
             <table class="full-width">
               <td><mat-form-field class="full-width" appearance="outline">
                 <mat-label>First Name</mat-label>
@@ -30,7 +30,7 @@
         </mat-step>
         <mat-step [stepControl]="phoneFormGroup">
           <form [formGroup]="phoneFormGroup">
-            <ng-template matStepLabel>Fill out your phone</ng-template>
+            <ng-template matStepLabel>Phone</ng-template>
             <mat-form-field appearance="outline">
               <mat-label>Phone</mat-label>
               <input type="tel" matInput formControlName="phoneCtrl" placeholder="0812345678" pattern="[0-9]{10}" required
@@ -44,7 +44,7 @@
         </mat-step>
         <mat-step [stepControl]="secondFormGroup">
           <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>Choose a profile picture</ng-template>
+            <ng-template matStepLabel>Profile Picture</ng-template>
               <mat-label>Choose a profile picture (510x510)</mat-label>
             <br>
               <input type="file" (change)="onFileChanged($event)">
@@ -56,8 +56,8 @@
         </mat-step>
         <mat-step [stepControl]="secondFormGroup">
           <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>Fill out your bio</ng-template>
-            <p>This will be your summary/objective in the CVs you create. Don't worry, you can always change it</p>
+            <ng-template matStepLabel>Bio</ng-template>
+            <p>This will be your summary/objective in the CVs you create. Don't worry, you can always change it.</p>
             <mat-form-field appearance="outline">
               <mat-label>Summary</mat-label>
               <textarea matInput formControlName="secondCtrl" placeholder="Bio" required
@@ -69,11 +69,25 @@
             </div>
           </form>
         </mat-step>
-
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>LinkedIn profile</ng-template>
+            <p>You can provide your LinkedIn profile here, it will be viewable in your CV.</p>
+            <mat-form-field appearance="outline">
+              <mat-label>LinkedIn</mat-label>
+              <input matInput formControlName="secondCtrl" placeholder="LinkedIn Profile" required
+                        [(ngModel)]="user.socialUrl">
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
         <mat-step [stepControl]="secondFormGroup">
           <form [formGroup]="secondFormGroup">
             <ng-template matStepLabel>Personal Information</ng-template>
-            <p>This information is optional. It will be sent to the employer if it is entered</p>
+            <h3 style="color: #ff5050">*This information is optional. It will be shown to the employer when you apply for jobs.</h3>
               <p>
                 <mat-form-field appearance="outline" class="full-width">
                   <mat-label>Gender</mat-label>

@@ -7,7 +7,6 @@ import {map} from "rxjs/operators";
 import {MatChipInputEvent} from "@angular/material/chips";
 import {SkillModel} from "../../model/skill.model";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {UserService} from "../../service/user.service";
 
 @Component({
   selector: 'app-add-skills-dialog',
@@ -28,8 +27,7 @@ export class AddSkillsDialogComponent implements OnInit {
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
   constructor(public addSkillsDialog: MatDialogRef<AddSkillsDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public userSkills: SkillModel[],
-              private userService: UserService) {
+              @Inject(MAT_DIALOG_DATA) public userSkills: SkillModel[]) {
     this.filteredSkills = this.skillsCtrl.valueChanges.pipe(
       map((skill: string | null) => skill ? this._filter(skill) : this.allSkills.slice()));
     this.skills = userSkills;

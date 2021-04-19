@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {UserModel} from "../model/user.model";
 import {MatDialog} from "@angular/material/dialog";
-import {AddLinkedinDialogComponent} from "./add-linkedin-dialog/add-linkedin-dialog.component";
 import {UserService} from "../service/user.service";
 import {ActivatedRoute} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {PositionModel} from "../model/position.model";
 import {PositionService} from "../service/position.service";
 import {forkJoin} from "rxjs";
+import {AddSkillsDialogComponent} from "../profile/add-skills-dialog/add-skills-dialog.component";
 
 @Component({
   selector: 'app-home',
@@ -33,25 +33,30 @@ export class HomeComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef =
-      this.dialog.open(AddLinkedinDialogComponent, {
+      this.dialog.open(AddSkillsDialogComponent, {
         width: '500px',
-        data: {socialUrl: this.socialUrl}
+        data: this.user.profile.externalSkills
       });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result !== undefined) {
-        this.socialUrl = result;
-        this.user.socialUrl = this.socialUrl;
+      if(!!result) {
+        this.user.profile.externalSkills = result;
         this.updateUser();
+      }
+      else {
+        this._snackBar.open('No skills were added', 'Close', {
+          duration: 3000,
+        });
       }
     });
   }
 
   updateUser(): void {
-    this.userService.updateUser(this.user).subscribe(user => {
-      localStorage.setItem('currentUser', JSON.stringify(user));
-      this._snackBar.open('LinkedIn profile added successfully', 'Close', {
-        duration: 5000,
+    this.userService.updateProfile(this.user.profile).subscribe(data => {
+      this.user.profile = data;
+      localStorage.setItem('currentUser', JSON.stringify(this.user));
+      this._snackBar.open('Updated successfully', 'Close', {
+        duration: 3000,
       });
     });
   }

@@ -119,8 +119,8 @@
                     <a routerLink="/courses"><button mat-raised-button color="primary">Get Started</button></a>
                   </div>
                 </div>
-                <div class="step" *ngIf="!user.socialUrl">
-                  <h3 style="display: inline-block">Add LinkedIn</h3>
+                <div class="step" *ngIf="user.profile.externalSkills.length === 0">
+                  <h3 style="display: inline-block">Add Skills</h3>
                   <div class="step-btn">
                     <button mat-raised-button color="primary" (click)="openDialog()">Get Started</button>
                   </div>

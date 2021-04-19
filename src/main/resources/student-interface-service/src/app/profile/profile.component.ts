@@ -82,7 +82,7 @@ export class ProfileComponent implements OnInit {
         data: this.user.profile.externalSkills
       });
     skillsDialog.afterClosed().subscribe(result => {
-      if(result !== undefined) {
+      if(!!result) {
         this.user.profile.externalSkills = result;
         this.updateUser();
       }
@@ -104,7 +104,6 @@ export class ProfileComponent implements OnInit {
   updateUser(): void {
     this.userService.updateProfile(this.user.profile).subscribe(data => {
       this.user.profile = data;
-      console.log(data);
       localStorage.setItem('currentUser', JSON.stringify(this.user));
       this._snackBar.open('Updated successfully', 'Close', {
         duration: 3000,

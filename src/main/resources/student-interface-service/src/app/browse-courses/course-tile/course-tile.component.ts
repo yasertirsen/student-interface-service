@@ -64,9 +64,8 @@ export class CourseTileComponent implements OnInit, OnDestroy {
       });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      if(result.start === null || result.end === null) {
-        this._snackBar.open('Please enter starting graduating dates', 'Close', {
+      if(!result.start || !result.end || !result.averageGrade) {
+        this._snackBar.open('Please enter starting graduating dates and average grade', 'Close', {
           duration: 5000,
         });
       }
@@ -79,8 +78,9 @@ export class CourseTileComponent implements OnInit, OnDestroy {
         this.user.profile.course = course;
         this.user.profile.startCourse = result.start;
         this.user.profile.endCourse = result.end;
+        this.user.profile.averageGrade = result.averageGrade;
         this.updateUser();
-        this.redirectTo('/home');
+        this.router.navigateByUrl('/home');
         this._snackBar.open('Course assigned successfully', 'Close', {
           duration: 5000,
         });
@@ -93,11 +93,6 @@ export class CourseTileComponent implements OnInit, OnDestroy {
       this.user.profile = data;
       localStorage.setItem('currentUser', JSON.stringify(this.user));
     });
-  }
-
-  redirectTo(uri:string){
-    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-      this.router.navigate([uri]));
   }
 
   applyFilter(event: Event) {

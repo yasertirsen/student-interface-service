@@ -4,4 +4,5 @@ export interface CourseDialogData {
   course: CourseModel;
   start: string;
   end: string;
+  averageGrade: number;
 }

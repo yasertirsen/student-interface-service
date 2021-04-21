@@ -32,9 +32,8 @@ public class ResumeServiceImpl implements ResumeService {
     @Override
     public Resume generateDCv(User user, String companyName, String jobTitle) {
             byte[] data = PDFGenerator.generateDynamicCv(user);
-            Resume resume = new Resume(companyName + "_" + jobTitle + "_CV",
-                    userService.compressBytes(data), user.getStudentId());
-            return client.saveResume(secretToken, resume);
+        return new Resume(companyName + "_" + jobTitle + "_CV",
+                userService.compressBytes(data), user.getStudentId());
     }
 
     @Override
@@ -54,9 +53,8 @@ public class ResumeServiceImpl implements ResumeService {
 
     @Override
     public Resume uploadCv(MultipartFile file, Long userId) throws IOException {
-        Resume resume = new Resume(file.getOriginalFilename(), userService.compressBytes(file.getBytes()),
+        return new Resume(file.getOriginalFilename(), userService.compressBytes(file.getBytes()),
                 userId);
-        return client.saveResume(secretToken, resume);
     }
 
     @Override

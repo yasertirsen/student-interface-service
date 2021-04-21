@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {UserModel} from "../model/user.model";
@@ -28,10 +28,7 @@ export class ResumeService {
 
   uploadCv(cvData: FormData, userId: number): Observable<any> {
     return this.http.post('http://localhost:8083/upload/cv/' + userId,
-      cvData,
-      {
-        responseType: 'blob'
-      });
+      cvData);
   }
 
   updateCv(cv: ResumeModel): Observable<any> {

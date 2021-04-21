@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CompanyModel} from "../model/company.model";
 import {CompanyService} from "../service/company.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -55,7 +55,9 @@ export class ReviewComponent implements OnInit {
       console.log(error);
     });
 
-    this.router.navigateByUrl('/companies');
+    this.router.navigateByUrl('/company/'+ this.companyName).then(() => {
+      window.location.reload();
+    });
   }
 
   selectedType(event: MatSelectChange) {

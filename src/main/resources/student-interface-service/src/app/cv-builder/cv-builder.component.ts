@@ -293,9 +293,11 @@ export class CvBuilderComponent implements OnInit {
         this.user.profile.experiences.splice(index, 1);
       }
     }
-    this.user.profile.course.modules = [];
-    for(let module of this.modules) {
-      this.user.profile.course.modules.push({moduleId: 0,name: module, skill: null});
+    if(!!this.user.profile.course) {
+      this.user.profile.course.modules = [];
+      for(let module of this.modules) {
+        this.user.profile.course.modules.push({moduleId: 0,name: module, skill: null});
+      }
     }
     this.loading = false;
     const applyDialog =

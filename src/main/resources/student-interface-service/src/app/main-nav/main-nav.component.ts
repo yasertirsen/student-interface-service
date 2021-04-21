@@ -31,6 +31,9 @@ export class MainNavComponent {
     });
   }
 
+  isAuth(): boolean {
+    return this.userService.isAuthenticated();
+  }
 
   onLogout(drawer: MatSidenav) {
     drawer.toggle()
@@ -38,5 +41,11 @@ export class MainNavComponent {
     this._snackBar.open('Logout successful', 'Close', {
       duration: 3000
     });
+  }
+
+  getLink() {
+    if(this.isAuth())
+      return '/home';
+    return '/'
   }
 }

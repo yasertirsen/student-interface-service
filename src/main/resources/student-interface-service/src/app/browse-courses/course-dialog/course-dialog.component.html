@@ -34,6 +34,11 @@
       <input matInput [(ngModel)]="endYear" required>
     </mat-form-field></td>
   </table>
+
+  <mat-form-field class="full-width" appearance="outline">
+    <mat-label>Average Grade</mat-label>
+    <input matInput type="number" [(ngModel)]="averageGrade" required>
+  </mat-form-field>
   <p>You can assign this course to yourself by clicking <strong>Assign</strong></p>
 </mat-dialog-content>
 <mat-dialog-actions>

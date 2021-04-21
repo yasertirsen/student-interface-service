@@ -1,9 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {LinkedinDialogData} from "../../model/linkedin-dialog-data";
 import {CourseDialogData} from "../../model/course-dialog-data";
-import {FormControl, FormGroup} from "@angular/forms";
-import {CourseModel} from "../../model/course.model";
 import {Month} from "../../model/month.model";
 
 @Component({
@@ -16,6 +13,7 @@ export class CourseDialogComponent implements OnInit {
   beginYear: string;
   endMonth: string;
   endYear: string;
+  averageGrade: number;
   months: Month[] = [
     {value: 'Jan', viewValue: 'January'},
     {value: 'Feb', viewValue: 'February'},
@@ -40,9 +38,10 @@ export class CourseDialogComponent implements OnInit {
   }
 
   onAssign(): void {
-    if(this.beginYear !== undefined && this.endYear !== undefined) {
+    if(!!this.beginYear && !!this.endYear) {
       this.data.start = this.beginMonth + ' ' + this.beginYear;
       this.data.end = this.endMonth + ' ' + this.endYear;
+      this.data.averageGrade = this.averageGrade;
     }
     this.dialogRef.close(this.data);
   }

@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CourseModel} from "../model/course.model";
-import {ModuleModel} from "../model/module.model";
-import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {FormControl} from "@angular/forms";
 import {MatDialog} from "@angular/material/dialog";
-import {AddProjectDialogComponent} from "../profile/add-project-dialog/add-project-dialog.component";
 import {AddModuleDialogComponent} from "./add-module-dialog/add-module-dialog.component";
 import {UserService} from "../service/user.service";
 import {UserModel} from "../model/user.model";
@@ -12,6 +10,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {CourseService} from "../service/course.service";
 import {Observable} from "rxjs";
 import {map, startWith} from "rxjs/operators";
+import {CourseDialogComponent} from "../browse-courses/course-dialog/course-dialog.component";
 
 @Component({
   selector: 'app-add-course',
@@ -57,10 +56,42 @@ export class AddCourseComponent implements OnInit {
   }
 
   onAddCourse() {
-    this.courseService.addCourse(this.course).subscribe(data => {
-      this.user.profile.course = data
-        this.updateUser();
-        this.router.navigateByUrl('/home');
+    this.courseService.addCourse(this.course).subscribe(course => {
+      console.log(course);
+        const dialogRef =
+          this.dialog.open(CourseDialogComponent, {
+            width: '500px',
+            data: {
+              course,
+              start: null,
+              end: null,
+              averageGrade: 0
+            }
+          });
+
+        dialogRef.afterClosed().subscribe(result => {
+          if(!result.start || !result.end || !result.averageGrade) {
+            this._snackBar.open('Please enter starting graduating dates and average grade', 'Close', {
+              duration: 5000,
+            });
+          }
+          else {
+            this.user.profile.externalSkills = [];
+            for(let module of course.modules) {
+              if(!!module.skill && !!module.skill.skillName)
+                this.user.profile.externalSkills.push(module.skill);
+            }
+            this.user.profile.course = course;
+            this.user.profile.startCourse = result.start;
+            this.user.profile.endCourse = result.end;
+            this.user.profile.averageGrade = result.averageGrade;
+            this.updateUser();
+            this.router.navigateByUrl('/home');
+            this._snackBar.open('Course assigned successfully', 'Close', {
+              duration: 5000,
+            });
+          }
+        });
     },
       error => {
       console.log(error);

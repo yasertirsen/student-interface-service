@@ -95,4 +95,8 @@ export class UserService {
     return this.http.get('http://localhost:8083/uniHiredStudents/' + userId,
       {params: {companyName: companyName}});
   }
+
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('currentUser');
+  }
 }

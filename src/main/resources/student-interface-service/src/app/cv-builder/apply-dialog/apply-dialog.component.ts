@@ -3,7 +3,6 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {UserModel} from "../../model/user.model";
 import {ResumeService} from "../../service/resume.service";
 import {ApplicationModel} from "../../model/application.model";
-import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-apply-dialog',
@@ -32,7 +31,8 @@ export class ApplyDialogComponent implements OnInit {
               private resumeService: ResumeService) {
     this.user = data.user;
     this.application.positionId = data.positionId;
-    this.fullName = this.user.firstName + ' ' + this.user.surname;
+    if(!!this.user.firstName && !!this.user.surname)
+      this.fullName = this.user.firstName + ' ' + this.user.surname;
   }
 
   onNoClick(): void {
@@ -40,7 +40,7 @@ export class ApplyDialogComponent implements OnInit {
   }
 
   onApply(): void {
-    if(this.selectedFile !== undefined && this.dynamicCv === 'false') {
+    if(!!this.selectedFile && this.dynamicCv === 'false') {
       const uploadCvData = new FormData();
       uploadCvData.append('cvFile', this.selectedFile, 'dynamicCv');
       this.resumeService.uploadCv(uploadCvData, this.user.studentId).subscribe(response => {

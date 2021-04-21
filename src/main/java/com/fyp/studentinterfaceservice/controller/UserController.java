@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -25,15 +24,13 @@ public class UserController extends StudentExceptionHandler {
 
     private final UserService userService;
     private final JWTTokenProvider jwtTokenProvider;
-    private final BCryptPasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
 
 
     @Autowired
-    public UserController(UserService userService, JWTTokenProvider jwtTokenProvider, BCryptPasswordEncoder passwordEncoder, AuthenticationManager authenticationManager) {
+    public UserController(UserService userService, JWTTokenProvider jwtTokenProvider, AuthenticationManager authenticationManager) {
         this.userService = userService;
         this.jwtTokenProvider = jwtTokenProvider;
-        this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
     }
 

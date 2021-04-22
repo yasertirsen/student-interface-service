@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -219,13 +221,18 @@ public class PositionServiceImpl implements PositionService {
     }
 
     @Override
-    public Map<String, Double> searchSalaries(String keywords, String location) {
+    public Map<String, Double> searchSalaries(String keywords, String location) throws ParseException {
         List<Position> positions = client.searchByJobsByTitle(secretToken, keywords);
         Map<String, Double> result = new HashMap<>();
         double salaries = 0.0;
         int count = 0;
+        Date date = new Date();
+        long milliseconds = (long) 365 * 24 * 60 * 60 * 1000;
+        Date oneYearBefore = new Date(date.getTime() - milliseconds);
         for(Position position : positions) {
-            if(position.getLocation().equalsIgnoreCase(location)) {
+            if(position.getDate() != null)
+                date = new SimpleDateFormat("dd/MM/yyyy").parse(position.getDate());
+            if(position.getLocation().equalsIgnoreCase(location) && date.after(oneYearBefore)) {
                 salaries+= position.getSalary();
                 count++;
             }

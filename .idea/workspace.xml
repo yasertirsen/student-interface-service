@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6087ee9a-e348-4dfe-aee5-2591ba764bf3" name="Default Changelist" comment="General improvements after manual testing">
+    <list default="true" id="6087ee9a-e348-4dfe-aee5-2591ba764bf3" name="Default Changelist" comment="changed some things based on supervisor feedback">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/controller/PositionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/controller/PositionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/PositionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/PositionServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/interfaces/PositionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/interfaces/PositionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/applications-chart/applications-chart.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/applications-chart/applications-chart.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/applications-chart/applications-chart.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/applications-chart/applications-chart.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/search-salaries/search-salaries.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/search-salaries/search-salaries.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/search-salaries/search-salaries.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/student-interface-service/src/app/search-salaries/search-salaries.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,14 +266,7 @@
       <workItem from="1617907169535" duration="2726000" />
       <workItem from="1617924924579" duration="52795000" />
       <workItem from="1618522386828" duration="7395000" />
-      <workItem from="1618663810383" duration="30879000" />
-    </task>
-    <task id="LOCAL-00020" summary="added complete profile stepper">
-      <created>1608243364775</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1608243364775</updated>
+      <workItem from="1618663810383" duration="32367000" />
     </task>
     <task id="LOCAL-00021" summary="addition and modification to view all jobs and a single job on prograd">
       <created>1610314645016</created>
@@ -614,7 +604,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619046872305</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="changed some things based on supervisor feedback">
+      <created>1619103139004</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1619103139004</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -637,7 +634,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/src/main/resources/student-interface-service" />
     </ignored-roots>
-    <MESSAGE value="added token interceptor to add bearer token to outgoing requests." />
     <MESSAGE value="refactoring to remove unnecessary calls to db" />
     <MESSAGE value="changes to add job expiry and hired students" />
     <MESSAGE value="frontend changes and improvements" />
@@ -662,7 +658,8 @@
     <MESSAGE value="minor fix" />
     <MESSAGE value="changed add linked in option to add skills. added linked in option in complete profile page" />
     <MESSAGE value="General improvements after manual testing" />
-    <option name="LAST_COMMIT_MESSAGE" value="General improvements after manual testing" />
+    <MESSAGE value="changed some things based on supervisor feedback" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed some things based on supervisor feedback" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -670,7 +667,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/fyp/studentinterfaceservice/services/PositionServiceImpl.java</url>
-          <line>130</line>
+          <line>132</line>
           <option name="timeStamp" value="96" />
         </line-breakpoint>
       </breakpoints>

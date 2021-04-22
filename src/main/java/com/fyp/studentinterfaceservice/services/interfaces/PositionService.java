@@ -7,6 +7,7 @@ import com.fyp.studentinterfaceservice.model.ApplicationWrapper;
 import com.fyp.studentinterfaceservice.model.Position;
 import org.springframework.http.ResponseEntity;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 
@@ -34,5 +35,5 @@ public interface PositionService {
 
     Application updateApplication(Application application);
 
-    Map<String, Double> searchSalaries(String keywords, String location);
+    Map<String, Double> searchSalaries(String keywords, String location) throws ParseException;
 }

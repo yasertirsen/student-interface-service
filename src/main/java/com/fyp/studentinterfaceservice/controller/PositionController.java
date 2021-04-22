@@ -10,6 +10,7 @@ import com.fyp.studentinterfaceservice.services.interfaces.PositionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 
@@ -78,7 +79,7 @@ public class PositionController extends StudentExceptionHandler {
     }
 
     @GetMapping("/searchSalary/{keywords}/{location}")
-    public Map<String, Double> searchSalary(@PathVariable String keywords, @PathVariable String location) {
+    public Map<String, Double> searchSalary(@PathVariable String keywords, @PathVariable String location) throws ParseException {
         return positionService.searchSalaries(keywords, location);
     }
 }

@@ -34,9 +34,10 @@
 
       <div *ngIf="averageSalary > 0" style="margin-top: 5vh;">
         <hr>
-          <h2>Average Base Salary</h2>
-          <p>{{noOfJobs}} salaries reported, {{date | date}}</p>
-        <strong class="mat-display-1">&euro;{{averageSalary}} per year</strong>
+        <h2>Average Base Salary</h2>
+        <h3><strong class="mat-display-1">&euro;{{averageSalary}} </strong>per year</h3>
+        <p>{{noOfJobs}} salaries reported in the last year</p>
+        <p>Updated {{date | date}}</p>
       </div>
 
       <div *ngIf="averageSalary === 0">

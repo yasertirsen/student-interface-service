@@ -219,8 +219,9 @@ public class PositionServiceImpl implements PositionService {
     }
 
     @Override
-    public double searchSalaries(String keywords, String location) {
+    public Map<String, Double> searchSalaries(String keywords, String location) {
         List<Position> positions = client.searchByJobsByTitle(secretToken, keywords);
+        Map<String, Double> result = new HashMap<>();
         double salaries = 0.0;
         int count = 0;
         for(Position position : positions) {
@@ -229,7 +230,9 @@ public class PositionServiceImpl implements PositionService {
                 count++;
             }
         }
-        return Math.round((salaries/count) * 100.0) / 100.0;
+        result.put("averageSalary", Math.round((salaries/count) * 100.0) / 100.0);
+        result.put("noOfJobs", (double) count);
+        return result;
     }
 
     public static byte[] decompressBytes(byte[] data) {

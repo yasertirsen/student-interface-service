@@ -23,9 +23,9 @@
           <mat-card-subtitle *ngIf="!noData">Here you can track your application responses <br>
             You can use this information to improve your profile by adding more skills, projects and experiences</mat-card-subtitle>
           <mat-card-subtitle *ngIf="noData">No Data</mat-card-subtitle>
-          <google-chart [title]="title"
-                        [type]="type"
+          <google-chart [type]="type"
                         [data]="data"
+                        [columns]="columnNames"
                         [options]="options"
                         [width]="width"
                         [height]="height"

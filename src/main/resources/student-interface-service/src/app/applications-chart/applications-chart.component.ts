@@ -15,12 +15,22 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   styleUrls: ['./applications-chart.component.css']
 })
 export class ApplicationsChartComponent implements OnInit {
-  title = 'Applications';
-  type: ChartType = ChartType.Sankey;
+  type: ChartType = ChartType.PieChart;
   data: any = [];
   width = 1000;
-  height = 600;
-  options = {};
+  height = 500;
+  columnNames = ['Status', 'Percentage'];
+  options = {
+    title: 'Applications Status',
+    is3D:true,
+    slices: {
+      0: { color: 'blue' },
+      1: { color: 'orange' },
+      2: { color: 'purple' },
+      3: { color: 'red' },
+      4: {color: 'green'}
+    }
+  };
   user: UserModel;
   loading = true;
   noData = true;
@@ -57,7 +67,7 @@ export class ApplicationsChartComponent implements OnInit {
         this.datasource.data = data.applications;
         for (let response of Object.keys(data.statusData)) {
           if(data.statusData[response] > 0) {
-            this.data.push(['Applications: ' + data.applications.length, response + ': ' + data.statusData[response], data.statusData[response]]);
+            this.data.push([response, data.statusData[response]]);
           }
         }
       }

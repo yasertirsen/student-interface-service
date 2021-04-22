@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class PositionController extends StudentExceptionHandler {
@@ -77,7 +78,7 @@ public class PositionController extends StudentExceptionHandler {
     }
 
     @GetMapping("/searchSalary/{keywords}/{location}")
-    public double searchSalary(@PathVariable String keywords, @PathVariable String location) {
+    public Map<String, Double> searchSalary(@PathVariable String keywords, @PathVariable String location) {
         return positionService.searchSalaries(keywords, location);
     }
 }

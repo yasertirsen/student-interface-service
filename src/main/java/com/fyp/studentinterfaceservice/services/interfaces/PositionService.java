@@ -8,6 +8,7 @@ import com.fyp.studentinterfaceservice.model.Position;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
+import java.util.Map;
 
 public interface PositionService {
 
@@ -33,5 +34,5 @@ public interface PositionService {
 
     Application updateApplication(Application application);
 
-    double searchSalaries(String keywords, String location);
+    Map<String, Double> searchSalaries(String keywords, String location);
 }

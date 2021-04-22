@@ -20,7 +20,7 @@
                  class="form-control"
                  placeholder="Location"
                  formControlName="location"
-                  [value]="location"/>
+                  ngModel="Dublin"/>
         </div>
         <button
           mat-raised-button
@@ -33,10 +33,14 @@
       </form>
 
       <div *ngIf="averageSalary > 0" style="margin-top: 5vh;">
-        <span class="mat-display-1">The average annual salary for {{keywords}} is &euro;{{averageSalary}} in {{location}}</span>
+        <hr>
+          <h2>Average Base Salary</h2>
+          <p>{{noOfJobs}} salaries reported, {{date | date}}</p>
+        <strong class="mat-display-1">&euro;{{averageSalary}} per year</strong>
       </div>
 
       <div *ngIf="averageSalary === 0">
+        <hr>
         <h2>Could not find salary information about this role</h2>
         <p>Try using less words for job title or changing location</p>
       </div>

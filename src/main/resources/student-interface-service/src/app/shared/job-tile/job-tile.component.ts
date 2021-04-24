@@ -44,9 +44,10 @@ export class JobTileComponent implements OnInit, OnDestroy {
   }
 
   goToLink(position: PositionModel) {
-    position.clicks++;
-    this.positionService.updateJob(position).subscribe(data => {
-    });
+    if(!!position.positionId) {
+      position.clicks++;
+      this.positionService.updateJob(position).subscribe();
+    }
     if(!!position.url) {
       window.open(position.url, "_blank")
     }

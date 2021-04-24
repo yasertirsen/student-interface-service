@@ -44,8 +44,8 @@ public class PositionController extends StudentExceptionHandler {
     }
 
     @GetMapping("/searchJobsApi/{location}/{keywords}")
-    public List<Position> searchJobApi(@PathVariable String location, @PathVariable String keywords) {
-        return positionService.searchJobsApi(location, keywords);
+    public List<Position> searchJobApi(@PathVariable String location, @PathVariable String keywords, @RequestHeader(value = "User-Agent") String userAgent) {
+        return positionService.searchJobsApi(location, keywords, userAgent);
     }
 
     @PostMapping("/apply")

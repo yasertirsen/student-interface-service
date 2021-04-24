@@ -77,24 +77,26 @@ public class PositionServiceImpl implements PositionService {
         return matchedPositions;
     }
 
-    public List<Position> searchJobsApi(String location, String keywords) {
+    @Override
+    public List<Position> searchJobsApi(String location, String keywords, String userAgent) {
         if(location.equalsIgnoreCase("undefined")) {
             location = "";
         }
         Client careerjetClient = new Client("en_GB");
         List<Position> positions = new ArrayList<>();
 
-        Map<String, String> args1 = new HashMap<>();
-        args1.put("keywords", keywords);
-        args1.put("location", location);
+        Map<String, String> args = new HashMap<>();
+        args.put("keywords", keywords);
+        args.put("location", location);
 
-        args1.put("affid", apiKey);
+        args.put("affid", apiKey);
 
-        args1.put("user_ip",    "Placeholder");
-        args1.put("user_agent", "Placeholder");
-        args1.put("url", "http://127.0.0.1/result");
+        args.put("user_ip",    "none");
+        args.put("user_agent", userAgent);
+        args.put("url", "http://127.0.0.1/result");
+        args.put("pagesize", "30");
 
-        JSONObject results = (JSONObject) careerjetClient.search(args1);
+        JSONObject results = (JSONObject) careerjetClient.search(args);
 
         // A list of jobs is returned
         if (results.get("type").equals("JOBS")) {

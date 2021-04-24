@@ -23,13 +23,7 @@ export class ApplicationsChartComponent implements OnInit {
   options = {
     title: 'Applications Status',
     is3D:true,
-    slices: {
-      0: { color: 'blue' },
-      1: { color: 'orange' },
-      2: { color: 'purple' },
-      3: { color: 'red' },
-      4: {color: 'green'}
-    }
+    pieSliceText: 'value'
   };
   user: UserModel;
   loading = true;
@@ -61,7 +55,6 @@ export class ApplicationsChartComponent implements OnInit {
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.positionService.getUserApplicationsStats(this.user.email).subscribe(data => {
-      console.log(data);
       if(!!data.statusData && !!data.applications) {
         this.noData = false;
         this.datasource.data = data.applications;
@@ -76,7 +69,6 @@ export class ApplicationsChartComponent implements OnInit {
   }
 
   onCv(cv: any) {
-    console.log(cv);
     let byteCharacters = atob(cv.data);
     let byteNumbers = new Array(byteCharacters.length);
     for (let i = 0; i < byteCharacters.length; i++) {

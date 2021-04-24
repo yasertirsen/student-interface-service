@@ -94,7 +94,11 @@
             </div>
           </section>
           <ul *ngFor="let project of user.profile.projects">
-            <li><strong>{{ project.title }} - {{ project.date }}</strong></li>
+            <li>
+              <strong>{{ project.title }} - {{ project.date }}</strong>
+              <button class="delete-btn" mat-icon-button (click)="onDeleteProject(project)">
+                <mat-icon>delete</mat-icon></button>
+            </li>
             {{ project.description }}
           </ul>
           <hr>
@@ -108,7 +112,9 @@
             </div>
           </section>
           <ul *ngFor="let experience of user.profile.experiences">
-            <li><strong>{{ experience.role }} - {{experience.company}}</strong></li>
+            <li><strong>{{ experience.role }} - {{experience.company}}</strong>
+              <button class="delete-btn" mat-icon-button (click)="onDeleteExperience(experience)">
+                <mat-icon>delete</mat-icon></button></li>
             {{ experience.description }}
           </ul>
         </mat-card-content>

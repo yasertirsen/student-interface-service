@@ -3,8 +3,8 @@
 <div class="container">
   <div class="priority-jobs" *ngIf="priority.length > 0">
     <h3><strong>Sponsored</strong></h3>
-    <app-job-tile [positions]="priority"></app-job-tile>
+    <app-job-tile [positions]="priority.reverse()"></app-job-tile>
   </div>
   <h3><strong>All opportunities</strong></h3>
-  <app-job-tile [positions]="positions" *ngIf="!loading"></app-job-tile>
+  <app-job-tile [positions]="positions.reverse()" *ngIf="!loading"></app-job-tile>
 </div>

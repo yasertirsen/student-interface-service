@@ -8,7 +8,7 @@ import {JobSearchComponent} from "./job-search/job-search.component";
 import {BrowseCoursesComponent} from "./browse-courses/browse-courses.component";
 import {CompleteProfileComponent} from "./complete-profile/complete-profile.component";
 import {AllJobsComponent} from "./all-jobs/all-jobs.component";
-import {ViewJobComponent} from "./shared/view-job/view-job.component";
+import {ViewJobComponent} from "./view-job/view-job.component";
 import {CvBuilderComponent} from "./cv-builder/cv-builder.component";
 import {AllCompaniesComponent} from "./all-companies/all-companies.component";
 import {CompanyProfileComponent} from "./company-profile/company-profile.component";

@@ -36,7 +36,7 @@ import {CourseDialogComponent} from './browse-courses/course-dialog/course-dialo
 import {MatStepperModule} from "@angular/material/stepper";
 import {CompleteProfileComponent} from './complete-profile/complete-profile.component';
 import {AllJobsComponent} from './all-jobs/all-jobs.component';
-import {ViewJobComponent} from './shared/view-job/view-job.component';
+import {ViewJobComponent} from './view-job/view-job.component';
 import {CvBuilderComponent} from './cv-builder/cv-builder.component';
 import {MatChipsModule} from "@angular/material/chips";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";

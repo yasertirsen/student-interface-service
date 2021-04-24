@@ -8,6 +8,8 @@ import {AddProjectDialogComponent} from "./add-project-dialog/add-project-dialog
 import {AddExperienceDialogComponent} from "./add-experience-dialog/add-experience-dialog.component";
 import {AddSkillsDialogComponent} from "./add-skills-dialog/add-skills-dialog.component";
 import {ResumeService} from "../service/resume.service";
+import {ProjectModel} from "../model/project.model";
+import {ExperienceModel} from "../model/experience.model";
 
 declare var require: any
 const FileSaver = require('file-saver');
@@ -112,5 +114,17 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  onDeleteProject(project: ProjectModel) {
+    let index = this.user.profile.projects.indexOf(project);
+    this.user.profile.projects.splice(index, 1);
+    this.updateUser();
+  }
+
+  onDeleteExperience(experience: ExperienceModel) {
+    let index = this.user.profile.experiences.indexOf(experience);
+    this.user.profile.experiences.splice(index, 1);
+    this.updateUser();
   }
 }

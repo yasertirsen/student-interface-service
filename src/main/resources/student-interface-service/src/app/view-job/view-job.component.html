@@ -9,7 +9,8 @@
         <mat-card-subtitle>{{position.date}}</mat-card-subtitle>
         <mat-card-subtitle>{{ position.location}} </mat-card-subtitle>
         <mat-card-subtitle>{{position.company.name}}</mat-card-subtitle>
-        <mat-card-content><p>{{ position.description}}</p>
+        <mat-card-content [innerHTML]="position.description"></mat-card-content>
+        <mat-card-content>
           <p><strong>Requirements:</strong></p>
           <ul>
             <li *ngFor="let skill of position.requirements">{{skill.skillName}}</li>

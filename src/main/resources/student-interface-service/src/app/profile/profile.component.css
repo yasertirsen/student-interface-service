@@ -59,4 +59,7 @@ hr {
   background-color: #424242;
 }
 
+.delete-btn {
+  display: inline-block;
+}
 

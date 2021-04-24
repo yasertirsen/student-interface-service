@@ -7,7 +7,7 @@
 
 <div class="container">
   <h3 *ngIf="positions.length !== 0"><strong>Opportunities on Prograd</strong></h3>
-  <app-job-tile [positions]="positions"></app-job-tile>
+  <app-job-tile [positions]="positions.reverse()"></app-job-tile>
   <h3 *ngIf="jobsApi.length !== 0"><strong>Other opportunities</strong></h3>
-  <app-job-tile [positions]="jobsApi"></app-job-tile>
+  <app-job-tile [positions]="jobsApi.reverse()"></app-job-tile>
 </div>

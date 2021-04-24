@@ -30,7 +30,9 @@ export class AddSkillsDialogComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) public userSkills: SkillModel[]) {
     this.filteredSkills = this.skillsCtrl.valueChanges.pipe(
       map((skill: string | null) => skill ? this._filter(skill) : this.allSkills.slice()));
-    this.skills = userSkills;
+    for(let skill of userSkills) {
+      this.skills.push(skill);
+    }
   }
 
   onNoClick(): void {
@@ -38,12 +40,7 @@ export class AddSkillsDialogComponent implements OnInit {
   }
 
   onSave():void {
-    if(this.skills.length > 0) {
-      this.addSkillsDialog.close(this.skills);
-    }
-    else {
-      this.addSkillsDialog.close();
-    }
+    this.addSkillsDialog.close(this.skills);
   }
 
   addSkill(event: MatChipInputEvent): void {

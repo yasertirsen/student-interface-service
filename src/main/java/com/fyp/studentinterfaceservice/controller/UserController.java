@@ -121,4 +121,9 @@ public class UserController extends StudentExceptionHandler {
         return userService.getUniHiredStudents(companyName, userId);
     }
 
+    @GetMapping("/")
+    public ResponseEntity<String> healthIndicator() {
+        return new ResponseEntity<>("UP", HttpStatus.OK);
+    }
+
 }

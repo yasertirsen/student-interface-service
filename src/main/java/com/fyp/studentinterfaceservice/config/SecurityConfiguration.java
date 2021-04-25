@@ -1,4 +1,4 @@
-package com.fyp.studentinterfaceservice.security;
+package com.fyp.studentinterfaceservice.config;
 
 import com.fyp.studentinterfaceservice.filter.JwtAccessDeniedHandler;
 import com.fyp.studentinterfaceservice.filter.JwtAuthenticationEntryPoint;

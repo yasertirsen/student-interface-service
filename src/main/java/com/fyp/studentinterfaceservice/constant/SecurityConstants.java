@@ -1,7 +1,5 @@
 package com.fyp.studentinterfaceservice.constant;
 
-import org.springframework.beans.factory.annotation.Value;
-
 public class SecurityConstants {
 
     public static final long EXPIRATION_TIME = 86400000; //1 DAY
@@ -13,7 +11,7 @@ public class SecurityConstants {
     public static final String FORBIDDEN_MESSAGE = "You need to log in to access this page";
     public static final String ACCESS_DENIED = "You do not have permission to access this page";
     public static final String OPTIONS_HTTP_METHOD = "OPTIONS";
-    public static final String[] PUBLIC_URLS = {"/register", "/login", "/verification/**", "/sendVerify/**",
+    public static final String[] PUBLIC_URLS = {"/", "/register", "/login", "/verification/**", "/sendVerify/**",
     "/changePassword/**"};
 }
 

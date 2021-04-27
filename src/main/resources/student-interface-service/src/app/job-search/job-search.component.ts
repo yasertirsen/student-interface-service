@@ -11,8 +11,9 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class JobSearchComponent implements OnInit {
 
-  jobsApi: PositionModel[];
-  positions: PositionModel[];
+  jobsApi: PositionModel[] = [];
+  positions: PositionModel[] = [];
+  priority: PositionModel[] = [];
   keywords: string;
   location: string;
   loading = true;
@@ -22,10 +23,16 @@ export class JobSearchComponent implements OnInit {
     this.keywords = this.activatedRoute.snapshot.params.keywords;
     this.location = this.activatedRoute.snapshot.params.location;
     this.positionService.searchPositions(this.location, this.keywords).subscribe(positions => {
-      this.positions = positions;
+      for(let position of positions) {
+        if(position.priority === true)
+          this.priority.push(position);
+        else
+          this.positions.push(position);
+      }
     });
     this.positionService.searchJobsApi(this.location, this.keywords).subscribe( jobs => {
       this.jobsApi = jobs;
+      console.log(jobs);
       if (this.jobsApi.length === 0 && this.positions.length === 0) {
         this._snackBar.open('No jobs found, please try searching with fewer keywords', 'Close', {
           duration: 5000,

@@ -70,7 +70,6 @@ export class CourseTileComponent implements OnInit, OnDestroy {
         });
       }
       else {
-        this.user.profile.externalSkills = [];
         for(let module of course.modules) {
           if(!!module.skill && !!module.skill.skillName)
             this.user.profile.externalSkills.push(module.skill);

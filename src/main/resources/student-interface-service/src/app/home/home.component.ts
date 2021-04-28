@@ -42,6 +42,7 @@ export class HomeComponent implements OnInit {
       if(!!result) {
         this.user.profile.externalSkills = result;
         this.updateUser();
+        window.location.reload();
       }
       else {
         this._snackBar.open('No skills were added', 'Close', {

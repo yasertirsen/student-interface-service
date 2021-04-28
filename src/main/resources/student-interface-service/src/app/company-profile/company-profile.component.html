@@ -58,7 +58,7 @@
       <div gdArea="content">
         <mat-card-content *ngIf="positions.length > 0">
           <h3><strong>{{ company.company.name }}'s jobs</strong></h3>
-          <app-job-tile [positions]="positions"></app-job-tile>
+          <app-job-tile [positions]="positions.reverse()"></app-job-tile>
         </mat-card-content>
         <mat-card-content *ngIf="positions.length === 0">
           <h3 class="mat-h3" style="text-align: center">

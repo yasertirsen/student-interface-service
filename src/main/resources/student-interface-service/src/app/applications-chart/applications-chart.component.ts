@@ -57,7 +57,7 @@ export class ApplicationsChartComponent implements OnInit {
     this.positionService.getUserApplicationsStats(this.user.email).subscribe(data => {
       if(!!data.statusData && !!data.applications) {
         this.noData = false;
-        this.datasource.data = data.applications;
+        this.datasource.data = data.applications.reverse();
         for (let response of Object.keys(data.statusData)) {
           if(data.statusData[response] > 0) {
             this.data.push([response, data.statusData[response]]);

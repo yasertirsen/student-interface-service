@@ -163,25 +163,27 @@ public class PositionServiceImpl implements PositionService {
         List<Position> positions = new ArrayList<>();
         if(skills.size() > 0) {
             for(Position position : client.getAllPositions(secretToken)) {
-                position.getRequirements().forEach(req -> {
-                    if(skills.contains(req.getSkillName())) {
-                        positions.add(position);
-                    }
-                });
+                if(!position.isArchive()) {
+                    position.getRequirements().forEach(req -> {
+                        if(skills.contains(req.getSkillName())) {
+                            positions.add(position);
+                        }
+                    });
+                }
             }
         }
 
-        List<Position> top15Positions = positions.stream()
+        List<Position> top10Positions = positions.stream()
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
                 .entrySet().stream()
                 .sorted(Map.Entry.comparingByValue())
-                .limit(15)
+                .limit(10)
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
 
-        Collections.reverse(top15Positions);
+        Collections.reverse(top10Positions);
 
-        return top15Positions;
+        return top10Positions;
     }
 
     @Override

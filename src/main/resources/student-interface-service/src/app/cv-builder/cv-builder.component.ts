@@ -265,7 +265,7 @@ export class CvBuilderComponent implements OnInit {
   private _moduleFilter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.allExperiences.filter(experience => experience.toLowerCase().indexOf(filterValue) === 0);
+    return this.allModules.filter(module => module.toLowerCase().indexOf(filterValue) === 0);
   }
 
   onEditDetails() {

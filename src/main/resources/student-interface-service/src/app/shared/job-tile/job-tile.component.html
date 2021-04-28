@@ -2,8 +2,8 @@
 <mat-card  class="content" (click)="goToLink(position)">
   <mat-card-title><a class="position-name">{{position.title}}</a></mat-card-title>
   <mat-card-subtitle>{{position.date}} </mat-card-subtitle>
-  <mat-card-subtitle>{{position.location}} </mat-card-subtitle>
   <mat-card-subtitle *ngIf="!!position.company">{{position.company.name}}</mat-card-subtitle>
+  <mat-card-subtitle>{{position.location}} </mat-card-subtitle>
   <mat-card-content class="description" [innerHTML]="position.description"></mat-card-content>
 </mat-card>
 </div>

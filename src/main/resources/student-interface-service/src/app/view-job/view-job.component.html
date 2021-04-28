@@ -9,6 +9,7 @@
         <mat-card-subtitle>{{position.date}}</mat-card-subtitle>
         <mat-card-subtitle>{{ position.location}} </mat-card-subtitle>
         <mat-card-subtitle>{{position.company.name}}</mat-card-subtitle>
+        <mat-card-subtitle style="font-size: small;" *ngIf="!!position.salary">Salary: &euro;{{position.salary}}</mat-card-subtitle>
         <mat-card-content [innerHTML]="position.description"></mat-card-content>
         <mat-card-content>
           <p><strong>Requirements:</strong></p>

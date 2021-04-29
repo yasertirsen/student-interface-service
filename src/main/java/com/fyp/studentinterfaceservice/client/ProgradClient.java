@@ -117,6 +117,9 @@ public interface ProgradClient {
     @PostMapping("/companies/addToMailing")
     MailingList addToMailingList(@RequestHeader(AUTH_TOKEN) String secretToken, @RequestParam Long companyId, @RequestParam String email);
 
+    @GetMapping("/companies/mailingList")
+    MailingList getMailingList(@RequestHeader(AUTH_TOKEN) String secretToken, @RequestParam Long companyId);
+
     //files endpoint
 
     @PostMapping("/files/upload")

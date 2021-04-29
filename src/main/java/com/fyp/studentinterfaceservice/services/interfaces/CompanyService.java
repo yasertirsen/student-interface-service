@@ -21,4 +21,6 @@ public interface CompanyService {
     CompanyProfile updateProfile(CompanyProfile profile);
 
     MailingList addToMailingList(Long companyId, String email);
+
+    MailingList getMailingList(Long companyId);
 }

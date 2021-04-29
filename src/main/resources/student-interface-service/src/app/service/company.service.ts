@@ -30,4 +30,8 @@ export class CompanyService {
     return this.http.post('http://localhost:8083/companies/addToMailing/' + companyId, {},
       {params: {email: email}})
   }
+
+  getMailingList(companyId: number): Observable<any> {
+    return this.http.get('http://localhost:8083/companies/getMailingList/' + companyId);
+  }
 }

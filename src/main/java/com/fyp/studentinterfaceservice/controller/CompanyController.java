@@ -49,7 +49,12 @@ public class CompanyController extends StudentExceptionHandler {
     }
 
     @PostMapping("/addToMailing/{companyId}")
-    public MailingList getMailingList(@PathVariable Long companyId, @RequestParam String email) {
+    public MailingList addToMailingList(@PathVariable Long companyId, @RequestParam String email) {
         return companyService.addToMailingList(companyId, email);
+    }
+
+    @GetMapping("/getMailingList/{companyId}")
+    public MailingList getMailingList(@PathVariable Long companyId) {
+        return companyService.getMailingList(companyId);
     }
 }

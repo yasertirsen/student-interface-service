@@ -14,8 +14,10 @@
           <mat-icon mat-card-avatar class="icon">business</mat-icon>
           <mat-card-title>{{company.company.name}}</mat-card-title>
           <mat-card-subtitle *ngIf="!!company.company.address">{{ company.company.address }}</mat-card-subtitle>
-          <button mat-fab class="spacer" color="accent" (click)="onGetUpdates()">
+          <button mat-fab class="spacer" color="accent" (click)="onGetUpdates()" *ngIf="!inMailingList()">
             <mat-icon>notifications</mat-icon></button>
+          <button mat-fab class="spacer" color="accent" *ngIf="inMailingList()">
+            <mat-icon>notifications_active</mat-icon></button>
           <div fxLayout="row"  fxFlex fxLayoutAlign="end center">
             <button class="spacer" mat-raised-button color="primary" (click)="onAddReview()">
               <mat-icon style="margin-right:5px">rate_review</mat-icon>Leave Review</button>

@@ -65,4 +65,9 @@ public class CompanyServiceImpl implements CompanyService {
     public MailingList addToMailingList(Long companyId, String email) {
         return client.addToMailingList(secretToken, companyId, email);
     }
+
+    @Override
+    public MailingList getMailingList(Long companyId) {
+        return client.getMailingList(secretToken, companyId);
+    }
 }

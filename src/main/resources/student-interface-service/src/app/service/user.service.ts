@@ -63,17 +63,6 @@ export class UserService {
     return this.http.get('http://localhost:8083/getStudentAvatar/' + userId);
   }
 
-  // getAvatar(userId: number): any {
-  //   if (!!localStorage.getItem('avatar')) {
-  //     this.http.get('http://localhost:8083/getStudentAvatar/' + userId).subscribe(data => {
-  //       localStorage.setItem('avatar', JSON.stringify(data));
-  //       return data;
-  //     });
-  //   } else {
-  //     return JSON.parse(localStorage.getItem('avatar'));
-  //   }
-  // }
-
   verifyToken(token: string, password: string): Observable<any>{
     return this.http.put('http://localhost:8083/changePassword/' + token, {},
       {params: {password: password}});

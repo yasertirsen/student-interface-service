@@ -37,20 +37,6 @@ export class PositionService {
       {params: {email: email}});
   }
 
-  // getRecommendations(email: string): any {
-  //   if(!!localStorage.getItem('recommendedJobs')) {
-  //     this.http.get('http://localhost:8083/positions/recommend',
-  //       {params: {email: email}}).subscribe(data => {
-  //       localStorage.setItem('recommendedJobs', JSON.stringify(data));
-  //       return data;
-  //     });
-  //   }
-  //   else {
-  //     return JSON.parse(localStorage.getItem('recommendedJobs'));
-  //   }
-  // }
-
-
   getJob(id: number): Observable<PositionModel> {
     return this.http.get<PositionModel>('http://localhost:8083/getPosition/' + id);
   }

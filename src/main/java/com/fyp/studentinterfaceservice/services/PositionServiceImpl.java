@@ -6,6 +6,7 @@ import com.fyp.studentinterfaceservice.exceptions.ProgradException;
 import com.fyp.studentinterfaceservice.exceptions.UserNotFoundException;
 import com.fyp.studentinterfaceservice.model.*;
 import com.fyp.studentinterfaceservice.services.interfaces.PositionService;
+import com.fyp.studentinterfaceservice.utilities.MaxSizeHashMap;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
@@ -173,17 +174,26 @@ public class PositionServiceImpl implements PositionService {
             }
         }
 
-        List<Position> top10Positions = positions.stream()
-                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
-                .entrySet().stream()
-                .sorted(Map.Entry.comparingByValue())
-                .limit(10)
-                .map(Map.Entry::getKey)
-                .collect(Collectors.toList());
+        Map<Position, Long> sortedMap = sortByValue(positions.stream()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting())));
+
+        List<Position> top10Positions = new ArrayList<>(sortedMap.keySet());
 
         Collections.reverse(top10Positions);
 
         return top10Positions;
+    }
+
+    public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
+        List<Map.Entry<K, V>> list = new ArrayList<>(map.entrySet());
+        list.sort(Map.Entry.comparingByValue());
+
+        Map<K, V> result = new MaxSizeHashMap<>(7);
+        for (Map.Entry<K, V> entry : list) {
+            result.put(entry.getKey(), entry.getValue());
+        }
+
+        return result;
     }
 
     @Override
